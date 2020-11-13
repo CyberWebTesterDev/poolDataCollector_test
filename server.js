@@ -343,23 +343,6 @@ app.get("/getdictvalue/:uid", (req, res) => {
   }
 });
 
-app.get("/supportold/:appnum", (req, res) => {
-  //const {appnum} = req.params;
-
-  res.render("Support_dummy_script");
-});
-
-app.get("/supporttest/:appnum", (req, res) => {
-  //const {appnum} = req.params;
-
-  const dc = new DataCollector();
-  dc.loggerServer(
-    `Handling the entry test request for support ${req.connection.remoteAddress}`
-  );
-  res.render("Support_dummy_script_test");
-  dc.loggerServer("Entry test template has been rendered");
-});
-
 app.get("/support/:appnum", (req, res) => {
   //const {appnum} = req.params;
 
@@ -414,9 +397,6 @@ app.get("/frontrequest/aggregatedatafromdb/:appnum", (req, res) => {
 
     main(appnum).then((data) => {
       data = JSON.parse(data);
-      //console.log(typeof(data));
-      //console.log(data.searchData);
-
       dc.loggerServer(
         `Received data from dataCollector for application ${appnum}`
       );
@@ -867,14 +847,6 @@ app.get("/frontrequest/bpmdata/:appnum/:status", (req, res) => {
     dc.loggerServer("Listening...");
   });
 });
-
-// server.on('request', (req, res) => {
-//     dateTime.getCurrentDateTime()
-//     console.log(`: Request method: ${req.method}`+'\n')
-//     console.log(req.headers);
-//     console.log(req.url);
-
-// })
 
 app.listen(port, (err) => {
   if (err) {
