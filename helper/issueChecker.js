@@ -8,13 +8,17 @@ exports.consumerIssueValidationCheck = (
   console.log(appStatus, appSaleChannel, formTypeId, dateSign, issueChannel);
 
   const issueStatusesEntries = statusViewData.filter(
-    status => status.status_name == "Выдача кредита"
+    (status) => status.status_name == "Выдача кредита"
   );
 
-  const idx = statusViewData.findIndex(status => status.status_name == "Ошибка");
+  const idx = statusViewData.findIndex(
+    (status) => status.status_name == "Ошибка"
+  );
 
   if (issueStatusesEntries.length > 0) {
-    const errorStatusesEntries = statusViewData.filter(status => status.status_name == "Ошибка");
+    const errorStatusesEntries = statusViewData.filter(
+      (status) => status.status_name == "Ошибка"
+    );
 
     loggerServer(`consumerIssueValidationCheck: issue bug has been detected`);
 
@@ -45,13 +49,21 @@ exports.consumerIssueValidationCheck = (
         ? dateDifferenceBetweenSignAndNowMinutes / 60
         : 0;
     let dateDifferenceBetweenSignAndNowDays =
-      dateDifferenceBetweenSignAndNowHours >= 24 ? dateDifferenceBetweenSignAndNowHours / 24 : 0;
-    dateDifferenceBetweenSignAndNowHours = dateDifferenceBetweenSignAndNowHours.toFixed(1);
-    dateDifferenceBetweenSignAndNowDays = dateDifferenceBetweenSignAndNowDays.toFixed(1);
+      dateDifferenceBetweenSignAndNowHours >= 24
+        ? dateDifferenceBetweenSignAndNowHours / 24
+        : 0;
+    dateDifferenceBetweenSignAndNowHours = dateDifferenceBetweenSignAndNowHours.toFixed(
+      1
+    );
+    dateDifferenceBetweenSignAndNowDays = dateDifferenceBetweenSignAndNowDays.toFixed(
+      1
+    );
 
     const dateDifferenceBetweenLastStatusAndNowMinutes = (
-      Math.floor(new Date() - new Date(statusViewData[statusViewData.length - 1].start_date)) /
-      60000
+      Math.floor(
+        new Date() -
+          new Date(statusViewData[statusViewData.length - 1].start_date)
+      ) / 60000
     ).toFixed(2);
     const dateDifferenceBetweenLastStatusAndNowHours = (dateDifferenceBetweenLastStatusAndNowMinutes >=
     60
@@ -74,35 +86,50 @@ exports.consumerIssueValidationCheck = (
       dateDifferenceBetweenSignAndNowHours,
       dateDifferenceBetweenSignAndNowDays,
       firstIssueEntryDateTime: issueStatusesEntries[0].start_date,
-      lastIIssueEntryDateTime: issueStatusesEntries[issueStatusesEntries.length - 1].start_date,
+      lastIIssueEntryDateTime:
+        issueStatusesEntries[issueStatusesEntries.length - 1].start_date,
       firstErrorEntryDateTime:
-        errorStatusesEntries.length > 0 ? errorStatusesEntries[0].start_date : null,
+        errorStatusesEntries.length > 0
+          ? errorStatusesEntries[0].start_date
+          : null,
       firstErrorTryDateTime:
-        idx != -1 ? (statusViewData[idx + 1] ? statusViewData[idx + 1].start_date : null) : null,
+        idx != -1
+          ? statusViewData[idx + 1]
+            ? statusViewData[idx + 1].start_date
+            : null
+          : null,
       lastErrorEntryDateTime:
         errorStatusesEntries.length > 0
           ? errorStatusesEntries[errorStatusesEntries.length - 1].start_date
           : null,
       isContractOutDated:
-        contractValidDurationDays - dateDifferenceBetweenSignAndNowDays > 0 ? false : true,
+        contractValidDurationDays - dateDifferenceBetweenSignAndNowDays > 0
+          ? false
+          : true,
       dateDifferenceBetweenLastStatusAndNow: `${dateDifferenceBetweenLastStatusAndNowDays} дней или ${dateDifferenceBetweenLastStatusAndNowHours} часов или ${dateDifferenceBetweenLastStatusAndNowMinutes} минут`,
       employeeRetry: `${statusViewData[statusViewData.length - 2].u_fio} ${
         statusViewData[statusViewData.length - 2].u_login
       } (${statusViewData[statusViewData.length - 2].u_role})`,
       contractDateSign: dateSign,
-      contractValidDurationDays
+      contractValidDurationDays,
     };
 
-    loggerServer(`consumerIssueValidationCheck: returning additionalSupportData:`);
+    loggerServer(
+      `consumerIssueValidationCheck: returning additionalSupportData:`
+    );
     console.log(additionalSupportData);
 
     return additionalSupportData;
   }
 
   if (appStatus == "Ошибка") {
-    loggerServer(`consumerIssueValidationCheck: non issue bug has been detected`);
+    loggerServer(
+      `consumerIssueValidationCheck: non issue bug has been detected`
+    );
 
-    const errorStatusesEntries = statusViewData.filter(status => status.status_name == "Ошибка");
+    const errorStatusesEntries = statusViewData.filter(
+      (status) => status.status_name == "Ошибка"
+    );
 
     if (errorStatusesEntries.length > 0) {
       return {
@@ -110,10 +137,11 @@ exports.consumerIssueValidationCheck = (
         errorFlag: true,
         errorStatusEntryCounter: errorStatusesEntries.length,
         firstErrorEntryDateTime: errorStatusesEntries[0].start_date,
-        lastErrorEntryDateTime: errorStatusesEntries[errorStatusesEntries.length - 1].start_date,
+        lastErrorEntryDateTime:
+          errorStatusesEntries[errorStatusesEntries.length - 1].start_date,
         employeeRetry: `${statusViewData[statusViewData.length - 2].u_fio} ${
           statusViewData[statusViewData.length - 2].u_login
-        } (${statusViewData[statusViewData.length - 2].u_role})`
+        } (${statusViewData[statusViewData.length - 2].u_role})`,
       };
     }
   }
@@ -121,6 +149,6 @@ exports.consumerIssueValidationCheck = (
   loggerServer(`consumerIssueValidationCheck: no bug has been detected`);
 
   return {
-    issueBugFlag: false
+    issueBugFlag: false,
   };
 };

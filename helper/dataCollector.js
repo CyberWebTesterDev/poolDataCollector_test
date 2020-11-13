@@ -4,7 +4,7 @@ const { MapperDict } = require("../mapper");
 const { consumerIssueValidationCheck } = require("./issueChecker");
 const { elkSearchLogsAuthNeeded } = require("./elk-log-collector");
 
-Date.prototype.addHours = function(h) {
+Date.prototype.addHours = function (h) {
   this.setTime(this.getTime() + h * 60 * 60 * 1000);
   return this;
 };
@@ -42,7 +42,7 @@ class DataCollector {
     "report_date",
     "evaluate_date",
     "date_conclusion_contract",
-    "date_sub_status"
+    "date_sub_status",
   ];
 
   linkData = {
@@ -50,23 +50,35 @@ class DataCollector {
     baseMappLink: `https://ui-test.test-stand.tst.int.***.ru/`,
     baseCardLink: `https://ui-test.test-stand.tst.int.***.ru/`,
     baseAutoLink: `https://ui-test2.test-stand.tst.int.***.ru/`,
-    baseCamundaLink: `https://test.app.rcl.int.***.ru/testpath/app/test/default/#/process-instance/`
+    baseCamundaLink: `https://test.app.rcl.int.***.ru/testpath/app/test/default/#/process-instance/`,
   };
 
   makeErrorProcessingLink = (appNum, key) => {
     if (appNum) {
       switch (key) {
         case "Потребительское кредитование":
-          return this.linkData.baseAppLink + `error-processing/${appNum}/status-journal`;
+          return (
+            this.linkData.baseAppLink +
+            `error-processing/${appNum}/status-journal`
+          );
 
         case "Кредитование с использованием банковских карт":
-          return this.linkData.baseCardLink + `error-processing/${appNum}/status-journal`;
+          return (
+            this.linkData.baseCardLink +
+            `error-processing/${appNum}/status-journal`
+          );
 
         case "Ипотечное кредитование":
-          return this.linkData.baseMappLink + `error-processing/${appNum}/status-journal`;
+          return (
+            this.linkData.baseMappLink +
+            `error-processing/${appNum}/status-journal`
+          );
 
         case "Автокредитование":
-          return this.linkData.baseAutoLink + `error-processing/${appNum}/status-journal`;
+          return (
+            this.linkData.baseAutoLink +
+            `error-processing/${appNum}/status-journal`
+          );
 
         default:
           throw new Error(
@@ -96,7 +108,9 @@ class DataCollector {
         case "ipoteka_view_mode":
           return this.linkData.baseMappLink + `${appNum}?mode=view`;
         case "ipoteka_final_view_mode":
-          return this.linkData.baseMappLink + `contract/${appNum}/final?mode=info`;
+          return (
+            this.linkData.baseMappLink + `contract/${appNum}/final?mode=info`
+          );
         case "potreb_redir":
           return this.linkData.baseAppLink + `${appNum}`;
         case "cc_redir":
@@ -106,7 +120,9 @@ class DataCollector {
         case "camunda":
           break;
         default:
-          throw new Error(`DataCollector.makeLink: Не определено направление ${key}`);
+          throw new Error(
+            `DataCollector.makeLink: Не определено направление ${key}`
+          );
       }
     } else {
       this.logger(`Application number is not valid ${appNum}`);
@@ -118,37 +134,49 @@ class DataCollector {
     if (appNum) {
       switch (key) {
         case "Потребительское кредитование":
-          return this.linkData.baseAppLink + `credit-request/${appNum}/photo-album`;
+          return (
+            this.linkData.baseAppLink + `credit-request/${appNum}/photo-album`
+          );
 
         case "Кредитование с использованием банковских карт":
-          return this.linkData.baseCardLink + `credit-request/${appNum}/photo-album`;
+          return (
+            this.linkData.baseCardLink + `credit-request/${appNum}/photo-album`
+          );
 
         case "Ипотечное кредитование":
-          return this.linkData.baseMappLink + `credit-request/${appNum}/photo-album`;
+          return (
+            this.linkData.baseMappLink + `credit-request/${appNum}/photo-album`
+          );
 
         case "Автокредитование":
-          return this.linkData.baseAutoLink + `credit-request/${appNum}/photo-album`;
+          return (
+            this.linkData.baseAutoLink + `credit-request/${appNum}/photo-album`
+          );
 
         default:
-          throw new Error(`DataCollector.makeViewScanLink: Не определено направление ${key}`);
+          throw new Error(
+            `DataCollector.makeViewScanLink: Не определено направление ${key}`
+          );
       }
     } else {
-      this.logger(`makeViewScanLink: Application number is not valid ${appNum}`);
+      this.logger(
+        `makeViewScanLink: Application number is not valid ${appNum}`
+      );
       return;
     }
   };
 
-  loggerServer = message => {
+  loggerServer = (message) => {
     dateTime.getCurrentDateTime();
     console.log(`Server: ${message}` + "\n");
   };
 
-  logger = message => {
+  logger = (message) => {
     dateTime.getCurrentDateTime();
     console.log(`DataCollector: ${message}` + "\n");
   };
 
-  jsonParse = arr => {
+  jsonParse = (arr) => {
     arr.forEach((el, idx) => {
       arr[idx] = JSON.parse(el);
     });
@@ -175,7 +203,7 @@ class DataCollector {
     const automaticStatuses = [
       "Выдача кредита",
       "Автоматическая обработка",
-      "Автоматическая обработка ОН"
+      "Автоматическая обработка ОН",
     ];
   };
 
@@ -184,7 +212,9 @@ class DataCollector {
 
     dateTime = new Date(dateTime);
     dateTime = dateTime.setMinutes(dateTime.getMinutes() - minutes);
-    this.logger(`timeDecrementMinutes: result date: ${new Date(dateTime).toISOString()}`);
+    this.logger(
+      `timeDecrementMinutes: result date: ${new Date(dateTime).toISOString()}`
+    );
     return new Date(dateTime).toISOString();
   };
 
@@ -232,7 +262,7 @@ class DataCollector {
     });
   };
 
-  getDictionaryValues = arr => {
+  getDictionaryValues = (arr) => {
     if (arr && arr.length > 0) {
       let k = [];
 
@@ -255,7 +285,7 @@ class DataCollector {
     } else return;
   };
 
-  getBicDictionaryValues = arr => {
+  getBicDictionaryValues = (arr) => {
     if (arr && arr.length > 0) {
       let k = [];
 
@@ -275,7 +305,7 @@ class DataCollector {
     } else return;
   };
 
-  errorTextCleaner = array => {
+  errorTextCleaner = (array) => {
     array.forEach((el, i) => {
       if (!array[i].Error) {
         array[i].Error = "";
@@ -289,7 +319,7 @@ class DataCollector {
     });
   };
 
-  errorTextCombiner = arr => {
+  errorTextCombiner = (arr) => {
     arr.forEach((el, i) => {
       if (arr[i].Error || arr[i].bError || arr[i].mError) {
         arr[i].Error = arr[i].Error + " " + arr[i].bError + " " + arr[i].mError;
@@ -297,7 +327,7 @@ class DataCollector {
     });
   };
 
-  errorArrayFill = arr => {
+  errorArrayFill = (arr) => {
     arr.forEach((el, i) => {
       if (arr[i]) {
         arr[0] += " " + arr[i];
@@ -427,11 +457,13 @@ class DataCollector {
         this.jsonParse(data);
         return data;
       default:
-        throw new Error("dataCollector.getDataSet: Ну удалось опередлить маршрут");
+        throw new Error(
+          "dataCollector.getDataSet: Ну удалось опередлить маршрут"
+        );
     }
   };
 
-  getMortgageData = async appNum => {
+  getMortgageData = async (appNum) => {
     const routes = {
       process: "processid",
       tasks: "tasks",
@@ -447,7 +479,7 @@ class DataCollector {
       route5: "ipoteka_real_estate_2",
       route6: "letter_of_credit",
       route7: "transfer_order",
-      route8: "legal_document"
+      route8: "legal_document",
     };
 
     try {
@@ -470,7 +502,10 @@ class DataCollector {
       let jobData = await this.getDataSet(appNum, routes.job);
       let mapplicationData = await this.getDataSet(appNum, routes.application);
       let parametersData = await this.getDataSet(appNum, routes.route);
-      let mortgageParticipantsData = await this.getDataSet(appNum, routes.route2);
+      let mortgageParticipantsData = await this.getDataSet(
+        appNum,
+        routes.route2
+      );
       let mortgageAccountsData = await this.getDataSet(appNum, routes.route3);
       //this.logger(`Starting to collect data for route ${routes.route4} and application ${appNum}`);
       let mortgageRealEstateData = await this.getDataSet(appNum, routes.route4);
@@ -479,7 +514,10 @@ class DataCollector {
         ? (realEstateId = mortgageRealEstateData[0].id)
         : (realEstateId = undefined);
       //this.logger(`Starting to collect data for route ${routes.route5} and application ${appNum}`);
-      let mortgageRealEstateData2 = await this.getDataSet(realEstateId, routes.route5);
+      let mortgageRealEstateData2 = await this.getDataSet(
+        realEstateId,
+        routes.route5
+      );
       //this.logger(`Starting to collect data for route ${routes.route6} and application ${appNum}`);
       let letterOfCreditData = await this.getDataSet(appNum, routes.route6);
       //this.logger(`Starting to collect data for route ${routes.route7} and application ${appNum}`);
@@ -511,7 +549,7 @@ class DataCollector {
         legalDocumentData,
         integrationLogData,
         statusViewData,
-        eventData
+        eventData,
       };
       return response;
     } catch (e) {
@@ -519,7 +557,7 @@ class DataCollector {
     }
   };
 
-  getBPMprocessData = async appNum => {
+  getBPMprocessData = async (appNum) => {
     const process_routes = {
       process: "processid",
       tasks: "tasks",
@@ -527,7 +565,7 @@ class DataCollector {
       executions: "execution_log",
       processLog: "process_log",
       job: "job_data",
-      errors: "error"
+      errors: "error",
     };
 
     let errors = [];
@@ -548,8 +586,14 @@ class DataCollector {
       if (processData.length === 1) {
         tasksData = await this.getDataSet(processid, process_routes.tasks);
       }
-      const executionsLogData = await this.getDataSet(appNum, process_routes.executions);
-      const processLogData = await this.getDataSet(appNum, process_routes.processLog);
+      const executionsLogData = await this.getDataSet(
+        appNum,
+        process_routes.executions
+      );
+      const processLogData = await this.getDataSet(
+        appNum,
+        process_routes.processLog
+      );
       const jobData = await this.getDataSet(appNum, process_routes.job);
       //console.log(errors);
 
@@ -560,7 +604,7 @@ class DataCollector {
         executionsLogData,
         processLogData,
         jobData,
-        errors
+        errors,
       };
 
       return JSON.stringify(response);
@@ -569,16 +613,19 @@ class DataCollector {
     }
   };
 
-  getAutoApplicationDataLight = async appNum => {
+  getAutoApplicationDataLight = async (appNum) => {
     const routes = {
       application: "auto_application",
       route: "auto",
       route2: "autoakk",
-      route3: "vehicle"
+      route3: "vehicle",
     };
 
     try {
-      let autoApplicationData = await this.getDataSet(appNum, routes.application);
+      let autoApplicationData = await this.getDataSet(
+        appNum,
+        routes.application
+      );
       let parametersData = await this.getDataSet(appNum, routes.route);
       let autoAccountsData = await this.getDataSet(appNum, routes.route2);
       let autoVehicleData = await this.getDataSet(appNum, routes.route3);
@@ -586,7 +633,9 @@ class DataCollector {
       let statusViewData = await this.getDataSet(appNum, "statusview");
       let eventData = await this.getDataSet(appNum, "event");
 
-      let idx = autoAccountsData.findIndex(account => account.selected === true);
+      let idx = autoAccountsData.findIndex(
+        (account) => account.selected === true
+      );
 
       let paramsForSearchLogs = [
         appNum,
@@ -597,8 +646,10 @@ class DataCollector {
         idx != -1 ? autoAccountsData[idx].acc_number : appNum,
         idx != -1 ? autoAccountsData[idx].card_number : appNum,
         idx != -1 ? autoAccountsData[idx].five_nt_contract_number : appNum,
-        integrationLogData.length > 0 ? integrationLogData[0].interaction_id : appNum,
-        autoApplicationData[0].request_service_id
+        integrationLogData.length > 0
+          ? integrationLogData[0].interaction_id
+          : appNum,
+        autoApplicationData[0].request_service_id,
       ];
 
       this.logger("All data for auto credit application has been collected");
@@ -610,7 +661,7 @@ class DataCollector {
         integrationLogData,
         statusViewData,
         eventData,
-        paramsForSearchLogs
+        paramsForSearchLogs,
       };
       return response;
     } catch (e) {
@@ -618,7 +669,7 @@ class DataCollector {
     }
   };
 
-  getMortgageDataLight = async appNum => {
+  getMortgageDataLight = async (appNum) => {
     const routes = {
       application: "mapplication",
       route: "ipoteka",
@@ -631,7 +682,7 @@ class DataCollector {
       route8: "legal_document",
       route9: "letter_of_credit_primary",
       route10: "evaluation_report",
-      route11: "agreement_purchase"
+      route11: "agreement_purchase",
     };
 
     try {
@@ -640,14 +691,20 @@ class DataCollector {
       let agreementPurchaseData = [];
       let mapplicationData = await this.getDataSet(appNum, routes.application);
       let parametersData = await this.getDataSet(appNum, routes.route);
-      let mortgageParticipantsData = await this.getDataSet(appNum, routes.route2);
+      let mortgageParticipantsData = await this.getDataSet(
+        appNum,
+        routes.route2
+      );
       let mortgageAccountsData = await this.getDataSet(appNum, routes.route3);
       let mortgageRealEstateData = await this.getDataSet(appNum, routes.route4);
       let realEstateId = undefined;
       mortgageRealEstateData.length > 0
         ? (realEstateId = mortgageRealEstateData[0].id)
         : (realEstateId = undefined);
-      let mortgageRealEstateData2 = await this.getDataSet(realEstateId, routes.route5);
+      let mortgageRealEstateData2 = await this.getDataSet(
+        realEstateId,
+        routes.route5
+      );
       if (mapplicationData[0].calculation_form_id === "Договор аккредитива") {
         if (parametersData[0].case_market === "Вторичный") {
           letterOfCreditData = await this.getDataSet(appNum, routes.route6);
@@ -657,8 +714,14 @@ class DataCollector {
         }
       }
       if (realEstateId) {
-        evaluationReportData = await this.getDataSet(realEstateId, routes.route10);
-        agreementPurchaseData = await this.getDataSet(realEstateId, routes.route11);
+        evaluationReportData = await this.getDataSet(
+          realEstateId,
+          routes.route10
+        );
+        agreementPurchaseData = await this.getDataSet(
+          realEstateId,
+          routes.route11
+        );
       }
       let transferOrderData = await this.getDataSet(appNum, routes.route7);
       let legalDocumentData = await this.getDataSet(appNum, routes.route8);
@@ -676,15 +739,21 @@ class DataCollector {
       let idx4 = -1;
 
       if (transferOrderData.length > 0) {
-        idx = transferOrderData.findIndex(order => order.is_deleted === false);
+        idx = transferOrderData.findIndex(
+          (order) => order.is_deleted === false
+        );
       }
 
       if (mortgageAccountsData.length > 0) {
-        idx2 = mortgageAccountsData.findIndex(account => account.selected === true);
+        idx2 = mortgageAccountsData.findIndex(
+          (account) => account.selected === true
+        );
       }
 
       if (mortgageRealEstateData2.length > 0) {
-        idx3 = mortgageRealEstateData2.findIndex(estate => estate.is_deleted === false);
+        idx3 = mortgageRealEstateData2.findIndex(
+          (estate) => estate.is_deleted === false
+        );
       }
 
       if (agreementPurchaseData.length > 0) {
@@ -696,13 +765,19 @@ class DataCollector {
         mapplicationData[0].id,
         this.timeDecrementMinutes(mapplicationData[0].elk_date_status, 1),
         this.timeIncrementMinutes(mapplicationData[0].elk_date_status, 1),
-        mapplicationData[0].app_ikar_number ? mapplicationData[0].app_ikar_number : appNum,
-        parametersData[0].five_nt_request_id ? parametersData[0].five_nt_request_id : appNum,
-        letterOfCreditData.length > 0 ? letterOfCreditData[0].leter_of_credit_5nt_id : appNum,
+        mapplicationData[0].app_ikar_number
+          ? mapplicationData[0].app_ikar_number
+          : appNum,
+        parametersData[0].five_nt_request_id
+          ? parametersData[0].five_nt_request_id
+          : appNum,
+        letterOfCreditData.length > 0
+          ? letterOfCreditData[0].leter_of_credit_5nt_id
+          : appNum,
         idx != -1 ? transferOrderData[idx].transfer_id_5nt : appNum,
         idx2 != -1 ? mortgageAccountsData[idx2].acc_number : appNum,
         idx3 != -1 ? mortgageRealEstateData2[idx3].id : appNum,
-        idx4 != -1 ? agreementPurchaseData[idx4].id : appNum
+        idx4 != -1 ? agreementPurchaseData[idx4].id : appNum,
       ];
 
       //elkHits = await elkSearchLogsAuthNeeded(paramsForSearchLogs);
@@ -732,7 +807,7 @@ class DataCollector {
         statusViewData,
         eventData,
         elkHits,
-        paramsForSearchLogs
+        paramsForSearchLogs,
       };
       return response;
     } catch (e) {
@@ -740,13 +815,13 @@ class DataCollector {
     }
   };
 
-  getConsumerLoanDataLight = async appNum => {
+  getConsumerLoanDataLight = async (appNum) => {
     const routes = {
       application: "application",
       route: "potreb",
       route2: "potrebakk",
       route3: "potrebrefin",
-      refinance_liabilities: "potrebrefin_all"
+      refinance_liabilities: "potrebrefin_all",
     };
 
     let paramsForSearchLogs = [];
@@ -756,7 +831,10 @@ class DataCollector {
       let parametersData = await this.getDataSet(appNum, routes.route);
       let consumerAccountsData = await this.getDataSet(appNum, routes.route2);
       let consumerRefinData = await this.getDataSet(appNum, routes.route3);
-      let consumerRefinAllData = await this.getDataSet(appNum, routes.refinance_liabilities);
+      let consumerRefinAllData = await this.getDataSet(
+        appNum,
+        routes.refinance_liabilities
+      );
       let integrationLogData = await this.getDataSet(appNum, "logs");
       let statusViewData = await this.getDataSet(appNum, "statusview");
       let eventData = await this.getDataSet(appNum, "event");
@@ -765,7 +843,9 @@ class DataCollector {
       let elkHits2 = [];
       let paramsOksDataSearch = [];
 
-      const idx2 = consumerAccountsData.findIndex(account => account.selected === true);
+      const idx2 = consumerAccountsData.findIndex(
+        (account) => account.selected === true
+      );
 
       let paramsForSearchLogs = [
         appNum,
@@ -773,10 +853,18 @@ class DataCollector {
         this.timeDecrementMinutes(applicationData[0].elk_date_status, 1),
         this.timeIncrementMinutes(applicationData[0].elk_date_status, 1),
         idx2 == -1 ? appNum : consumerAccountsData[idx2].acc_number,
-        applicationData[0].app_ikar_number ? applicationData[0].app_ikar_number : appNum,
-        applicationData[0].request_service_id ? applicationData[0].request_service_id : appNum,
-        applicationData[0].oks_app_sequence ? applicationData[0].oks_app_sequence : appNum,
-        integrationLogData.length > 0 ? integrationLogData[0].interaction_id : appNum
+        applicationData[0].app_ikar_number
+          ? applicationData[0].app_ikar_number
+          : appNum,
+        applicationData[0].request_service_id
+          ? applicationData[0].request_service_id
+          : appNum,
+        applicationData[0].oks_app_sequence
+          ? applicationData[0].oks_app_sequence
+          : appNum,
+        integrationLogData.length > 0
+          ? integrationLogData[0].interaction_id
+          : appNum,
       ];
 
       // if (applicationData[0].request_service_id || applicationData[0].oks_app_sequence) {
@@ -799,7 +887,9 @@ class DataCollector {
         //this.logger(`applicationData for log search: `);
         //console.log(applicationData[0]);
 
-        const idx = parametersData.findIndex(parameter => parameter.date_sign !== null);
+        const idx = parametersData.findIndex(
+          (parameter) => parameter.date_sign !== null
+        );
 
         if (idx != -1) {
           additionalSupportData = consumerIssueValidationCheck(
@@ -808,7 +898,7 @@ class DataCollector {
               appSaleChannel: applicationData[0].sale_channel_id,
               formTypeId: applicationData[0].type_id,
               dateSign: parametersData[idx].date_sign,
-              issueChannel: applicationData[0].channel_of_issue
+              issueChannel: applicationData[0].channel_of_issue,
             },
             statusViewData
           );
@@ -818,14 +908,16 @@ class DataCollector {
               appStatus: applicationData[0].app_status_id,
               appSaleChannel: applicationData[0].sale_channel_id,
               formTypeId: applicationData[0].type_id,
-              dateSign: null
+              dateSign: null,
             },
             statusViewData
           );
         }
       }
 
-      this.logger("All data for consumer credit application has been collected");
+      this.logger(
+        "All data for consumer credit application has been collected"
+      );
       let response = {
         applicationData,
         parametersData,
@@ -837,7 +929,7 @@ class DataCollector {
         eventData,
         additionalSupportData,
         paramsForSearchLogs,
-        paramsOksDataSearch
+        paramsOksDataSearch,
       };
       return response;
     } catch (e) {
@@ -845,12 +937,12 @@ class DataCollector {
     }
   };
 
-  getCreditCardDataLight = async appNum => {
+  getCreditCardDataLight = async (appNum) => {
     const routes = {
       application: "ccapplication",
       route: "cc",
       route2: "kard_akk",
-      route3: "contract_card"
+      route3: "contract_card",
     };
 
     try {
@@ -885,10 +977,16 @@ class DataCollector {
         this.timeDecrementMinutes(ccapplicationData[0].elk_date_status, 1),
         this.timeIncrementMinutes(ccapplicationData[0].elk_date_status, 1),
         cardAccountsData.length > 0 ? cardAccountsData[0].card_number : appNum,
-        ccapplicationData[0].app_channel_number ? ccapplicationData[0].app_channel_number : appNum,
-        parametersData[0].five_nt_request_id ? parametersData[0].five_nt_request_id : appNum,
-        integrationLogData.length > 0 ? integrationLogData[0].interaction_id : appNum,
-        ccapplicationData[0].request_service_id
+        ccapplicationData[0].app_channel_number
+          ? ccapplicationData[0].app_channel_number
+          : appNum,
+        parametersData[0].five_nt_request_id
+          ? parametersData[0].five_nt_request_id
+          : appNum,
+        integrationLogData.length > 0
+          ? integrationLogData[0].interaction_id
+          : appNum,
+        ccapplicationData[0].request_service_id,
       ];
 
       this.logger("All data for credit card application has been collected");
@@ -901,7 +999,7 @@ class DataCollector {
         statusViewData,
         eventData,
         paramsForSearchLogs,
-        paramsOksDataSearch
+        paramsOksDataSearch,
       };
       return response;
     } catch (e) {
@@ -909,7 +1007,7 @@ class DataCollector {
     }
   };
 
-  getConsumerLoanData = async appNum => {
+  getConsumerLoanData = async (appNum) => {
     const routes = {
       process: "processid",
       tasks: "tasks",
@@ -921,13 +1019,15 @@ class DataCollector {
       route: "potreb",
       route2: "potrebakk",
       route3: "potrebrefin",
-      refinance_liabilities: "potrebrefin_all"
+      refinance_liabilities: "potrebrefin_all",
     };
 
     try {
       let processData = await this.getDataSet(appNum, routes.process);
       let processid = undefined;
-      processData.length > 0 ? (processid = processData[0].proc_inst_id_) : (processid = undefined);
+      processData.length > 0
+        ? (processid = processData[0].proc_inst_id_)
+        : (processid = undefined);
       let tasksArchData = [];
       let tasksData = [];
       if (processData.length === 0) {
@@ -943,12 +1043,17 @@ class DataCollector {
       let parametersData = await this.getDataSet(appNum, routes.route);
       let consumerAccountsData = await this.getDataSet(appNum, routes.route2);
       let consumerRefinData = await this.getDataSet(appNum, routes.route3);
-      let consumerRefinAllData = await this.getDataSet(appNum, routes.refinance_liabilities);
+      let consumerRefinAllData = await this.getDataSet(
+        appNum,
+        routes.refinance_liabilities
+      );
       let integrationLogData = await this.getDataSet(appNum, "logs");
       let statusViewData = await this.getDataSet(appNum, "statusview");
       let eventData = await this.getDataSet(appNum, "event");
 
-      this.logger("All data for consumer credit application has been collected");
+      this.logger(
+        "All data for consumer credit application has been collected"
+      );
       let response = {
         processData,
         tasksData,
@@ -963,7 +1068,7 @@ class DataCollector {
         consumerRefinAllData,
         integrationLogData,
         statusViewData,
-        eventData
+        eventData,
       };
       return response;
     } catch (e) {
@@ -971,7 +1076,7 @@ class DataCollector {
     }
   };
 
-  getCreditCardData = async appNum => {
+  getCreditCardData = async (appNum) => {
     const routes = {
       process: "processid",
       tasks: "tasks",
@@ -982,7 +1087,7 @@ class DataCollector {
       application: "ccapplication",
       route: "cc",
       route2: "kard_akk",
-      route3: "contract_card"
+      route3: "contract_card",
     };
 
     try {
@@ -1024,7 +1129,7 @@ class DataCollector {
         contractCardData,
         integrationLogData,
         statusViewData,
-        eventData
+        eventData,
       };
       return response;
     } catch (e) {
@@ -1032,7 +1137,7 @@ class DataCollector {
     }
   };
 
-  getAutoApplicationData = async appNum => {
+  getAutoApplicationData = async (appNum) => {
     const routes = {
       process: "processid",
       tasks: "tasks",
@@ -1043,7 +1148,7 @@ class DataCollector {
       application: "auto_application",
       route: "auto",
       route2: "autoakk",
-      route3: "vehicle"
+      route3: "vehicle",
     };
 
     try {
@@ -1063,7 +1168,10 @@ class DataCollector {
       let executionsLogData = await this.getDataSet(appNum, routes.executions);
       let processLogData = await this.getDataSet(appNum, routes.processLog);
       let jobData = await this.getDataSet(appNum, routes.job);
-      let autoApplicationData = await this.getDataSet(appNum, routes.application);
+      let autoApplicationData = await this.getDataSet(
+        appNum,
+        routes.application
+      );
       let parametersData = await this.getDataSet(appNum, routes.route);
       let autoAccountsData = await this.getDataSet(appNum, routes.route2);
       let autoVehicleData = await this.getDataSet(appNum, routes.route3);
@@ -1085,7 +1193,7 @@ class DataCollector {
         autoVehicleData,
         integrationLogData,
         statusViewData,
-        eventData
+        eventData,
       };
       return response;
     } catch (e) {
@@ -1176,11 +1284,11 @@ class DataCollector {
     }
   };
 
-  filterAndFormatAdditionalData = data => {
+  filterAndFormatAdditionalData = (data) => {
     if (data.length > 0) {
       let result = [];
 
-      data.forEach(parameter => {
+      data.forEach((parameter) => {
         for (let key in parameter) {
           switch (key) {
             case "app_sequence":
@@ -1214,16 +1322,21 @@ class DataCollector {
     }
   };
 
-  analyzeCollectData = async applicationNum => {
+  analyzeCollectData = async (applicationNum) => {
     this.logger(`analyzeCollectData enter for application ${applicationNum}`);
 
-    const routes = ["auto_application", "mapplication", "application", "ccapplication"];
+    const routes = [
+      "auto_application",
+      "mapplication",
+      "application",
+      "ccapplication",
+    ];
 
     try {
       this.logger(`Trying to detect application direction`);
 
       routes.forEach((route, i) => {
-        this.getDataSet(applicationNum, route).then(searchParameters => {
+        this.getDataSet(applicationNum, route).then((searchParameters) => {
           if (searchParameters.length == 0) {
             this.logger(
               `Iteration ${i} application ${applicationNum} does not match to direction ${route}`
@@ -1231,8 +1344,10 @@ class DataCollector {
           }
 
           if (searchParameters.length != 0) {
-            this.logger(`Iteration ${i} application ${applicationNum} match to direction ${route}`);
-            this.collectDataByRoute(route, searchParameters).then(result => {
+            this.logger(
+              `Iteration ${i} application ${applicationNum} match to direction ${route}`
+            );
+            this.collectDataByRoute(route, searchParameters).then((result) => {
               result = this.filterAndFormatAdditionalData(result);
               console.log(result);
               return result;
@@ -1245,9 +1360,12 @@ class DataCollector {
     }
   };
 
-  collectData = async applicationNum => {
+  collectData = async (applicationNum) => {
     dateTime.getCurrentDateTime();
-    console.log(`DataCollector: Received request to collect data for ${applicationNum}` + "\n");
+    console.log(
+      `DataCollector: Received request to collect data for ${applicationNum}` +
+        "\n"
+    );
 
     // let process = await rp.externalQueryExecutorP(applicationNum, 'processid'); //process
     // process = getJsonResultset(process);

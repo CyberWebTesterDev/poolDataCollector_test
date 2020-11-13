@@ -1,4 +1,4 @@
-exports.processLogsData = elkPayload => {
+exports.processLogsData = (elkPayload) => {
   if (elkPayload) {
     //console.log(JSON.parse(elkPayload).hits['total']+'\n');
     let total = JSON.parse(elkPayload).hits["total"];
@@ -12,7 +12,7 @@ exports.processLogsData = elkPayload => {
       let sources = [];
       let trimmedSource;
 
-      hits.forEach(source => {
+      hits.forEach((source) => {
         for (let key in source._source) {
           if (
             key == "app_name" ||
@@ -25,7 +25,10 @@ exports.processLogsData = elkPayload => {
             key == "stack_trace" ||
             key == "message_size"
           ) {
-            trimmedSource = { ...trimmedSource, ...{ [key]: source._source[key] } };
+            trimmedSource = {
+              ...trimmedSource,
+              ...{ [key]: source._source[key] },
+            };
           }
         }
 

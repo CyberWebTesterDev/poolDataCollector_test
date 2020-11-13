@@ -5,13 +5,17 @@ const cleanTime = () => {
 
 const synchronizeTime = () => {
   if (document.getElementById("start").value) {
-    document.getElementById("end").value = document.getElementById("start").value;
+    document.getElementById("end").value = document.getElementById(
+      "start"
+    ).value;
     fullCheck();
     return;
   }
 
   if (document.getElementById("end").value) {
-    document.getElementById("start").value = document.getElementById("end").value;
+    document.getElementById("start").value = document.getElementById(
+      "end"
+    ).value;
     fullCheck();
     return;
   }
@@ -32,7 +36,9 @@ const shiftTime = (elementId, key) => {
       console.log("Parsing input time");
 
       if (key) {
-        document.getElementById(elementId).value = SupportPageController.timeOffsetMinutes(
+        document.getElementById(
+          elementId
+        ).value = SupportPageController.timeOffsetMinutes(
           inputDateTime,
           2,
           key
@@ -41,11 +47,18 @@ const shiftTime = (elementId, key) => {
         fullCheck();
       }
     } else {
-      SupportPageController.callPopUp(`Ошибка`, `Невалидное значение времени`, 5000, "red");
+      SupportPageController.callPopUp(
+        `Ошибка`,
+        `Невалидное значение времени`,
+        5000,
+        "red"
+      );
     }
   } else {
     console.log("Putting current time");
-    document.getElementById(elementId).value = SupportPageController.timeOffsetMinutes(
+    document.getElementById(
+      elementId
+    ).value = SupportPageController.timeOffsetMinutes(
       new Date().toISOString(),
       2,
       key
@@ -96,7 +109,7 @@ const checkboxChecker = () => {
     return document.querySelector("#fieldNameSelector2").value &&
       document.querySelector("#fieldValue2").value &&
       document.querySelector("#fieldNameSelector2").value &&
-        document.querySelector("#fieldValue2").value
+      document.querySelector("#fieldValue2").value
       ? true
       : 3;
   }
@@ -106,7 +119,8 @@ const fieldsCollector = () => {
   const operator = document.querySelector("#fieldOperatorSelector").value;
   const operator2 = document.querySelector("#fieldOperatorSelector2").value;
   const fieldNameSelector = document.querySelector("#fieldNameSelector").value;
-  const fieldNameSelector2 = document.querySelector("#fieldNameSelector2").value;
+  const fieldNameSelector2 = document.querySelector("#fieldNameSelector2")
+    .value;
   const fieldValue = document.querySelector("#fieldValue").value;
   const fieldValue2 = document.querySelector("#fieldValue2").value;
 
@@ -136,7 +150,7 @@ const fieldsCollector = () => {
     return {
       fieldNames,
       fieldValues,
-      operators
+      operators,
     };
   } else return { fieldNames, fieldValues, operators };
 };
@@ -148,7 +162,8 @@ const callChecker = () => {
     case 1:
       setClassRedBorder(document.querySelector("#fieldValue"));
       document.getElementById("getELKlogsWithRange").disabled = true;
-      document.getElementById("getELKlogsWithRange").style.cursor = "not-allowed";
+      document.getElementById("getELKlogsWithRange").style.cursor =
+        "not-allowed";
       SupportPageController.callPopUp(
         `Ошибка`,
         `При взведенном чекбоксе должно быть заполнено поле`,
@@ -165,7 +180,8 @@ const callChecker = () => {
         "red"
       );
       document.getElementById("getELKlogsWithRange").disabled = true;
-      document.getElementById("getELKlogsWithRange").style.cursor = "not-allowed";
+      document.getElementById("getELKlogsWithRange").style.cursor =
+        "not-allowed";
       break;
     case 3:
       if (
@@ -181,7 +197,8 @@ const callChecker = () => {
           "red"
         );
         document.getElementById("getELKlogsWithRange").disabled = true;
-        document.getElementById("getELKlogsWithRange").style.cursor = "not-allowed";
+        document.getElementById("getELKlogsWithRange").style.cursor =
+          "not-allowed";
       } else {
         !document.querySelector("#fieldValue").value
           ? setClassRedBorder(document.querySelector("#fieldValue"))
@@ -193,7 +210,8 @@ const callChecker = () => {
           "red"
         );
         document.getElementById("getELKlogsWithRange").disabled = true;
-        document.getElementById("getELKlogsWithRange").style.cursor = "not-allowed";
+        document.getElementById("getELKlogsWithRange").style.cursor =
+          "not-allowed";
       }
       break;
     case 0:
@@ -219,8 +237,9 @@ const middleCheckerElk = () => {
 
   console.log(
     `middleCheckerElk checkboxChecker(): ${checkboxChecker()}
-    document.getElementById('supportPage'): ${Boolean(document.getElementById("supportPage"))}` +
-      "\n"
+    document.getElementById('supportPage'): ${Boolean(
+      document.getElementById("supportPage")
+    )}` + "\n"
   );
 
   let fieldsObject = fieldsCollector();
@@ -237,23 +256,34 @@ const middleCheckerElk = () => {
   let params = [
     param1 ? param1 : param2 ? param2 : param3,
     param2 ? param2 : param1 ? param1 : param3,
-    param3 ? param3 : param2 ? param2 : param1
+    param3 ? param3 : param2 ? param2 : param1,
   ];
 
   if (document.getElementById("supportPage")) {
-    console.log(`middleCheckerElk document.getElementById('supportPage') = true` + "\n");
+    console.log(
+      `middleCheckerElk document.getElementById('supportPage') = true` + "\n"
+    );
 
     console.log(`middleCheckerElk: supportPage exception` + "\n");
 
     if (checkboxChecker() === true || checkboxChecker() == 0) {
-      console.log(`(checkboxChecker() === true || checkboxChecker() == 0) = true` + "\n");
+      console.log(
+        `(checkboxChecker() === true || checkboxChecker() == 0) = true` + "\n"
+      );
 
-      if (document.getElementById("start").value && document.getElementById("end").value) {
+      if (
+        document.getElementById("start").value &&
+        document.getElementById("end").value
+      ) {
         console.log(
           `( document.getElementById('start').value && document.getElementById('end').value) = true` +
             "\n"
         );
-        SupportPageController.dateTimeInputValidator(false, false, fieldsObject);
+        SupportPageController.dateTimeInputValidator(
+          false,
+          false,
+          fieldsObject
+        );
         return;
       } else {
         console.log(
@@ -278,7 +308,10 @@ const middleCheckerElk = () => {
 
     //console.log(`middleCheckerElk checkboxChecker() === true`+'\n');
 
-    if (document.getElementById("start").value && document.getElementById("end").value) {
+    if (
+      document.getElementById("start").value &&
+      document.getElementById("end").value
+    ) {
       //console.log(`middleCheckerElk ( document.getElementById('start').value && document.getElementById('end').value) == true`+'\n');
 
       document.getElementById("elk-search-params").innerHTML = params;
@@ -299,7 +332,11 @@ const middleCheckerElk = () => {
         // simpleCheckFields('additional3')) = true`+'\n');
 
         try {
-          SupportPageController.dateTimeInputValidator(true, false, fieldsObject);
+          SupportPageController.dateTimeInputValidator(
+            true,
+            false,
+            fieldsObject
+          );
         } catch (e) {
           SupportPageController.callPopUp(
             `Ошибка`,
@@ -340,7 +377,7 @@ const middleCheckerElk = () => {
   }
 };
 
-const checkDateFields = elementId => {
+const checkDateFields = (elementId) => {
   if (document.getElementById(elementId).value) {
     if (document.getElementById(elementId).classList.contains("red-border")) {
       removeClassRedBorder(document.getElementById(elementId));
@@ -376,7 +413,7 @@ const removeClassRedBorder = (element, flag = false) => {
   }
 };
 
-const simpleCheckFields = elementId => {
+const simpleCheckFields = (elementId) => {
   const checkHasDocumentCheckedAnyBoxes = () => {
     if (
       document.querySelector("#isFieldNamePicked").checked ||
@@ -393,7 +430,11 @@ const simpleCheckFields = elementId => {
   let isButtonDisabled = false;
   let isCheckBoxFieldValid = false;
 
-  if (elementId == "additional" && !checkHasDocumentCheckedAnyBoxes() && !isSupportPage) {
+  if (
+    elementId == "additional" &&
+    !checkHasDocumentCheckedAnyBoxes() &&
+    !isSupportPage
+  ) {
     if (
       document.getElementById("additional2").value.length == 0 &&
       document.getElementById("additional3").value.length == 0
@@ -402,7 +443,11 @@ const simpleCheckFields = elementId => {
         ? (isButtonDisabled = false)
         : (isButtonDisabled = true);
     }
-  } else if (elementId == "additional2" && !checkHasDocumentCheckedAnyBoxes() && !isSupportPage) {
+  } else if (
+    elementId == "additional2" &&
+    !checkHasDocumentCheckedAnyBoxes() &&
+    !isSupportPage
+  ) {
     if (
       document.getElementById("additional").value.length == 0 &&
       document.getElementById("additional3").value.length == 0
@@ -411,7 +456,11 @@ const simpleCheckFields = elementId => {
         ? (isButtonDisabled = false)
         : (isButtonDisabled = true);
     }
-  } else if (elementId == "additional3" && !checkHasDocumentCheckedAnyBoxes() && !isSupportPage) {
+  } else if (
+    elementId == "additional3" &&
+    !checkHasDocumentCheckedAnyBoxes() &&
+    !isSupportPage
+  ) {
     if (
       document.getElementById("additional").value.length == 0 &&
       document.getElementById("additional2").value.length == 0
@@ -432,7 +481,8 @@ const simpleCheckFields = elementId => {
 
     if (!isCheckBoxFieldValid) {
       document.getElementById("getELKlogsWithRange").disabled = true;
-      document.getElementById("getELKlogsWithRange").style.cursor = "not-allowed";
+      document.getElementById("getELKlogsWithRange").style.cursor =
+        "not-allowed";
       setClassRedBorder(document.getElementById(elementId));
     } else {
       document.getElementById("getELKlogsWithRange").disabled = false;

@@ -2,40 +2,52 @@ function hideReqResp(e) {
   const idTarget = e.target.id.split("_")[0] + "_long";
   console.log(`idTarget: ${idTarget}`);
   const elem = document.getElementById(idTarget);
-  elem.style.display === "block" ? (elem.style.display = "none") : (elem.style.display = "block");
+  elem.style.display === "block"
+    ? (elem.style.display = "none")
+    : (elem.style.display = "block");
 }
 
 function hideReqResp2(e) {
   const idTarget = e.target.id.split("_")[0] + "_long_2";
   console.log(`idTarget: ${idTarget}, e_target_id: ${e.target.id}`);
   const elem = document.getElementById(idTarget);
-  elem.style.display === "block" ? (elem.style.display = "none") : (elem.style.display = "block");
+  elem.style.display === "block"
+    ? (elem.style.display = "none")
+    : (elem.style.display = "block");
 }
 
 function hideReqResp2_1(e) {
   const idTarget = e.target.id.split("_")[0] + "_long_2_1";
   console.log(`idTarget: ${idTarget}, e_target_id: ${e.target.id}`);
   const elem = document.getElementById(idTarget);
-  elem.style.display === "block" ? (elem.style.display = "none") : (elem.style.display = "block");
+  elem.style.display === "block"
+    ? (elem.style.display = "none")
+    : (elem.style.display = "block");
 }
 
 function hideReqResp3(e) {
   const idTarget = e.target.id.split("_")[0] + "_long_3";
   console.log(`idTarget: ${idTarget}`);
   const elem = document.getElementById(idTarget);
-  elem.style.display === "block" ? (elem.style.display = "none") : (elem.style.display = "block");
+  elem.style.display === "block"
+    ? (elem.style.display = "none")
+    : (elem.style.display = "block");
 }
 
 function hideReqResp3_1(e) {
   const idTarget = e.target.id.split("_")[0] + "_long_3_1";
   console.log(`idTarget: ${idTarget}, e_target_id: ${e.target.id}`);
   const elem = document.getElementById(idTarget);
-  elem.style.display === "block" ? (elem.style.display = "none") : (elem.style.display = "block");
+  elem.style.display === "block"
+    ? (elem.style.display = "none")
+    : (elem.style.display = "block");
 }
 
 function hideElement(elementID) {
   const elem = document.getElementById(elementID);
-  elem.style.display === "block" ? (elem.style.display = "none") : (elem.style.display = "block");
+  elem.style.display === "block"
+    ? (elem.style.display = "none")
+    : (elem.style.display = "block");
 }
 
 function showLongtext(className) {
@@ -47,7 +59,7 @@ function showLongtext(className) {
   }
 }
 
-const showHideLongtextMessageByClassName = className => {
+const showHideLongtextMessageByClassName = (className) => {
   const ps = document.getElementsByClassName(className);
   for (let i = 0; i < ps.length; i++) {
     if (ps[i].style.overflow == "hidden") {
@@ -64,13 +76,13 @@ const showHideLongtextMessageByClassName = className => {
   }
 };
 
-Date.prototype.addHours = function(h) {
+Date.prototype.addHours = function (h) {
   this.setTime(this.getTime() + h * 60 * 60 * 1000);
   return this;
 };
 
 SupportPageActions = {
-  prettyXMLText: text => {
+  prettyXMLText: (text) => {
     if (text) {
       let arrayTextSeparated = text.split(";");
       arrayTextSeparated.forEach((textPart, idx) => {
@@ -93,10 +105,7 @@ SupportPageActions = {
           arrayTextSeparated[idx] = '"';
         }
       });
-      return arrayTextSeparated
-        .join("")
-        .split("&amp")
-        .join("");
+      return arrayTextSeparated.join("").split("&amp").join("");
     }
   },
 
@@ -110,7 +119,9 @@ SupportPageActions = {
       document
         .getElementById(`${idx}_btn_pretty`)
         .parentNode.removeChild(document.getElementById(`${idx}_btn_pretty`));
-      document.getElementById(`${idx}_long`).innerText = SupportPageActions.prettyXMLText(text);
+      document.getElementById(
+        `${idx}_long`
+      ).innerText = SupportPageActions.prettyXMLText(text);
       SupportPageController.callPopUp(
         "Процесс выполнения",
         "Форматирование текста завершено",
@@ -125,10 +136,10 @@ SupportPageActions = {
       );
   },
 
-  searchChildElementsWithContentByInitialElement: eventEmitterNode => {
+  searchChildElementsWithContentByInitialElement: (eventEmitterNode) => {
     let elementWithContentId;
     let childNodes = eventEmitterNode.parentNode.childNodes;
-    childNodes.forEach(child => {
+    childNodes.forEach((child) => {
       if (child.tagName == "P" && child.id) {
         elementWithContentId = child.id;
       }
@@ -136,7 +147,7 @@ SupportPageActions = {
     return elementWithContentId;
   },
 
-  copyTextToClipBoardFromElementById: eventEmitterNode => {
+  copyTextToClipBoardFromElementById: (eventEmitterNode) => {
     let targetId = SupportPageActions.searchChildElementsWithContentByInitialElement(
       eventEmitterNode
     );
@@ -148,10 +159,20 @@ SupportPageActions = {
         tempContainer.select();
         let isSuccess = document.execCommand("copy");
         if (isSuccess) {
-          SupportPageController.callPopUp("Текст скопирован в буфер", "", 3000, "cyan");
+          SupportPageController.callPopUp(
+            "Текст скопирован в буфер",
+            "",
+            3000,
+            "cyan"
+          );
           document.body.removeChild(tempContainer);
         } else {
-          SupportPageController.callPopUp("Текст НЕ был скопирован в буфер", "", 3000, "cyan");
+          SupportPageController.callPopUp(
+            "Текст НЕ был скопирован в буфер",
+            "",
+            3000,
+            "cyan"
+          );
           document.body.removeChild(tempContainer);
         }
       } catch (e) {
@@ -164,7 +185,7 @@ SupportPageActions = {
         );
       }
     }
-  }
+  },
 };
 
 SupportPageController = {
@@ -207,7 +228,10 @@ SupportPageController = {
   makeLargeModalFullLog: (fieldNames, fieldValues) => {
     let innerSpan = ``;
     fieldNames.forEach((fieldName, i) => {
-      if ((fieldName == "stackTrace" || fieldName == "Текст ошибки") && fieldValues[i]) {
+      if (
+        (fieldName == "stackTrace" || fieldName == "Текст ошибки") &&
+        fieldValues[i]
+      ) {
         innerSpan += `<span class="modal-field">${fieldName}: <span class="stack-trace-text">${fieldValues[i]}</span></span><br>`;
       } else if (fieldValues[i]) {
         innerSpan += `<span class="modal-field">${fieldName}: <span class="modal-field-value">${fieldValues[i]}</span></span><br>`;
@@ -223,7 +247,7 @@ SupportPageController = {
           </div>`;
   },
 
-  showModal: modalHTML => {
+  showModal: (modalHTML) => {
     const divTarget = document.getElementById("modalContainer");
     divTarget.innerHTML = modalHTML;
     //document.body.insertBefore(div, divTarget);
@@ -248,9 +272,11 @@ SupportPageController = {
     }
   },
 
-  callModalTable: elementId => {
+  callModalTable: (elementId) => {
     if (elementId.split("_")[1] == "textRead") {
-      let targetContentId = `${elementId.split("_")[0]}_long_${elementId.split("_")[2]}`;
+      let targetContentId = `${elementId.split("_")[0]}_long_${
+        elementId.split("_")[2]
+      }`;
       SupportPageController.callModal(
         "log info",
         document.getElementById(targetContentId).innerHTML,
@@ -268,7 +294,7 @@ SupportPageController = {
     }
   },
 
-  callModalTableFullInfo: elementNode => {
+  callModalTableFullInfo: (elementNode) => {
     //row index
     let idx = elementNode.parentNode.parentNode.rowIndex;
 
@@ -276,11 +302,13 @@ SupportPageController = {
       let fieldNames = [];
       let fieldValues = [];
 
-      const ths = document.querySelector("#elkData > thead:nth-child(1) > tr:nth-child(1)")
+      const ths = document.querySelector(
+        "#elkData > thead:nth-child(1) > tr:nth-child(1)"
+      ).children;
+      const trs = document.querySelector("#elkData > tbody:nth-child(2)")
         .children;
-      const trs = document.querySelector("#elkData > tbody:nth-child(2)").children;
-      const tds = document.querySelector(`#elkData > tbody:nth-child(2)`).children[idx - 1]
-        .children;
+      const tds = document.querySelector(`#elkData > tbody:nth-child(2)`)
+        .children[idx - 1].children;
 
       for (let th of ths) {
         if (th) {
@@ -290,13 +318,13 @@ SupportPageController = {
 
       for (let td of tds) {
         if (td.children.length <= 3) {
-          td.childNodes.forEach(child => {
+          td.childNodes.forEach((child) => {
             if (child.tagName == "P") {
               fieldValues.push(child.innerText);
             }
           });
         } else {
-          td.childNodes.forEach(child => {
+          td.childNodes.forEach((child) => {
             if (child.tagName == "P" && child.id) {
               fieldValues.push(child.innerText);
             }
@@ -304,14 +332,18 @@ SupportPageController = {
         }
       }
 
-      let modalHTML = SupportPageController.makeLargeModalFullLog(fieldNames, fieldValues);
+      let modalHTML = SupportPageController.makeLargeModalFullLog(
+        fieldNames,
+        fieldValues
+      );
       document.body.style.overflow = "hidden";
       SupportPageController.showModal(modalHTML);
     } else if (elementId.split("_")[1] == "fullIntTextRead") {
-      let thChilds = document.querySelector("#integrationLogData > tbody > tr:nth-child(1)")
-        .childNodes;
-      let tdChilds = document.querySelector("#integrationLogData > tbody").children[idx + 1]
-        .children;
+      let thChilds = document.querySelector(
+        "#integrationLogData > tbody > tr:nth-child(1)"
+      ).childNodes;
+      let tdChilds = document.querySelector("#integrationLogData > tbody")
+        .children[idx + 1].children;
 
       let fieldNames = [];
       let fieldValues = [];
@@ -330,7 +362,10 @@ SupportPageController = {
         }
       }
 
-      let modalHTML = SupportPageController.makeLargeModalFullLog(fieldNames, fieldValues);
+      let modalHTML = SupportPageController.makeLargeModalFullLog(
+        fieldNames,
+        fieldValues
+      );
       document.body.style.overflow = "hidden";
       SupportPageController.showModal(modalHTML);
     }
@@ -340,7 +375,9 @@ SupportPageController = {
     if (bodyText) {
       const spinner = SupportPageController.makeSpinner(headText, bodyText);
       if (!document.getElementById("div-temp-spinner")) {
-        let tempContainer = document.body.appendChild(document.createElement("div"));
+        let tempContainer = document.body.appendChild(
+          document.createElement("div")
+        );
         tempContainer.id = "div-temp-spinner";
         tempContainer.innerHTML = spinner;
       } else {
@@ -362,7 +399,7 @@ SupportPageController = {
     }
   },
 
-  closeLoader: targetId => {
+  closeLoader: (targetId) => {
     if (targetId) {
       const loaderHolder = document.getElementById(targetId);
       loaderHolder.innerHTML = ``;
@@ -393,7 +430,7 @@ SupportPageController = {
     // }
     result = await fetch(urlBPM, {
       method: "GET",
-      credentials: "include"
+      credentials: "include",
     });
     await result;
     if (result.redirected) {
@@ -407,7 +444,9 @@ SupportPageController = {
       const errorContainer = doc.getElementById("errorContainer").innerHTML;
       document.getElementById("errorContainer").innerHTML = errorContainer;
       document.getElementById("headWithBPMdata").innerHTML = headerBlock;
-      document.getElementById("mainBPMdataContainer").innerHTML = bpmDataContainer;
+      document.getElementById(
+        "mainBPMdataContainer"
+      ).innerHTML = bpmDataContainer;
       SupportPageController.callPopUp("Данные из BPM получены", ``, 2000);
       setTimeout(() => {
         SupportPageController.callPopUp(
@@ -515,10 +554,14 @@ SupportPageController = {
   loadKibanaValidatorScript: (callerId = false) => {
     if (callerId) {
       document.getElementById("control-panel").style.display = "block";
-      document.getElementById(callerId).parentNode.removeChild(document.getElementById(callerId));
+      document
+        .getElementById(callerId)
+        .parentNode.removeChild(document.getElementById(callerId));
     }
 
-    console.log(`loadKibanaValidatorScript: loading ELK page search scripts` + "\n");
+    console.log(
+      `loadKibanaValidatorScript: loading ELK page search scripts` + "\n"
+    );
 
     let src = document.createElement("script");
     src.id = "kibana-script";
@@ -535,7 +578,7 @@ SupportPageController = {
       fieldValues = [],
       operators = [],
       excludeFieldNames,
-      excludes
+      excludes,
     } = {}
   ) => {
     const requestObject = {
@@ -544,7 +587,7 @@ SupportPageController = {
       fieldValues,
       operators,
       excludeFieldNames,
-      excludes
+      excludes,
     };
   },
 
@@ -553,7 +596,10 @@ SupportPageController = {
     isAnalyze = false,
     { fieldNames = [], fieldValues = [], operators = [] } = {}
   ) => {
-    if (document.querySelector("#start").value && document.querySelector("#end").value) {
+    if (
+      document.querySelector("#start").value &&
+      document.querySelector("#end").value
+    ) {
       if (isFromMain) {
         try {
           SupportPageController.getELKlogs(
@@ -610,7 +656,10 @@ SupportPageController = {
   },
 
   dateTimeInputBlocker: () => {
-    if (document.querySelector("#start").value && document.querySelector("#end").value) {
+    if (
+      document.querySelector("#start").value &&
+      document.querySelector("#end").value
+    ) {
       document.querySelector("#getELKlogsWithRange").disabled = false;
     } else {
       document.querySelector("#getELKlogsWithRange").disabled = true;
@@ -627,21 +676,24 @@ SupportPageController = {
         document.getElementById(elementId).style.borderWidth = "5px";
       }, 2000);
     }, 1000);
-    // const deMarkElementInt = setInterval(() => {
-    //     document.getElementById(elementId).style.borderStyle = 'none';
-    //     document.getElementById(elementId).style.borderWidth = '5px';
-    // }, 1500);
+
     setTimeout(() => {
       clearInterval(markElementInt);
-      // clearInterval(deMarkElementInt);
       document.getElementById(elementId).style.borderStyle = "none";
       document.getElementById(elementId).style.borderWidth = "5px";
     }, 15000);
   },
 
-  getELKlogsOpt: async (requestObj = {}, isAnalyze = false, additionalFlag = false) => {
+  getELKlogsOpt: async (
+    requestObj = {},
+    isAnalyze = false,
+    additionalFlag = false
+  ) => {
     if (!additionalFlag) {
-      SupportPageController.showLoaderFlex("Запрос в ELK", "Получение данных из хранилища логов");
+      SupportPageController.showLoaderFlex(
+        "Запрос в ELK",
+        "Получение данных из хранилища логов"
+      );
     }
     console.log(`Request for ELK search with params:` + "\n");
     requestObj = { ...requestObj, isOpt: true, isAdditional: additionalFlag };
@@ -651,9 +703,9 @@ SupportPageController = {
       method: "POST",
       credentials: "include",
       headers: {
-        "Content-type": "application/json;charset=utf-8"
+        "Content-type": "application/json;charset=utf-8",
       },
-      body: JSON.stringify(requestObj)
+      body: JSON.stringify(requestObj),
     });
 
     if (result.ok) {
@@ -664,13 +716,11 @@ SupportPageController = {
       } else {
         if (!additionalFlag) {
           let response = await result.text();
-          //console.log(response);
           const parser = new DOMParser();
           let doc = parser.parseFromString(response, "text/html");
-          document.getElementById("elk-block-container").innerHTML = doc.getElementById(
-            "part-container"
-          ).innerHTML;
-          // SupportPageController.reloadUtilsJS();
+          document.getElementById(
+            "elk-block-container"
+          ).innerHTML = doc.getElementById("part-container").innerHTML;
           SupportPageController.closeLoaderFlex();
           let counter = document.querySelector("#elkData").rows.length;
           if (window.location.href.includes("#")) {
@@ -699,10 +749,10 @@ SupportPageController = {
             );
           }, 7000);
           if (isAnalyze) {
-            setTimeout(() => {
-              //SupportPageController.reloadMainJS();
-            }, 1000);
-          }
+          //   setTimeout(() => {
+          //     //SupportPageController.reloadMainJS();
+          //   }, 1000);
+          // }
         } else {
           let response = await result.json();
           console.log(`getELKlogsOpt: got additionalFlag response`);
@@ -736,10 +786,15 @@ SupportPageController = {
     isAnalyze = false
   ) => {
     if (document.getElementById("getELKlogs")) {
-      document.getElementById("getELKlogs").removeEventListener("click", this.getELKlogs);
+      document
+        .getElementById("getELKlogs")
+        .removeEventListener("click", this.getELKlogs);
       document.getElementById("getELKlogs").style.display = "none";
     }
-    SupportPageController.showLoaderFlex("Запрос в ELK", "Получение данных из хранилища логов");
+    SupportPageController.showLoaderFlex(
+      "Запрос в ELK",
+      "Получение данных из хранилища логов"
+    );
     let params = [];
     console.log(document.getElementById("elk-search-params").innerHTML);
     params = document.getElementById("elk-search-params").innerHTML.split(",");
@@ -763,9 +818,21 @@ SupportPageController = {
     }
 
     if (isFromMain) {
-      params[0] = additional ? additional : additional2 ? additional2 : additional3;
-      params[1] = additional2 ? additional2 : additional ? additional : additional3;
-      params[4] = additional3 ? additional3 : additional2 ? additional2 : additional;
+      params[0] = additional
+        ? additional
+        : additional2
+        ? additional2
+        : additional3;
+      params[1] = additional2
+        ? additional2
+        : additional
+        ? additional
+        : additional3;
+      params[4] = additional3
+        ? additional3
+        : additional2
+        ? additional2
+        : additional;
     } else {
       let removed = [];
       let paramsCopy = params;
@@ -829,9 +896,9 @@ SupportPageController = {
       method: "POST",
       credentials: "include",
       headers: {
-        "Content-type": "application/json;charset=utf-8"
+        "Content-type": "application/json;charset=utf-8",
       },
-      body: JSON.stringify(parameters)
+      body: JSON.stringify(parameters),
     });
 
     if (result.ok) {
@@ -844,9 +911,9 @@ SupportPageController = {
         //console.log(response);
         const parser = new DOMParser();
         let doc = parser.parseFromString(response, "text/html");
-        document.getElementById("elk-block-container").innerHTML = doc.getElementById(
-          "part-container"
-        ).innerHTML;
+        document.getElementById(
+          "elk-block-container"
+        ).innerHTML = doc.getElementById("part-container").innerHTML;
         SupportPageController.closeLoaderFlex();
         let counter = document.querySelector("#elkData").rows.length;
         SupportPageController.callPopUp(
@@ -902,7 +969,7 @@ SupportPageController = {
 
     let requestBody = {
       id: `${processInstanceId}`,
-      modifications: { retryTask: { value: true, type: "Boolean" } }
+      modifications: { retryTask: { value: true, type: "Boolean" } },
     };
 
     try {
@@ -912,9 +979,9 @@ SupportPageController = {
           method: "POST",
           headers: {
             "Content-type": "application/json;charset=utf-8",
-            Authorization: "Basic ZGVtbzpnZmxpYnEhMXhmcXlicg=="
+            Authorization: "Basic ZGVtbzpnZmxpYnEhMXhmcXlicg==",
           },
-          body: JSON.stringify(parameters)
+          body: JSON.stringify(parameters),
         }
       );
       await result;
@@ -936,12 +1003,16 @@ SupportPageController = {
 
     hangStartTime = hangStartTime.split(".")[0].replace(" ", "T");
 
-    let StartHang = SupportPageController.timeOffsetMinutes(hangStartTime, 6, "decrement").split(
-      "."
-    )[0];
-    let EndHang = SupportPageController.timeOffsetMinutes(hangStartTime, 2, "increment").split(
-      "."
-    )[0];
+    let StartHang = SupportPageController.timeOffsetMinutes(
+      hangStartTime,
+      6,
+      "decrement"
+    ).split(".")[0];
+    let EndHang = SupportPageController.timeOffsetMinutes(
+      hangStartTime,
+      2,
+      "increment"
+    ).split(".")[0];
 
     document.querySelector("#start").value = StartHang;
     document.querySelector("#end").value = EndHang;
@@ -959,7 +1030,11 @@ SupportPageController = {
       key == "increment"
         ? dateTime.setMinutes(dateTime.getMinutes() + minutes)
         : dateTime.setMinutes(dateTime.getMinutes() - minutes);
-    console.log(`timeOffsetMinutes: ${key} result date: ${new Date(dateTime).toISOString()}`);
+    console.log(
+      `timeOffsetMinutes: ${key} result date: ${new Date(
+        dateTime
+      ).toISOString()}`
+    );
     return new Date(dateTime).addHours(3).toISOString();
   },
 
@@ -970,21 +1045,29 @@ SupportPageController = {
       key == "increment"
         ? dateTime.setMilliseconds(dateTime.getMilliseconds() + msParsed)
         : dateTime.setMilliseconds(dateTime.getMilliseconds() - msParsed);
-    console.log(`timeOffsetMSAuto: ${key} result date: ${new Date(dateTime).toISOString()}`);
+    console.log(
+      `timeOffsetMSAuto: ${key} result date: ${new Date(
+        dateTime
+      ).toISOString()}`
+    );
     return new Date(dateTime).toISOString();
   },
 
   modifyDateTimeByLocal: (dateTimeStr, key = null) => {
     dateTimeStr = new Date(dateTimeStr);
     if (key == "increment") {
-      dateTimeStr = dateTimeStr.setMilliseconds(dateTimeStr.getMilliseconds() + 1);
+      dateTimeStr = dateTimeStr.setMilliseconds(
+        dateTimeStr.getMilliseconds() + 1
+      );
     } else {
-      dateTimeStr = dateTimeStr.setMilliseconds(dateTimeStr.getMilliseconds() - 1);
+      dateTimeStr = dateTimeStr.setMilliseconds(
+        dateTimeStr.getMilliseconds() - 1
+      );
     }
     return new Date(dateTimeStr).toISOString();
   },
 
-  showInfoPanel: emitter => {},
+  showInfoPanel: (emitter) => {},
 
   spinnerMain: `<div class="dimmer">
     <div class='container'>
@@ -1021,7 +1104,7 @@ SupportPageController = {
   </div>`;
   },
 
-  showLoaderBPM: id => {
+  showLoaderBPM: (id) => {
     if (id) {
       const loaderHolder = document.getElementById(id);
       loaderHolder.innerHTML = SupportPageController.spinnerBPM;
@@ -1138,5 +1221,5 @@ SupportPageController = {
   helpText: `<p style="color: white; font-size: 30px;">Если вы пользуетесь браузером Mozilla Firefox, то для ввода дат можно просто использовать формат<br> 
   <span style="color: green;">YYYY-MM-DD HH:MM</span><br>например: <span style="color: green;">2020-08-10 16:17</span> либо <span style="color: green;">10/08/2020 16:15</span> Не подходит: <span style="color: red;">10.08.2020 16:15</span><br>Время указывается по местному часовому поясу</p><br>
     <span style="color: white; font-size: 30px;">В нижнем поле исключений допустимо писать исключения через запятую без пробелов</span><br>
-    <span style="color: white; font-size: 30px;">В Полях условий (1 и 2 сверху) допустимо указывать только одно значение</span>`
+    <span style="color: white; font-size: 30px;">В Полях условий (1 и 2 сверху) допустимо указывать только одно значение</span>`,
 };

@@ -3,7 +3,7 @@ const {
   makeElkReqLogJSONStr,
   options,
   makeELKrequestFlexExtended,
-  makeELKrequestFlexExtendedOpt
+  makeELKrequestFlexExtendedOpt,
 } = require("./elkRequestTemplate");
 const { processLogsData } = require("./elkDataProcessor");
 
@@ -17,7 +17,9 @@ exports.elkSearchLogsAuthNeeded = async (
   console.log(params);
 
   if (fieldNames.length > 0) {
-    console.log(`elkSearchLogs: Request contains fild and value conditions: ` + "\n");
+    console.log(
+      `elkSearchLogs: Request contains fild and value conditions: ` + "\n"
+    );
     console.log(fieldNames);
     console.log("\n");
     console.log(fieldValues);
@@ -26,7 +28,12 @@ exports.elkSearchLogsAuthNeeded = async (
   let requestData;
 
   try {
-    requestData = makeELKrequestFlexExtended(params, fieldNames, fieldValues, operators);
+    requestData = makeELKrequestFlexExtended(
+      params,
+      fieldNames,
+      fieldValues,
+      operators
+    );
   } catch (e) {
     throw e;
   }
@@ -46,7 +53,9 @@ exports.elkSearchLogsAuthNeeded = async (
 };
 
 exports.elkSearchLogsAuthNeededOpt = async (request = {}) => {
-  console.log(`elkSearchLogsAuthNeededOpt: Request with auth needed to ELK with params: `);
+  console.log(
+    `elkSearchLogsAuthNeededOpt: Request with auth needed to ELK with params: `
+  );
   console.log(request);
 
   let requestData;

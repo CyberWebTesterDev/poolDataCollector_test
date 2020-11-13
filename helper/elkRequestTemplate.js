@@ -1,4 +1,4 @@
-exports.makeElkReqLogJSONStr = params => {
+exports.makeElkReqLogJSONStr = (params) => {
   return `{
         "version": true,
         "size": 500,
@@ -143,7 +143,7 @@ exports.makeElkReqLogJSONStr = params => {
 
 const dataAuthElk = {
   username: "/",
-  password: "/"
+  password: "/",
 };
 
 const auth = `Basic ${Buffer.from(
@@ -157,8 +157,8 @@ exports.options = {
   headers: {
     "Content-type": "application/json;charset=utf-8",
     "kbn-xsrf": "reporting",
-    Authorization: auth
-  }
+    Authorization: auth,
+  },
 };
 
 exports.makeElkReqLogJSONStrDummy = () => {
@@ -606,7 +606,7 @@ exports.makeELKrequestFlexExtendedOpt = (request = {}) => {
     fieldValues,
     operators,
     excludeFieldNames,
-    excludes
+    excludes,
   } = request;
 
   let generateParamsTemplate = () => {

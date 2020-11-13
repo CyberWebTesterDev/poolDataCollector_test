@@ -1,5 +1,8 @@
 const middleChecker = () => {
-  if (document.getElementById("start").value && document.getElementById("end").value) {
+  if (
+    document.getElementById("start").value &&
+    document.getElementById("end").value
+  ) {
     let param1 = document.getElementById("additional").value
       ? document.getElementById("additional").value
       : null;
@@ -27,7 +30,7 @@ const middleChecker = () => {
   }
 };
 
-const checkDateFields = elementId => {
+const checkDateFields = (elementId) => {
   if (document.getElementById(elementId).value) {
     if (document.getElementById(elementId).classList.contains("red-border")) {
       document.getElementById("getELKlogsWithRange").disabled = false;
@@ -73,7 +76,7 @@ const removeClassRedBorder = (element, flag = false) => {
   }
 };
 
-const simpleCheckFields = elementId => {
+const simpleCheckFields = (elementId) => {
   let isButtonDisabled = false;
 
   if (elementId == "additional") {

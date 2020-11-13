@@ -7,9 +7,13 @@ const checkIfLogNeedToClean = (input, logType = null) => {
     if (logType == "Икар") {
       if (idx > 2) {
         isNeedToClean =
-          input[idx - 2] + input[idx - 1] + input[idx] == "&gt" ? true : isNeedToClean;
+          input[idx - 2] + input[idx - 1] + input[idx] == "&gt"
+            ? true
+            : isNeedToClean;
         isNeedToClean =
-          input[idx - 2] + input[idx - 1] + input[idx] == "&lt" ? true : isNeedToClean;
+          input[idx - 2] + input[idx - 1] + input[idx] == "&lt"
+            ? true
+            : isNeedToClean;
         return;
       }
     }
@@ -17,18 +21,31 @@ const checkIfLogNeedToClean = (input, logType = null) => {
     if (logType == "СПР") {
       if (idx > 2) {
         isNeedToClean =
-          input[idx - 2] + input[idx - 1] + input[idx] == "lt;" ? true : isNeedToClean;
+          input[idx - 2] + input[idx - 1] + input[idx] == "lt;"
+            ? true
+            : isNeedToClean;
         isNeedToClean =
-          input[idx - 2] + input[idx - 1] + input[idx] == "gt;" ? true : isNeedToClean;
+          input[idx - 2] + input[idx - 1] + input[idx] == "gt;"
+            ? true
+            : isNeedToClean;
         isNeedToClean =
-          input[idx - 2] + input[idx - 1] + input[idx] == "#39;" ? true : isNeedToClean;
+          input[idx - 2] + input[idx - 1] + input[idx] == "#39;"
+            ? true
+            : isNeedToClean;
         isNeedToClean =
-          input[idx - 2] + input[idx - 1] + input[idx] == "#34;" ? true : isNeedToClean;
+          input[idx - 2] + input[idx - 1] + input[idx] == "#34;"
+            ? true
+            : isNeedToClean;
         return;
       }
       if (idx > 3) {
         isNeedToClean =
-          input[idx - 4] + input[idx - 3] + input[idx - 2] + input[idx - 1] + input[idx] == "lt;"
+          input[idx - 4] +
+            input[idx - 3] +
+            input[idx - 2] +
+            input[idx - 1] +
+            input[idx] ==
+          "lt;"
             ? true
             : isNeedToClean;
         return;
@@ -74,7 +91,9 @@ const cleanLog = (targetElementId, logStr, logType = null) => {
   console.log(targetElementId);
 
   console.log(
-    `cleanLog: data: ${logCharArray[0] + logCharArray[1] + logCharArray[2]}... ${logType}`
+    `cleanLog: data: ${
+      logCharArray[0] + logCharArray[1] + logCharArray[2]
+    }... ${logType}`
   );
 
   // if (!checkIfLogNeedToClean(logCharArray, logType)) {
@@ -86,7 +105,11 @@ const cleanLog = (targetElementId, logStr, logType = null) => {
     console.log(`cleanLog: starting to clean log data`);
     if (logType == "Икар") {
       if (idx > 3) {
-        switch (logCharArray[idx - 2] + logCharArray[idx - 1] + logCharArray[idx]) {
+        switch (
+          logCharArray[idx - 2] +
+          logCharArray[idx - 1] +
+          logCharArray[idx]
+        ) {
           case "&gt":
             logCharArrayCopy.splice(idx - 2, 3, ">");
             break;
@@ -117,7 +140,11 @@ const cleanLog = (targetElementId, logStr, logType = null) => {
     if (logType == "СПР") {
       if (idx > 2) {
         if (logCharArray[idx - 2] + logCharArray[idx - 1] !== "&a") {
-          switch (logCharArray[idx - 2] + logCharArray[idx - 1] + logCharArray[idx]) {
+          switch (
+            logCharArray[idx - 2] +
+            logCharArray[idx - 1] +
+            logCharArray[idx]
+          ) {
             case "gt;":
               logCharArrayCopy.splice(idx - 2, 3, ">");
               break;
@@ -157,16 +184,24 @@ const cleanLog = (targetElementId, logStr, logType = null) => {
   console.log(`cleanLog: end of cleaning`);
 
   if (targetElementId) {
-    console.log(`cleanLog: placing string into element with id ${targetElementId}`);
-    document.getElementById(targetElementId).innerText = logCharArrayCopy.join("");
-    SupportPageController.callPopUp("", "Форматирование текста завершено", 3000);
+    console.log(
+      `cleanLog: placing string into element with id ${targetElementId}`
+    );
+    document.getElementById(targetElementId).innerText = logCharArrayCopy.join(
+      ""
+    );
+    SupportPageController.callPopUp(
+      "",
+      "Форматирование текста завершено",
+      3000
+    );
     document.getElementById(targetElementId).style.color = "rgb(228, 235, 244)";
     document.getElementById(targetElementId).style.backgroundColor = "#0a454f";
     document.getElementById(targetElementId).style.transition = "50000";
   }
 };
 
-const cleanXMLLogEmptyStrings = array => {
+const cleanXMLLogEmptyStrings = (array) => {
   array.forEach((char, idx) => {
     if (char == "") {
       array.splice(idx, 1);
@@ -174,7 +209,7 @@ const cleanXMLLogEmptyStrings = array => {
   });
 };
 
-const cleanXMLLogSpaces = array => {
+const cleanXMLLogSpaces = (array) => {
   array.forEach((char, idx) => {
     if (idx > 3) {
       if (array[idx - 1] == ">" && array[idx + 1] == "<" && array[idx] == " ") {
@@ -184,20 +219,22 @@ const cleanXMLLogSpaces = array => {
   });
 };
 
-const cleanLogAmp = arr => {
+const cleanLogAmp = (arr) => {
   arr.forEach((char, idx) => {
     if (idx > 4) {
-      if (arr[idx - 4] + arr[idx - 3] + arr[idx - 2] + arr[idx - 1] + arr[idx] == "&amp;") {
+      if (
+        arr[idx - 4] + arr[idx - 3] + arr[idx - 2] + arr[idx - 1] + arr[idx] ==
+        "&amp;"
+      ) {
         arr.splice(idx - 4, 5);
       }
     }
   });
 };
 
-const getThreadBackGroundColorByAttributeValue = attributeValue => {
-  const color = document.querySelector(`[chainid="${attributeValue}"]`).children[
-    getCellIndexByColumnName("thread_name")
-  ].style.backgroundColor;
+const getThreadBackGroundColorByAttributeValue = (attributeValue) => {
+  const color = document.querySelector(`[chainid="${attributeValue}"]`)
+    .children[getCellIndexByColumnName("thread_name")].style.backgroundColor;
   return color;
 };
 
@@ -212,11 +249,13 @@ const chainInfoWrapper = (HTMLtoWrap, chainName) => {
   )}">${HTMLtoWrap}</div>`;
 };
 
-const cleanToXmlParseLog = array => {
+const cleanToXmlParseLog = (array) => {
   let xmlEntryCounter = 0;
   let isReturnPresent = false;
 
-  console.log(`cleanToXmlParseLog: starting parse xmlEntryCounter: ${xmlEntryCounter}`);
+  console.log(
+    `cleanToXmlParseLog: starting parse xmlEntryCounter: ${xmlEntryCounter}`
+  );
 
   array.forEach((char, idx) => {
     if (idx > 3) {
@@ -224,8 +263,18 @@ const cleanToXmlParseLog = array => {
       //     console.log(`cleanToXmlParseLog: loop index: ${idx}, char: ${char}`);
       // }
       if (
-        array[idx - 4] + array[idx - 3] + array[idx - 2] + array[idx - 1] + array[idx] == "<?xml" ||
-        array[idx - 4] + array[idx - 3] + array[idx - 2] + array[idx - 1] + array[idx] == "?xml"
+        array[idx - 4] +
+          array[idx - 3] +
+          array[idx - 2] +
+          array[idx - 1] +
+          array[idx] ==
+          "<?xml" ||
+        array[idx - 4] +
+          array[idx - 3] +
+          array[idx - 2] +
+          array[idx - 1] +
+          array[idx] ==
+          "?xml"
       ) {
         xmlEntryCounter++;
         console.log(
@@ -278,7 +327,10 @@ const cleanToXmlParseLog = array => {
 
 const hideLargeLogs = () => {
   //метод для скрытия тяжеловесных логов
-  SupportPageController.showLoaderFlex("Обработка", "Выполняется поиск тяжеловесных логов");
+  SupportPageController.showLoaderFlex(
+    "Обработка",
+    "Выполняется поиск тяжеловесных логов"
+  );
   let elkTable;
   let trCoordinates = [];
   for (let table of document.getElementsByTagName("table")) {
@@ -289,12 +341,15 @@ const hideLargeLogs = () => {
   if (elkTable) {
     //определяем индекс столбца с информацией о размере
     let index;
-    elkTable.childNodes.forEach(child => {
+    elkTable.childNodes.forEach((child) => {
       if (child.tagName == "THEAD") {
-        child.childNodes.forEach(trChild => {
+        child.childNodes.forEach((trChild) => {
           if (trChild.tagName == "TR") {
-            trChild.childNodes.forEach(thChild => {
-              if (thChild.tagName == "TH" && thChild.innerText == "message_size") {
+            trChild.childNodes.forEach((thChild) => {
+              if (
+                thChild.tagName == "TH" &&
+                thChild.innerText == "message_size"
+              ) {
                 index = thChild.cellIndex;
               }
             });
@@ -342,49 +397,62 @@ const hideLargeLogs = () => {
             if (tr.rowIndex == child.children.length) {
               setTimeout(() => {
                 SupportPageController.closeLoaderFlex();
-                SupportPageController.callPopUp("", "Обработка завершена", 3000);
+                SupportPageController.callPopUp(
+                  "",
+                  "Обработка завершена",
+                  3000
+                );
               }, 2000);
             }
           } else {
-            SupportPageController.callPopUp("", "Тяжеловесных логов не найдено", 3000);
+            SupportPageController.callPopUp(
+              "",
+              "Тяжеловесных логов не найдено",
+              3000
+            );
             SupportPageController.closeLoaderFlex();
           }
         }
       }
     }
   } else {
-    SupportPageController.callPopUp("", "Не найдено таблицы логов ELK", 3000, "#511919");
+    SupportPageController.callPopUp(
+      "",
+      "Не найдено таблицы логов ELK",
+      3000,
+      "#511919"
+    );
   }
 };
 
-const getParametersFromLogs = logString => {
+const getParametersFromLogs = (logString) => {
   const regExpForParams = /\w*\=.[^\,]*\,/g;
   const regExpForChainUIDFind = /chainRequestId\=.[^\,]+[^\,]/g;
   const regExpForClassNameFind = /defaultClassIdFieldName\=.[^\,]+[^\,]/g;
 
-  const getArrayOfParamsByLog = text => {
+  const getArrayOfParamsByLog = (text) => {
     const parametersList = text.match(regExpForParams);
     if (parametersList.length > 0) {
-      return parametersList.map(param => param.replace(",", ""));
+      return parametersList.map((param) => param.replace(",", ""));
     } else return [];
   };
 
-  const getChainUIDByLog = text => {
+  const getChainUIDByLog = (text) => {
     const chainUIDsList = text.match(regExpForChainUIDFind);
     if (chainUIDsList.length > 0) {
-      return chainUIDsList.map(chainUID => chainUID.replace(",", ""));
+      return chainUIDsList.map((chainUID) => chainUID.replace(",", ""));
     } else return [];
   };
 
-  const getClassNamesByLog = text => {
+  const getClassNamesByLog = (text) => {
     const classNamesList = text.match(regExpForClassNameFind);
     if (classNamesList.length > 0) {
-      return classNamesList.map(className => className.replace(",", ""));
+      return classNamesList.map((className) => className.replace(",", ""));
     } else return [];
   };
 };
 
-const getCellIndexByColumnName = columnName => {
+const getCellIndexByColumnName = (columnName) => {
   let ths = document.getElementById("elkData").children[0].children[0].children;
   for (let th of ths) {
     if (th.innerText == columnName) {
@@ -412,7 +480,11 @@ const detectEqualThreadLogs = () => {
   //вывод однопоточных логов сервиса
   //предпологается, что таблица с ID elkData уже существует в DOM
 
-  const getMatchedRowIndexesByCellIndexes = (columnNames = [], cellIndex, cellIndex2) => {
+  const getMatchedRowIndexesByCellIndexes = (
+    columnNames = [],
+    cellIndex,
+    cellIndex2
+  ) => {
     let matchedRowIndexes = [];
     let chainId = "";
     //получаем все дочерние tr таблицы elkData
@@ -420,7 +492,9 @@ const detectEqualThreadLogs = () => {
     for (let tr of trs) {
       if (tr.rowIndex > 0) {
         let currentColor = "";
-        chainId = tr.hasAttribute("chainid") ? tr.getAttribute("chainid") : `${tr.rowIndex}_chain`;
+        chainId = tr.hasAttribute("chainid")
+          ? tr.getAttribute("chainid")
+          : `${tr.rowIndex}_chain`;
         tr.setAttribute("chainid", chainId);
         let val1 = tr.children[cellIndex].innerText;
         let val2 = tr.children[cellIndex2].innerText;
@@ -433,7 +507,9 @@ const detectEqualThreadLogs = () => {
             cellIndex2
           ].innerHTML = `<a style="word-break: break-word" href="http://localhost:3000/support/${
             document.getElementById("appNum").innerText
-          }#${tr.getAttribute("chainid")}_group" style="color: #c4ecec">${val2}</a>`;
+          }#${tr.getAttribute(
+            "chainid"
+          )}_group" style="color: #c4ecec">${val2}</a>`;
         } else {
           tr.children[
             cellIndex2
@@ -450,12 +526,18 @@ const detectEqualThreadLogs = () => {
               if (!trNested.hasAttribute("chainid")) {
                 trNested.setAttribute("chainid", chainId);
               }
-              currentColor = currentColor ? currentColor : generateRandomColorCode();
+              currentColor = currentColor
+                ? currentColor
+                : generateRandomColorCode();
               matchedRowIndexes.push(tr.rowIndex, trNested.rowIndex);
-              if (tr.children[cellIndex2].style.backgroundColor != currentColor) {
+              if (
+                tr.children[cellIndex2].style.backgroundColor != currentColor
+              ) {
                 tr.children[cellIndex2].style.backgroundColor = currentColor;
               }
-              trNested.children[cellIndex2].style.backgroundColor = currentColor;
+              trNested.children[
+                cellIndex2
+              ].style.backgroundColor = currentColor;
               // console.log(`getMatchedRowIndexesByCellIndexes: matchedRowIndexes: `);
               // console.log(matchedRowIndexes);
             }
@@ -477,19 +559,25 @@ const detectEqualThreadLogs = () => {
   };
 
   const generateRandomColorCode = () => {
-    return "#" + (0x1000000 + Math.random() * 0xffffff).toString(16).substr(1, 6);
+    return (
+      "#" + (0x1000000 + Math.random() * 0xffffff).toString(16).substr(1, 6)
+    );
   };
 
   const cellIdx = getCellIndexByColumnName("app_name");
   const cellIdx2 = getCellIndexByColumnName("thread_name");
 
-  getMatchedRowIndexesByCellIndexes(["app_name", "thread_name"], cellIdx, cellIdx2);
+  getMatchedRowIndexesByCellIndexes(
+    ["app_name", "thread_name"],
+    cellIdx,
+    cellIdx2
+  );
 
   const getFoundChainsCounter = () => {
     let chains = [];
     let allTrsWithChainAttributes = document.querySelectorAll("[chainid]");
     if (allTrsWithChainAttributes.length > 0) {
-      allTrsWithChainAttributes.forEach(tr => {
+      allTrsWithChainAttributes.forEach((tr) => {
         let counter = 0;
         let currentTrRowIndex = tr.rowIndex;
         allTrsWithChainAttributes.forEach((trNested, idx) => {
@@ -502,14 +590,14 @@ const detectEqualThreadLogs = () => {
             if (idx == allTrsWithChainAttributes.length - 1) {
               chains.push({
                 chainId: tr.getAttribute("chainid"),
-                counter
+                counter,
               });
             }
           } else {
             if (idx == allTrsWithChainAttributes.length - 1) {
               chains.push({
                 chainId: tr.getAttribute("chainid"),
-                counter
+                counter,
               });
             }
           }
@@ -527,8 +615,9 @@ const detectEqualThreadLogs = () => {
       allTrsWithChainAttributes.forEach((tr, idx) => {
         objList.push({
           chainName: tr.getAttribute("chainid"),
-          chainsCounter: document.querySelectorAll(`[chainid="${tr.getAttribute("chainid")}"]`)
-            .length
+          chainsCounter: document.querySelectorAll(
+            `[chainid="${tr.getAttribute("chainid")}"]`
+          ).length,
         });
       });
     }
@@ -552,20 +641,42 @@ const detectEqualThreadLogs = () => {
       chains.forEach((chain, idx) => {
         if (idx > 0) {
           let chainsRest = chains.slice(idx + 1);
-          let checkDuplictateIdx = chainsRest.findIndex(c => c.chainName == chain.chainName);
+          let checkDuplictateIdx = chainsRest.findIndex(
+            (c) => c.chainName == chain.chainName
+          );
           if (checkDuplictateIdx == -1) {
             foundChainsCounter++;
-            const logsChainVar = document.querySelectorAll(`[chainid="${chain.chainName}"]`)[0]
-              .children[appNameCellIdx].innerText;
-            const timeChain = document.querySelector(`[chainid="${chain.chainName}"]`).children[
-              getCellIndexByColumnName("@timestamp")
-            ].lastElementChild.innerText;
-            const correlationId = getParameterByAttributeValue(chain.chainName, "correlation");
-            const topic = getParameterByAttributeValue(chain.chainName, "topic");
-            const receivedPartition = getParameterByAttributeValue(chain.chainName, "partition");
-            const offset = getParameterByAttributeValue(chain.chainName, "offset");
-            const messageId = getParameterByAttributeValue(chain.chainName, "message");
-            const sourceInstanceId = getParameterByAttributeValue(chain.chainName, "source");
+            const logsChainVar = document.querySelectorAll(
+              `[chainid="${chain.chainName}"]`
+            )[0].children[appNameCellIdx].innerText;
+            const timeChain = document.querySelector(
+              `[chainid="${chain.chainName}"]`
+            ).children[getCellIndexByColumnName("@timestamp")].lastElementChild
+              .innerText;
+            const correlationId = getParameterByAttributeValue(
+              chain.chainName,
+              "correlation"
+            );
+            const topic = getParameterByAttributeValue(
+              chain.chainName,
+              "topic"
+            );
+            const receivedPartition = getParameterByAttributeValue(
+              chain.chainName,
+              "partition"
+            );
+            const offset = getParameterByAttributeValue(
+              chain.chainName,
+              "offset"
+            );
+            const messageId = getParameterByAttributeValue(
+              chain.chainName,
+              "message"
+            );
+            const sourceInstanceId = getParameterByAttributeValue(
+              chain.chainName,
+              "source"
+            );
 
             document.getElementById(
               "chainWrapperContent"
@@ -574,19 +685,26 @@ const detectEqualThreadLogs = () => {
               chainInfoWrapper(
                 `${makeHTMLChainInfoPanel(
                   "Имя потока",
-                  document.querySelector(`[chainid="${chain.chainName}"]`).children[
-                    getCellIndexByColumnName("thread_name")
-                  ].innerText,
+                  document.querySelector(`[chainid="${chain.chainName}"]`)
+                    .children[getCellIndexByColumnName("thread_name")]
+                    .innerText,
                   true
                 )}<br>${makeHTMLChainInfoPanel(
                   "Время записи",
                   timeChain
-                )}<br>${makeHTMLChainInfoPanel("Поток логов сервиса", logsChainVar)}` +
-                  `${makeHTMLChainInfoPanel("Количество логов в потоке", chain.chainsCounter)}` +
+                )}<br>${makeHTMLChainInfoPanel(
+                  "Поток логов сервиса",
+                  logsChainVar
+                )}` +
+                  `${makeHTMLChainInfoPanel(
+                    "Количество логов в потоке",
+                    chain.chainsCounter
+                  )}` +
                   `<br>` +
                   makeHTMLChainInfoPanel(
                     "Ключ цепочечного запроса",
-                    getParameterByAttributeValue(chain.chainName, "chain").length > 0
+                    getParameterByAttributeValue(chain.chainName, "chain")
+                      .length > 0
                       ? getParameterByAttributeValue(chain.chainName, "chain")
                       : "Не найден"
                   ) +
@@ -598,12 +716,16 @@ const detectEqualThreadLogs = () => {
                   `<br>` +
                   makeHTMLChainInfoPanel(
                     "Ключ корреляции (ответа с запросом)",
-                    correlationId && correlationId.length > 0 ? correlationId : "Не найден"
+                    correlationId && correlationId.length > 0
+                      ? correlationId
+                      : "Не найден"
                   ) +
                   `<br>` +
                   makeHTMLChainInfoPanel(
                     "Источник сообщения",
-                    sourceInstanceId && sourceInstanceId.length > 0 ? sourceInstanceId : "Не найден"
+                    sourceInstanceId && sourceInstanceId.length > 0
+                      ? sourceInstanceId
+                      : "Не найден"
                   ) +
                   `<br>` +
                   makeHTMLChainInfoPanel(
@@ -623,7 +745,8 @@ const detectEqualThreadLogs = () => {
                   `<br>` +
                   makeHTMLChainInfoPanel(
                     "Класс сообщения",
-                    getParameterByAttributeValue(chain.chainName, "class").length > 0
+                    getParameterByAttributeValue(chain.chainName, "class")
+                      .length > 0
                       ? getParameterByAttributeValue(chain.chainName, "class")
                       : "Не найден",
                     chain.chainName
@@ -649,15 +772,18 @@ const detectEqualThreadLogs = () => {
   aggregateChainLogsData();
 };
 
-const hideTrByAttributeValue = attributeValue => {
+const hideTrByAttributeValue = (attributeValue) => {
   //скрывает группу однопоточных логов
-  let nodeListByAttrValue = document.querySelectorAll(`[chainid="${attributeValue}"]`);
-  nodeListByAttrValue.forEach(node => {
+  let nodeListByAttrValue = document.querySelectorAll(
+    `[chainid="${attributeValue}"]`
+  );
+  nodeListByAttrValue.forEach((node) => {
     node.style.display = node.style.display == "none" ? "table-row" : "none";
   });
   if (!document.getElementById("excludeLogsWithoutKeyCheckBox").checked) {
     const logGroup = document.getElementById(`${attributeValue}_group`);
-    logGroup.style.display = logGroup.style.display == "none" ? "block" : "none";
+    logGroup.style.display =
+      logGroup.style.display == "none" ? "block" : "none";
   }
 };
 
@@ -703,9 +829,11 @@ const getParameterByAttributeValue = (attributeValue, parameterName = null) => {
     }
   }
 
-  let nodeListByAttrValue = document.querySelectorAll(`[chainid="${attributeValue}"]`);
+  let nodeListByAttrValue = document.querySelectorAll(
+    `[chainid="${attributeValue}"]`
+  );
   if (nodeListByAttrValue.length > 0) {
-    nodeListByAttrValue.forEach(node => {
+    nodeListByAttrValue.forEach((node) => {
       for (let childNode of node.children) {
         if (childNode.cellIndex == messageCellIndex) {
           for (let content of childNode.children) {
@@ -722,7 +850,7 @@ const getParameterByAttributeValue = (attributeValue, parameterName = null) => {
   } else return [];
 };
 
-const getRequestClassNameByAttributeValue = attributeValue => {
+const getRequestClassNameByAttributeValue = (attributeValue) => {
   const messageCellIndex = getCellIndexByColumnName("message");
   let result = [];
   const regDefaultClassIdFieldName = /defaultClassIdFieldName\=(\w|\.)*/;
@@ -745,9 +873,11 @@ const getAdditionalDataFromChainLogs = () => {
 
 const getAdditionalThreadLogs = async (trNodeInitiator, key = "") => {
   //функция для получения дополнительных логов связанных с потоком выбранного сервиса
-  console.log(`getAdditionalThreadLogs has been called with key: ${key}, initiator: `);
+  console.log(
+    `getAdditionalThreadLogs has been called with key: ${key}, initiator: `
+  );
   console.log(trNodeInitiator);
-  const prepareCloneNode = cloneNode => {
+  const prepareCloneNode = (cloneNode) => {
     if (cloneNode) {
       for (let i = 0; i < cloneNode.children.length; i++) {
         for (let tdChild of cloneNode.children[i].children) {
@@ -787,35 +917,43 @@ const getAdditionalThreadLogs = async (trNodeInitiator, key = "") => {
         for (let key in log) {
           switch (key) {
             case "app_instance":
-              tempCloneNode.children[getCellIndexByColumnName(key)].children[0].innerText =
-                log[key];
+              tempCloneNode.children[
+                getCellIndexByColumnName(key)
+              ].children[0].innerText = log[key];
               break;
             case "app_name":
-              tempCloneNode.children[getCellIndexByColumnName(key)].children[0].innerText =
-                log[key];
+              tempCloneNode.children[
+                getCellIndexByColumnName(key)
+              ].children[0].innerText = log[key];
               break;
             case "level":
-              tempCloneNode.children[getCellIndexByColumnName(key)].children[0].innerText =
-                log[key];
+              tempCloneNode.children[
+                getCellIndexByColumnName(key)
+              ].children[0].innerText = log[key];
               break;
             case "logger_name":
-              tempCloneNode.children[getCellIndexByColumnName(key)].children[0].innerText =
-                log[key];
+              tempCloneNode.children[
+                getCellIndexByColumnName(key)
+              ].children[0].innerText = log[key];
               break;
             case "thread_name":
-              tempCloneNode.children[getCellIndexByColumnName(key)].children[0].innerText =
-                log[key];
+              tempCloneNode.children[
+                getCellIndexByColumnName(key)
+              ].children[0].innerText = log[key];
               break;
             case "message":
-              for (let tdChild of tempCloneNode.children[getCellIndexByColumnName(key)].children) {
+              for (let tdChild of tempCloneNode.children[
+                getCellIndexByColumnName(key)
+              ].children) {
                 if (tdChild.id && tdChild.id.includes("_long_")) {
                   tdChild.innerText = log[key];
                 }
               }
               break;
             case "message_size":
-              tempCloneNode.children[getCellIndexByColumnName(key)].children[0].innerText =
-                log[key];
+              tempCloneNode.children[
+                getCellIndexByColumnName(key)
+              ].children[0].innerText = log[key];
               tempCloneNode.children[
                 getCellIndexByColumnName(key)
               ].children[0].href = `https://kibana.test-stand.tst.int.***.ru/app/discover#/context/9e905f70-b88e-11ea-ad80-af2592106d05/${log["_id"]}?_a=(columns:!(app_name,level,message,thread_name),filters:!())&_g=(filters:!())`;
@@ -831,8 +969,14 @@ const getAdditionalThreadLogs = async (trNodeInitiator, key = "") => {
             : trNodeInit.parentNode.insertBefore(tempCloneNode, prevCloneNode);
         } else {
           index == 0
-            ? trNodeInit.parentNode.insertBefore(tempCloneNode, trNodeInit.nextSibling)
-            : trNodeInit.parentNode.insertBefore(tempCloneNode, prevCloneNode.nextSibling);
+            ? trNodeInit.parentNode.insertBefore(
+                tempCloneNode,
+                trNodeInit.nextSibling
+              )
+            : trNodeInit.parentNode.insertBefore(
+                tempCloneNode,
+                prevCloneNode.nextSibling
+              );
         }
       });
     }
@@ -844,7 +988,7 @@ const getAdditionalThreadLogs = async (trNodeInitiator, key = "") => {
       fieldValues: [],
       operators: ["AND"],
       excludeFieldNames: [],
-      excludes: []
+      excludes: [],
     };
     const appNameCellIdx = getCellIndexByColumnName("app_name");
     const threadNameCellIdx = getCellIndexByColumnName("thread_name");
@@ -873,20 +1017,35 @@ const getAdditionalThreadLogs = async (trNodeInitiator, key = "") => {
       requestAdditionalThreadLogsObject.excludeFieldNames.push("logger_name");
       requestAdditionalThreadLogsObject.excludes.push("ru.gpb.audit.events");
     }
-    console.log(`getAdditionalThreadLogs.collectDataAndPrepareRequest: request object: `);
+    console.log(
+      `getAdditionalThreadLogs.collectDataAndPrepareRequest: request object: `
+    );
     // console.log(requestAdditionalThreadLogsObject);
     return requestAdditionalThreadLogsObject;
   };
   if (key) {
-    SupportPageController.showLoaderFlex("Запрос в ELK", "Получение дополнительных логов");
+    SupportPageController.showLoaderFlex(
+      "Запрос в ELK",
+      "Получение дополнительных логов"
+    );
     const reqObj = collectDataAndPrepareRequest();
     try {
-      let response = await SupportPageController.getELKlogsOpt(reqObj, false, true);
-      console.log(`getAdditionalThreadLogs.collectDataAndPrepareRequest: response`);
+      let response = await SupportPageController.getELKlogsOpt(
+        reqObj,
+        false,
+        true
+      );
+      console.log(
+        `getAdditionalThreadLogs.collectDataAndPrepareRequest: response`
+      );
       console.log(response);
       renderHTMLContent(response, trNodeInitiator);
       SupportPageController.closeLoaderFlex();
-      SupportPageController.callPopUp("", `Логи подгружены, найдено: ${response.length}`, 2000);
+      SupportPageController.callPopUp(
+        "",
+        `Логи подгружены, найдено: ${response.length}`,
+        2000
+      );
     } catch (e) {
       console.error(e);
       SupportPageController.closeLoaderFlex();
@@ -900,14 +1059,17 @@ const getAdditionalThreadLogs = async (trNodeInitiator, key = "") => {
   }
 };
 
-const getThreadLogsWithKeys = threadLogsCollection => {
+const getThreadLogsWithKeys = (threadLogsCollection) => {
   for (let div of threadLogsCollection) {
     for (let child of div.children) {
       if (child.tagName == "SPAN") {
         if (
-          (child.lastChild.data && child.lastChild.data.includes("chainRequestId")) ||
-          (child.lastChild.data && child.lastChild.data.includes("messageId")) ||
-          (child.lastChild.data && child.lastChild.data.includes("correlationId"))
+          (child.lastChild.data &&
+            child.lastChild.data.includes("chainRequestId")) ||
+          (child.lastChild.data &&
+            child.lastChild.data.includes("messageId")) ||
+          (child.lastChild.data &&
+            child.lastChild.data.includes("correlationId"))
         ) {
           div.setAttribute("key", true);
         }
@@ -921,7 +1083,9 @@ const hideThreadLogsByParameterName = (logsCollection, parameterName, flag) => {
     if (childElement.hasAttribute(parameterName)) {
       childElement.style.display = flag ? "block" : "none";
       if (parameterName == "key") {
-        hideTrByAttributeValue(childElement.id.split("_")[0] + "_" + childElement.id.split("_")[1]);
+        hideTrByAttributeValue(
+          childElement.id.split("_")[0] + "_" + childElement.id.split("_")[1]
+        );
       }
     } else {
       childElement.style.display = flag ? "none" : "block";
@@ -939,7 +1103,9 @@ const getLogsWithError = (trs, flag) => {
 };
 
 const navigationThreadLogsHandler = (requestType = "", flag = false) => {
-  console.log(`navigationThreadLogsHandler: requestType: ${requestType}, flag: ${flag}`);
+  console.log(
+    `navigationThreadLogsHandler: requestType: ${requestType}, flag: ${flag}`
+  );
   const threadLogsCollection = document
     .getElementById("chainWrapperContent")
     .getElementsByTagName("div");
@@ -986,7 +1152,7 @@ const wrapUnwrapAllMessagesByWords = () => {
   }
 };
 
-const wrapTargetMessage = element => {
+const wrapTargetMessage = (element) => {
   //console.log(element);
   const id = element.nextElementSibling.id;
   const messageContainer = document.getElementById(id);
@@ -1002,7 +1168,7 @@ const wrapTargetMessage = element => {
   }
 };
 
-const shiftFixedBlock = element => {
+const shiftFixedBlock = (element) => {
   let isShifted = false;
   const positionClassNames = ["position-b150px-r10px", "position-b43-r442px"];
   const shiftClassNames = ["shift-fixed-bottom", "shift-fixed-right"];

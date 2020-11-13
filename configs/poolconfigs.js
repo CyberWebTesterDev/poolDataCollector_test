@@ -8,7 +8,7 @@ module.exports.configCamunda = {
     max: 10,
     min: 0,
     idleTimeoutMillis: 300000,
-    connectionTimeoutMillis: 30000,
+    connectionTimeoutMillis: 30000, F
 
   };
 

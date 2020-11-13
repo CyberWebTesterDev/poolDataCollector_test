@@ -14,7 +14,9 @@
 
   const appnum = window.location.href.split("/")[4];
   try {
-    const result = await fetch(`http://localhost:3000/frontrequest/aggregatedatafromdblight/${appnum}`);
+    const result = await fetch(
+      `http://localhost:3000/frontrequest/aggregatedatafromdblight/${appnum}`
+    );
     const html = await result.text();
     document.body.innerHTML = html;
     //const direction = document.querySelector('#mainDataTable > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2) > font:nth-child(1)').innerText;
@@ -23,7 +25,9 @@
     bpmBlock.innerHTML = spinnerBPM;
     //document.body.insertBefore(div, divTarget);
     console.log("Sending request for BPM data");
-    const resultBPM = await fetch(`http://localhost:3000/frontrequest/bpmdata/${appnum}`);
+    const resultBPM = await fetch(
+      `http://localhost:3000/frontrequest/bpmdata/${appnum}`
+    );
     const html2 = await result.text();
     bpmBlock.innerHTML = html2;
   } catch (e) {
