@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Действующий процесс</title>
+ </head>
+ <body>
+  <table border="1">
+   <caption>Хронология действующего процесса по заявке <%= appnum%></caption>
+   <tr>
+    <th>Схема процесса</th>
+    <th>Номер версии</th>
+    <th>Имя таска</th>
+    <th>Дата создания таска</th>
+    <th>Состояние таска</th>
+    <th>ExecutionId</th>
+    <th>Время перехода в состояние</th>
+    <th>Текст ошибки</th>
+   </tr>
+   <tr>
+ <td><%= scheme_name%></td>
+ <td><%= version%></td>
+ <td><%= task_name%></td>
+ <td><%= create_date%></td>
+ <td><%= task_state%></td>
+ <td><%= execID%></td>
+ <td><%= state_time%></td>
+ <td><%= error%></td>
+  </tr>
+  </table>
+  <p><a href="<%= link %>" class="btn btn-primary" target="_blank" role="button">Перейти в Камунду</a></p>
+ </body>
+</html>
+
+

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Данные заявки</title>
+    <link rel="stylesheet" href="/public/css/bootstrap.css">
+  <script src="/public/jquery-3.4.1.min.js"></script>
+  <script src="/public/bootstrap.min.js"></script>
+ </head>
+ <body bgcolor="#0B4C5F">
+   <table class="table table-dark">
+   <h2>Хронология действующего процесса по заявке <%= appnum%></h2>
+   <tr>
+    <th>Схема процесса</th>
+    <th>Номер версии</th>
+    <th>Имя таска</th>
+    <th>Тип таска</th>
+    <th>Дата создания таска</th>
+    <th>Состояние таска</th>
+    <th>ExecutionId</th>
+    <th>Время перехода в состояние</th>
+    <th>Текст ошибки</th>
+   </tr>
+   <tr>
+ <td><%= scheme_name%></td>
+ <td><%= version%></td>
+ <td><%= task_name%></td>
+ <th><%= task_type%></th>
+ <td><%= create_date%></td>
+ <td><%= task_state%></td>
+ <td><%= execID%></td>
+ <td><%= state_time%></td>
+ <td><%= error%></td>
+  <p></p>
+
+  <div class="alert alert-danger" role="alert">
+  Ззаявки <%= appnum%> нет в сервисе поиска!
+  </div>
+
+
+<a class="btn btn-primary" href="<%= link %>" role="button" target="_blank">Перейти в Camunda</a>
+
+
+ </body>
+</html>
+
+

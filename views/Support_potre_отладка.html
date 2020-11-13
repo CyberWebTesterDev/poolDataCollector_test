@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Интеграционне логи</title>
+ </head>
+ <body>
+   
+   <p></p>
+
+  </table>
+  <a class="btn btn-primary" href="<%= link %>" role="button" target="_blank">Перейти в Camunda</a>
+  <a class="btn btn-primary" href="<%= link2 %>" role="button" target="_blank">Перейти в сканы</a>
+  <button class="btn btn-primary" id="#retry" type="submit" onclick="retry()">Retrytask</button>
+  <a class="btn btn-primary" href="<%= linkerr %>" role="button" target="_blank">Обработка ошибки в РКК</a>
+  <a class="btn btn-primary" role="button" type="submit" onclick="errorProcess()">Обработка ошибки отсюда</a>
+  <p></p>
+  <button class="btn btn-primary" id="#bhide" type="submit" onclick="hide()">Скрыть</button>
+  <ul>Текущая ошибка
+    <li id="#tohide"><font color="red"><%= error%></font></li>
+  </ul>
+
+
+  <h2>Хронология действующего процесса по заявке</h2>
+  <table>
+   <tr>
+    <th scope="col" class="colp">Схема процесса</th>
+    <th scope="col" class="colp">Номер версии</th>
+    <th scope="col" class="colp">Имя таска</th>
+    <th scope="col" class="colp">Тип таска</th>
+    <th scope="col" class="colp">Дата создания таска</th>
+    <th scope="col" class="colp">Состояние таска</th>
+    <th scope="col" class="colp">ExecutionId</th>
+    <th scope="col" class="colp">Время перехода в состояние</th>
+   </tr>
+<tr>
+ <tr>
+ <td> Тест1></td>
+ <td>Тест2</td>
+ <td>Тест3</td>
+ <th>Тест4</th>
+ <td>Тест5</td>
+ <td>Тест6</td>
+ <td>Тест7</td>
+ <td>Тест8</td> 
+</tr>
+</table>
+
+   <p></p>
+
+  <h2>Интеграционные логи по заявке</h2>
+  <div class="collapse" id = "#tohide" style="display: block">
+  <table>
+  
+   <tr>
+    <th scope="col" class="colp">Correlation ID</th>
+    <th scope="col" class="colp">Целевая система (Endpoint)</th>
+    <th scope="col" class="colp">Результат</th>
+    <th scope="col" class="colp">Текст ошибки</th>
+    <th scope="col" class="colp">Дата, время интеграции</th>
+    <th scope="col" class="colp">Запрос/ответ</th>
+   </tr>
+
+ <tr>
+ <td>d6ae5fae-2ec3-49e8-a938-718c810ec519></td>
+ <td>СПР</td>
+ <td>Успешно</td>
+ <th>NULL</th>
+ <td>2019-12-05 13:12:04</td>
+ <td><?xml version="1.0" encoding="UTF-8" standalone="yes"?><response><creditRequest id="2001888044" preapproved="0"><decision RTDMDecisionCode="3"/><participants><participant categoryCode="4" subCategoryCode="4D" isSalaryClient="true" isSalarySufficient="true" formType="0" id="2009909535" lastName="КЛИМОВ" firstName="АЛЕКСАНДР" middleName="ЮРЬЕВИЧ" birthDate="1982-04-15"><decision RTDMDecisionCode="3"/><incomes><income type="SalaryIncome" docType="bankform" visibleByOperator="true"><custIncomePeriod date="2019-08-31" income="17182.66000"/><custIncomePeriod date="2019-09-30" income="42574.48000"/><custIncomePeriod date="2019-10-31" income="43938.91000"/><custIncomePeriod date="2019-11-30" income="45844.61000"/></income></incomes></participant></participants></creditRequest></response>
+ </td>
+</tr>
+
+
+</table>
+  
+
+  <script>
+
+    function retry(){
+
+
+      if ("<%=obj[obj.length-1].act_type_%>" !== 'intermediateConditional') {alert ("Заявка не зависла в буфере, перезапуск таска делать нельзя!")}
+
+        else {
+
+
+         if (confirm("Вы уверены что хотите выполнить перезапуск таски заявки <%-appnum%>?")){ alert("Упс, перезапуск таски из этой страницы пока не работает, просьба выполнить через Camunda Cockpit")}
+
+          else (alert("Действие отменено."))
+
+        }
+
+
+
+    }
+
+
+    function hide() {
+
+      var elem = document.getElementById("#tohide");
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+      } else {
+
+        elem.style.display = "none";
+      }
+
+    }
+
+
+       function errorProcess() {
+
+         if ("<%-obj[0].act_name_%>" !== 'Обработка ошибки') {alert ("Заявка НЕ в ошибке в BPM, обработку ошибки делать нельзя!")}
+
+          else {
+
+
+         if (confirm("Вы уверены что хотите выполнить обработку ошибки по заявке <%-appnum%>?")){ alert("Упс, обработка ошибки из этой страницы пока не работает, просьба выполнить через РКК")}
+
+          else (alert("Действие отменено."))
+
+        }
+
+    }
+
+
+  
+
+
+
+
+
+
+  </script>
+
+
+ </body>
+</html>
+
+

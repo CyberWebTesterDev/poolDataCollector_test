@@ -1,0 +1,898 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>RKK Adminkey администрирование заявки РКК 2.0</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <script src="/public/js/jquery.js"></script>
+  <script src="/public/js/bootstrap.min.js"></script>
+   <style type="text/css">
+
+    .table-block-div
+    {
+      text-align: center;
+    }
+    .table-block-div:hover
+    {
+      background-color: #c0d7d7;
+      cursor: pointer;
+    }
+    h2
+    {
+      text-align: center;
+    }
+
+      .longtext {
+
+      word-wrap: break-word;
+      width: 700px;
+
+    }
+        body {
+    
+    background: #2F4F4F;
+    color: #BC8F8F; 
+
+    }
+     .headlabel {
+      text-align: center;
+      font-family: "Times New Roman", Georgia, Serif;
+      font-stretch: extra-expanded;
+      font-size: 20px;
+      color: #008080;
+    }
+    
+     .headlabel:hover {
+      cursor: pointer;
+
+    }
+    .dimmer-modal {
+      background-color: rgba(19,18,18,0.85);
+      user-select: none;
+    }
+    .modal-parent {
+      top: 0;
+      bottom: 10px;
+      position: fixed;
+      visibility: visible;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      padding: 1em;
+      z-index: 1000;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .modal-large {
+      background-color: rgb(47,53,58);
+      top:25px;
+      bottom: 5px;
+      width: 700px;
+      left:30%;
+      right: 70%;
+      font-size: 22px;
+      height: 500px;
+      padding: 5px;
+      position: relative;
+      z-index: 1001;
+      box-shadow: 1px 3px 3px;
+      border-radius: .28571429rem;
+      user-select: text;
+    }
+    .modal-label {
+      color: seaGreen;
+      font-size: 35px;
+    }
+    .modal-btn {
+      position: relative;
+      top:280px;
+    }
+
+    table {
+      table-layout: fixed;
+    }
+    td
+    {
+    word-wrap:break-word
+  }
+
+     .nav {
+      background-color: skyBlue;
+      color: black;
+      width: 250px;
+      font-size:;
+    }
+
+    .nav-link {
+      font-size: 20px;
+
+    }
+
+        .modal-large-wide {
+      background-color: rgb(47,53,58);
+      top:25px;
+      bottom: 5px;
+      width: 1500px;
+      left:10%;
+      right: 70%;
+      font-size: 22px;
+      height: 900px;
+      padding: 5px;
+      position: relative;
+      z-index: 1001;
+      box-shadow: 1px 3px 3px;
+      border-radius: .28571429rem;
+      user-select: text;
+    }
+
+        .modal-btn-large {
+      position: relative;
+      top:700px;
+    }
+
+    #applicationArea:hover {
+      background-color: gray;
+      cursor: pointer;
+    }
+    #applicationArea {
+      width:180px;
+      text-align: center;
+      position: relative;
+      left: 50%;
+    }
+
+      #childDiv {
+        background-color: rgb(30, 50, 50);
+        font-size: 25px;
+        text-align: left;
+
+      }
+
+      #parentDiv {
+        font-size: 25px;
+        text-align: center;
+      }
+
+  </style>
+
+
+  <script type="text/javascript">
+
+        const makeLargeModal = (label, text) => {
+      return `<div class="modal-parent dimmer-modal" id="modalElement">
+               <div class="modal-large-wide">
+                <span class="modal-label">${label}</span>
+                <p>${text}</p>
+                <button class="modal-btn-large" id="btnModal" onclick="closeModal()">Закрыть</button>
+               </div>
+              </div>`;
+  };
+
+    const htmlModal = 
+    `<div class="modal-parent dimmer-modal" id="modalElement">
+      <div class="modal-large">
+        <span class="modal-label">Adminkey</span>
+        <p>Adminkey приложение для агрегации данных из БД микросервисов РКК 2.0 для целей оперативного технического сопровождения. </p>
+        <button class="modal-btn" id="btnModal" onclick="closeModal()">Закрыть</button>
+      </div>
+    </div>`;
+
+    const navHtml = ` 
+<div class="headlabel">
+<h1 onclick="showModal()">RKK Adminkey</h1>
+</div>
+<div id="modalContainer"></div>
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" onclick="useNavigationRequest(false, bodyHtml, navHtml)">Заявка</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" onclick="useNavigationRequest(true, bodyHtml, navHtml)">Данные ЗНО</a>
+  </li>
+</ul>
+
+     <table class="table table-dark" id = "#tapp">
+  <h2>Переход по меню</h2>
+   <tr>
+    <th><font color="#FFDAB9">ID Заявки</font></th>
+    <th><font color="#FFDAB9">Направление</font></th>
+    <th><font color="#FFDAB9">Программа</font></th>
+    <th><font color="#FFDAB9">Канал поступления</font></th>
+
+   </tr>
+
+   <tr>
+ <td>bd23fe1e-6b14-462a-a89c-28503495e1de</td>
+ <td><font color="#AFEEEE">Потребительское кредитование</font></td>
+ <td></td>
+
+<td>6ab75c63-7a2d-11ea-bc0c-0242ac110002</td>
+<td>ERROR</td>
+  </tr>
+  <p></p>
+<h5><font color="white">Заемщик</font> Тестов Тест Тестович 1989-01-01 0000 000000 +70000000000</h5>
+   <p></p>
+  </table>`;
+
+
+    document.addEventListener('load', () => {
+      const bodyHtml = document.body.innerHTML;
+
+
+    });
+
+      const useNavigationRequest = (flag, bodyHtml, navHtml) => {
+      
+              
+      if (flag) {
+          document.body.innerHTML = navHtml;
+      } else {
+        document.body.innerHTML = bodyHtml;
+      }
+
+    };
+
+
+    
+
+    const showModal = () => {
+      console.log('showModal');
+      const divTarget = document.getElementById('modalContainer');
+      const div = document.createElement('div');
+      div.innerHTML = makeLargeModal('Label', 'text');
+      document.body.insertBefore(div, divTarget);
+
+    }
+
+    const closeModal = () => {
+      console.log('closeModal');
+      const modal = document.getElementById('modalElement');
+      modal.parentNode.removeChild(modal);
+
+    }
+
+
+ 
+
+  </script>
+
+
+ </head>
+ <body>
+<div class="headlabel">
+<h1 onclick="showModal()">RKK Adminkey</h1>
+</div>
+<div id="modalContainer"></div>
+
+
+  <div class="container" id="parentDiv">
+    <label class=>Данные по заявке</label>
+    <div class="row" id="childDiv">
+      <div class="col">Поле 1</div>
+      <div class="col" style="color: seaGreen">Data 2</div>
+      <div class="w-100"></div> 
+      <div class="col">Поле 2</div>
+      <div class="col"style="color: seaGreen">some text</div>
+      <div class="w-100"></div> 
+      <div class="col">Поле 3</div>
+      <div class="col" style="color: seaGreen">Data 3</div>
+    </div>
+  </div>
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" onclick="useNavigationRequest(false, bodyHtml, navHtml)">Заявка</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" onclick="useNavigationRequest(true, bodyHtml, navHtml)">Данные ЗНО</a>
+  </li>
+</ul>
+
+<p></p>
+
+  <table class="table table-dark" id = "#tapp">
+  <h2>Основные данные по заявке <div id="applicationArea">2003454120</div></h2>
+   <tr>
+    <th><font color="#FFDAB9">ID Заявки</font></th>
+    <th><font color="#FFDAB9">Направление</font></th>
+    <th><font color="#FFDAB9">Программа</font></th>
+    <th><font color="#FFDAB9">Канал поступления</font></th>
+    <th><font color="#FFDAB9">Канал выдачи</font></th>
+    <th><font color="#FFDAB9">Api</font></th>
+    <th><font color="#FFDAB9">Код ДО</font></th>
+    <th><font color="#FFDAB9">Статус</font></th>
+    <th><font color="#FFDAB9">Дата создания заявки</font></th>
+    <th><font color="#FFDAB9">Дата перехода в статус</font></th>
+    <th><font color="#FFDAB9">Assignee</font></th>
+    <th><font color="#FFDAB9">ID задачи BPM</font></th>
+    <th><font color="#FFDAB9">Метод</font></th>
+   </tr>
+
+   <tr>
+ <td>bd23fe1e-6b14-462a-a89c-28503495e1de</td>
+ <td><font color="#AFEEEE">Потребительское кредитование</font></td>
+ <td></td>
+ <td>ДБО (Мобильного банка)</td>
+ <td>МБ</td>
+ <td><font color="red">false</font></td>
+ <td>ДО №048/1010 Ф-ла Банка ГПБ (АО) в г. Сургуте</td>
+ <td><font color="#D2691E">Ошибка</font></td>
+<td>2020-04-09 09:35:48.712</td>
+<th>2020-04-09 09:43:27.003</th>
+<th></th>
+<td>6ab75c63-7a2d-11ea-bc0c-0242ac110002</td>
+<td>ERROR</td>
+  </tr>
+  <p></p>
+<h5><font color="white">Заемщик</font> Тестов Тест Тестович 1989-01-01 0000 000000 +70000000000</h5>
+   <p></p>
+  </table>
+
+  <a class="btn btn-primary" href="" role="button" target="_blank">Перейти в Camunda</a>
+  <a class="btn btn-primary" href="" role="button" target="_blank">Перейти в сканы</a>
+  <button class="btn btn-primary" id="#retry" type="submit" onclick="retry()" style="display: none">Retrytask</button>
+  <a class="btn btn-primary" href="" role="button" target="_blank">Обработка ошибки в РКК</a>
+  <a class="btn btn-primary" href="https://ui.test-stand.tst.int.***.ru/sling/info/2003454120" role="button" target="_blank">Список файлов</a>
+  <a class="btn btn-primary" href="https://ui.test-stand.tst.int.***.ru/sling/filelist/bd23fe1e-6b14-462a-a89c-28503495e1de" role="button" target="_blank">Метаданные файлов</a> 
+  <a class="btn btn-primary" role="button" type="submit" onclick="errorProcess()" style="display: none">Обработка ошибки отсюда</a>
+  <p></p>
+
+
+
+
+
+
+
+
+
+
+
+
+  <table class="table table-dark" id = "t3">
+  <h2>Параметры заявки</h2>
+   <tr>
+    <th><font color="#FFDAB9">Тип параметров</font></th>
+    <th><font color="#FFDAB9">Версия субпрограммы</font></th>
+    <th><font color="#FFDAB9">Сумма кредита</font></th>
+    <th><font color="#FFDAB9">Ежемесячный платеж</font></th>
+    <th><font color="#FFDAB9">Срок кредита</font></th>
+    <th><font color="#FFDAB9">Доп.сумма(рефин)</font></th>
+    <th><font color="#FFDAB9">Общая сумма долга(рефин)</font></th>
+    <th><font color="#FFDAB9">Ставка</font></th>
+    <th><font color="#FFDAB9">Тип платежа</font></th>
+    <th><font color="#FFDAB9">Флаг подп. док.</font></th>
+    <th><font color="#FFDAB9">Дата подписания</font></th>
+    <th><font color="#FFDAB9">Наличие страховки</font></th>
+    <th><font color="#FFDAB9">Подписант</font></th>
+    <th><font color="#FFDAB9">День платежа</font></th>
+    <th><font color="#FFDAB9">ПДН</font></th>
+   </tr>
+
+   <tr>
+
+ <td>Выбранные</td>
+
+ <td><font color="#D2691E">Выбранные</font></td>
+
+ <td>1907</td>
+ <td>100000.00</td>
+ <td>2380.07</td>
+ <td>60</td>
+ <td></td>
+ <td></td>
+ <td>14.50</td>
+ <td>Аннуитетный</td>
+ <td><font color="red"></font></td>
+ <td></td>
+ <td><font color="red">false</font></td>
+ <td>Тестов Т. Т.</td>
+ <td></td>
+ <td></td>
+  </tr>
+
+
+
+   <p></p>
+  </table>
+  
+  <p></p>
+   <table class="table table-dark" id = "#tacc">
+  <h2>Счета по заявке</h2>
+   <tr>
+
+    <th><font color="#FFDAB9">Номер счета</font></th>
+    <th><font color="#FFDAB9">Номер карты</font></th>
+    <th><font color="#FFDAB9">Счет выбран?</font></th>
+    <th><font color="#FFDAB9">Зачисление</font></th>
+    <th><font color="#FFDAB9">Списание</font></th>
+    <th><font color="#FFDAB9">Дата открытия счета</font></th>
+    <th><font color="#FFDAB9">Баланс</font></th>
+    <th><font color="#FFDAB9">Счет новый?</font></th>
+    <th><font color="#FFDAB9">ДКО</font></th>
+    <th><font color="#FFDAB9">Номер договора в 5NT</font></th>
+   </tr>
+   <% akk.forEach(function(el, i, arr) { %>
+   <tr>
+ <td><%= akk[i].acc_number %></td>
+ <td><%= akk[i].card_number %></td>
+  <% if (akk[i].selected !== true) { %> 
+ <td><%= akk[i].selected %></td>
+ <% }  else { %>
+ <td><font color="#008000"><%= akk[i].selected %></font></td>
+ <% }; %>
+ <td><%= akk[i].enrollment %></td>
+ <td><%= akk[i].withdrawal %></td>
+ <td><%= akk[i].acc_open_date %></td>
+ <td><%= akk[i].balance %></td>
+ <td><%= akk[i].new_account %></td>
+ <td><%= akk[i].dko %></td>
+ <td><%= akk[i].five_nt_contract_number %></td>
+  </tr>
+  <% }); %>
+  <% }; %>
+
+
+  <% if (refin.length !== 0) { %>
+  <p></p>
+   <table class="table table-dark" id = "#tacc">
+  <h2>Рефинансируемые обязательства по заявке</h2>
+   <tr>
+
+    <th><font color="#FFDAB9">Источник</font></th>
+    <th><font color="#FFDAB9">Тип</font></th>
+    <th><font color="#FFDAB9">Номер договора</font></th>
+    <th><font color="#FFDAB9">Сумма договора</font></th>
+    <th><font color="#FFDAB9">Ставка</font></th>
+    <th><font color="#FFDAB9">Сумма долга по БКИ</font></th>
+    <th><font color="#FFDAB9">Расч.долг (для внешних)</font></th>
+    <th><font color="#FFDAB9">Ежемесячный платеж</font></th>
+    <th><font color="#FFDAB9">Номер счета</font></th>
+    <th><font color="#FFDAB9">Выбр.?</font></th>
+    <th><font color="#FFDAB9">Закр.?</font></th>
+    <th><font color="#FFDAB9">Икл.?</font></th>
+    <th><font color="#FFDAB9">Дата договора</font></th>
+   </tr>
+   
+   <% refin.forEach(function(el, i, arr) { %>
+   <tr>
+ <td><%= refin[i].source %></td>
+ <td><font color="#AFEEEE"><%= refin[i].typeliab %></font></td>
+ <td><%= refin[i].contract_number %></td>
+ <td><%= refin[i].contract_amount %></td>
+ <td><%= refin[i].interest_rate %></td>
+ <td><%= refin[i].debt_amount %></td>
+ <td><%= refin[i].estimated_balance %></td>
+ <td><%= refin[i].monthly_payment_amount %></td>
+ <td><%= refin[i].account_number %></td>
+     <% if (refin[i].selected == true) { %> 
+ <td><font color="green"><%= refin[i].selected %></font></td>
+ <% }  if (refin[i].selected == false) { %>
+ <td><font color="red"><%= refin[i].selected %></font></td>
+ <% }  if (refin[i].selected === null || refin[i].selected === undefined) { %>
+  <td><%= refin[i].selected%></td>
+   <% }; %>
+ <td><%= refin[i].closed %></td>
+ <td><%= refin[i].excluded %></td>
+ <td><%= refin[i].start_contract_date %></td>
+  </tr>
+  <% }); %>
+  <% }; %>
+   <p></p>
+  </table>
+
+  <a class="btn btn-outline-info" type="submit" id="#bhiderr" onclick="hide()">Скрыть/показать</a>
+  <ul>Текущая ошибка
+    <li id="#tohide"><font color="#E6E6FA"><%= error%></font></li>
+  </ul>
+
+  <div class="table-block-div"><a id="#bshowj" onclick="hidejournal()" style="display: block"><font size="6">&rarr; Расширенный журнал статусов по заявке</font></a></div>
+
+  <table class="table table-striped table-dark" id = "#tjournal" style="display: none">
+  
+   <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата, время перехода в статус</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Имя статуса</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Решение СПР</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">ФИО и логин сотрудника</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Роль сотрудника</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Этап и статус андеррайтинга</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата, время закрытия статуса</font></th>
+   </tr>
+<tr>
+   <% stat.forEach(function(el, i, arr) { %>
+ 
+ <tr>
+ <td><%= stat[i].start_date %></td>
+ <td><font color="#AFEEEE"><%= stat[i].status_name %></font></td>
+ <td><%= stat[i].rtdm_decision_name %></td>
+ <th><%= stat[i].u_fio +" "+ stat[i].u_login %></th>
+ <td><%= stat[i].u_role %></td>
+ <td><%= stat[i].und_stage +" "+ stat[i].und_status_name %></td>
+ <td><%= stat[i].end_date %></td> 
+  </tr>
+ <% }); %>
+
+</table>
+
+<p></p>
+
+
+  <!--<a class="btn btn-outline-primary" type="submit" id="#bhidev" onclick="hideevents()" style="display: none">&darr; Скрыть таблицу</a>-->
+  <div class="table-block-div"><a id="#bshowev" onclick="hideevents()" style="display: block"><font size="6">&rarr; Журнал событий по заявке</font></a></div>
+  <!--<h2>Журнал событий по заявке 2003454120<font size="24">&darr;</font></h2>-->
+  <table class="table table-striped table-dark" id = "#tevents" style="display: none">
+  
+   <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата, время события</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Имя события</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Логин сотрудника, связанного с событием</font></th>
+   </tr>
+<tr>
+   <% event.forEach(function(el, i, arr) { %>
+ 
+ <tr>
+ <td><%= event[i].event_time %></td>
+ <td><font color="#AFEEEE"><%= event[i].event_description %>,</font></td>
+ <td><%= event[i].value %></td>
+  </tr>
+ <% }); %>
+
+</table>
+
+  <p></p>
+
+
+  <div class="table-block-div"><a id="#bshowt1" onclick="hide2()" style="display: block"><font size="6">&rarr; Хронология действующего процесса по заявке</font></a></div>
+
+  <table class="table table-striped table-dark" id = "#t1" style="display: none">
+  
+ <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">Схема процесса</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Номер версии</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Состояние задачи</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Имя задачи</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Тип задачи</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">ID задачи</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Assignee (на кого назнач.)</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата создания задачи</font></th> 
+    <th scope="col" class="colp"><font color="#FFDAB9">ExecutionId</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Время перехода в состояние</font></th>
+   </tr>
+<tr>
+   <% obj.forEach(function(el, i, arr) { %>
+ 
+ <tr>
+ <td><%= obj[i].proc_def_key_ %></td>
+ <td><%= obj[i].ver %></td>
+    <% if (obj[i].act_inst_state_ == 0) { %> 
+ <td><font color="yellow"><%= obj[i].act_inst_state_ %></font></td>
+ <td><font color="yellow"><%= obj[i].act_name_ %></font></td>
+ <% } if (obj[i].act_inst_state_ == 2) { %>
+ <td><font color="red"><%= obj[i].act_inst_state_ %></font></td>
+ <td><font color="red"><%= obj[i].act_name_ %></font></td>
+ <% }; %>
+  <%  if (obj[i].act_inst_state_ == 4) { %>
+ <td><font color="#008000"><%= obj[i].act_inst_state_ %></font></td>
+ <td><font color="#008000"><%= obj[i].act_name_ %></font></td>
+ <% }; %>
+  <%  if (obj[i].act_inst_state_ == 1) { %>
+ <td><font color="#F5760E"><%= obj[i].act_inst_state_ %></font></td>
+ <td><font color="#F5760E"><%= obj[i].act_name_ %></font></td>
+ <% }; %>
+  <%  if (obj[i].act_type_ == 'serviceTask') { %>
+ <td><font color="#FFFFF0"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+   <%  if (obj[i].act_type_ == 'userTask') { %>
+ <td><font color="#FA8072"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+   <%  if (obj[i].act_type_ == 'exclusiveGateway') { %>
+ <td><font color="#708090"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+    <%  if (obj[i].act_type_ == 'messageStartEvent') { %>
+ <td><font color="#66CDAA"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+     <%  if (obj[i].act_type_ == 'receiveTask') { %>
+ <td><font color="#CD5C5C"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+      <%  if (obj[i].act_type_ == 'startEvent') { %>
+ <td><font color="#00FF7F"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+       <%  if (obj[i].act_type_ == 'intermediateMessageThrowEvent') { %>
+ <td><font color="#FAFAD2"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+       <%  if (obj[i].act_type_ == 'boundaryError') { %>
+ <td><font color="#E6E6FA"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+        <%  if (obj[i].act_type_ == 'intermediateConditional') { %>
+ <td><font color="#FAFAD2"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+ <%  if (obj[i].act_type_ == 'subProcess') { %>
+ <td><font color="#FFF0F5"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+  <%  if (obj[i].act_type_ == 'noneEndEvent') { %>
+ <td><font color="#191970"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+ <%  if (obj[i].act_type_ == 'boundaryTimer') { %>
+ <td><font color="#E6E6FA"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+ <td><%= obj[i].act_id_ %></td>
+ <td><%= obj[i].assignee_ %></td>
+ <td><%= obj[i].start_time_ %></td>
+ <td><%= obj[i].execution_id_ %></td>
+ <td><%= obj[i].end_time_ %></td> 
+  </tr>
+ <% }); %>
+
+</table>
+
+ <p></p>
+
+  <!--<a class="btn btn-outline-primary" type="submit" id="#bhidet2" onclick="hide3()" style="display: none">&darr; Скрыть таблицу</a>-->
+  <div class="table-block-div"><a id="#bshowt2" onclick="hide3()" style="display: block"><font size="6">&rarr; Интеграционные логи по заявке</font></a></div>
+  <button class="btn btn-outline-warning" type="submit" onclick="showlongtext()">Показать/скрыть ВСЕ запросы/ответы</button>
+  <table class="table table-striped table-dark" id = "#t2" style="display: none">
+  
+ <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">interaction ID</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Целевая система (Endpoint)</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Результат</font></th>
+    <th scope="col" class="colp" ><font color="#FFDAB9">Текст ошибки</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата, время интеграции</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Запрос/ответ</font></th>
+ </tr>
+
+   <% int.forEach(function(el, i, arr) { %>
+ 
+ <tr>
+ <td><%= int[i].interaction_id %></td>
+ <td><font color="#AFEEEE"><%= int[i].System %></font></td>
+ <td><%= int[i].result %></td>
+ <td><div style="width: 700px;"><font color="#FF6347"><%= int[i].error_description %></font></div></td>
+ <td><%= int[i].interaction_ts %></td> 
+  <td >
+    <button class="btn btn-outline-info" type="submit" onclick="hide_<%=i%>()">Показать/скрыть запрос/ответ</button>
+    <p class="longtext" id="<%=i%>_long" style="display: none">
+      <font color="#FF8C00"><span><%= int[i].body %></span></font>
+    </p>
+ </td>
+</tr>
+ <% }); %>
+
+</table>
+<% int.forEach(function(el, i, arr) { %>
+<script>
+
+    function hide_<%=i%>() {
+
+      var elem = document.getElementById("<%=i%>_long");
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+      } else {
+
+        elem.style.display = "none";
+      }
+
+    }
+
+</script>
+<% }); %>
+
+
+  <script>
+
+    function retry(){
+
+
+      if ("<%=obj[obj.length-1].act_type_%>" !== 'intermediateConditional') {alert ("Заявка не зависла в буфере, перезапуск таска делать нельзя!")}
+
+        else {
+
+
+         if (confirm("Вы уверены что хотите выполнить перезапуск таски заявки <%-appnum%>?")){ alert("Упс, перезапуск таски из этой страницы пока не работает, просьба выполнить через Camunda Cockpit")}
+
+          else (alert("Действие отменено."))
+
+        }
+
+    }
+
+
+    function hide() {
+
+      var elem = document.getElementById("#tohide");
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+      } else {
+
+        elem.style.display = "none";
+      }
+
+    }
+
+          function hide2() {
+
+      var elem = document.getElementById("#t1");
+
+      var btn_hide = document.getElementById("#bhidet1");
+
+      var btn_show = document.getElementById("#bshowt1");
+      
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+       // btn_show.style.display = "none";
+       // btn_hide.style.display = "block";
+
+
+      } else {
+
+        elem.style.display = "none";
+       // btn_show.style.display = "block";
+       // btn_hide.style.display = "none";
+
+
+      }
+
+    }
+
+
+          function hide3() {
+
+      var elem = document.getElementById("#t2");
+
+      var btn_hide = document.getElementById("#bhidet2");
+
+      var btn_show = document.getElementById("#bshowt2");
+      
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+        //btn_show.style.display = "none";
+       // btn_hide.style.display = "block";
+
+
+      } else {
+
+        elem.style.display = "none";
+       // btn_show.style.display = "block";
+       // btn_hide.style.display = "none";
+
+
+      }
+
+    }
+
+             function hideevents() {
+
+      var elem = document.getElementById("#tevents");
+
+      var btn_hide = document.getElementById("#bhidev");
+
+      var btn_show = document.getElementById("#bshowev");
+      
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+       // btn_show.style.display = "none";
+       // btn_hide.style.display = "block";
+
+
+      } else {
+
+        elem.style.display = "none";
+       // btn_show.style.display = "block";
+       // btn_hide.style.display = "none";
+
+
+      }
+
+    }
+
+
+             function hidejournal() {
+
+      var elem = document.getElementById("#tjournal");
+
+      var btn_hide = document.getElementById("#bhidej");
+
+      var btn_show = document.getElementById("#bshowj");
+      
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+     //   btn_show.style.display = "none";
+      //  btn_hide.style.display = "block";
+
+
+      } else {
+
+        elem.style.display = "none";
+     //   btn_show.style.display = "block";
+     //   btn_hide.style.display = "none";
+
+
+      }
+
+    }
+
+
+
+
+      function hideflex() {
+
+      var elem = document.getElementById("x");
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+      } else {
+
+        elem.style.display = "none";
+      }
+
+    }
+    
+
+
+
+        function showlongtext() {
+
+      var elem = document.getElementsByClassName('longtext');
+
+      for (let i=0; i < elem.length; i++)
+
+      {
+
+      if (elem[i].style.display === "none") {
+
+
+        elem[i].style.display = "block";
+      } else {
+
+        elem[i].style.display = "none";
+      }
+
+    }
+  }
+
+
+       function errorProcess() {
+
+         if ("<%-obj[0].act_name_%>" !== 'Обработка ошибки') {alert ("Заявка НЕ в ошибке в BPM, обработку ошибки делать нельзя!")}
+
+          else {
+
+
+         if (confirm("Вы уверены что хотите выполнить обработку ошибки по заявке <%-appnum%>?")){ alert("Упс, обработка ошибки из этой страницы пока не работает, просьба выполнить через РКК")}
+
+          else (alert("Действие отменено."))
+
+        }
+
+    }
+
+
+  
+
+
+
+
+
+
+  </script>
+
+
+
+ </body>
+</html>
+
+

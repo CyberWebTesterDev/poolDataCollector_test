@@ -1,0 +1,95 @@
+<div id="part-container">
+
+    <div class="table-block-div"><a style="display: block"><font size="6"> Логи из Kibana (ELK)</font></a></div>
+
+
+    <div class="div-tables-container" id="elkContainer">
+
+    <table class="table table-striped table-dark" id = "elkData" style="display: block">
+
+
+    <% elkHits.forEach( (source, i) => { %>
+        <% if (i < 1) { let counter = 0; %>
+        <thead>
+            <tr>
+                <% for (let key in source) { %>
+
+                    
+                    <% if (counter < 9 ) { %>
+                    <th scope="col" class="colp"><font color="#FFDAB9"><%= key %></font></th>
+                    <% }; %>
+                    <% if (counter == 9) { %>
+<!--                    <th scope="col" class="colp"><font color="#FFDAB9"><%= key %></font></th>-->
+<!--                    <th scope="col" class="colp"><font color="#FFDAB9">stack_trace</font></th>-->
+                    <% }; %>
+                    <%  counter++; %>
+                <% }; %>
+            </tr>
+        </thead>
+        <% }; %>
+        <% if (source.level == 'ERROR') { %>
+            <tr style="border-style: solid; border-color: #b53636; border-width: 3px;">         
+        <% } else { %> 
+            <tr>
+        <% }; %>
+        <% for (let key in source) { %>
+
+            <% if (key == 'message') { %>
+                <td >
+                    <button color="#cddeec" type="submit" id="<%=i%>_btn_2" onclick="hideReqResp2(event)">Показать/скрыть запрос/ответ</button>
+                    <span style="cursor: pointer; font-size: 30px;" id="<%=i%>_textRead_2" onclick="SupportPageController.callModalTable(this.id)">&#128269;</span>
+                    <p class="longtext2"></p>
+                    <p class="longtext2" id="<%=i%>_long_2" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                    <%= source[key] %>
+                    </p>
+                </td>
+                <% } else if (key == 'Посмотреть лог') { %>
+                    <td >
+                        <span style="cursor: pointer; font-size: 30px;" id="<%=i%>_fullTextRead_2" onclick="SupportPageController.callModalTableFullInfo(this.id)">&#128065;</span>
+                    </td>
+            <% } else if (key == '@timestamp') { %>
+                    <td style="width: 200px; word-wrap: normal; display: inline-flex;">
+                        <span style="cursor: pointer; font-size: 30px; background-color: #0f2542" id="<%=i%>_showDocInKibana" onclick="SupportPageController.callModalTableFullInfo(this.id)">
+                            <a href="https://kibana.test-stand.tst.int.***.ru/app/discover#/doc/9e905f70-b88e-11ea-ad80-af2592106d05/<%=source._index%>?id=<%=source._id%>" target="_blank">&#128065;</a>
+                        </span>
+                        <span style="cursor: pointer; font-size: 30px;" id="<%=i%>_fullTextRead_2"          onclick="SupportPageController.callModalTableFullInfo(this.id)">&#128065;</span>
+                        <p class="commontd"><%= source[key].split('T')[0] +' '+ source[key].split('T')[1].split('+')[0] %></p>
+                    </td>
+            <% } else if (key == 'stack_trace') { %>
+                <td >
+                        <button on type="submit" id="<%=i%>_btn_3" onclick="hideReqResp3(event)">Показать/скрыть стектрейс</button>
+                        <span style="cursor: pointer; font-size: 30px;" id="<%=i%>_textRead_3" onclick="SupportPageController.callModalTable(this.id)">&#128269;</span>
+                        <p class="longtext3"></p>
+                        <p color="#d2995c" class="longtext3" id="<%=i%>_long_3" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                        <%= source[key] %>
+                        </p>
+                    </td>
+                <% } else if (key != 'stack_trace' && key != 'message' && key != 'Посмотреть лог') { %>
+            
+                <% if (source[key] == 'ERROR') { %>
+                    <td style="color: red;"><p class="level"><%= source[key] %></p></td>
+                <% } else if (key == 'app_name') { %>
+                    <td style="color: aqua;"><p class="app"><%= source[key] %></p></td>
+                <% } else if (key == 'logger_name') { %>
+                    <td style="color:#84ff9a;"><p class="logger"><%= source[key] %></p></td>
+                <% } else if (source[key] == 'WARN') { %>
+                    <td style="color: #ff9d0a;"><p class="commontd"><%= source[key] %></p></td>
+                <% } else if (key == '_index') { %>
+                <% } else if (key == '_id') { %>
+                    <% } else if (key == 'thread_name') { %>
+<!--                    TO DO манипуляции со временем +- ms-->
+                    <td><a target="_blank" href="http://localhost:3000/kibana/<%=source.thread_name%>/<%=source.app_name%>"><%= source[key] %></a></td>
+                    <% } else { %>
+                    <td><p class="commontd"><%= source[key] %></p></td>
+                    <% } %>
+            <% }; %>
+        <% }; %>
+    </tr>
+
+
+    <% }); %>
+
+    </table>
+    </div>
+
+</div>

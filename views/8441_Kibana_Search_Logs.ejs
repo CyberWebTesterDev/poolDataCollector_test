@@ -1,0 +1,47 @@
+<%- include('headers/header-with-bootstrap.ejs') %>
+<body>
+    <div class="headlabel">
+            <h1 onclick="SupportPageController.showModal()">RKK Adminkey</h1>
+    </div>
+
+    <h2>Страница предназначена для поиска логов в Kbana (ELK) по произвоильным параметрам и диапазону</h2><br>
+
+    <div id="modalContainer"></div>
+
+
+    <%- include('buttons/get-elk-logs-2.ejs') %>
+            
+
+    <div id="elk-block-container">
+    </div>
+    <div id="elk-search-params" style="display: none"></div>
+
+    <%- include('scripts/scripts-src.ejs') %>
+
+<script id="temp-src">
+
+const loadKibanaValidatorScript = (callerId = false) => {
+    
+    document.getElementById('control-panel').style.display = 'block';
+
+    if (callerId) {
+      document.getElementById(callerId).parentNode.removeChild(document.getElementById(callerId));
+    }
+
+    console.log(`loadKibanaValidatorScript: loading ELK page search scripts`+'\n');
+
+
+      let src = document.createElement('script');
+      src.id = 'kibana-script';
+      //src.src = '/public/js/8441_support-kibana-validators.js';
+      src.src = '/public/js/8441_kibana-utils.js';
+      document.body.appendChild(src);
+
+}
+
+loadKibanaValidatorScript('temp-src');
+
+</script>
+
+</body>
+

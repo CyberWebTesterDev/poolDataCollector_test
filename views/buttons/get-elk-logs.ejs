@@ -1,0 +1,80 @@
+
+
+            <div class="table-block-div-panel" style="cursor: auto;"><a id="searchElkLogsPanel" onclick="hideElement('control-panel')" style="display: block; cursor: pointer"><font size="5">&rarr; Панель поиска логов</font></a>
+                <div id="control-panel" style="display: none; margin-top: 50px; margin-bottom: 30px;">
+                        <%- include('../partitions/info-component-elk.ejs') %>
+                    <div class="style-panel" style="display: block;">
+
+                            
+                        
+                        <div id="elk-datetime-form" >
+                            <button onclick="cleanTime(); return false">Очистить время</button>
+                            <div onclick="synchronizeTime()" class="control-time" id="synchronizeTime">&#8644;</div>
+                            <div class="time-control-block">
+                                <div onclick="shiftTime('start', 'increment')" class="control-time" id="incrementStartTime">&#8593;</div>
+                                <div onclick="shiftTime('end', 'increment')" class="control-time" id="incrementEndTime">&#8593;</div>
+                                <div onclick="shiftTime('start', 'decrement')" class="control-time" id="decrementStartTime">&#8595;</div>
+                                <div onclick="shiftTime('end', 'decrement')" class="control-time" id="decrementEndTime">&#8595;</div>
+                            </div>
+                                <div class="elk-datetime-search" 
+                                style="display: inline-grid; background-color: #557071; color: #d5e6f5;">                         
+                                    <label for='start'>Начало</label>       
+                                    <input onkeyup="checkDateFields(this.id)" id="start" type="datetime-local" name="start">
+                                    
+                                    <label for='end'>Конец</label>
+                                    <input onkeyup="checkDateFields(this.id)" id="end" type="datetime-local" name="end">
+                                    <input oninput="simpleCheckFields(this.id)" id="additional" type="text" placeholder="Условие поиска" style="margin-top: 25px;">
+                                    <input oninput="simpleCheckFields(this.id)" id="additional2" type="text" placeholder="Условие поиска" style="margin-top: 25px;">
+                                    <input oninput="simpleCheckFields(this.id)" id="additional3" type="text" placeholder="Условие поиска" style="margin-top: 25px;">
+                                    
+                                    <div class="selectors-block">
+
+                                        <span><input onclick="checkboxChecker()" type="checkbox" id="isFieldNamePicked" class="checkbox-kibana"></span>
+
+                                        <label for="fieldNameSelector" style="margin-left: 15px; margin-right: 10px;">Поле</label>
+                                        <select class="form-control w200" id="fieldNameSelector">
+                                            <option>app_name</option>
+                                            <option>thread_name</option>
+                                            <option>stack_trace</option>
+                                            <option>level</option>
+                                            <option>message</option>
+                                            <option>logger_name</option>
+                                        </select>
+                                        <select class="form-control w300 operators" id="fieldOperatorSelector" value="OR">
+                                                <option>OR</option>    
+                                                <option>AND</option>
+                                        </select>
+                                        <input onkeyup="simpleCheckFields(this.id)" id="fieldValue" type="text" placeholder="Условие поиска" class="field-values-kibana-input w300">
+                                    </div>
+                                    <div class="selectors-block">
+
+                                        <span><input onclick="checkboxChecker()" type="checkbox" id="isFieldNamePicked2" class="checkbox-kibana"></span>
+
+                                        <label for="fieldNameSelector2" style="margin-left: 15px; margin-right: 10px;">Поле</label>
+                                        <select class="form-control w200" id="fieldNameSelector2">
+                                            <option>app_name</option>
+                                            <option>thread_name</option>
+                                            <option>stack_trace</option>
+                                            <option>level</option>
+                                            <option>message</option>
+                                            <option>logger_name</option>
+                                        </select>
+                                        <select class="form-control w300 operators" id="fieldOperatorSelector2" value="OR">
+                                            <option>OR</option>    
+                                            <option>AND</option>         
+                                        </select>
+                                        <input onkeyup="simpleCheckFields(this.id)" id="fieldValue2" type="text" placeholder="Условие поиска" class="field-values-kibana-input w300">
+                                    </div>
+                                    <label style="color: red; display: none; font-size: 18px; word-wrap:break-word;" id="text2">Хотя бы одно поле из подкрашенных должно быть заполнено</label>
+                                    <button onclick="middleCheckerElk();" id="getELKlogsWithRange" class="btn btn-primary" type="button" role="button" style="margin-top: 20px; cursor: not-allowed;" disabled>Получить логи из Kibana по заявке за период</button>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        

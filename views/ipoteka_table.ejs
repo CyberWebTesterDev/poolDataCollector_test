@@ -1,0 +1,41 @@
+      <% if (akk.length !== 0) { %>
+   <p></p>
+
+  </table>
+  <p></p>
+   <table class="table table-dark" id = "#test">
+  <h2>Информация об объекте недвижимости</h2>
+   <tr>
+
+    <th><font color="#FFDAB9">ID объекта недвижимости</font></th>
+    <th><font color="#FFDAB9">Год постройки</font></th>
+    <th><font color="#FFDAB9">Этажность</font></th>
+    <th><font color="#FFDAB9">Жилая площадь</font></th>
+    <th><font color="#FFDAB9">Общая площадь</font></th>
+    <th><font color="#FFDAB9">Количество комнат</font></th>
+    <th><font color="#FFDAB9">Тип</font></th>
+    <th><font color="#FFDAB9">Тип здания</font></th>
+    <th><font color="#FFDAB9">Отделка</font></th>
+    <th><font color="#FFDAB9">rtdm_id</font></th>
+    <th><font color="#FFDAB9">Проверен?</font></th>
+   </tr>
+   <% akk.forEach(function(el, i, arr) { %>
+   <tr>
+ <td><%= akk[i].id %></td>
+ <td><%= akk[i].built_year %></td>
+ <td><%= akk[i].floor %></td>
+ <td><%= akk[i].living_area %></td>
+ <td><%= akk[i].total_area %></td>
+ <td><%= akk[i].rooms %></td>
+ <td><%= akk[i].case_type_est %></td>
+ <td><%= akk[i].case_walls %></td>
+ <td><%= akk[i].case_repair %></td>
+ <td><%= akk[i].rtdm_id %></td>
+  <% if (akk[i].real_state_check !== true) { %> 
+ <td><font color="red"><%= akk[i].real_state_check %></font></td>
+ <% }  else { %>
+ <td><font color="#008000"><%= akk[i].real_state_check %></font></td>
+ <% }; %>
+  </tr>
+  <% }); %>
+  <% }; %>

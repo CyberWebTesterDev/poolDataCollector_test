@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+
+  <style type="text/css">
+    .longtext2 {
+
+      word-wrap: break-word;
+      width: 900px;
+
+    }
+
+
+.longtext {
+  display: block;
+  width: 900px;
+  height: 10px;
+  border: 1px solid black;
+  padding: 5px;
+  margin-top: 5px;
+  outline: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+.longtext:focus, button:focus ~ .longtext {height: auto;}
+
+
+  </style>
+  <title>Действующий процесс</title>
+ </head>
+ <body>
+  <button class="btn btn-primary" id="#bhide" type="submit" onclick="hide1()">Скрыть</button>
+  <table border="1" id = "#t1">
+   <caption>Таблица 1</caption>
+
+   <tr>
+    <th>Correlation ID</th>
+    <th>Целевая система (Endpoint)</th>
+    <th>Результат</th>
+    <th>Текст ошибки</th>
+    <th>Дата, время интеграции</th>
+    <th>Запрос/ответ</th>
+   </tr>
+ <tr>
+ <td>d6ae5fae-2ec3-49e8-a938-718c810ec519</td>
+ <td>СПР</td>
+ <td>Успешно</td>
+ <th>NULL</th>
+ <td>2019-12-05 13:12:04</td>
+ <td >
+  <p class="longtext2">
+ {"multipleFindProducts":{"3829864":{"subProgramId":"9a20b7bc-3df8-4c15-8118-04dc3bfc2509","subProgramVersionId":"1299","directionCode":"01.00.00","subProgramCode":"01.01.06","extSystemCode":"GPB_DO","branchCode":"000","frontOfficeCode":"099/1008","fundCode":"RUR","insuranceCode":"0","birthDate":"1970-03-25","purposeCode":"2","clientCategoryCode":"2","clientSubCategoryCode":"2C","pcFlag":true,"preapprovedCode":"0","actualDate":"2019-11-28"},"3829865":{"subProgramId":"9a20b7bc-3df8-4c15-8118-04dc3bfc2509","subProgramVersionId":"1299","directionCode":"01.00.00","subProgramCode":"01.01.06","extSystemCode":"GPB_DO","branchCode":"000","frontOfficeCode":"099/1008","fundCode":"RUR","insuranceCode":"1","birthDate":"1970-03-25","purposeCode":"2","clientCategoryCode":"2","clientSubCategoryCode":"2C","pcFlag":true,"preapprovedCode":"0","actualDate":"2019-11-28"}},"responseSingleCollection":true}
+</p>
+ </td>
+</tr>
+
+  </table>
+<p></p>
+
+  <button class="btn btn-primary" id="#bhide2" type="submit" onclick="hide2()">Скрыть</button>
+  <table border="1" id = "#t2">
+   <caption>Таблица 2</caption>
+
+   <tr>
+    <th>Correlation ID</th>
+    <th>Целевая система (Endpoint)</th>
+    <th>Результат</th>
+    <th>Текст ошибки</th>
+    <th>Дата, время интеграции</th>
+    <th>Запрос/ответ</th>
+   </tr>
+ <tr>
+ <td>d6ae5fae-2ec3-49e8-a938-718c810ec519</td>
+ <td>СПР</td>
+ <td>Успешно</td>
+ <th>NULL</th>
+ <td>2019-12-05 13:12:04</td>
+ <td >
+  <div id = "txt" class="longtext" tabindex="0">
+    {"multipleFindProducts":{"3829864":{"subProgramId":"9a20b7bc-3df8-4c15-8118-04dc3bfc2509","subProgramVersionId":"1299","directionCode":"01.00.00","subProgramCode":"01.01.06","extSystemCode":"GPB_DO","branchCode":"000","frontOfficeCode":"099/1008","fundCode":"RUR","insuranceCode":"0","birthDate":"1970-03-25","purposeCode":"2","clientCategoryCode":"2","clientSubCategoryCode":"2C","pcFlag":true,"preapprovedCode":"0","actualDate":"2019-11-28"},"3829865":{"subProgramId":"9a20b7bc-3df8-4c15-8118-04dc3bfc2509","subProgramVersionId":"1299","directionCode":"01.00.00","subProgramCode":"01.01.06","extSystemCode":"GPB_DO","branchCode":"000","frontOfficeCode":"099/1008","fundCode":"RUR","insuranceCode":"1","birthDate":"1970-03-25","purposeCode":"2","clientCategoryCode":"2","clientSubCategoryCode":"2C","pcFlag":true,"preapprovedCode":"0","actualDate":"2019-11-28"}},"responseSingleCollection":true}
+  </div>
+ </td>
+</tr>
+  </table>
+   <script>
+
+
+    function hide1() {
+
+      var elem = document.getElementById("#t1");
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+      } else {
+
+        elem.style.display = "none";
+      }
+
+    }
+
+
+        function hide2() {
+
+      var elem = document.getElementById("#t2");
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+      } else {
+
+        elem.style.display = "none";
+      }
+
+    }
+
+  </script>
+
+ </body>
+</html>
+
+

@@ -1,0 +1,77 @@
+
+
+<% if (additionalSupportData.issueBugFlag) { %>
+
+    <div class="container-flex" id="parentDiv">
+        <label class=>Подробности по заявке</label>
+        <div class="row" id="childDiv">
+            <div class="col gray-border">Количество попыток выдачи из ошибки</div>
+            <div class="col gray-border light-green"><%= additionalSupportData.errorStatusEntryCounter %></div>
+            <div class="w-100"></div> 
+            <div class="col gray-border">Количество попыток репроцессинга зависания </div>
+            <div class="col gray-border light-green"><%= additionalSupportData.issueStatusEntryCounter %></div>
+            <div class="w-100"></div> 
+            <div class="col gray-border">Дата подписания договора</div>
+            <div class="col gray-border light-green"><%= additionalSupportData.contractDateSign %></div>
+            <div class="w-100"></div> 
+            <div class="col gray-border">Срок действия договора (рабочих дней)</div>
+            <div class="col gray-border light-green"><%= additionalSupportData.contractValidDurationDays %></div>
+            <div class="w-100"></div> 
+            <% if (additionalSupportData.isContractOutDated) { %>
+                <div class="col reddish-border">Сколько времени прошло с момента подписания</div>
+                <div class="col reddish-border light-green"><%= additionalSupportData.dateDifferenceBetweenSignAndNowDays + ' дней (календарных) или ' +  additionalSupportData.dateDifferenceBetweenSignAndNowHours + ' часов или ' + additionalSupportData.dateDifferenceBetweenSignAndNowMinutes + ' минут ' %></div>
+                <div class="w-100"></div>
+            <% }; %>
+            <% if (!additionalSupportData.isContractOutDated) { %>
+                <div class="col gray-border">Сколько времени прошло с момента подписания</div>
+                <div class="col gray-border light-green"><%= additionalSupportData.dateDifferenceBetweenSignAndNowDays + ' дней (календарных) или ' +  additionalSupportData.dateDifferenceBetweenSignAndNowHours + ' часов или ' + additionalSupportData.dateDifferenceBetweenSignAndNowMinutes + ' минут ' %></div>
+                <div class="w-100"></div>
+            <% }; %>
+            <div class="col gray-border">Первая ошибка возникла </div>
+            <div class="col gray-border light-green"><%= additionalSupportData.firstErrorEntryDateTime %></div>
+            <div class="w-100"></div> 
+            <div class="col gray-border">Первая попытка выдачи из ошибки </div>
+            <div class="col gray-border light-green"><%= additionalSupportData.firstErrorTryDateTime %></div>
+            <div class="w-100"></div> 
+            <div class="col gray-border">Последняя попытка выдачи из ошибки </div>
+            <div class="col gray-border light-green"><%= additionalSupportData.lastErrorEntryDateTime %></div>
+            <div class="w-100"></div> 
+            <div class="col gray-border">Сотрудник выполнявший последнюю попытку выдачи </div>
+            <div class="col gray-border light-green"><%= additionalSupportData.employeeRetry %></div>
+            <div class="w-100"></div>
+            <div class="col gray-border">Первый переход в статус "Выдача кредита" </div>
+            <div class="col gray-border light-green"><%= additionalSupportData.firstIssueEntryDateTime %></div>
+            <div class="w-100"></div> 
+            <div class="col gray-border">Последний переход в статус "Выдача кредита" </div>
+            <div class="col gray-border light-green"><%= additionalSupportData.lastIIssueEntryDateTime %></div>
+            <div class="w-100"></div> 
+            <div class="col gray-border">Время нахождения в текущем статусе </div>
+            <div class="col gray-border light-green"><%= additionalSupportData.dateDifferenceBetweenLastStatusAndNow %></div>
+        </div>
+    </div>
+
+<% }; %>
+
+<% if (!additionalSupportData.issueBugFlag && additionalSupportData.errorFlag) { %>
+
+    <div class="container-flex" id="parentDiv">
+        <label class=>Подробности по заявке</label>
+        <div class="row" id="childDiv">
+            <div class="col gray-border">Количество попыток перезапуска ошибки</div>
+            <div class="col gray-border light-green"><%= additionalSupportData.errorStatusEntryCounter - 1 %></div>
+            <div class="w-100"></div> 
+            <div class="col gray-border">Количество переходов в статус "Ошибка"</div>
+            <div class="col gray-border light-green"><%= additionalSupportData.errorStatusEntryCounter %></div>
+            <div class="w-100"></div> 
+            <div class="col gray-border">Дата и время первой ошибки</div>
+            <div class="col gray-border light-green"><%= additionalSupportData.firstErrorEntryDateTime %></div>
+            <div class="w-100"></div> 
+            <div class="col gray-border">Дата и время свежей ошибки</div>
+            <div class="col gray-border light-green"><%= additionalSupportData.lastErrorEntryDateTime %></div>
+            <div class="col gray-border">Сотрудник выполнявший последнюю попытку обработки ошибки </div>
+            <div class="col gray-border light-green"><%= additionalSupportData.employeeRetry %></div>
+            <div class="w-100"></div>
+        </div>
+    </div>
+    
+<% }; %>

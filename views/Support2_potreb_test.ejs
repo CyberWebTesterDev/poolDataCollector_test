@@ -1,0 +1,568 @@
+
+<div class="headlabel">
+  <h1 onclick="showModal()">RKK Adminkey</h1>
+</div>
+<div id="modalContainer"></div>
+
+<div id="applicationBoard">
+
+<div class="gapCont"></div>
+<p></p>
+
+
+
+<% if (searchData[0].appstatus_name !==  applicationData[0].app_status_id) { %>
+ <div class="alert alert-warning" role="alert" id=processoff>
+  <font size="5">По заявке <%= appnum%> зафиксирована рассинхронизация статусов!</font>
+  </div>
+  <p></p>
+<% }; %>
+
+
+<% if (searchData[0].appstatus_name === 'Ошибка') { %>
+<a class="btn btn-danger" href="<%= linkData[0] %>" role="button" target="_blank">Обработка ошибки в РКК</a>
+<% } else { %>
+<a class="btn btn-primary" href="<%= linkData[0] %>" role="button" target="_blank">Открыть журнал статусов в РКК</a>
+<% }; %>
+<a class="btn btn-info" href="<%= linkData[3] %>" role="button" target="_blank">Авторедирект в РКК</a>
+
+<a class="btn btn-primary" href="<%= linkData[1] %>" role="button" target="_blank">Сканы документов</a>
+<a class="btn btn-primary" href="<%= linkData[2] %>" role="button" target="_blank">Список файлов</a>
+<a class="btn btn-primary" href="https://ui.test-stand.tst.int.***.ru/sling/filelist/<%= applicationData[0].id %>" role="button" target="_blank">Метаданные файлов</a> 
+
+</div>
+
+<div id="applicationProcessBoard">
+
+
+<% if (processData.length === 0) { %>
+
+  <div class="alert alert-danger" role="alert" id=processoff>
+  <font size="5">По заявке <%= appnum%> нет действующего процесса!</font>
+  </div>
+  <p></p>
+
+<% }; %>
+
+<% if (processData.length > 1) { %>
+
+  <div class="alert alert-warning" role="alert" id=processoff>
+  <font size="5">По заявке <%= appnum%> процесс задублирован. Обратите внимание, что хронология задач отсутствует</font>
+<% processData.forEach((el, i) => { %>
+      <a href="https://test.app.rcl.int.***.ru/app/cockpit/default/#/process-instance/<%= el.proc_inst_id_ %>" role="button" target="_blank">Процесс #<%= i+1 %></a>
+<%});%>
+  </div>
+  <p></p>
+<% }; %>
+
+
+
+  <% if (processData.length === 1) { %>
+<% let idx = tasksData.findIndex(el => el.act_inst_state_ === 0); %>
+<% if ( idx !== -1 && tasksData[idx].act_type_ === 'intermediateConditional')  { %>
+<a class="btn btn-warning" href="https://test.app.rcl.int.***.ru/app/cockpit/default/#/process-instance/<%= processData[0].proc_inst_id_ %>" role="button" target="_blank">Обработать зависание в Camunda Cockpit</a>
+<% } else { %>
+<a class="btn btn-primary" href="https://test.app.rcl.int.***.ru/app/cockpit/default/#/process-instance/<%= processData[0].proc_inst_id_ %>" role="button" target="_blank">Перейти в Camunda Cockpit</a>
+<% }; %>
+<% }; %>
+
+
+</div>
+
+
+
+
+  <p></p>
+
+
+  <table class="table table-dark">
+   <h2>Основные данные по заявке <%= appnum%></h2>
+   <tr>
+    <th><font color="#FFDAB9">ID Заявки</font></th>
+    <th><font color="#FFDAB9">Направление</font></th>
+    <th><font color="#FFDAB9">Канал поступления</font></th>
+    <th><font color="#FFDAB9">Канал выдачи</font></th>
+    <% if (searchData[0].api) { %>
+    <th><font color="#FFDAB9">Api</font></th>
+    <% } %>
+    <% if (applicationData[0].partner_id) { %>
+    <th><font color="#FFDAB9">Контрагент</font></th>
+    <% } %>
+    <th><font color="#FFDAB9">Наименование ДО</font></th>
+    <th><font color="#FFDAB9">Код ДО</font></th>
+    <th><font color="#FFDAB9">Статус (реестр)</font></th>
+    <th><font color="#FFDAB9">Дата создания заявки</font></th>
+    <th><font color="#FFDAB9">Дата перехода в статус</font></th>
+    <th><font color="#FFDAB9">Assignee</font></th>
+    <th><font color="#FFDAB9">Метод</font></th>
+   </tr>
+   <tr>
+ <td><%= applicationData[0].id %></td>
+ <td><font color="#AFEEEE"><%= searchData[0].credit_type_name %></font></td>
+ <td><%= searchData[0].sale_channel_name %></td>
+ <% if (!searchData[0].issue_channel) { %> 
+ <td>NULL</td>
+ <% } else { %>
+ <td><%= searchData[0].issue_channel %></td>
+ <% } %>
+ <% if (searchData[0].api) { %> 
+ <td><font color="green">&#10003;</font></td>
+ <% }; %>
+ <% if (applicationData[0].partner_id) { %>
+ <td><%= applicationData[0].partner_id %></td>
+ <% }; %>
+ <td><%= searchData[0].branch_unit_name%></td>
+ <td><%= searchData[0].branch_unit_id %></td>
+ <td><font color="#D2691E"><%= searchData[0].appstatus_name %></font></td>
+
+ <td><%= searchData[0].creation_date%></td>
+ <th><%= searchData[0].date_status %></th>
+ <th><%= searchData[0].assignee %></th>
+ <td><%= searchData[0].method %></td>
+  </tr>
+  </table>
+
+<p></p>
+
+
+<% if (tasksData.length > 0) { %>
+
+<% if (tasksData[tasksData.length-1].Error) { %>
+
+<% let idx = tasksData.findIndex(el => el.act_inst_state_ === 0); %>
+<% if ( tasksData[idx].act_type_ !== 'intermediateConditional' && searchData[0].appstatus_name !== 'Ошибка')  { %>
+
+    <a class="btn btn-outline-info" type="submit" id="#bhiderr" onclick="hideElement('#tohide')">Скрыть/показать</a>
+  <ul><font color="yellow" style="font: bold;">Неактуальная</font> ошибка
+    <li id="#tohide"><font color="DimGrey"><%= tasksData[tasksData.length-1].Error %></font></li>
+  </ul>
+
+
+ <% } else { %>
+
+     <a class="btn btn-outline-info" type="submit" id="#bhiderr" onclick="hideElement('#tohide')">Скрыть/показать</a>
+  <ul>Текущая ошибка
+    <li id="#tohide"><font color="#E6E6FA"><%= tasksData[tasksData.length-1].Error %></font></li>
+  </ul>
+
+ <% }; %>
+ <% }; %>
+ <% }; %>
+
+
+<div class="table-block-div"><a onclick="hideElement('divTableContainer#1')" style="display: block"><font size="6">&darr; Дополнительные данные по заявке</font></a></div>
+
+
+<div class="div-tables-container" id="divTableContainer#1" style="display: none">
+
+  <div class="table-block-div-child"><a style="display: block"><font size="6">&darr; Данные заявки</font></a></div>
+
+  <table class="table table-dark" id = "applicationData" style="display: block">
+  
+   <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">Субкатегория по заявке</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Тип анкеты</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Фактический статус</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Этап заявки</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Время перехода в факт.статус</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">ID заявки в Икар</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Сотрудник, заводивший заявку</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Сотрудник, изменявший заявку</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Тип предодобренного предложения</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата обращения клиента в ДО</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">ID ЗНО</font></th>
+    <% if (applicationData[0].bpm_process_instance_id !== '00000000-0000-0000-0000-000000000000') { %>
+    <th scope="col" class="colp"><font color="#FFDAB9">ID процесса в BPM</font></th>
+    <% }; %>
+    <th scope="col" class="colp"><font color="#FFDAB9">Признак обращения клиента в офис</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Признак оформления сотрудником КЦ</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Максимальная дата заключения договора</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Канал выдачи</font></th>
+
+   </tr>
+<tr>
+   <% applicationData.forEach(function(el) { %>
+ 
+ <tr>
+ <td><%= el.app_sub_category_id %></td>
+ <td><%= el.type_id %></td>
+ <td><font color="#AFEEEE"><%= el.app_status_id %></font></td>
+ <td><%= el.app_stage %></td>
+ <td><%= el.date_status %></td>
+ <td><%= el.app_ikar_number %></td>
+ <td><%= el.employee_login %></td>
+ <td><%= el.change_employee_login %></td>
+ <td><%= el.preapproved %></td>
+ <td><%= el.contact_office_date %></td>
+ <td><%= el.request_service_id %></td>
+ <% if (applicationData[0].bpm_process_instance_id !== '00000000-0000-0000-0000-000000000000') { %>
+ <td><%= el.bpm_process_instance_id %></td>
+ <% }; %>
+  <% if (el.contact_office) { %> 
+ <td>&#10003;</td>
+ <% }  else { %>
+ <td></td>
+ <% }; %>
+   <% if (el.employee_call_center_flag) { %> 
+ <td>&#10003;</td>
+ <% }  else { %>
+ <td></td>
+ <% }; %>
+ <td><%= el.max_conclusion_contract_date %></td>
+ <td><%= el.channel_of_issue  %></td>
+
+  </tr>
+ <% }); %>
+</table>
+
+</div>
+
+
+ <p></p>
+ <div class="table-block-div"><a onclick="hideElement('divTableContainerParameters')" style="display: block"><font size="6">&darr; Параметры заявки</font></a></div>
+
+ <div class="div-tables-container" id="divTableContainerParameters" style="display: none">
+   <table class="table table-dark" id = "#t3">
+   <tr>
+    <th><font color="#FFDAB9">Тип параметров</font></th>
+    <th><font color="#FFDAB9">Версия и код субпрограммы</font></th>
+    <th><font color="#FFDAB9">Сумма кредита</font></th>
+    <th><font color="#FFDAB9">Ставка</font></th>
+    <th><font color="#FFDAB9">Ежемесячный платеж</font></th>
+    <th><font color="#FFDAB9">Тип платежа</font></th>
+    <th><font color="#FFDAB9">Срок кредита</font></th>
+    <th><font color="#FFDAB9">Цель кредита</font></th>
+    <th><font color="#FFDAB9">Наличие страховки</font></th>
+    <th><font color="#FFDAB9">Признак подписания договора/оферты</font></th>
+    <th><font color="#FFDAB9">Дата подписания</font></th>
+    <th><font color="#FFDAB9">Ставка при отключении от КДС</font></th>
+    <th><font color="#FFDAB9">ДО выдачи кредита</font></th>
+    <th><font color="#FFDAB9">ФИО подписанта</font></th>
+    <% parametersData.forEach(function(el) { %>
+    <% if (el.count_selected_liabilities) { %>
+    <th><font color="#FFDAB9">Количество выбранных к реф. обязательств</font></th>
+    <% }; %>
+    <% if (el.total_debt_amount && el.total_debt_amount !== '0.00') { %>
+    <th><font color="#FFDAB9">Сумма общего долга (реф.)</font></th>
+    <% }; %>
+    <% if (el.additional_amount && el.additional_amount !== '0.00') { %>
+    <th><font color="#FFDAB9">Доп.сумма</font></th>
+    <% }; %>
+    <% }); %>
+   </tr>
+   <% parametersData.forEach(function(el) { %>
+   <% if (el.type_id === 'Выданные') { %> 
+   <tr class="choosenElement">
+    <% }  else { %>
+    <tr>
+    <% }; %>
+ <td><%= el.type_id%></td>
+ <td><%= el.sub_program_version + ' ' + el.sub_program_id %></td>
+ <td><%= el.credit_amount%></td>
+ <td><%= el.interest_rate%></td>
+ <td><%= el.monthly_payment%></td>
+ <td><%= el.payment_type_id%></td>
+ <td><%= el.credit_term%></td>
+ <td><%= el.credit_target_id%></td>
+ <% if (el.insurance) { %> 
+ <td>&#10003;</td>
+ <% }  else { %>
+ <td></td>
+ <% }; %>
+ <% if (el.offer_signed) { %> 
+ <td>&#10003;</td>
+ <% }  else { %>
+ <td></td>
+ <% }; %>
+ <td><%= el.date_sign%></td>
+ <td><%= el.interest_rate_without_insurance%></td>
+ <td><%= el.branch_unit_id %></td>
+ <td><%= el.signer_fio  %></td>
+  <% if (el.count_selected_liabilities) { %>
+ <td><%= el.count_selected_liabilities %></td>
+ <% } else { %>
+ <td><%= el.count_selected_liabilities %></td>
+ <% }; %>
+ <% if (el.total_debt_amount && el.total_debt_amount !== '0.00') { %>
+ <td><%= el.total_debt_amount %></td>
+ <% }; %>
+ <% if (el.additional_amount && el.additional_amount !== '0.00') { %>
+ <td><%= el.additional_amount  %></td>
+ <% }; %>
+
+  </tr>
+  <% }); %>
+   <p></p>
+  </table>
+ </div>
+
+<p></p>
+
+
+<% if (consumerAccountsData.length > 0) { %>
+
+<div class="table-block-div"><a onclick="hideElement('consumerAccountsData')" style="display: block"><font size="6">&darr; Счета по заявке</font></a></div>
+
+ <p></p>
+   
+   <table class="table table-dark" id = "consumerAccountsData" style="display: none">
+   <tr>
+    <th><font color="#FFDAB9">Номер счета</font></th>
+    <th><font color="#FFDAB9">Наименование счета</font></th>
+    <th><font color="#FFDAB9">Признак выбора</font></th>
+    <th><font color="#FFDAB9">Дата открытия счета</font></th>
+    <th><font color="#FFDAB9">Баланс</font></th>
+    <th><font color="#FFDAB9">Номер договора в 5NT</font></th>
+    <th><font color="#FFDAB9">Дата открытия карты</font></th>
+    <th><font color="#FFDAB9">Зачисление</font></th>
+    <th><font color="#FFDAB9">Списание</font></th>
+   </tr>
+   <% consumerAccountsData.forEach(function(el) { %>
+   <% if (!el.selected) { %>
+ <tr class="deletedElement">
+  <%} else { %>
+ <tr>
+ <% }; %>
+ <td><%= el.acc_number %></td>
+ <td><%= el.acc_name %></td>
+ <% if (el.selected) { %>
+ <td>&#10003;</td>
+ <%} else { %>
+ <td></td>
+ <% }; %>
+ <td><%= el.acc_open_date %></td>
+ <td><%= el.balance %></td>
+ <td><%= el.five_nt_contract_number %></td>
+ <td><%= el.card_open_date %></td>
+  <% if (el.enrollment) { %>
+ <td>&#10003;</td>
+ <%} else { %>
+ <td></td>
+ <% }; %>
+   <% if (el.withdrawal) { %>
+ <td>&#10003;</td>
+ <%} else { %>
+ <td></td>
+ <% }; %>
+  </tr>
+  <% }); %>
+</table>
+<% }; %>
+
+
+<% if (consumerRefinData.length > 0) { %>
+
+<div class="table-block-div"><a onclick="hideElement('consumerRefinData')" style="display: block"><font size="6">&darr; Рефинансируемые обязательства по заявке</font></a></div>
+
+ <p></p>
+   
+   <table class="table table-dark" id = "consumerRefinData" style="display: none">
+   <tr>
+    <th><font color="#FFDAB9">Источник</font></th>
+    <th><font color="#FFDAB9">Тип</font></th>
+    <th><font color="#FFDAB9">Номер договора</font></th>
+    <th><font color="#FFDAB9">Внешний банк</font></th>
+    <th><font color="#FFDAB9">Сумма договора</font></th>
+    <th><font color="#FFDAB9">Ставка</font></th>
+    <th><font color="#FFDAB9">Сумма долга по БКИ</font></th>
+    <th><font color="#FFDAB9">Сумма долга по справке</font></th>
+    <th><font color="#FFDAB9">Справка удалена?</font></th>
+    <th><font color="#FFDAB9">Ежемесячный платеж</font></th>
+    <th><font color="#FFDAB9">Номер счета</font></th>
+    <th><font color="#FFDAB9">Дата договора</font></th>
+   </tr>
+   
+   <% consumerRefinData.forEach(function(el) { %>
+   <tr>
+ <td><%= el.source %></td>
+ <td><font color="#AFEEEE"><%= el.typeliab %></font></td>
+ <td><%= el.contract_number %></td>
+ <td><%= el.purpose_of_payment.split('и ')[1] %></td>
+ <td><%= el.contract_amount %></td>
+ <td><%= el.interest_rate %></td>
+ <td><%= el.bki_debt_amount %></td>
+ <td><%= el.statement_debt_amount %></td>
+ <td><%= el.statement_debt_deleted %></td>
+ <td><%= el.monthly_payment_amount %></td>
+ <td><%= el.account_number %></td>
+ <td><%= el.start_contract_date %></td>
+  </tr>
+  <% }); %>
+  </table>
+<% }; %>
+
+
+<% if (consumerRefinAllData.length > 0) { %>
+
+<div class="table-block-div"><a onclick="hideElement('consumerRefinAllData')" style="display: block"><font size="6">&darr; Обязательства клиента</font></a></div>
+
+ <p></p>
+   
+   <table class="table table-dark" id = "consumerRefinAllData" style="display: none">
+   <tr>
+    <th><font color="#FFDAB9">Источник</font></th>
+    <th><font color="#FFDAB9">Тип</font></th>
+    <th><font color="#FFDAB9">Филиал</font></th>
+    <th><font color="#FFDAB9">Номер договора</font></th>
+    <th><font color="#FFDAB9">ID во внутр. АБС</font></th>
+    <th><font color="#FFDAB9">Сумма договора</font></th>
+    <th><font color="#FFDAB9">Сумма основного долга</font></th>
+    <th><font color="#FFDAB9">Ставка</font></th>
+    <th><font color="#FFDAB9">Ежемесячный платеж</font></th>
+    <th><font color="#FFDAB9">Номер счета</font></th>
+    <th><font color="#FFDAB9">Дата договора</font></th>
+    <th><font color="#FFDAB9">Доступно?</font></th>
+    <th><font color="#FFDAB9">Выбрано?</font></th>
+    <th><font color="#FFDAB9">Закрыто?</font></th>
+    <th><font color="#FFDAB9">Исключено?</font></th>
+   </tr>
+   
+ <% consumerRefinAllData.forEach(function(el) { %>
+ <% if ( el.selected) { %>
+ <tr class="choosenElement">
+ <%} else { %>
+ <tr>
+ <% }; %>
+ <td><%= el.source %></td>
+ <td><font color="#AFEEEE"><%= el.typeliab %></font></td>
+ <td><%= el.branch_id %></td>
+ <td><%= el.contract_number %></td>
+ <td><%= el.ikar_contract_number %></td>
+ <td><%= el.contract_amount %></td>
+ <td><%= el.main_debt_amount %></td>
+ <td><%= el.interest_rate %></td>
+ <td><%= el.monthly_payment_amount %></td>
+ <td><%= el.account_number %></td>
+ <td><%= el.start_contract_date %></td>
+ <% if (el.available) { %>
+ <td>&#10003;</td>
+ <%} else { %>
+ <td></td>
+ <% }; %>
+ <% if ( el.selected) { %>
+ <td>&#10003;</td>
+ <%} else { %>
+ <td></td>
+ <% }; %>
+ <% if (el.closed) { %>
+ <td>&#10003;</td>
+ <%} else { %>
+ <td></td>
+ <% }; %>
+ <% if (el.excluded) { %>
+ <td>&#10003;</td>
+ <%} else { %>
+ <td></td>
+ <% }; %>
+<% }); %>
+</table>
+<% }; %>
+
+
+<p></p>
+
+
+<div class="table-block-div"><a id="#bhidej" onclick="hideElement('statusViewData')" style="display: block"><font size="6">&darr; Расширенный журнал статусов по заявке</font></a></div>
+
+  <table class="table table-striped table-dark" id = "statusViewData" style="display: none">
+  
+   <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата, время перехода в статус</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Имя статуса</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Решение СПР</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">ФИО и логин сотрудника</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Роль сотрудника</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Этап и статус андеррайтинга</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата, время закрытия статуса</font></th>
+   </tr>
+<tr>
+   <% statusViewData.forEach(function(el) { %>
+ 
+ <tr>
+ <td><%= el.start_date %></td>
+ <td><font color="#AFEEEE"><%= el.status_name %></font></td>
+ <td><%= el.rtdm_decision_name %></td>
+ <th><%= el.u_fio +" "+ el.u_login %></th>
+ <td><%= el.u_role %></td>
+ <td><%= el.und_stage +" "+ el.und_status_name %></td>
+ <td><%= el.end_date %></td> 
+  </tr>
+ <% }); %>
+</table>
+
+
+<p></p>
+
+<div class="table-block-div"><a id="#bhidev" onclick="hideElement('eventData')" style="display: block"><font size="6">&darr; Журнал событий по заявке</font></a></div>
+
+
+  <table class="table table-striped table-dark" id = "eventData" style="display: none">
+  
+   <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата, время события</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Имя события</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Логин сотрудника, связанного с событием</font></th>
+   </tr>
+<tr>
+   <% eventData.forEach(function(el) { %>
+ 
+ <tr>
+ <td><%= el.event_time %></td>
+ <td><font color="#AFEEEE"><%= el.event_description %></font></td>
+ <td><%= el.value %></td>
+  </tr>
+ <% }); %>
+
+</table>
+
+
+
+
+
+<div id="bpmDataContainer">
+
+</div>
+
+<p></p>
+<p></p>
+<p></p>
+
+<% if (integrationLogData.length > 0) { %>
+
+
+
+  <div class="table-block-div"><a onclick="hideElement('divTableContainer#2')" style="display: block"><font size="6">&rarr; Интеграционные логи по заявке</font></a></div>
+  <div class="div-tables-container" id="divTableContainer#2" style="display: none">
+  <button type="submit" onclick="showLongtext('longtext')">Показать/скрыть ВСЕ запросы/ответы</button>
+
+  <table class="table table-striped table-dark" id = "integrationLogData" style="display: block">
+  
+ <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">interaction ID</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Целевая система (Endpoint)</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Результат</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Текст ошибки</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата, время интеграции</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Запрос/ответ</font></th>
+ </tr>
+
+   <% integrationLogData.forEach(function(el, i) { %>
+ 
+ <tr>
+ <td><%= el.interaction_id %></td>
+ <td><font color="#AFEEEE"><%= el.System %></font></td>
+ <td><%= el.result %></td>
+ <td><font color="#FF6347"><%= el.error_description %></font></td>
+ <td><%= el.interaction_ts %></td> 
+<td >
+    <button type="submit" id="<%=i%>_btn" onclick="hideReqResp(event)">Показать/скрыть запрос/ответ</button>
+    <p class="longtext" id="<%=i%>_long" style="display: none">
+     <font color="#FF8C00"><%= el.body %></font>
+    </p>
+ </td>
+</tr>
+ <% }); %>
+</table>
+</div>
+
+<% }; %>

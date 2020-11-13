@@ -1,0 +1,39 @@
+<% if (processData.length === 0) { %>
+
+  <div class="alert alert-danger" role="alert" id=processoff>
+  <font size="5">По заявке <%= appnum%> нет действующего процесса!</font>
+  </div>
+  <p></p>
+
+<% }; %>
+
+
+
+
+<% if (processData.length > 1) { %>
+
+  <div class="alert alert-warning" role="alert" id=processoff>
+  <font size="5">По заявке <%= appnum%> процесс задублирован. Обратите внимание, что хронология задач отсутствует</font>
+<% processData.forEach((el, i) => { %>
+      <a href="https://test.app.rcl.int.***.ru/app/cockpit/default/#/process-instance/<%= el.proc_inst_id_ %>" role="button" target="_blank">Процесс #<%= i+1 %></a>
+<%});%>
+  </div>
+  <p></p>
+<% }; %>
+
+
+
+<% if (processData.length === 1) { %>
+<% let idx = tasksData.findIndex(el => el.act_inst_state_ === 0); %>
+<% if ( idx !== -1 && tasksData[idx].act_type_ === 'intermediateConditional')  { %>
+<a class="btn btn-warning" href="https://test.app.rcl.int.***.ru/app/cockpit/default/#/process-instance/<%= processData[0].proc_inst_id_ %>" role="button" target="_blank">Обработать зависание в Camunda Cockpit</a>
+<% } else { %>
+<a class="btn btn-primary" href="https://test.app.rcl.int.***.ru/app/cockpit/default/#/process-instance/<%= processData[0].proc_inst_id_ %>" role="button" target="_blank">Перейти в Camunda Cockpit</a>
+<% }; %>
+<% }; %>
+<a class="btn btn-primary" href="<%= linkData[1] %>" role="button" target="_blank">Сканы документов</a>
+<a class="btn btn-primary" href="<%= linkData[2] %>" role="button" target="_blank">Список файлов</a>
+<a class="btn btn-primary" href="https://ui.test-stand.tst.int.***.ru/sling/filelist/<%= applicationData[0].id %>" role="button" target="_blank">Метаданные файлов</a> 
+
+
+

@@ -1,0 +1,289 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"con",
+				"console.log"
+			],
+			[
+				"req",
+				"require"
+			],
+			[
+				"re",
+				"ReceiveDefEventLogger"
+			],
+			[
+				"requ",
+				"require"
+			],
+			[
+				"request",
+				"request_processor"
+			],
+			[
+				"res",
+				"result1"
+			],
+			[
+				"c",
+				"console"
+			],
+			[
+				"co",
+				"connection"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"result",
+				"result2"
+			],
+			[
+				"ru",
+				"return"
+			],
+			[
+				"path",
+				"patharr"
+			],
+			[
+				"pat",
+				"patharr"
+			],
+			[
+				"dat",
+				"dateTime"
+			],
+			[
+				"m",
+				"month"
+			],
+			[
+				"get",
+				"getMinutes"
+			],
+			[
+				"Req",
+				"ReqProc"
+			],
+			[
+				"for",
+				"for\tfor (…) {…} (Improved Native For-Loop)"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"ter",
+				"Terminus: Open Default Shell in Panel"
+			],
+			[
+				"shel",
+				"Terminus: Open Default Shell in Panel"
+			],
+			[
+				"terminus",
+				"Terminus: Open Default Shell in Panel"
+			],
+			[
+				"node",
+				"Nodejs::User File Settings"
+			],
+			[
+				"term",
+				"Terminus: Open Default Shell in Panel"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Terminus",
+				"Terminus: List Shells"
+			],
+			[
+				"P",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 206.0,
+		"history":
+		[
+			"terminus",
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
+			"view.encoding()"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/F/Files/myprojects/p2/par_calc.html",
+		"/F/Files/myprojects/node/simple_server/bdtest.js",
+		"/F/Files/myprojects/node/simple_server/js/script.js",
+		"/F/Files/myprojects/node/simple_server/Log/Log.txt",
+		"/F/Files/myprojects/rpr/js/script.js",
+		"/F/Files/myprojects/rpr/index.html",
+		"/F/Files/myprojects/node/simple_server/server_new.js",
+		"/F/Files/myprojects/node/simple_server/sql_insert.sql",
+		"/F/Files/seedrandom.js",
+		"/F/Files/myprojects/node/simple_server/server.js",
+		"/F/Толя/Толя/text/powershell.txt",
+		"/F/text/trace.etl",
+		"/F/Files/myprojects/node/learning/example.js",
+		"/F/Files/files/p_kn_kk_ar/methods/kn.html",
+		"/F/Files/myprojects/node/app_hello_world/hello.js",
+		"/F/Files/myprojects/p1/Proverkajq.html",
+		"/F/Files/files/p_kn_kk_ar/par_calc_main.html",
+		"/F/Files/files/p_kn_kk_ar/methods/kk.html"
+	],
+	"find":
+	{
+		"height": 44.0
+	},
+	"find_in_files":
+	{
+		"height": 116.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 32.0
+	},
+	"input":
+	{
+		"height": 44.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Nodejs/Nodejs.sublime-build",
+	"project": "DBapp.sublime-project",
+	"replace":
+	{
+		"height": 60.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 215.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

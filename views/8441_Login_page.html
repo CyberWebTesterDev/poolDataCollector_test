@@ -1,0 +1,295 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/8441_main-styles.css">
+  <style type="text/css">
+      .head-container {
+    display: flex;
+  }
+
+  #camundaBtn {
+    margin: 10px;
+  }
+
+  .longtext {
+      word-wrap: break-word;
+      width: 700px;
+    }
+        body {
+    background: #2F4F4F;
+    color: #BC8F8F; 
+    }
+  .headlabel-dummy {
+    text-align: center;
+    font-family: "Times New Roman", Georgia, Serif;
+    font-stretch: extra-expanded;
+    font-size: 20px;
+    color: rgb(70,255,126);
+  }
+     
+  .headlabel {
+    text-align: center;
+    font-family: "Times New Roman", Georgia, Serif;
+    font-stretch: extra-expanded;
+    font-size: 20px;
+    color: #008080;
+  }
+  #modalContainer{
+    margin-top: 50px;
+  }
+    .headlabel:hover {
+      cursor: pointer;
+    }
+
+    #processoff {
+      text-align: center;
+    }
+    .nav-menu-rkk {
+      margin-right: 100rem;
+    }
+    .table-block-div
+    {
+      text-align: center;
+    }
+    .table-block-div:hover
+    {
+      background-color: #c0d7d7;
+      cursor: pointer;
+    }
+    .table-block-div-child {
+      text-align: center;
+    }
+    h2
+    {
+      text-align: center;
+    }
+    .table-block-div-bpm {
+    border-width: 5px;
+    border-style: outset;
+    border-color: #00FA9A;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+    .deletedElement {
+    background-color: FireBrick
+  }
+      .choosenElement {
+    background-color: DarkGreen
+  }
+
+    .dimmer-modal {
+      background-color: rgba(19,18,18,0.85);
+      user-select: none;
+    }
+    .modal-parent {
+      top: 0;
+      bottom: 10px;
+      position: fixed;
+      visibility: visible;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      padding: 1em;
+      z-index: 1000;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .modal-large {
+      background-color: rgb(47,53,58);
+      top:25px;
+      bottom: 5px;
+      width: 700px;
+      left:30%;
+      right: 70%;
+      font-size: 22px;
+      height: 500px;
+      padding: 5px;
+      position: relative;
+      z-index: 1001;
+      box-shadow: 1px 3px 3px;
+      border-radius: .28571429rem;
+      user-select: text;
+    }
+    .modal-label {
+      color: seaGreen;
+      font-size: 35px;
+    }
+    .modal-btn {
+      position: relative;
+      top:280px;
+    }
+
+
+         .headlabel {
+      text-align: center;
+      font-family: "Times New Roman", Georgia, Serif;
+      font-stretch: extra-expanded;
+      font-size: 15px;
+      color: #008080;
+    }
+
+    .form-container {
+      padding-top: 15px;
+      padding-left: 10px;
+      left: 50%;
+      background-color: #7a9782;
+      width: 350px;
+      height: 250px;
+      color: black;
+      margin: 0 auto;
+      font-size: 20px;
+    }
+
+    .form-group {
+      position: relative;
+      margin: 0 auto;
+      margin-top: 3px;
+    }
+
+    .form-group label{
+      position: relative;
+      margin: 0px auto;
+      margin-left: 38%;
+    }
+
+    .form-group input{
+      position: relative;
+      display: block;
+      margin: 0 auto;
+      width: 250px;
+    }
+
+    .login-head-text {
+      position: relative;
+      margin-left: 30%;
+      margin-bottom: 2rem;
+    }
+
+
+    small {
+      display: none;
+    }
+
+    .camunda-frame {
+      overflow: hidden;
+      height: 700px;
+      width: 1500px;
+    }
+
+
+
+  </style>
+
+
+  
+  <title>RKK Adminkey</title>
+ </head>
+ <body>
+
+<div class="headlabel">
+  <h5 onclick="showModal()">RKK Adminkey</h1>
+</div>
+<div id="modalContainer"></div>
+
+<h5 class="login-head-text">Для продолжения работы необходимо выполнить вход</h3>
+
+
+<div onclick="return false;" class="form-container">
+  <form>
+    <div class="form-group">
+      <label for="loginInp">Логин</label>
+      <input type="login" name="login" id="loginInp" aria-describedby="textLogin">
+      <small id="textLogin">Логин не должен быть пустым</small>
+    </div>
+    <div class="form-group">
+      <label for="passwordInp">Пароль</label>
+      <input type="password" name="password" id="passwordInp" aria-describedby="textPassword">
+      <small id="textPassword">Логин не должен быть пустым</small>
+    </div>
+    <button onclick="showPopUp()" style="margin-top: 50px; margin-left: 35%; position: relative;" class="btn btn-primary">Войти</button>
+  </form>
+</div>
+
+
+<form id="elk-datetime-form">
+  <div class="elk-datetime-search" style="display: inline-grid; background-color: #31300c;">
+    <label for='start'>Начало</label>
+    <input id="start" type="datetime-local" name="start">
+    <label for='end'>Конец</label>
+    <input id="end" type="datetime-local" name="end">
+    <button id="getELKlogs" class="btn btn-primary" type="submit" role="button" style="margin-top: 15px">Получить логи из Kibana по заявке</button>
+  </div>
+</form>
+
+
+
+
+<!-- <div class="frame-container">
+
+  <iframe class="camunda-frame" src="https://test.app.rcl.int.***.ru/testpath/app/test/default/#/process-instance/22b84959-d6c7-11ea-ae1e-0242ac110002/runtime?viewbox=%7B%22Definitions_0nfm9ip%22:%7B%22x%22:-265.453125,%22y%22:-195.95535714285714,%22width%22:1765.625,%22height%22:546.875%7D%7D&searchQuery=%5B%5D" height="200%" width="100%"> </iframe>
+
+</div> -->
+
+<div id="divCont"></div>
+
+
+
+
+<script>
+  
+  const popUp = 
+  `<div class='container-popup'>
+      <div class='popup'>
+        <font size="5px">Заголовок</font><br>
+        <font size="3px"">Текст всплывающего окна
+        </font>
+      </div>
+  </div>`
+
+
+//document.body.appendChild(document.createElement('div')).innerHTML = popUp;
+
+const showPopUp = () => {
+
+  let tempContainer = ``;
+
+  if (!document.getElementById('div-temp')) {
+      tempContainer = document.body.appendChild(document.createElement('div'))
+      tempContainer.id = 'div-temp';
+      tempContainer.innerHTML = popUp;
+      setTimeout(() => {
+        tempContainer.innerHTML = ``;
+      }, 5000);
+
+  } else {
+      
+      document.getElementById('div-temp').innerHTML = popUp;
+
+      setTimeout(() => {
+        document.getElementById('div-temp').innerHTML = ``;
+      }, 5000);
+  }
+
+
+}
+
+
+
+
+
+
+
+  //document.getElementById('divCont').innerHTML = popUp;
+
+
+
+</script>
+
+
+
+ </body>
+</html>
+
+

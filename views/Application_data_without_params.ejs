@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/public/css/bootstrap.css">
+  <script src="/public/jquery-3.4.1.min.js"></script>
+  <script src="/public/bootstrap.min.js"></script>
+  <title>Данные заявки</title>
+ </head>
+ <body>
+  <div class="alert alert-danger" role="alert">
+  По заявке <%= appnum%> нет действующего процесса!
+  </div>
+ <p><font size="05" color="black">Введите другой номер заявки!</p>
+  <p></p>
+
+  <table class="table table-dark">
+   <h2>Основные данные по заявке <%= appnum%></h2>
+   <tr>
+    <th>ID Заявки</th>
+    <th>Направление</th>
+    <th>Канал поступления</th>
+    <th>Статус</th>
+    <th>Дата создания заявки</th>
+    <th>Метод</th>
+
+   </tr>
+   <tr>
+ <td><%= appid%></td>
+ <td><%= credittype%></td>
+ <td><%= channel%></td>
+ <td><%= status%></td>
+ <td><%= appcreationdate%></td>
+ <td><%= method%></td>
+  </tr>
+  </table>
+ </body>
+</html>
+
+

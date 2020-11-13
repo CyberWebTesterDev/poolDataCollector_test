@@ -1,0 +1,653 @@
+<%- include('headers/header-with-bootstrap.ejs') %>
+
+ <body>
+
+<div class="headlabel">
+  <h1 onclick="showModal()">RKK Adminkey</h1>
+</div>
+<div id="modalContainer"></div>
+
+
+
+
+<p></p>
+
+
+
+<% if (searchData[0].appstatus_name !==  mapplicationData[0].app_status_id) { %>
+ <div class="alert alert-warning" role="alert" id=processoff>
+  <font size="5">По заявке <%= appnum%> зафиксирована рассинхронизация статусов!</font>
+  </div>
+  <p></p>
+<% }; %>
+
+
+
+
+
+<% if (searchData[0].appstatus_name === 'Ошибка') { %>
+<a class="btn btn-danger" href="<%= linkData[0] %>" role="button" target="_blank">Обработка ошибки в РКК</a>
+<% } else { %>
+<a class="btn btn-info" href="<%= linkData[5] %>" role="button" target="_blank">RKK info mode</a>
+<a class="btn btn-info" href="<%= linkData[6] %>" role="button" target="_blank">RKK veiw mode</a>
+<% }; %>
+<% if (mapplicationData[0].calculation_form_id) { %>
+<a class="btn btn-info" href="<%= linkData[7] %>" role="button" target="_blank">RKK параметры финальной сделки</a>
+<% }; %>
+
+<a class="btn btn-primary" href="<%= linkData[1] %>" role="button" target="_blank">Сканы документов</a>
+<a class="btn btn-primary" href="<%= linkData[1] %>" role="button" target="_blank">Сканы документов</a>
+<a class="btn btn-primary" href="<%= linkData[2] %>" role="button" target="_blank">Список файлов</a>
+<a class="btn btn-primary" href="<%= linkData[3] %>" role="button" target="_blank">Данные ОН</a>
+<a class="btn btn-primary" href="<%= linkData[4] %>" role="button" target="_blank">История ОН</a>
+<a class="btn btn-primary" href="https://ui.test-stand.tst.int.***.ru/sling/filelist/<%= mapplicationData[0].id %>" role="button" target="_blank">Метаданные файлов</a> 
+<button id="getBPMBtn" class="btn btn-primary" role="button">Получить данные о BPM процессе заявки</button> 
+<%- include('buttons/get-elk-single.ejs') %>
+<%- include('buttons/get-elk-logs.ejs') %>
+
+<div id='headWithBPMdata'></div>
+
+  <p></p>
+
+
+  <table class="table table-dark" id="mainDataTable">
+   <span id="appNum" style="display: none"><%= appnum%></span>
+   <h2>Основные данные по заявке <%= appnum%></h2>
+   <tr>
+    <th><font color="#FFDAB9">ID Заявки</font></th>
+    <th><font color="#FFDAB9">Направление</font></th>
+    <th><font color="#FFDAB9">Канал поступления</font></th>
+    <th><font color="#FFDAB9">Форма расчета</font></th>
+    <% if (searchData[0].api) { %>
+    <th><font color="#FFDAB9">Api</font></th>
+    <% } %>
+    <% if (mapplicationData[0].partner_id) { %>
+    <th><font color="#FFDAB9">Партнер</font></th>
+    <% } %>
+    <th><font color="#FFDAB9">Наименование ДО</font></th>
+    <th><font color="#FFDAB9">Код ДО</font></th>
+    <th><font color="#FFDAB9">Статус (реестр)</font></th>
+    <th><font color="#FFDAB9">Дата создания заявки</font></th>
+    <th><font color="#FFDAB9">Дата перехода в статус</font></th>
+    <th><font color="#FFDAB9">Assignee</font></th>
+    <th><font color="#FFDAB9">Метод</font></th>
+   </tr>
+   <tr>
+ <td><%= mapplicationData[0].id %></td>
+ <td><font color="#AFEEEE"><%= searchData[0].credit_type_name %></font></td>
+ <td><%= searchData[0].sale_channel_name %></td>
+ <td><%= mapplicationData[0].calculation_form_id %></td>
+  <% if (searchData[0].api) { %> 
+ <td><font color="green">&#10003;</font></td>
+   <% }; %>
+ <% if (mapplicationData[0].partner_id) { %>
+ <td><%= mapplicationData[0].partner_id %></td>
+ <% }; %>
+ <td><%= searchData[0].branch_unit_name%></td>
+ <td><%= searchData[0].branch_unit_id %></td>
+ <td id="appStatusSearch"><font color="#D2691E"><%= searchData[0].appstatus_name %></font></td>
+ <td><%= searchData[0].creation_date%></td>
+ <th><%= searchData[0].date_status %></th>
+ <th><%= searchData[0].assignee %></th>
+ <td><%= searchData[0].method %></td>
+  </tr>
+  </table>
+
+<p></p>
+
+
+<div id="errorContainer"></div>
+
+
+<div class="table-block-div"><a onclick="hideElement('divTableContainer#1')" style="display: block"><font size="6">&darr; Дополнительные данные по заявке</font></a></div>
+
+
+<div class="div-tables-container" id="divTableContainer#1" style="display: none">
+
+  <div class="table-block-div-child"><a style="display: block"><font size="6">&darr; Данные заявки</font></a></div>
+
+  <table class="table table-dark" id = "mapplicationData" style="display: block">
+  
+   <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">Субкатегория по заявке</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Фактический статус</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Этап заявки</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Время перехода в факт.статус</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">ID заявки в Икар</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Сотрудник, заводивший заявку</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Порядок выдачи кредита</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Форма закладной</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Метод регистрации ДКП</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата запроса в БКИ</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Тип формы</font></th>
+   </tr>
+<tr>
+   <% mapplicationData.forEach(function(el) { %>
+ 
+ <tr id="">
+ <td><%= el.app_sub_category_id %></td>
+ <td><font color="#AFEEEE"><%= el.app_status_id %></font></td>
+ <td><%= el.app_stage %></td>
+ <td><%= el.date_status %></td>
+ <td><%= el.app_ikar_number %></td>
+ <th><%= el.employee_login %></th>
+ <td><%= el.loan_granting_procedure_id %></td>
+ <td><%= el.mortgage_form_id %></td>
+ <td><%= el.registration_method_dkp_id %></td>
+ <td><%= el.date_bki %></td>
+ <td><%= parametersData[0].credit_form_type_id%></td>
+  </tr>
+ <% }); %>
+</table>
+
+  <% if (letterOfCreditData.length > 0) { %>
+
+  <div class="table-block-div-child"><a style="display: block"><font size="6">&darr; Данные аккредитива</font></a></div>
+
+  <table class="table table-dark" id = "letterOfCreditData" style="display: block">
+  
+   <tr>
+      <th scope="col" class="colp"><font color="#FFDAB9">Сумма аккредитива</font></th>
+      <th scope="col" class="colp"><font color="#FFDAB9">Назначение платежа</font></th>
+      <th scope="col" class="colp"><font color="#FFDAB9">Счет получателя</font></th>
+      <th scope="col" class="colp"><font color="#FFDAB9">Банк-получатель</font></th>
+      <th scope="col" class="colp"><font color="#FFDAB9">Сумма комисии за открытие</font></th>
+      <th scope="col" class="colp"><font color="#FFDAB9">ID аккредитива в 5NT</font></th>
+      <th scope="col" class="colp"><font color="#FFDAB9">Плательщик комиссии</font></th>
+      <th scope="col" class="colp"><font color="#FFDAB9">ID протокола</font></th>
+      <th scope="col" class="colp"><font color="#FFDAB9">Цель аккредитива</font></th>
+      <th scope="col" class="colp"><font color="#FFDAB9">Бумажный?</font></th>
+      <th scope="col" class="colp"><font color="#FFDAB9">Удален?</font></th>
+   </tr>
+
+   <% letterOfCreditData.forEach(function(el) { %>
+ 
+ <% if (el.is_deleted) { %> <tr style="background-color: rgb(107, 21, 21);"> <% } else { %> <tr> <% }; %>
+ <td><%= el.amount_letter_of_credit %></td>
+ <td><%= el.purpose_payment %></td>
+ <td><%= el.receiver_account %></td>
+ <td><%= el.receiver_bank_id %></td>
+ <td><%= el.amount_open %></td>
+ <td><%= el.leter_of_credit_5nt_id %></td>
+ <th><%= el.for_open_letter_of_credit %></th>
+ <td><%= el.protocol_id %></td>
+ <td><%= el.purpose %></td>
+ <% if (el.is_paper) { %>
+ <td>&#10003;</td>
+  <% } else { %>
+ <td></td>
+ <% }; %>
+ <% if (el.is_deleted) { %> <td>&#10003;</td> <% } else { %> <td></td> <% }; %>
+  
+
+
+ 
+
+  </tr>
+ <% }); %>
+</table>
+<% }; %>
+
+  <% if (legalDocumentData.length > 0) { %>
+
+  <div class="table-block-div-child"><a style="display: block"><font size="6">&darr; Правоустанавливающие документы</font></a></div>
+
+  <table class="table table-dark" id = "legalDocumentData" style="display: block">
+  
+   <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата документа</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Признак удаления</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Тип документа</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата регистрации прав</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Номер документа</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">participant_id</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Описание документа</font></th>
+
+   </tr>
+ <% legalDocumentData.forEach(function(el, idx) { %>
+ <% if (el.is_deleted) { %>
+ <tr id="legalDocumentData<%=idx%>" class="deletedElement">
+  <% } else { %>
+ <tr id="legalDocumentData<%=idx%>">
+  <% }; %>
+ <td><%= el.document_release_date %></td>
+ <% if (el.is_deleted) { %>
+ <td>&#10003;</td>
+ <% } else { %>
+ <td></td>
+ <% }; %>
+ <td><%= el.legal_document_type_id %></td>
+ <td><%= el.rights_registration_date %></td>
+ <th><%= el.document_number %></th>
+ <th><%= el.participant_id  %></th>
+ <th><%= el.document_description %></th>
+  </tr>
+
+ <% }); %>
+</table>
+<% }; %>
+
+
+  <% if (transferOrderData.length > 0) { %>
+
+  <div class="table-block-div-child"><a style="display: block"><font size="6">&darr; Распоряжение на перевод</font></a></div>
+
+  <table class="table table-dark" id = "transferOrderData" style="display: block">
+  
+   <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">Сумма перевода</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Назначение платежа</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Счет дебит (плательщика/ссудный счет)</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Счет кредит (получателя/зачисления заемщика)</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Банк-получатель</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">ИНН банка-получателя</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Тип операции</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">ID перевода в 5NT</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Признак удаления</font></th>
+
+   </tr>
+<tr>
+   <% transferOrderData.forEach(function(el) { %>
+ <% if (el.is_deleted) { %> 
+ <tr class="deletedElement">
+ <% } else { %>
+ <tr>
+ <% }; %>
+ <td><%= el.amount_transfer %></td>
+ <td><%= el.purpose_payment %></td>
+ <td><%= el.account_debit %></td>
+ <td><%= el.account_credit %></td>
+ <th><%= el.receiver_bank_id %></th>
+ <th><%= el.reciever_bank_inn %></th>
+ <th><%= el.transfer_type %></th>
+ <td><%= el.transfer_id_5nt %></td>
+ <% if (el.is_deleted) { %>
+ <td>&#10003;</td>
+ <% } else { %>
+ <td></td>
+ <% }; %>
+
+  </tr>
+ <% }); %>
+</table>
+<% }; %>
+
+
+</div>
+
+  <div class="table-block-div"><a onclick="hideElement('parametersData')" style="display: block"><font size="6">&darr; Параметры заявки</font></a></div>
+ <p></p>
+   <table class="table table-dark" id="parametersData" style="display: table">
+   <tr>
+    <th><font scope="col" class="colp" color="#FFDAB9">Тип параметров</font></th>
+    <th><font scope="col" class="colp" color="#FFDAB9">Версия и код субпрограммы</font></th>
+    <th><font scope="col" class="colp" color="#FFDAB9">Сумма кредита</font></th>
+    <th><font scope="col" class="colp" color="#FFDAB9">Депонируемая сумма</font></th>
+    <th><font scope="col" class="colp" color="#FFDAB9">Сумма подтвержденная документально</font></th>
+    <th><font scope="col" class="colp" color="#FFDAB9">Сумма подтвержденная документально и оплаченная продавцу</font></th>
+    <th><font scope="col" class="colp" color="#FFDAB9">Ежемесячный платеж</font></th>
+    <th><font scope="col" class="colp" color="#FFDAB9">Срок кредита</font></th>
+    <th><font scope="col" class="colp" color="#FFDAB9">Регион ОН</font></th>
+    <th><font scope="col" class="colp" color="#FFDAB9">Стоимость ОН</font></th>
+    <th><font scope="col" class="colp" color="#FFDAB9">Первоначальный взнос</font></th>
+    <th><font scope="col" class="colp" color="#FFDAB9">Вид рынка</font></th>
+    <th><font scope="col" class="colp" color="#FFDAB9">Код ДО выдачи</font></th>
+    <th><font scope="col" class="colp" color="#FFDAB9">Ставка</font></th>
+    <th><font scope="col" class="colp" color="#FFDAB9">Тип платежа</font></th>
+    <th><font scope="col" class="colp" color="#FFDAB9">Тип страхования</font></th>
+    <th><font scope="col" class="colp" color="#FFDAB9">Дата подписания</font></th>
+    <th><font scope="col" class="colp" color="#FFDAB9">ФИО подписанта</font></th>
+   </tr>
+   <% parametersData.forEach(function(el) { %>
+   <tr>
+  <% if (el.case_partype !== 'Выданные') { %> 
+ <td><%= el.case_partype%></td>
+ <% }  else { %>
+ <td><font color="#D2691E"><%= el.case_partype%></font></td>
+ <% }; %>
+ <td><%= el.sub_program_id %></td>
+ <td><%= el.credit_amount%></td>
+ <td><%= el.deposited_amount%></td>
+ <td><%= el.sum_document_provided%></td>
+ <td><%= el.sum_document_provided_paid_to_seller%></td>
+ <td><%= el.monthly_payment%></td>
+ <td><%= el.credit_term%></td>
+ <td><%= el.real_estate_region %></td>
+ <td><%= el.real_estate_cost%></td>
+ <td><%= el.initial_fee%></td>
+ <td><%= el.case_market%></td>
+ <td><%= el.branch_unit_id%></td>
+ <td><%= el.interest_rate%></td>
+ <td><%= el.case_payment === 'Дифференцированный' ? 'Диф.' : 'Ан.'%></td>
+ <td><%= el.case_ins%></td>
+ <td><%= el.date_sign_ipoteka%></td> 
+ <td><%= el.signer_fio%></td>
+  </tr>
+  <% }); %>
+   <p></p>
+  </table>
+
+<p></p>
+
+
+<div class="table-block-div"><a onclick="hideElement('ParticipantsData')" style="display: block"><font size="6">&darr; Данные по участникам сделки</font></a></div>
+
+ <p></p>
+   
+   <table class="table table-dark" id = "ParticipantsData" style="display: none">
+   <tr>
+
+    <th><font color="#FFDAB9">Participant_form_id</font></th>
+    <th><font color="#FFDAB9">Participant_id</font></th>
+    <th><font color="#FFDAB9">ФИО</font></th>
+    <th><font color="#FFDAB9">Среднемесячный доход</font></th>
+    <th><font color="#FFDAB9">Код субкатегории</font></th>
+    <th><font color="#FFDAB9">Признак сотрудника</font></th>
+    <th><font color="#FFDAB9">Признак залогодателя</font></th>
+    <th><font color="#FFDAB9">Признак доработки (rework)</font></th>
+    <th><font color="#FFDAB9">Роль</font></th>
+    <th><font color="#FFDAB9">Тип продавца</font></th>
+    <th><font color="#FFDAB9">Удален?</font></th>
+   </tr>
+   <% mortgageParticipantsData.forEach(function(el) { %>
+   <% if (el.is_deleted) { %>
+  <tr class="deletedElement">
+  <% }  else { %>
+  <tr>
+  <% }; %>
+ <td><%= el.participant_form_id %></td>
+ <td><%= el.part_id %></td>
+ <td><%= el.surname + ' ' + el.name + ' ' + el.patronymic %></td>
+ <td><%= el.avg_month_income %></td>
+ <td><%= el.sub_category_id %></td>
+   <% if (el.employee) { %> 
+ <td>&#10003;</td>
+ <% }  else { %>
+ <td></td>
+ <% }; %>
+  <% if (el.mortgagor_flag) { %>
+ <td>&#10003;</td>
+ <% }  else { %>
+ <td></td>
+ <% }; %>
+ <% if (el.rework) { %>
+ <td>&#10003;</td>
+ <% }  else { %>
+ <td></td>
+ <% }; %>
+ <td><%= el.case_role %></td>
+  <td><%= el.case_seller %></td>
+  <% if (el.is_deleted) { %> 
+ <td>&#10003;</td>
+ <% }  else { %>
+ <td></td>
+ <% }; %>
+  </tr>
+  <% }); %>
+</table>
+
+<p></p>
+
+<% if (mortgageAccountsData.length > 0) { %>
+
+<div class="table-block-div"><a onclick="hideElement('AccountsData')" style="display: block"><font size="6">&darr; Счета по заявке</font></a></div>
+
+ <p></p>
+   
+   <table class="table table-dark" id = "AccountsData" style="display: none">
+   <tr>
+    <th><font color="#FFDAB9">Номер счета</font></th>
+    <th><font color="#FFDAB9">Наименование счета</font></th>
+    <th><font color="#FFDAB9">Дата открытия счета</font></th>
+    <th><font color="#FFDAB9">Баланс</font></th>
+    <th><font color="#FFDAB9">Дата открытия карты</font></th>
+    <th><font color="#FFDAB9">Тип карты</font></th>
+    <th><font color="#FFDAB9">Номер договора в 5NT</font></th>
+    <th><font color="#FFDAB9">Признак выбора</font></th>
+    <th><font color="#FFDAB9">Зачисление</font></th>
+    <th><font color="#FFDAB9">Списание</font></th>
+   </tr>
+   <% mortgageAccountsData.forEach(function(el) { %>
+   <% if (!el.selected) { %>
+ <tr class="deletedElement">
+ <%} else { %>
+ <tr>
+ <% }; %>
+ <td><%= el.acc_number %></td>
+ <td><%= el.acc_name %></td>
+ <td><%= el.acc_open_date %></td>
+ <td><%= el.balance %></td>
+ <td><%= el.card_open_date %></td>
+ <td><%= el.card_type_id %></td>
+ <td><%= el.five_nt_contract_number %></td>
+  <% if (el.selected) { %>
+ <td>&#10003;</td>
+ <%} else { %>
+ <td></td>
+ <% }; %>
+   <% if (el.enrollment) { %>
+ <td>&#10003;</td>
+ <%} else { %>
+ <td></td>
+ <% }; %>
+    <% if (el.withdrawal) { %>
+ <td>&#10003;</td>
+ <%} else { %>
+ <td></td>
+ <% }; %>
+  </tr>
+  <% }); %>
+</table>
+<% }; %>
+
+<p></p>
+
+
+
+<% if (mortgageRealEstateData2.length > 0) { %>
+
+
+<div class="table-block-div"><a onclick="hideElement('divTableContainer#3')" style="display: block"><font size="6">&darr; Данные по объекту недвижимости</font></a></div>
+
+<div class="div-tables-container" id="divTableContainer#3" style="display: none">
+
+ <p></p>
+   
+   <table class="table table-dark" id="mortgageRealEstateData" style="display: block;">
+   <tr>
+    <th><font color="#FFDAB9">UID</font></th>
+    <th><font color="#FFDAB9">Год постройки</font></th>
+    <th><font color="#FFDAB9">Кадастровый номер</font></th>
+    <th><font color="#FFDAB9">Этажность</font></th>
+    <th><font color="#FFDAB9">Тип здания</font></th>
+    <th><font color="#FFDAB9">Тип ОН</font></th>
+    <th><font color="#FFDAB9">Тип помещения (purpose)</font></th>
+    <th><font color="#FFDAB9">Отделка</font></th>
+    <th><font color="#FFDAB9">Количество комнат</font></th>
+    <th><font color="#FFDAB9">Залоговая стоимость</font></th>
+    <th><font color="#FFDAB9">Залоговая стоимость СПР</font></th>
+    <th><font color="#FFDAB9">Удален?</font></th>
+   </tr>
+   <% mortgageRealEstateData2.forEach(function(el) { %>
+   <% if (!mortgageRealEstateData[0].is_deleted) { %>
+   <tr>
+   <% }  else { %>
+   <tr class="deletedElement">
+   <% }; %>
+ <td><%= el.id %></td>
+ <td><%= el.built_year %></td>
+ <td><%= el.cadastral_number %></td>
+ <td><%= el.storeys %></td>
+ <td><%= el.walls_id %></td>
+ <td><%= el.type_id %></td>
+ <td><%= el.purpose_id %></td>
+ <td><%= el.repairs_id %></td>
+ <td><%= el.rooms %></td>
+ <td><%= el.collateral_value %></td>
+ <td><%= el.collateral_value_spr %></td>
+   <% if (!mortgageRealEstateData[0].is_deleted) { %> 
+ <td></td>
+ <% }  else { %>
+ <td>&#10003;
+ <% }; %>
+ <td><%=  %></td>
+  </tr>
+  <% }); %>
+</table>
+
+
+<% if (evaluationReportData.length > 0) { %>
+
+  <div class="table-block-div-child"><a style="display: block"><font size="6">&darr; Отчет об оценке</font></a></div>
+   <table class="table table-dark" id="evaluationReportData" style="display: block">
+   <tr>
+    <th><font color="#FFDAB9">Стоимость</font></th>
+    <th><font color="#FFDAB9">Дата оценки</font></th>
+    <th><font color="#FFDAB9">Дата отчета</font></th>
+    <th><font color="#FFDAB9">Номер отчета</font></th>
+    <th><font color="#FFDAB9">Тип отчета</font></th>
+    <th><font color="#FFDAB9">Проверен ФО</font></th>
+    <th><font color="#FFDAB9">RTDM ID</font></th>
+    <th><font color="#FFDAB9">Стоимость дома</font></th>
+    <th><font color="#FFDAB9">Стоимость земли</font></th>
+
+   </tr>
+   <% evaluationReportData.forEach(function(el) { %>
+
+ <td><%= el.cost %></td>
+ <td><%= el.evaluate_date %></td>
+ <td><%= el.report_date %></td>
+ <td><%= el.report_number %></td>
+ <td><%= el.report_type_id %></td>
+ <% if (el.fo_report_check) { %>
+ <td> &#10003; </td>
+ <% }  else { %>
+ <td></td>
+  <% }; %>
+ <td><%= el.rtdm_id %></td>
+ <td><%= el.house_cost %></td>
+ <td><%= el.land_cost %></td>
+ </tr>
+  <% }); %>
+</table>
+
+<% }; %>
+
+
+<% if (agreementPurchaseData.length > 0) { %>
+<% agreementPurchaseData.forEach(function(el) { %>
+  <div class="container" id="parentDiv">
+    <label class=>Данные договора приобретения</label>
+    <div class="row" id="childDiv">
+      <div class="col">Номер договора</div>
+      <div class="col" style="color: seaGreen"><%= el.number_contract %></div>
+      <div class="w-100"></div> 
+      <div class="col">Вид договора приобретения</div>
+      <div class="col"style="color: seaGreen"><%= el.name_contract %></div>
+      <div class="w-100"></div> 
+      <div class="col">Дата договора</div>
+      <div class="col" style="color: seaGreen"><%= el.date_conclusion_contract %></div>
+    </div>
+  </div>
+<% }); %>
+
+<% }; %>
+
+</div>
+
+<% }; %>
+
+<p></p>
+
+
+
+
+<div class="table-block-div"><a id="#bhidej" onclick="hideElement('statusViewData')" style="display: block"><font size="6">&darr; Расширенный журнал статусов по заявке</font></a></div>
+
+  <table class="table table-striped table-dark" id = "statusViewData" style="display: none">
+  
+   <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата, время перехода в статус</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Имя статуса</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Решение СПР</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">ФИО и логин сотрудника</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Роль сотрудника</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Этап и статус андеррайтинга</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата, время закрытия статуса</font></th>
+   </tr>
+<tr>
+   <% statusViewData.forEach(function(el) { %>
+ 
+ <tr>
+ <td><%= el.start_date %></td>
+ <td><font color="#AFEEEE"><%= el.status_name %></font></td>
+ <td><%= el.rtdm_decision_name %></td>
+ <th><%= el.u_fio +" "+ el.u_login %></th>
+ <td><%= el.u_role %></td>
+ <td><%= el.und_stage +" "+ el.und_status_name %></td>
+ <td><%= el.end_date %></td> 
+  </tr>
+ <% }); %>
+</table>
+
+
+<p></p>
+
+<div class="table-block-div"><a id="#bhidev" onclick="hideElement('eventData')" style="display: block"><font size="6">&darr; Журнал событий по заявке</font></a></div>
+
+
+  <table class="table table-striped table-dark" id = "eventData" style="display: none">
+  
+   <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата, время события</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Имя события</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Логин сотрудника, связанного с событием</font></th>
+   </tr>
+<tr>
+   <% eventData.forEach(function(el) { %>
+ 
+ <tr>
+ <td><%= el.event_time %></td>
+ <td><font color="#AFEEEE"><%= el.event_description %></font></td>
+ <td><%= el.value %></td>
+  </tr>
+ <% }); %>
+
+</table>
+
+
+<div id="mainBPMdataContainer"></div>
+
+
+ <p></p>
+
+
+
+
+ <% if (integrationLogData.length > 0) { %>
+
+
+  <%- include('partitions/integration-logs-table.ejs') %>
+
+
+<% }; %>
+
+
+<div id="elk-block-container">
+    
+</div>
+
+<%- include('partitions/elk-search-params-container.ejs') %>
+<!-- <% if (elkHits.length > 0) { %>
+
+  <%- include('partitions/elk-logs-table.ejs') %>
+
+<% }; %> -->
+
+
+
+
+ </body>
+</html>
+
+

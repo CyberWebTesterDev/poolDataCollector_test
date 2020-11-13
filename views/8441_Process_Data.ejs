@@ -1,0 +1,397 @@
+
+
+<div id="errorContainer">
+
+
+<% if ( errors[0] ) { %>
+
+<% let idx = tasksData.findIndex(el => el.act_inst_state_ === 0); %>
+<% if ( tasksData[idx].act_type_ !== 'intermediateConditional' && status !== 'ERR')  { %>
+
+    <a class="btn btn-outline-info" type="submit" id="#bhiderr" onclick="hideElement('#tohide')">Скрыть/показать</a>
+  <ul>Предыдущая ошибка
+    <li id="#tohide"><font color="DimGrey"><%= errors[0] %></font></li>
+  </ul>
+
+
+ <% } else { %>
+
+     <a class="btn btn-outline-info" type="submit" id="#bhiderr" onclick="hideElement('#tohide')">Скрыть/показать</a>
+  <ul>Текущая ошибка
+    <li id="#tohide"><font color="#E6E6FA"><%= errors[0] %></font></li>
+  </ul>
+
+ <% }; %>
+ <% }; %>
+
+</div>
+
+
+<div id="headerBlock">
+<% if (processData.length === 0) { %>
+
+  <div class="alert alert-danger" role="alert" id=processoff>
+  <font size="5">По заявке <%= appnum%> нет действующего процесса!</font>
+  </div>
+  <p></p>
+
+<% }; %>
+
+<% if (processData.length > 1) { %>
+
+  <div class="alert alert-warning" role="alert" id=processoff>
+  <font size="5">По заявке <%= appnum%> процесс задублирован. Обратите внимание, что хронология задач отсутствует</font>
+<% processData.forEach((el, i) => { %>
+      <a href="https://test.app.rcl.int.***.ru/testpath/app/test/default/#/process-instance/<%= el.proc_inst_id_ %>" role="button" target="_blank">Процесс #<%= i+1 %></a>
+<%});%>
+  </div>
+  <p></p>
+<% }; %>
+
+
+<% if (processData.length === 1) { %>
+<% let idx = tasksData.findIndex(el => el.act_inst_state_ === 0); %>
+
+  <% if ( idx !== -1 && tasksData[idx].act_type_ === 'intermediateConditional')  { %>
+    <a id="camundaBtn" class="btn btn-warning" href="https://test.app.rcl.int.***.ru/testpath/app/test/default/#/process-instance/<%= processData[0].proc_inst_id_ %>" role="button" target="_blank">Обработать зависание в Camunda Cockpit</a>
+    <button onclick="SupportPageController.fillTimeRangeFields()" class="btn btn-info"> Заполить поля поиска логов окрестностями самого свежего зависания </button> 
+    <h2>Зависание началось  <%= tasksData[idx].elk_start_time_ %></h2>
+
+
+  <% } else { %>
+    <a class="btn btn-primary" id="camundaBtn" href="https://test.app.rcl.int.***.ru/testpath/app/test/default/#/process-instance/<%= processData[0].proc_inst_id_ %>" role="button" target="_blank">Перейти в Camunda Cockpit</a>
+  <% }; %>
+<% }; %>
+
+</div>
+
+
+
+<div id="bpmDataContainer">
+<div class="table-block-div"><a onclick="hideElement('divTableContainer#5')" style="display: block"><font size="6">&darr; Данные BPM-процесса</font></a></div>
+
+<div class="table-block-div-bpm" id="divTableContainer#5" style="display: none">
+
+<% if (processData.length > 0) { %>
+  <div id="process-stat"></div>
+ <div class="table-block-div"><a onclick="hideElement('processData')" style="display: block"><font size="6">&darr; Хронология задач действующего процесса BPM</font></a></div>
+
+
+ <table class="table table-striped table-dark" id = "processData"  style="display: none">
+
+    
+  
+ <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">Схема процесса</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Номер версии</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Состояние задачи</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Имя задачи</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Тип задачи</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">ID задачи</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Assignee (на кого назнач.)</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата создания задачи</font></th> 
+    <th scope="col" class="colp"><font color="#FFDAB9">ExecutionId</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Время перехода в состояние</font></th>
+  </tr>
+
+   <% tasksData.forEach(function(el) { %>
+ 
+ <tr>
+ <td><%= el.proc_def_key_ %></td>
+ <td><%= el.ver %></td>
+
+ <% if (el.act_inst_state_ == 0) { %> 
+ <td><font color="yellow"><%= el.act_inst_state_ %></font></td>
+ <% if (!el.act_name_) { %> 
+ <td></td>
+ <% } else { %>
+ <td><font color="yellow"><%= el.act_name_ %></font></td>
+  <% }; %>
+  
+
+ <% } if (el.act_inst_state_ == 2) { %>
+ <td><font color="red"><%= el.act_inst_state_ %></font></td>
+ <td><font color="red"><%= el.act_name_ %></font></td>
+ <% }; %>
+  <%  if (el.act_inst_state_ == 4) { %>
+ <td><font color="#008000"><%= el.act_inst_state_ %></font></td>
+ <td><font color="#008000"><%= el.act_name_ %></font></td>
+ <% }; %>
+  <%  if (el.act_inst_state_ == 1) { %>
+ <td><font color="#F5760E"><%= el.act_inst_state_ %></font></td>
+ <td><font color="#F5760E"><%= el.act_name_ %></font></td>
+ <% }; %>
+
+  <%  if (el.act_type_ == 'serviceTask') { %>
+ <td><font color="#FFFFF0"><%= el.act_type_ %></font></td>
+ <% }; %>
+   <%  if (el.act_type_ == 'userTask') { %>
+ <td><font color="#FA8072"><%= el.act_type_ %></font></td>
+ <% }; %>
+   <%  if (el.act_type_ == 'exclusiveGateway') { %>
+ <td><font color="#708090"><%= el.act_type_ %></font></td>
+ <% }; %>
+    <%  if (el.act_type_ == 'messageStartEvent') { %>
+ <td><font color="#66CDAA"><%= el.act_type_ %></font></td>
+ <% }; %>
+     <%  if (el.act_type_ == 'receiveTask') { %>
+ <td><font color="#CD5C5C"><%= el.act_type_ %></font></td>
+ <% }; %>
+      <%  if (el.act_type_ == 'startEvent') { %>
+ <td><font color="#00FF7F"><%= el.act_type_ %></font></td>
+ <% }; %>
+ <%  if (el.act_type_ == 'terminateEndEvent') { %>
+  <td><font color="#00FF7F"><%= el.act_type_ %></font></td>
+  <% }; %>
+       <%  if (el.act_type_ == 'intermediateMessageThrowEvent') { %>
+ <td><font color="#FAFAD2"><%= el.act_type_ %></font></td>
+ <% }; %>
+       <%  if (el.act_type_ == 'boundaryError') { %>
+ <td><font color="#E6E6FA"><%= el.act_type_ %></font></td>
+ <% }; %>
+        <%  if (el.act_type_ == 'boundaryMessage') { %>
+ <td><font color="gray"><%= el.act_type_ %></font></td>
+ <% }; %>
+          <%  if (el.act_type_ == 'intermediateTimer') { %>
+ <td><font color="DimGrey"><%= el.act_type_ %></font></td>
+ <% }; %>
+        <%  if (el.act_type_ == 'intermediateConditional') { %>
+ <td><font color="#FAFAD2"><%= el.act_type_ %></font></td>
+ <% }; %>
+ <%  if (el.act_type_ == 'subProcess') { %>
+ <td><font color="#FFF0F5"><%= el.act_type_ %></font></td>
+ <% }; %>
+  <%  if (el.act_type_ == 'noneEndEvent') { %>
+ <td><font color="#191970"><%= el.act_type_ %></font></td>
+ <% }; %>
+ <%  if (el.act_type_ == 'boundaryTimer') { %>
+ <td><font color="#E6E6FA"><%= el.act_type_ %></font></td>
+ <% }; %>
+  <%  if (el.act_type_ == 'parallelGateway') { %>
+ <td><font color="#E6E6FA"><%= el.act_type_ %></font></td>
+ <% }; %>
+ <%  if (!el.act_type_) { %>
+ <td></td>
+ <% }; %>
+ <td><%= el.act_id_ %></td>
+ <td><%= el.assignee_ %></td>
+ <td><%= el.start_time_ %></td>
+ <td><%= el.execution_id_ %></td>
+ <td><%= el.end_time_ %></td> 
+  </tr>
+ <% }); %>
+</table>
+<% }; %>
+
+
+<% if (tasksArchData.length > 0) { %>
+  <div id="process-stat"></div>
+ <div class="table-block-div"><a onclick="hideElement('tasksArchData')" style="display: block"><font size="6">&darr; Хронология задач завершенного процесса BPM</font></a></div>
+
+
+
+
+ <table class="table table-striped table-dark" id = "tasksArchData"  style="display: none">
+  
+ <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">Схема процесса</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Состояние задачи</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Имя задачи</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Тип задачи</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">ID задачи</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Assignee (на кого назнач.)</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата создания задачи</font></th> 
+    <th scope="col" class="colp"><font color="#FFDAB9">ExecutionId</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Время перехода в состояние</font></th>
+</tr>
+
+   <% tasksArchData.forEach(function(el) { %>
+ 
+ <tr>
+ <td><%= el.proc_def_key_ %></td>
+    <% if (el.act_inst_state_ == 0) { %> 
+ <td><font color="yellow"><%= el.act_inst_state_ %></font></td>
+ <td><font color="yellow"><%= el.act_name_ %></font></td>
+ <% } if (el.act_inst_state_ == 2) { %>
+ <td><font color="red"><%= el.act_inst_state_ %></font></td>
+ <td><font color="red"><%= el.act_name_ %></font></td>
+ <% }; %>
+  <%  if (el.act_inst_state_ == 4) { %>
+ <td><font color="#008000"><%= el.act_inst_state_ %></font></td>
+ <td><font color="#008000"><%= el.act_name_ %></font></td>
+ <% }; %>
+  <%  if (el.act_inst_state_ == 1) { %>
+ <td><font color="#F5760E"><%= el.act_inst_state_ %></font></td>
+ <td><font color="#F5760E"><%= el.act_name_ %></font></td>
+ <% }; %>
+  <%  if (el.act_type_ == 'serviceTask') { %>
+ <td><font color="#FFFFF0"><%= el.act_type_ %></font></td>
+ <% }; %>
+   <%  if (el.act_type_ == 'userTask') { %>
+ <td><font color="#FA8072"><%= el.act_type_ %></font></td>
+ <% }; %>
+   <%  if (el.act_type_ == 'exclusiveGateway') { %>
+ <td><font color="#708090"><%= el.act_type_ %></font></td>
+ <% }; %>
+    <%  if (el.act_type_ == 'messageStartEvent') { %>
+ <td><font color="#66CDAA"><%= el.act_type_ %></font></td>
+ <% }; %>
+     <%  if (el.act_type_ == 'receiveTask') { %>
+ <td><font color="#CD5C5C"><%= el.act_type_ %></font></td>
+ <% }; %>
+      <%  if (el.act_type_ == 'messageEndEvent') { %>
+ <td><font color="Brown"><%= el.act_type_ %></font></td>
+ <% }; %>
+      <%  if (el.act_type_ == 'startEvent') { %>
+ <td><font color="#00FF7F"><%= el.act_type_ %></font></td>
+ <% }; %>
+       <%  if (el.act_type_ == 'intermediateMessageThrowEvent') { %>
+ <td><font color="#FAFAD2"><%= el.act_type_ %></font></td>
+ <% }; %>
+       <%  if (el.act_type_ == 'boundaryError') { %>
+ <td><font color="#E6E6FA"><%= el.act_type_ %></font></td>
+ <% }; %>
+ <%  if (el.act_type_ == 'intermediateTimer') { %>
+  <td><font color="DimGrey"><%= el.act_type_ %></font></td>
+  <% }; %>
+        <%  if (el.act_type_ == 'intermediateConditional') { %>
+ <td><font color="#FAFAD2"><%= el.act_type_ %></font></td>
+ <% }; %>
+ <%  if (el.act_type_ == 'subProcess') { %>
+ <td><font color="#FFF0F5"><%= el.act_type_ %></font></td>
+ <% }; %>
+  <%  if (el.act_type_ == 'noneEndEvent') { %>
+ <td><font color="#191970"><%= el.act_type_ %></font></td>
+ <% }; %>
+ <%  if (el.act_type_ == 'boundaryTimer') { %>
+ <td><font color="#E6E6FA"><%= el.act_type_ %></font></td>
+ <% }; %>
+ <td><%= el.act_id_ %></td>
+ <td><%= el.assignee_ %></td>
+ <td><%= el.start_time_ %></td>
+ <td><%= el.execution_id_ %></td>
+ <td><%= el.end_time_ %></td> 
+  </tr>
+ <% }); %>
+</table>
+<% }; %>
+
+
+<% if (executionsLogData.length > 0) { %>
+
+<div class="table-block-div"><a onclick="hideElement('executionsLogData')" style="display: block"><font size="6">&darr; Хронология выполнения пользовательских задач BPM</font></a></div>
+
+ <p></p>
+   
+   <table class="table table-dark" id = "executionsLogData"  style="display: none">
+   <tr>
+    <th><font color="#FFDAB9">Дата, время создания</font></th>
+    <th><font color="#FFDAB9">Время исполнения</font></th>
+    <th><font color="#FFDAB9">Имя метода</font></th>
+    <th><font color="#FFDAB9">На кого назначена</font></th>
+    <th><font color="#FFDAB9">Исполнитель (borrower)</font></th>
+    <th><font color="#FFDAB9">Срок, до которого должа быть исполнена</font></th>
+    <th><font color="#FFDAB9">ID задачи (Execution id)</font></th>
+
+   </tr>
+   <% executionsLogData.forEach(function(el) { %>
+   <tr>
+ <td><%= el.create_time  %></td>
+ <td><font color="#FAFAD2"><%= el.complete_time %></font></td>
+ <td><font color="#66CDAA"><%= el.method %></font></td>
+ <td><%= el.assignee %></td>
+ <td><%= el.borrower %></td>
+ <td><%= el.due_date %></td>
+ <td><%= el.bpm_execution_id %></td>
+
+  </tr>
+  <% }); %>
+</table>
+<% }; %>
+
+<p></p>
+
+<% if (processLogData.length > 0) { %>
+<div class="table-block-div"><a onclick="hideElement('processLogData')" style="display: block"><font size="6">&darr; Хронология BPM-процесса</font></a></div>
+
+ <p></p>
+   
+   <table class="table table-dark" id = "processLogData" style="display: none">
+   <tr>
+    <th><font color="#FFDAB9">Дата, время создания</font></th>
+    <th><font color="#FFDAB9">Схема процесса</font></th>
+    <th><font color="#FFDAB9">ID процесса</font></th>
+    <th><font color="#FFDAB9">Точка входа</font></th>
+    <th><font color="#FFDAB9">Точка завершения</font></th>
+    <th><font color="#FFDAB9">Состояние</font></th>
+    <th><font color="#FFDAB9">Время завершения</font></th>
+   </tr>
+   <% processLogData.forEach(function(el) { %>
+   <tr>
+ <td><%= el.start_time_  %></td>
+ <td><font color="SandyBrown"><%= el.proc_def_key_ %></td>
+  <td><%= el.proc_inst_id_ %></td>
+ <td><%= el.start_act_id_ %></td>
+ <td><%= el.end_act_id_ %></td>
+ <% if (el.state_ === 'ACTIVE') { %>
+ <td><font color="SpringGreen"><%= el.state_ %></font></td>
+ <% }  %>
+ <% if (el.state_ === 'COMPLETED') { %>
+ <td><font color="DarkCyan"><%= el.state_ %></font></td>
+ <% }; %>
+  <% if (el.state_ === 'EXTERNALLY_TERMINATED') { %>
+ <td><font color="Brown"><%= el.state_ %></font></td>
+ <% }; %>
+ <td><%= el.end_time_  %></td>
+  </tr>
+  <% }); %>
+</table>
+<% }; %>
+
+
+ <% if (jobData.length > 0) { %>
+
+<div class="table-block-div"><a onclick="hideElement('jobData')" style="display: block"><font size="6">&darr; Данные о джобе задачи BPM</font></a></div>
+
+ <p></p>
+   
+   <table class="table table-dark" id = "jobData"  style="display: none">
+   <tr>
+    <th><font color="#FFDAB9">Тип джоба</font></th>
+    <th><font color="#FFDAB9">ID связанной задачи</font></th>
+    <th><font color="#FFDAB9">Схема процесса</font></th>
+    <th><font color="#FFDAB9">Количество перезапусков (reties)</font></th>
+    <th><font color="#FFDAB9">Тип обработчика (handler type)</font></th>
+    <th><font color="#FFDAB9">Handler id</font></th>
+    <th><font color="#FFDAB9">Конфигурация джоба</font></th>
+    <th><font color="#FFDAB9">Состояние (suspension state)</font></th>
+    <th><font color="#FFDAB9">Действует до</font></th>
+
+   </tr>
+   <% jobData.forEach(function(el) { %>
+   <tr>
+ <td><font color="#FAFAD2"><%= el.type_ %></td>
+ <td><%= el.execution_id_ %></td>
+ <td><%= el.process_def_key_ %></td>
+ <td><%= el.retries_ %></td>
+ <td><font color="#66CDAA"><%= el.handler_type_ %></font></td>
+ <td><%= el.handler_cfg_ %></td>
+ <td><%= el.job_configuration_ %></td>
+ <td><%= el.suspension_state_ %></td>
+ <td><%= el.duedate_ %></td>
+  </tr>
+  <% }); %>
+</table>
+<% }; %>
+
+ <p></p>
+</div>
+</div>
+
+<script id="temp-script-loader">
+
+const scriptElement = document.getElementById("temp-script-loader");
+
+SupportPageController.loadAnalyzeJS(scriptElement);
+
+</script>

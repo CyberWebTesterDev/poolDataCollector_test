@@ -1,0 +1,283 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Администрирование заявки РКК 2.0</title>
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <script src="./jquery.js"></script>
+  <script src="./bootstrap.min.js"></script>
+  <style type="text/css">
+
+
+   .longtext {
+
+      word-wrap: break-word;
+      width: 900px;
+
+    }
+
+
+
+</style>
+ </head>
+ <body>
+   
+
+  <table class="table table-dark" id = "#t2">
+  <h2>Основные данные по заявке <%= appnum%></h2>
+   <tr>
+    <th><font color="#FFDAB9">ID Заявки</font></th>
+    <th><font color="#FFDAB9">Направление</font></th>
+    <th><font color="#FFDAB9">Канал поступления</font></th>
+    <th><font color="#FFDAB9">Код ДО</font></th>
+    <th><font color="#FFDAB9">Статус</font></th>
+    <th><font color="#FFDAB9">Дата создания заявки</font></th>
+    <th><font color="#FFDAB9">Дата перехода в статус</font></th>
+    <th><font color="#FFDAB9">Метод</font></th>
+   </tr>
+   <% obj2.forEach(function(el, i, arr) { %>
+   <tr>
+ <td><%= obj2[i].application_id%></td>
+ <td><%= obj2[i].credit_type_name%></td>
+ <td><%= obj2[i].sale_channel_name%></td>
+ <td><%= obj2[i].branch_unit_name%></td>
+ <td><%= obj2[i].appstatus_name%></td>
+ <td><%= obj2[i].creation_date%></td>
+ <th><%= obj2[i].date_status%></th>
+ <td><%= obj2[i].method%></td>
+  </tr>
+  <% }); %>
+
+   <p></p>
+
+  </table>
+  <p></p>
+   <table class="table table-dark" id = "#t3">
+  <h2>Параметры заявки</h2>
+   <tr>
+    <th>Тип параметров</th>
+    <th>Версия субпрограммы</th>
+    <th>Сумма кредита</th>
+    <th>Срок кредита</th>
+    <th>Доп.сумма(рефин)</th>
+    <th>Общая сумма долга(рефин)</th>
+    <th>Ставка</th>
+    <th>Тип платежа</th>
+    <th>Флаг подп. док.</th>
+    <th>Дата подписания</th>
+    <th>Наличие страховки</th>
+    <th>Номер счета</th>
+    <th>Счет выбран?</th>
+    <th>Зачисление</th>
+    <th>Списание</th>
+   </tr>
+   <% params.forEach(function(el, i, arr) { %>
+   <tr>
+ <td><%= params[i].case_partype%></td>
+ <td><%= params[i].sub_program_version%></td>
+ <td><%= params[i].credit_amount%></td>
+ <td><%= params[i].credit_term%></td>
+ <td><%= params[i].additional_amount%></td>
+ <td><%= params[i].total_debt_amount%></td>
+ <td><%= params[i].interest_rate%></td>
+ <td><%= params[i].case_payment%></td>
+ <td><%= params[i].offer_signed%></td>
+ <td><%= params[i].date_sign%></td>
+ <td><%= params[i].insurance%></td>
+ <td><%= params[i].acc_number%></td>
+ <td><%= params[i].selected%></td>
+ <td><%= params[i].enrollment%></td>
+ <td><%= params[i].withdrawal%></td>
+  </tr>
+  <% }); %>
+
+   <p></p>
+
+  </table>
+  <a class="btn btn-primary" href="<%= link %>" role="button" target="_blank">Перейти в Camunda</a>
+  <a class="btn btn-primary" href="<%= link2 %>" role="button" target="_blank">Перейти в сканы</a>
+  <button class="btn btn-primary" id="#retry" type="submit" onclick="retry()">Retrytask</button>
+  <a class="btn btn-primary" href="<%= linkerr %>" role="button" target="_blank">Обработка ошибки в РКК</a>
+  <a class="btn btn-primary" role="button" type="submit" onclick="errorProcess()">Обработка ошибки отсюда</a>
+  <p></p>
+  <a type="submit" id="#bhide" onclick="hide()">Скрыть/показать</a>
+  <ul>Текущая ошибка
+    <div id = "#tohide">
+    <li><font color="red"><%= error%></font></li>
+     </div>
+  </ul>
+  <h2>Хронология действующего процесса по заявке</h2>
+  <a type="submit" onclick="hide2()">Скрыть/показать</a>
+  <table class="table table-dark" id = "t1">
+  
+   <tr>
+    <th scope="col" class="colp">Схема процесса</th>
+    <th scope="col" class="colp">Номер версии</th>
+    <th scope="col" class="colp">Имя таска</th>
+    <th scope="col" class="colp">Тип таска</th>
+    <th scope="col" class="colp">Дата создания таска</th>
+    <th scope="col" class="colp">Состояние таска</th>
+    <th scope="col" class="colp">ExecutionId</th>
+    <th scope="col" class="colp">Время перехода в состояние</th>
+   </tr>
+<tr>
+ 
+ <tr>
+ <td id = "<%=i%>pr" > <%= obj[i].proc_def_key_ %></td>
+ <td><%= obj[i].ver %></td>
+ <td><%= obj[i].act_name_ %></td>
+ <th id = "<%=i%>type" ><%= obj[i].act_type_ %></th>
+ <td><%= obj[i].start_time_ %></td>
+ <td id = "<%=i%>state" > <%= obj[i].act_inst_state_ %></td>
+ <td id = "execution"><%= obj[i].execution_id_ %></td>
+ <td><%= obj[i].end_time_ %></td> 
+  </tr>
+</table>
+
+<p></p>
+ <h2>Интеграционные логи по заявке</h2>
+  <a type="submit" onclick="hide3()">Скрыть/показать таблицу</a>
+  <button type="submit" onclick="showlongtext()">Показать/скрыть запросы/ответы</button>
+  <table class="table table-dark" id = "t2">
+  
+   <tr>
+    <th>Correlation ID</th>
+    <th>Целевая система (Endpoint)</th>
+    <th>Результат</th>
+    <th>Текст ошибки</th>
+    <th>Дата, время интеграции</th>
+    <th>Запрос/ответ</th>
+   </tr>
+ <tr>
+ <td>d6ae5fae-2ec3-49e8-a938-718c810ec519</td>
+ <td>СПР</td>
+ <td>Успешно</td>
+ <th>NULL</th>
+ <td>2019-12-05 13:12:04</td>
+ <td >
+  <p class="longtext" style="display: none">
+ {"multipleFindProducts":{"3829864":{"subProgramId":"9a20b7bc-3df8-4c15-8118-04dc3bfc2509","subProgramVersionId":"1299","directionCode":"01.00.00","subProgramCode":"01.01.06","extSystemCode":"GPB_DO","branchCode":"000","frontOfficeCode":"099/1008","fundCode":"RUR","insuranceCode":"0","birthDate":"1970-03-25","purposeCode":"2","clientCategoryCode":"2","clientSubCategoryCode":"2C","pcFlag":true,"preapprovedCode":"0","actualDate":"2019-11-28"},"3829865":{"subProgramId":"9a20b7bc-3df8-4c15-8118-04dc3bfc2509","subProgramVersionId":"1299","directionCode":"01.00.00","subProgramCode":"01.01.06","extSystemCode":"GPB_DO","branchCode":"000","frontOfficeCode":"099/1008","fundCode":"RUR","insuranceCode":"1","birthDate":"1970-03-25","purposeCode":"2","clientCategoryCode":"2","clientSubCategoryCode":"2C","pcFlag":true,"preapprovedCode":"0","actualDate":"2019-11-28"}},"responseSingleCollection":true}
+ </p>
+ </td>
+</tr>
+
+</table>
+  
+
+  <script>
+
+    function retry(){
+
+
+      if ("<%=obj[obj.length-1].act_type_%>" !== 'intermediateConditional') {alert ("Заявка не зависла в буфере, перезапуск таска делать нельзя!")}
+
+        else {
+
+
+         if (confirm("Вы уверены что хотите выполнить перезапуск таски заявки <%-appnum%>?")){ alert("Упс, перезапуск таски из этой страницы пока не работает, просьба выполнить через Camunda Cockpit")}
+
+          else (alert("Действие отменено."))
+
+        }
+
+
+
+    }
+
+
+    function hide() {
+
+      var elem = document.getElementById("#tohide");
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+      } else {
+
+        elem.style.display = "none";
+      }
+
+    }
+
+        function showlongtext() {
+
+      var elem = document.getElementsByClassName('longtext');
+
+      for (let i=0; i < elem.length; i++)
+
+      {
+
+      if (elem[i].style.display === "none") {
+
+
+        elem[i].style.display = "block";
+      } else {
+
+        elem[i].style.display = "none";
+      }
+
+    }
+  }
+
+
+
+      function hide2() {
+
+      var elem = document.getElementById("t1");
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+      } else {
+
+        elem.style.display = "none";
+      }
+
+    }
+
+        function hide3() {
+
+      var elem = document.getElementById("t2");
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+      } else {
+
+        elem.style.display = "none";
+      }
+
+    }
+
+
+
+       function errorProcess() {
+
+         if ("<%-obj[0].act_name_%>" !== 'Обработка ошибки') {alert ("Заявка НЕ в ошибке в BPM, обработку ошибки делать нельзя!")}
+
+          else {
+
+
+         if (confirm("Вы уверены что хотите выполнить обработку ошибки по заявке <%-appnum%>?")){ alert("Упс, обработка ошибки из этой страницы пока не работает, просьба выполнить через РКК")}
+
+          else (alert("Действие отменено."))
+
+        }
+
+    }
+
+
+  
+
+
+
+
+
+
+  </script>
+
+
+ </body>
+</html>
+
+

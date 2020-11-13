@@ -1,0 +1,179 @@
+<%- include('headers/header-with-bootstrap.ejs') %>
+ 
+
+
+
+  
+ </head>
+ <body>
+
+<div class="headlabel">
+  <h1 onclick="showModal()">RKK Adminkey</h1>
+</div>
+<div id="modalContainer"></div>
+
+<h3 class="login-head-text">Для продолжения работы необходимо выполнить вход (учетные данные доменные)</h3>
+
+
+<div class="form-container">
+  <form id="formLogin" onsubmit="authenticate(); return false;">
+    <div class="form-group">
+      <label for="loginInp">Логин</label>
+      <input onkeydown="simpleCheckFields()" onkeyup="simpleCheckFields()" type="login" name="login" id="loginInp" aria-describedby="textLogin">
+      <label style="color: red; display: none; font-size: 18px;" id="textLogin">Логин не должен быть пустым</label>
+    </div>
+    <div class="form-group">
+      <label for="passwordInp">Пароль</label>
+      <input onkeydown="simpleCheckFields()" onkeyup="simpleCheckFields()" type="password" name="password" id="passwordInp" aria-describedby="textPassword">
+      <label style="color: red; display: none; font-size: 18px;" id="textPassword">Пароль не должен быть пустым</label>
+    </div>
+    <button onclick="authenticate();" id="authBtn" style="margin-top: 50px; margin-left: 35%; position: relative;" type="submit" class="btn btn-primary">Войти</button>
+  </form>
+</div>
+
+<%- include('scripts/scripts-src.ejs') %>
+
+<script>
+
+  const simpleCheckFields = () => {
+
+    const setClassRedBorder = (element, flag = false) => {
+
+    
+      if (!element.classList.contains('red-border')) {
+
+      
+        element.className += ' red-border';
+
+        if (element.id == 'loginInp') {
+          document.getElementById('textLogin').style.display = 'table-cell';
+        } else {
+          document.getElementById('textPassword').style.display = 'table-cell';
+        }
+
+    }
+  }
+      
+    
+
+    const removeClassRedBorder = (element) => {
+
+      if (element.classList.contains('red-border')) {
+
+        element.classList.toggle('red-border');
+
+        if (element.id == 'loginInp') {
+        document.getElementById('textLogin').style.display = 'none';
+      } else {
+        document.getElementById('textPassword').style.display = 'none';
+      }
+
+      }
+
+
+    }
+   
+    let isButtonDisabled = false;
+    let isButtonDisabledPassword = false;
+
+    document.getElementById('loginInp').value.length > 0 ? isButtonDisabled = false : isButtonDisabled = true;
+
+
+
+
+    document.getElementById('passwordInp').value.length > 0 ? isButtonDisabledPassword = false : isButtonDisabledPassword = true;
+
+
+    if (isButtonDisabled || isButtonDisabledPassword) {
+
+      document.getElementById('authBtn').disabled = true;
+      document.getElementById('authBtn').style.cursor = 'not-allowed';
+    } else {
+      document.getElementById('authBtn').disabled = false;
+      document.getElementById('authBtn').style.cursor = 'pointer';
+    }
+
+    
+
+    if (document.getElementById('loginInp').value.length > 0) {
+      removeClassRedBorder(document.getElementById('loginInp'));
+    } else {
+      setClassRedBorder(document.getElementById('loginInp'));
+    }
+
+    if (document.getElementById('passwordInp').value.length > 0) {
+      removeClassRedBorder(document.getElementById('passwordInp'));
+    } else {
+      setClassRedBorder(document.getElementById('passwordInp'));
+    }
+    
+  }
+
+
+
+ 
+
+  document.getElementById('formLogin').addEventListener('change', (e) => {
+    simpleCheckFields();
+  });
+
+  const authenticate = async () => {
+
+
+    let userName = document.getElementById('loginInp').value;
+    let password = document.getElementById('passwordInp').value;
+
+    if (!userName || !password) {
+      SupportPageController.callPopUp(`Ошибка`, `Не заполнено одно или несколько обязательных полей`, 3000, 'red');
+      return;
+    }
+
+
+    //console.log(`Request authenticate with parameters: ${userName}, ${password}`);
+    const urlAuth = `http://localhost:3000/authenticate`;
+    const result = await fetch(urlAuth, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify({userName, password})
+    })
+
+    if (result.ok) {
+      await result;
+      //console.log(result);
+      if (result.redirected) {
+        SupportPageController.callPopUp(`Сообщение`, `Аутентификация прошла успешно`, 3000, 'green');
+        setTimeout(() => {
+          window.location.href = result.url;
+        }, 1000);
+        
+      } else {
+        let response = await result.json();
+        //console.log(response);
+        SupportPageController.callPopUp(`Ошибка`, `Произошла ошибка в процессе аутентификации, сообщение: ${response.description} возможно ошибка в логине и/или пароле`, 5000, 'red');
+        //alert(`Ошибка аутентификации ${response.description} возможно ошибка в логине и/или пароле`);
+      }
+    } else {
+
+      SupportPageController.callPopUp(`Ошибка`, `Произошла сетевая ошибка в процессе аутентификации, статус ответа: ${result.status}`, 5000, 'red');
+      //alert(`Сетевая ошибка при выполнении аутентификации, статус ответа: ${result.status}`);
+    }
+
+  };
+
+
+
+
+</script>
+
+<script src="/public/js/jquery-3.4.1.min.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+
+
+
+ </body>
+</html>
+
+

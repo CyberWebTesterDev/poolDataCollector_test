@@ -1,0 +1,122 @@
+<div id="part-container">
+    <div class="table-block-div">
+        <a onclick="hideElement('elkContainer')" style="display: block">
+            <font size="6">&rarr; Логи из Kibana (ELK)</font>
+        </a>
+    </div>
+    <div class="div-tables-container" id="elkContainer" style="display: block">
+        <div class="control-panel-elk" style="margin-bottom: 30px"><%- include('elk-control-panel.ejs') %><%- include('elk-info-panel.ejs') %>
+            <div id="chainWrapper" class="chain-info-wrapper">
+                <span style="font-size: 15px;" onclick="hideElement('chainWrapperContent')">Скрыть</span>
+                <div id="chainWrapperContent" class="chain-content-wrapper"></div>
+                <div id="chainErrorAnalyzeContent" class="chain-content-wrapper"></div>
+            </div>
+        </div>
+        <table class="table-bordered table-dark" id = "elkData" style="display: table;"><% elkHits.forEach( (source, i) => { %><% if (i < 1) { let counter = 0; %>
+            <thead>
+            <tr style="text-align: center"><% for (let key in source) { %><% if (counter < 9 && key != '_index' && key != '_id' ) { %>
+                    <th scope="col" class="colp">
+                        <font color="#FFDAB9"><%= key %>
+                        </font>
+                    </th><% }; %><% if (counter == 9 && key != '_index' && key != '_id') { %>
+                    <!--                    <th scope="col" class="colp"><font color="#FFDAB9"><%= key %></font></th>-->
+                    <!--                    <th scope="col" class="colp"><font color="#FFDAB9">stack_trace</font></th>--><% }; %><%  counter++; %><% }; %>
+
+            </tr>
+            </thead><% }; %><% if (source.level == 'ERROR') { %>
+            <tr style="border-style: solid; border-color: #b53636; border-width: 3px;"><% } else { %>
+            <tr><% }; %><% for (let key in source) { %><% if (key == 'message') { %>
+                <td class="message-td">
+                    <span class="icon-button" style="cursor: pointer; font-size: 30px;" id="<%=i%>_textRead_2" onclick="SupportPageController.callModalTable(this.id)"                             onmouseover="SupportPageController.handlePopUpPermanent('show', this, event, 'Посмотреть увеличенный текст лога в отдельном окне')"
+                          onmouseleave="SupportPageController.handlePopUpPermanent('close')">&#128269;
+                    </span>
+                    <span
+                            data-tooltip="Копировать текст лога в буфер обмена"
+                            style="cursor: pointer; font-size: 30px;"
+                            id="<%=i%>_btn_copy"
+                            onmouseover="SupportPageController.handlePopUpPermanent('show', this, event, 'Скопировать лог в буфер обмена')"
+                            onmouseleave="SupportPageController.handlePopUpPermanent('close')"
+                            onclick="SupportPageActions.copyTextToClipBoardFromElementById(this)"
+                    >
+                        &#128190;
+
+                    </span>
+                    <p></p>
+                    <svg style="cursor: pointer" onclick="wrapTargetMessage(this)" data-text="
+                        <%=i%>_long_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 29" fill="currentColor" class="css-sr6nr" width="30" height="50">
+                        <path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"></path>
+                    </svg>
+                    <p class="longtext2" id="<%=i%>_long_2"><%= source[key] %>
+
+                    </p>
+                </td><% } else if (key == 'Посмотреть лог') { %>
+                <td >
+                    <div style="cursor: pointer; font-size: 30px;" id="<%=i%>_fullTextRead_2" onclick="SupportPageController.callModalTableFullInfo(this)">&#128065;
+                    </div>
+                </td><% } else if (key == '@timestamp') { %>
+                <td style="width: 200px; word-wrap: normal; display: block;">
+                    <span style="cursor: pointer; font-size: 30px; background-color: #0f2542" id="<%=i%>_showDocInKibana"
+                          onmouseover="SupportPageController.handlePopUpPermanent('show', this, event, 'Откроет лог в отдельной вкладке в Kibana')"
+                          onmouseleave="SupportPageController.handlePopUpPermanent('close')"
+                    >
+                        <a href="https://kibana.test-stand.tst.int.***.ru/app/discover#/doc/9e905f70-b88e-11ea-ad80-af2592106d05/<%=source._index%>?id=<%=source._id%>" target="_blank">&#128065;
+                        </a>
+                    </span>
+                    <div class="icon-button" style="cursor: pointer; font-size: 30px;" id="<%=i%>_fullTextRead_2"
+                         onclick="SupportPageController.callModalTableFullInfo(this)"
+                         onmouseover="SupportPageController.handlePopUpPermanent('show', this, event, 'Посмотреть весь лог в увеличенном виде')"
+                         onmouseleave="SupportPageController.handlePopUpPermanent('close')"
+                    >&#128065;
+
+                    </div>
+                    <p class="commontd"><%= source[key].split('T')[0] +' '+ source[key].split('T')[1].split('+')[0] %>
+                    </p>
+                </td><% } else if (key == 'stack_trace') { %>
+                <td >
+                    <button on type="submit" id="<%=i%>_btn_3" onclick="hideReqResp3(event)">Показать/скрыть стектрейс
+                    </button>
+                    <span style="cursor: pointer; font-size: 30px;" id="<%=i%>_textRead_3" onclick="SupportPageController.callModalTable(this.id)">&#128269;
+                    </span>
+                    <p class="longtext3" style="visibility: hidden;"></p>
+                    <p color="#d2995c" class="longtext3" id="<%=i%>_long_3" style="display: none; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><%= source[key] %>
+
+                    </p>
+                </td><% } else if (key != 'stack_trace' && key != 'message' && key != 'Посмотреть лог') { %><% if (source[key] == 'ERROR') { %>
+                    <td style="color: red;">
+                        <p class="level"><%= source[key] %>
+                        </p>
+                    </td><% } else if (key == 'app_name') { %>
+                    <td style="color: aqua;">
+                        <p class="app"><%= source[key] %>
+                        </p>
+                    </td><% } else if (key == 'thread_name') { %>
+                    <td class="thread-td">
+                        <p class="thread-p"><%= source[key] %>
+                        </p>
+                    </td><% } else if (key == 'logger_name') { %>
+                    <td class="logger-td" style="color:#84ff9a;">
+                        <p class="logger"><%= source[key] %>
+                        </p>
+                    </td><% } else if (source[key] == 'WARN') { %>
+                    <td style="color: #ff9d0a;">
+                        <p class="commontd"><%= source[key] %>
+                        </p>
+                    </td><% } else if (key == '_index') { %><% } else if (key == '_id') { %><% } else if (key == 'message_size') { %>
+                <td class="commontd">
+                    <a data-tooltip="Контекстный поиск в Kibana" target="_blank" href="https://kibana.test-stand.tst.int.***.ru/app/discover#/context/9e905f70-b88e-11ea-ad80-af2592106d05/<%=source._id%>?_a=(columns:!(app_name,level,message,thread_name),filters:!())&_g=(filters:!())"
+                       onmouseover="SupportPageController.handlePopUpPermanent('show', this, event, 'Откроет окружающие логи (контекстный поиск) в новой вкладке в Kibana')"
+                       onmouseleave="SupportPageController.handlePopUpPermanent('close')"><%= source[key] %>
+
+                    </a>
+                </td><% }  else { %>
+                    <td>
+                        <p class="commontd"><%= source[key] %>
+                        </p>
+                    </td><% } %><% }; %><% }; %>
+
+            </tr><% }); %>
+
+
+        </table>
+    </div>
+</div>

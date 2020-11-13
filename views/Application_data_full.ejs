@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Действующий процесс</title>
+ </head>
+ <body>
+  <table border="5" bordercolor="darkblue" border="5" cellpadding="5" cellspacing="1">
+   <caption>Хронология действующего процесса по заявке <%= appnum%></caption>
+   <tr bgcolor="#FFFFE0">
+    <th>Схема процесса</th>
+    <th>Номер версии</th>
+    <th>Имя таска</th>
+    <th>Тип таска</th>
+    <th>Дата создания таска</th>
+    <th>Состояние таска</th>
+    <th>ExecutionId</th>
+    <th>Время перехода в состояние</th>
+    <th>Текст ошибки</th>
+   </tr>
+   <tr>
+ <td><%= scheme_name%></td>
+ <td><%= version%></td>
+ <td><%= task_name%></td>
+ <th><%= task_type%></th>
+ <td><%= create_date%></td>
+ <td><%= task_state%></td>
+ <td><%= execID%></td>
+ <td><%= state_time%></td>
+ <td><%= error%></td>
+  </tr>
+  </table>
+  <p></p>
+
+  <table border="5" bordercolor="darkblue" border="5" cellpadding="5" cellspacing="1">
+   <caption>Данные по заявке <%= appnum%></caption>
+   <tr bgcolor="#FFFFE0">
+    <th>ID Заявки</th>
+    <th>Направление</th>
+    <th>Канал поступления</th>
+    <th>Статус</th>
+    <th>Дата создания заявки</th>
+    <th>Метод</th>
+
+   </tr>
+   <tr>
+ <td><%= appid%></td>
+ <td><%= credittype%></td>
+ <td><%= channel%></td>
+ <td><%= status%></td>
+ <td><%= appcreationdate%></td>
+ <td><%= method%></td>
+  </tr>
+  </table>
+  <p><a href="<%= link %>" class="btn btn-primary" target="_blank" role="button"><font size="5">Перейти в Камунду</font></a></p>
+ </body>
+</html>
+
+

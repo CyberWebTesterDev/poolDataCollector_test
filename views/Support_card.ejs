@@ -1,0 +1,568 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>RKK Adminkey администрирование заявки РКК 2.0</title>
+  <link rel="stylesheet" href="/public/css/bootstrap.css">
+  <script src="/public/jquery.js"></script>
+  <script src="/public/bootstrap.min.js"></script>
+   <style type="text/css">
+
+     .longtext 
+    {
+      word-wrap: break-word;
+      width: 900px;
+    }
+    body 
+    {
+    background: #2F4F4F;
+    color: #BC8F8F; 
+    }
+     .headlabel 
+    {
+      text-align: center;
+      font-family: "Times New Roman", Georgia, Serif;
+      font-stretch: extra-expanded;
+      font-size: 20px;
+      color: #008080;
+    }
+    .table-block-div
+    {
+      text-align: center;
+    }
+    .table-block-div:hover
+    {
+      background-color: #c0d7d7;
+      cursor: pointer;
+    }
+     h2
+    {
+      text-align: center;
+    }
+
+  </style>
+
+
+ </head>
+<body>
+
+<div class="headlabel">
+
+<h1>RKK Adminkey</h1>
+
+</div>
+
+
+<p></p>
+
+
+  <table class="table table-dark" id = "#tapp">
+  <h2>Основные данные по заявке <%= appnum%></h2>
+   <tr>
+    <th><font color="#FFDAB9">ID Заявки</font></th>
+    <th><font color="#FFDAB9">Направление</font></th>
+    <th><font color="#FFDAB9">Программа</font></th>
+    <th><font color="#FFDAB9">Канал поступления</font></th>
+    <th><font color="#FFDAB9">Канал выдачи</font></th>
+    <th><font color="#FFDAB9">Код ДО</font></th>
+    <th><font color="#FFDAB9">Статус</font></th>
+    <th><font color="#FFDAB9">Дата создания заявки</font></th>
+    <th><font color="#FFDAB9">Дата перехода в статус</font></th>
+    <th><font color="#FFDAB9">Assignee</font></th>
+    <th><font color="#FFDAB9">ID задачи BPM</font></th>
+    <th><font color="#FFDAB9">Метод</font></th>
+   </tr>
+   <% obj2.forEach(function(el, i, arr) { %>
+   <tr>
+ <td><%= obj2[i].application_id%></td>
+ <td><font color="#AFEEEE"><%= obj2[i].credit_type_name%></font></td>
+ <td><%= obj2[i].program_name%></td>
+ <td><%= obj2[i].sale_channel_name%></td>
+ <td><%= obj2[i].issue_channel%></td>
+ <td><%= obj2[i].branch_unit_name%></td>
+ <td><font color="#D2691E"><%= obj2[i].appstatus_name%></font></td>
+<td><%= obj2[i].creation_date %></td>
+<th><%= obj2[i].date_status %></th>
+<th><%= obj2[i].assignee%></th>
+ <td><%= obj2[i].execution_id%></td>
+ <td><%= obj2[i].method%></td>
+ </tr>
+  <% }); %>
+</table>
+
+<p></p>
+  <a class="btn btn-primary" href="<%= link %>" role="button" target="_blank">Перейти в Camunda</a>
+  <a class="btn btn-primary" href="<%= link2 %>" role="button" target="_blank">Перейти в сканы</a>
+  <button class="btn btn-primary" id="#retry" type="submit" onclick="retry()" style="display: none">Retrytask</button>
+  <a class="btn btn-primary" href="<%= linkerr %>" role="button" target="_blank">Обработка ошибки в РКК</a>
+  <a class="btn btn-primary" href="https://ui.test-stand.tst.int.***.ru/sling/info/<%= appnum %>" role="button" target="_blank">Список файлов</a>
+  <a class="btn btn-primary" href="https://ui.test-stand.tst.int.***.ru/sling/filelist/<%= obj2[0].application_id %>" role="button" target="_blank">Метаданные файлов</a> 
+  <a class="btn btn-primary" role="button" type="submit" onclick="errorProcess()" style="display: none">Обработка ошибки отсюда</a>
+
+
+
+  <p></p>
+   <table class="table table-dark" id = "#t3">
+  <h2>Параметры заявки</h2>
+   <tr>
+    <th><font color="#FFDAB9">Тип параметров</font></th>
+    <th><font color="#FFDAB9">Версия субпрограммы</font></th>
+    <th><font color="#FFDAB9">Наименование субпрограммы</font></th>
+    <th><font color="#FFDAB9">Платежная система</font></th>
+    <th><font color="#FFDAB9">Категория карты</font></th>
+    <th><font color="#FFDAB9">Сумма кредита</font></th>
+    <th><font color="#FFDAB9">Ставка</font></th>
+    <th><font color="#FFDAB9">Флаг подп. док.</font></th>
+    <th><font color="#FFDAB9">Дата подписания</font></th>
+    <th><font color="#FFDAB9">Продукт в 5NT</font></th>
+    <th><font color="#FFDAB9">Тип персонификации</font></th>
+   </tr>
+   <% params.forEach(function(el, i, arr) { %>
+   <tr>
+ <td><%= params[i].card_par_type_id%></td>
+ <td><%= params[i].sub_program_version%></td>
+ <td><%= params[i].sub_program_name%></td>
+ <td><%= params[i].payment_system%></td>
+ <td><%= params[i].card_category%></td>
+ <td><%= params[i].credit_amount%></td>
+ <td><%= params[i].interest_rate%></td>
+ <td><%= params[i].offer_signed%></td>
+
+ <td><%= params[i].date_sign %></td>
+
+ <td><%= params[i].five_nt_product_name%></td>
+ <td><%= params[i].card_pers%></td>
+  </tr>
+  <% }); %>
+  </table>
+
+ <% if (akk.length !== 0) { %>
+   <p></p>
+   <table class="table table-dark" id = "#tacc">
+  <h2>Информация по карте</h2>
+   <tr>
+
+    <th><font color="#FFDAB9">Номер карты</font></th>
+    <th><font color="#FFDAB9">ID запроса в 5NT</font></th>
+    <th><font color="#FFDAB9">Статус карты в 5NT</font></th>
+    <th><font color="#FFDAB9">Дата истечения карты</font></th>
+    <th><font color="#FFDAB9">Кодовое слово</font></th>
+    <th><font color="#FFDAB9">Комментарий</font></th>
+   </tr>
+   <% akk.forEach(function(el, i, arr) { %>
+   <tr>
+ <td><%= akk[i].card_number %></td>
+ <td><%= akk[i].card_request_id %></td>
+ <td><%= akk[i].card_status %></td>
+
+ <td><%= akk[i].card_expiration_date %></td>
+
+
+ <td><%= akk[i].code_word  %></td>
+ <td><%= akk[i].comment %></td>
+  </tr>
+  <% }); %>
+  <% }; %>
+</table>
+
+
+
+
+    <a class="btn btn-outline-info" type="submit" id="#bhiderr" onclick="hide()">Скрыть/показать</a>
+  <ul>Текущая ошибка
+    <li id="#tohide"><font color="#E6E6FA"><%= error%></font></li>
+  </ul>
+
+
+  <div class="table-block-div"><a id="#bshowj" onclick="hidejournal()" style="display: block"><font size="6">&rarr; Расширенный журнал статусов по заявке</font></a></div>
+
+  <table class="table table-striped table-dark" id = "#tjournal" style="display: none">
+  
+   <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата, время перехода в статус</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Имя статуса</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Решение СПР</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">ФИО и логин сотрудника</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Роль сотрудника</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Этап и статус андеррайтинга</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата, время закрытия статуса</font></th>
+   </tr>
+<tr>
+   <% stat.forEach(function(el, i, arr) { %>
+ 
+ <tr>
+ <td><%= stat[i].start_date %></td>
+ <td><font color="#AFEEEE"><%= stat[i].status_name %></font></td>
+ <td><%= stat[i].rtdm_decision_name %></td>
+ <th><%= stat[i].u_fio + " " + stat[i].u_login %></th>
+ <td><%= stat[i].u_role %></td>
+ <td><%= stat[i].und_stage +" "+ stat[i].und_status_name %></td>
+ <td><%= stat[i].end_date %></td> 
+  </tr>
+ <% }); %>
+
+</table>
+
+<p></p>
+
+
+  <div class="table-block-div"><a id="#bshowev" onclick="hideevents()" style="display: block"><font size="6">&rarr; Журнал событий по заявке</font></a></div>
+
+  <table class="table table-striped table-dark" id = "#tevents" style="display: none">
+  
+   <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата, время события</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Имя события</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Логин сотрудника, связанного с событием</font></th>
+   </tr>
+<tr>
+   <% event.forEach(function(el, i, arr) { %>
+ 
+ <tr>
+ <td><%= event[i].event_time %></td>
+ <td><font color="#AFEEEE"><%= event[i].event_description %>,</font></td>
+ <td><%= event[i].value %></td>
+  </tr>
+ <% }); %>
+
+</table>
+
+<p></p>
+
+
+  <div class="table-block-div"><a id="#bshowt1" onclick="hide2()" style="display: block"><font size="6">&rarr; Хронология действующего процесса по заявке</font></a></div>
+
+  <table class="table table-striped table-dark" id = "#t1" style="display: none">
+  
+   <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">Схема процесса</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Номер версии</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Состояние задачи</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Имя задачи</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Тип задачи</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">ID задачи</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Assignee (на кого назнач.)</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата создания задачи</font></th> 
+    <th scope="col" class="colp"><font color="#FFDAB9">ExecutionId</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Время перехода в состояние</font></th>
+   </tr>
+
+
+   <% obj.forEach(function(el, i, arr) { %>
+ 
+ <tr>
+ <td><%= obj[i].proc_def_key_ %></td>
+ <td><%= obj[i].ver %></td>
+    <% if (obj[i].act_inst_state_ == 0) { %> 
+ <td><font color="yellow"><%= obj[i].act_inst_state_ %></font></td>
+ <td><font color="yellow"><%= obj[i].act_name_ %></font></td>
+ <% } if (obj[i].act_inst_state_ == 2) { %>
+ <td><font color="red"><%= obj[i].act_inst_state_ %></font></td>
+ <td><font color="red"><%= obj[i].act_name_ %></font></td>
+ <% }; %>
+  <%  if (obj[i].act_inst_state_ == 4) { %>
+ <td><font color="#008000"><%= obj[i].act_inst_state_ %></font></td>
+ <td><font color="#008000"><%= obj[i].act_name_ %></font></td>
+ <% }; %>
+  <%  if (obj[i].act_inst_state_ == 1) { %>
+ <td><font color="#F5760E"><%= obj[i].act_inst_state_ %></font></td>
+ <td><font color="#F5760E"><%= obj[i].act_name_ %></font></td>
+ <% }; %>
+  <%  if (obj[i].act_type_ == 'serviceTask') { %>
+ <td><font color="#FFFFF0"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+   <%  if (obj[i].act_type_ == 'userTask') { %>
+ <td><font color="#FA8072"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+   <%  if (obj[i].act_type_ == 'exclusiveGateway') { %>
+ <td><font color="#708090"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+    <%  if (obj[i].act_type_ == 'messageStartEvent') { %>
+ <td><font color="#66CDAA"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+     <%  if (obj[i].act_type_ == 'receiveTask') { %>
+ <td><font color="#CD5C5C"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+      <%  if (obj[i].act_type_ == 'startEvent') { %>
+ <td><font color="#00FF7F"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+       <%  if (obj[i].act_type_ == 'intermediateMessageThrowEvent') { %>
+ <td><font color="#FAFAD2"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+       <%  if (obj[i].act_type_ == 'boundaryError') { %>
+ <td><font color="#E6E6FA"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+        <%  if (obj[i].act_type_ == 'intermediateConditional') { %>
+ <td><font color="#FAFAD2"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+ <%  if (obj[i].act_type_ == 'subProcess') { %>
+ <td><font color="#FFF0F5"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+  <%  if (obj[i].act_type_ == 'noneEndEvent') { %>
+ <td><font color="#191970"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+ <%  if (obj[i].act_type_ == 'intermediateTimer') { %>
+ <td><font color="#FAFAD2"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+ <%  if (obj[i].act_type_ == 'boundaryTimer') { %>
+ <td><font color="#E6E6FA"><%= obj[i].act_type_ %></font></td>
+ <% }; %>
+ <td><%= obj[i].act_id_ %></td>
+ <td><%= obj[i].assignee_ %></td>
+ <td><%= obj[i].start_time_ %></td>
+ <td><%= obj[i].execution_id_ %></td>
+ <td><%= obj[i].end_time_ %></td> 
+ </tr>
+ <% }); %>
+
+</table>
+
+<p></p>
+
+  <div class="table-block-div"><a id="#bhidet2" onclick="hide3()" style="display: block"><font size="6">&darr; Интеграционные логи по заявке</font></a></div>
+
+  <button class="btn btn-outline-warning" type="submit" onclick="showlongtext()">Показать/скрыть ВСЕ запросы/ответы</button>
+
+  <table class="table table-striped table-dark" id = "#t2" style="display: none">
+  
+ <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">interaction ID</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Целевая система (Endpoint)</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Результат</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Текст ошибки</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата, время интеграции</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Запрос/ответ</font></th>
+ </tr>
+
+   <% int.forEach(function(el, i, arr) { %>
+ 
+ <tr>
+ <td><%= int[i].interaction_id %></td>
+ <td><font color="#AFEEEE"><%= int[i].System %></font></td>
+ <td><%= int[i].result %></td>
+ <td><font color="#FF6347"><%= int[i].error_description %></font></td>
+ <td><%= int[i].interaction_ts %></td> 
+  <td >
+    <button class="btn btn-outline-info" type="submit" onclick="hide_<%=i%>()">Показать/скрыть запрос/ответ</button>
+    <p class="longtext" id="<%=i%>_long" style="display: none">
+     <font color="#FF8C00"><%= int[i].body %></font>
+    </p>
+ </td>
+</tr>
+ <% }); %>
+
+</table>
+  
+<% int.forEach(function(el, i, arr) { %>
+<script>
+
+    function hide_<%=i%>() {
+
+      var elem = document.getElementById("<%=i%>_long");
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+      } else {
+
+        elem.style.display = "none";
+      }
+
+    }
+
+</script>
+<% }); %>
+
+  <script>
+
+    function retry(){
+
+
+      if ("<%=obj[0].act_type_%>" !== 'intermediateConditional') {alert ("Заявка не зависла в буфере, перезапуск таска делать нельзя!")}
+
+        else {
+
+
+         if (confirm("Вы уверены что хотите выполнить перезапуск таски заявки <%-appnum%>?")){ alert("Упс, перезапуск таски из этой страницы пока не работает, просьба выполнить через Camunda Cockpit")}
+
+          else (alert("Действие отменено."))
+
+        }
+
+
+
+    }
+
+
+    function hide() {
+
+      var elem = document.getElementById("#tohide");
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+      } else {
+
+        elem.style.display = "none";
+      }
+
+    }
+
+        function hide2() {
+
+      var elem = document.getElementById("#t1");
+
+      var btn_hide = document.getElementById("#bhidet1");
+
+      var btn_show = document.getElementById("#bshowt1");
+      
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+       // btn_show.style.display = "none";
+       // btn_hide.style.display = "block";
+
+
+      } else {
+
+        elem.style.display = "none";
+       // btn_show.style.display = "block";
+       // btn_hide.style.display = "none";
+
+
+      }
+
+    }
+
+
+           function hide3() {
+
+      var elem = document.getElementById("#t2");
+
+      var btn_hide = document.getElementById("#bhidet2");
+
+      var btn_show = document.getElementById("#bshowt2");
+      
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+       // btn_show.style.display = "none";
+       // btn_hide.style.display = "block";
+
+
+      } else {
+
+        elem.style.display = "none";
+       // btn_show.style.display = "block";
+       // btn_hide.style.display = "none";
+
+
+      }
+
+    }
+
+        function hideevents() {
+
+      var elem = document.getElementById("#tevents");
+
+      var btn_hide = document.getElementById("#bhidev");
+
+      var btn_show = document.getElementById("#bshowev");
+      
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+      //  btn_show.style.display = "none";
+      //  btn_hide.style.display = "block";
+
+
+      } else {
+
+        elem.style.display = "none";
+      //  btn_show.style.display = "block";
+      //  btn_hide.style.display = "none";
+
+
+      }
+
+    }
+
+
+             function hidejournal() {
+
+      var elem = document.getElementById("#tjournal");
+
+      var btn_hide = document.getElementById("#bhidej");
+
+      var btn_show = document.getElementById("#bshowj");
+      
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+      //  btn_show.style.display = "none";
+      //  btn_hide.style.display = "block";
+
+
+      } else {
+
+        elem.style.display = "none";
+      //  btn_show.style.display = "block";
+      //  btn_hide.style.display = "none";
+
+
+      }
+
+    }
+
+
+
+
+    function errorProcess() {
+
+         if ("<%=obj[0].act_name_%>" !== 'Обработка ошибки') {alert ("Заявка не в ошибке в BPM, обработку ошибки делать нельзя!")}
+
+          else {
+
+
+         if (confirm("Вы уверены что хотите выполнить обработку ошибки по заявке <%-appnum%>?")){ alert("Упс, обработка ошибки из этой страницы пока не работает, просьба выполнить через РКК")}
+
+          else (alert("Действие отменено."))
+
+        }
+
+    }
+
+           function showlongtext() {
+
+      var elem = document.getElementsByClassName('longtext');
+
+      for (let i=0; i < elem.length; i++)
+
+      {
+
+      if (elem[i].style.display === "none") {
+
+
+        elem[i].style.display = "block";
+      } else {
+
+        elem[i].style.display = "none";
+      }
+
+    }
+  }
+
+
+
+
+  </script>
+
+
+ </body>
+</html>
+
+

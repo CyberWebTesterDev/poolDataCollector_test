@@ -1,0 +1,80 @@
+
+<%- include('headers/header-with-bootstrap.ejs') %>
+
+    <body>
+        <%- include('navbar/navbar-boot.ejs') %>
+
+        <h2 style="margin-top: 15px;">Главная страница </h2>
+
+
+        <!-- <div class="frame-container">
+
+                <iframe class="camunda-frame" src="https://test.app.rcl.int.***.ru/testpath/app/test/default/#/process-instance/22b84959-d6c7-11ea-ae1e-0242ac110002/runtime?viewbox=%7B%22Definitions_0nfm9ip%22:%7B%22x%22:-265.453125,%22y%22:-195.95535714285714,%22width%22:1765.625,%22height%22:546.875%7D%7D&searchQuery=%5B%5D" height="200%" width="100%"> </iframe>
+              
+        </div> -->
+
+        <div id="root">
+
+            <div class="main-text-article">
+
+                <p >Для того, чтобы начать работу по техническому сопровождению заявки внесите ее номер в поле для поиска</p>
+
+            </div>
+            <button style="display: none;" onclick="getELKlogs()">Логи ELK</button>
+        </div>
+
+        <div id="payload">
+
+        </div>
+
+
+
+        <%- include('scripts/scripts-src.ejs') %>
+
+        <%- include('scripts/react-dev-src.ejs') %>
+
+        <%- include('scripts/main.ejs') %>
+
+
+        
+    </body>
+
+    <script>
+    
+    const getELKlogs = async () => {
+
+
+        const urlELK = `http://localhost:3000/elksearch`;
+        const result = await fetch(urlELK, {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+            'Content-type': 'application/json;charset=utf-8'
+        }
+        })
+
+        if (result.ok) {
+        await result;
+
+        if (result.redirected) {
+            window.location.href = result.url
+        } else {
+            let response = await result.text();
+            //console.log(response);
+            const parser = new DOMParser();
+            let doc = parser.parseFromString(response, "text/html");
+            document.getElementById('payload').innerHTML = doc.getElementById('part-container').innerHTML;
+
+        }
+        } else {
+
+        alert(`Сетевая ошибка при получении логов , статус ответа: ${result.status}`);
+        
+        }
+
+    };
+
+    </script>
+
+
+</html>

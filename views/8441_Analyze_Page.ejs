@@ -1,0 +1,73 @@
+<%- include('headers/header-with-bootstrap.ejs') %>
+<body>
+<div class="headlabel">
+    <h1 onclick="SupportPageController.showModal()">RKK Adminkey</h1>
+</div>
+
+<h2>Страница анализа заявки <%=appnum%></h2>
+
+<div id="analyze"></div>
+
+<div id="modalContainer"></div>
+
+<div id='headWithBPMdata'></div>
+
+<button onclick="SupportPageController.BPMRequest(true)" id="getBPMBtn" class="btn btn-primary" role="button">Получить данные о BPM процессе заявки</button> 
+
+
+
+    <%- include('buttons/get-elk-logs.ejs') %>
+
+
+
+
+<div id="mainBPMdataContainer"></div>
+
+
+<div id="errorContainer"></div>
+
+
+
+
+
+<div id="elk-block-container">
+</div>
+<div id="elk-search-params" style="display: none"><%=appnum%>,<%=appnum%></div>
+
+
+<%- include('scripts/scripts-src.ejs') %>
+
+<script>
+
+const setdditionalSearchParams = () => {
+
+if ( document.getElementById('analyze-true') ) {
+
+    //document.getElementById('getELKlogsWithRange').addEventListener('click', setdditionalSearchParams);
+    let processName = document.querySelector('#processData > tbody > tr:nth-child(9) > td:nth-child(1)').innerHTML;
+    processName = processName ? processName = processName.split('_')[0] : null;
+    document.getElementById('elk-search-params').innerHTML += `,${processName}`;
+
+} else {
+    let title = 'Предупреждение';
+    let text = 'Запросите данные BPM прежде чем получать логи из ELK, это расширит область поиска и система соберет автоматически дополнительные параметры для сбора данных';
+ 
+    SupportPageController.callPopUp(title, text, 15000);
+}
+
+
+}
+
+SupportPageController.loadKibanaValidatorScript();
+
+    //document.getElementById('getELKlogsWithRangeAnalyze').addEventListener('click', setdditionalSearchParams);
+
+
+
+
+
+
+
+
+</script>
+</body>

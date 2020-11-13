@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Администрирование заявки РКК 2.0</title>
+  <link rel="stylesheet" href="/public/css/bootstrap.css">
+  <script src="/public/jquery.js"></script>
+  <script src="/public/bootstrap.min.js"></script>
+ </head>
+ <body>
+   
+
+  <table class="table table-dark" id = "#t2">
+  <h2>Основные данные по заявке <%= appnum%></h2>
+   <tr>
+    <th>ID Заявки</th>
+    <th>Направление</th>
+    <th>Канал поступления</th>
+    <th>Код ДО</th>
+    <th>Статус</th>
+    <th>Дата создания заявки</th>
+    <th>Метод</th>
+   </tr>
+   <% obj2.forEach(function(el, i, arr) { %>
+   <tr>
+ <td><%= obj2[i].application_id%></td>
+ <td><%= obj2[i].credit_type_name%></td>
+ <td><%= obj2[i].sale_channel_name%></td>
+ <td><%= obj2[i].branch_unit_name%></td>
+ <td><%= obj2[i].appstatus_name%></td>
+ <td><%= obj2[i].creation_date%></td>
+ <td><%= obj2[i].method%></td>
+  </tr>
+  <% }); %>
+
+   <p></p>
+
+  </table>
+  <p></p>
+   <table class="table table-dark" id = "#t3">
+  <h2>Параметры заявки</h2>
+   <tr>
+    <th>Тип параметров</th>
+    <th>Версия субпрограммы</th>
+    <th>Сумма кредита</th>
+    <th>Доп.сумма(рефин)</th>
+    <th>Общая сумма долга(рефин)</th>
+    <th>Ставка</th>
+    <th>Тип платежа</th>
+    <th>Флаг подп. док.</th>
+    <th>Дата подписания</th>
+    <th>Наличие страховки</th>
+    <th>Номер счета</th>
+    <th>Счет выбран?</th>
+    <th>Зачисление</th>
+    <th>Списание</th>
+   </tr>
+   <% params.forEach(function(el, i, arr) { %>
+   <tr>
+ <td><%= params[i].case_partype%></td>
+ <td><%= params[i].sub_program_version%></td>
+ <td><%= params[i].credit_amount%></td>
+ <td><%= params[i].additional_amount%></td>
+ <td><%= params[i].total_debt_amount%></td>
+ <td><%= params[i].interest_rate%></td>
+ <td><%= params[i].case_payment%></td>
+ <td><%= params[i].offer_signed%></td>
+ <td><%= params[i].date_sign%></td>
+ <td><%= params[i].insurance%></td>
+ <td><%= params[i].acc_number%></td>
+ <td><%= params[i].selected%></td>
+ <td><%= params[i].enrollment%></td>
+ <td><%= params[i].withdrawal%></td>
+  </tr>
+  <% }); %>
+
+   <p></p>
+
+  </table>
+  <a class="btn btn-primary" href="<%= link %>" role="button" target="_blank">Перейти в Camunda</a>
+  <button class="btn btn-primary" id="#retry" type="submit" disabled="true">Retrytask</button>
+  <button class="btn btn-primary" id="#errorexecute" type="submit" disabled="true">Обработка ошибки</button>
+  <p></p>
+  <table class="table table-dark">
+  <h2>Хронология действующего процесса по заявке <%= appnum%></h2>
+ 
+  <button class="btn btn-primary" id="#bhide" type="submit">Скрыть</button>
+  <button class="btn btn-primary" id="#bgetinfo" type="submit">Инфо</button>
+  
+   <tr>
+    <th scope="col" class="colp">Схема процесса</th>
+    <th scope="col" class="colp">Номер версии</th>
+    <th scope="col" class="colp">Имя таска</th>
+    <th scope="col" class="colp">Тип таска</th>
+    <th scope="col" class="colp">Дата создания таска</th>
+    <th scope="col" class="colp">Состояние таска</th>
+    <th scope="col" class="colp">ExecutionId</th>
+    <th scope="col" class="colp">Время перехода в состояние</th>
+    <th scope="col" class="colp">Текст ошибки</th>
+   </tr>
+
+<div class="collapse" id = "cdiv" visible="true">
+   <% obj.forEach(function(el, i, arr) { %>
+ 
+ <tr>
+ <td id = "<%=i%>pr" > <%= obj[i].proc_def_key_ %></td>
+ <td><%= obj[i].ver %></td>
+ <td><%= obj[i].act_name_ %></td>
+ <th id = "<%=i%>type" ><%= obj[i].act_type_ %></th>
+ <td><%= obj[i].start_time_ %></td>
+ <td id = "<%=i%>state" > <%= obj[i].act_inst_state_ %></td>
+ <td id = "execution"><%= obj[i].execution_id_ %></td>
+ <td><%= obj[i].end_time_ %></td> 
+ <% }); %>
+ <td><%= error%></td>
+</tr>
+ </div>
+</table>
+  
+
+  <script>
+
+    $(document).ready(function() {
+
+          //console.log('The value of element is' + $('#execution').val())
+
+          console.log('Ready to run scripts')
+
+        $("#bgetinfo").click(function() {
+
+
+          alert("Меня нажали!")
+
+  
+            
+          });
+
+       
+
+    console.log( "ready!" );
+
+
+        });
+
+
+  </script>
+
+
+ </body>
+</html>
+
+

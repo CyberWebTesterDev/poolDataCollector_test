@@ -1,0 +1,27 @@
+  .longtext {
+
+      word-wrap: break-word;
+      width: 700px;
+
+    }
+        body {
+    
+    background: #2F4F4F;
+    color: #BC8F8F; 
+
+    }
+     .headlabel {
+      text-align: center;
+      font-family: "Times New Roman", Georgia, Serif;
+      font-stretch: extra-expanded;
+      font-size: 20px;
+      color: #008080;
+    }
+
+    table {
+      table-layout: fixed;
+    }
+    td
+    {
+    word-wrap:break-word
+  }

@@ -1,0 +1,535 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Мониторинг РКК 2.0</title>
+  <link rel="stylesheet" href="/public/css/bootstrap.css">
+  <script src="/public/jquery.js"></script>
+  <script src="/public/bootstrap.min.js"></script>
+     <style type="text/css">
+
+
+  #tkk
+  {
+    position: relative;
+    padding: 7px;
+  }
+
+
+  #terr
+  {
+    position: relative;
+    padding: 7px;
+  }
+
+
+  .longtext {
+
+      word-wrap: break-word;
+      width: 900px;
+
+    }
+
+        body {
+    
+    background: #2F4F4F;
+    color: #BC8F8F; 
+
+    }
+
+        .headlabel {
+
+      text-align: center;
+      font-family: "Times New Roman", Georgia, Serif;
+      font-stretch: extra-expanded;
+      font-size: 20px;
+      color: #008080;
+    }
+
+       table {
+
+      table-layout: fixed;
+
+    }
+
+    td
+    {
+
+    word-wrap:break-word
+  }
+
+
+  </style>
+ </head>
+ <body>
+
+  <div class="headlabel">
+
+<h1>RKK Adminkey</h1>
+
+</div>
+<h2 style="text-align: center;" >Monitoring Dashboard</h2>
+
+<p></p>
+   
+
+<% if (data.length !== 0) { %>
+
+  <a class="btn btn-outline-primary" type="submit" id="#bshowt2" onclick="hide3()" style="display: block"><font size="5">&rarr; Топ интеграционных проблем за последние 14 часов</font></a>
+
+  <button type="submit" onclick="showlongtext()">Показать/скрыть ВСЕ запросы/ответы</button>
+
+  <table class="table table-dark" id = "#tapp" style="display: none">
+   <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">Correlation ID</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Целевая система (Endpoint)</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Номер заявки</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Результат</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Текст ошибки</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата, время интеграции</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Запрос/ответ</font></th>
+   </tr>
+
+   <% data.forEach(function(el, i, arr) { %>
+ <tr>
+ <td><%= data[i].interaction_correlation_id %></td>
+ <td><font color="#AFEEEE"><%= data[i].System %></font></td>
+ <td><%= data[i].application_seq %></td>
+ <td><%= data[i].result %></td>
+ <td><div style="width: 700px;"><font color="#E6E6FA" class="longtext"><%= data[i].error_description %></font></div></td>
+ <td><%= data[i].interaction_ts %></td>
+  <td >
+    <button type="submit" onclick="hide_<%=i%>()">Показать/скрыть запрос/ответ</button>
+    <p class="longtext" id="<%=i%>_long" style="display: none">
+     <font color="#FF8C00"><%= data[i].body %></font>
+    </p>
+ </td> 
+ </tr>
+  <% }); %>
+  </table>
+  <% }; %>
+
+
+
+<p></p>
+
+<% if (data2.length !== 0) { %>
+  <a class="btn btn-outline-primary" type="submit" id="#bshowсс" onclick="hide4()" style="display: block"><font size="5">&rarr; Топ проблем по кредитным картам</font></a>
+  <button type="submit" onclick="showlongerr()">Показать/скрыть ВСЕ ошибки</button>
+
+  <table class="table table-dark" id = "#tkk" style="display: none">
+   <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">Номер заявки</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Имя таски</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Схема процесса</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Версия</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Текст ошибки</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата, время проблемы</font></th>
+   </tr>
+
+   <% data2.forEach(function(el, i, arr) { %>
+ <tr>
+ <td><a href="https://test.app.rcl.int.***.ru/testpath/app/test/default/#/process-instance/<%= data2[i].proc_inst_id_ %>" role="button" target="_blank"><%= data2[i].appnumber %></a></td>
+ <td><font color="#FA8072"><%= data2[i].act_name_ %></font></td>
+ <td><font color="#AFEEEE"><%= data2[i].proc_def_key_ %></font></td>
+ <td><%= data2[i].version_ %></td>
+   <td >
+    <button type="submit" onclick="errhide_<%=i%>()">Показать/скрыть текст ошибки</button>
+    <p class="longerr" id="<%=i%>_err" style="display: none">
+     <font color="#E6E6FA"><%= data2[i].Error + data2[i].bError + data2[i].mError %></font>
+    </p>
+ </td> 
+ <td><%= data2[i].start_time_ %></td>
+ </tr>
+  <% }); %>
+</table>
+  <% }; %>
+
+<p></p>
+
+<% if (data3.length !== 0) { %>
+  <a class="btn btn-outline-primary" type="submit" id="#bshowerr" onclick="hide5()" style="display: block"><font size="5">&rarr; Топ ошибок по заявкам</font></a>
+  <button type="submit" onclick="showlongerr2()">Показать/скрыть ВСЕ ошибки</button>
+
+  <table class="table table-dark" id = "#terr" style="display: none">
+   <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">Номер заявки</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Имя таски</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Схема процесса</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Версия</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Текст ошибки</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата, время проблемы</font></th>
+   </tr>
+
+   <% data3.forEach(function(el, i, arr) { %>
+ <tr>
+ <td><%= data3[i].appnumber %></td>
+ <td><font color="#FA8072"><%= data3[i].act_name_ %></font></td>
+ <td><font color="#AFEEEE"><%= data3[i].proc_def_key_ %></font></td>
+ <td><%= data3[i].ver%></td>
+   <td >
+    <button type="submit" onclick="errhide2_<%=i%>()">Показать/скрыть текст ошибки</button>
+    <p class="longerr2" id="<%=i%>_err2" style="display: none">
+     <font color="#E6E6FA"><%= data3[i].Error + data3[i].bError + data3[i].mError %></font>
+    </p>
+ </td> 
+ <td><%= data3[i].start_time_ %></td>
+ </tr>
+  <% }); %>
+</table>
+<% }; %>
+
+<p></p>
+
+<% if (data4.length !== 0) { %>
+  <a class="btn btn-outline-primary" type="submit" id="#bshowerr2" onclick="hide6()" style="display: block"><font size="5">&rarr; Топ зависаний по заявкам</font></a>
+
+  <table class="table table-dark" id = "#terr2" style="display: none">
+   <tr>
+    <th scope="col" class="colp"><font color="#FFDAB9">Номер заявки</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Имя таски</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Схема процесса</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Версия</font></th>
+    <th scope="col" class="colp"><font color="#FFDAB9">Дата, время проблемы</font></th>
+   </tr>
+
+   <% data4.forEach(function(el, i, arr) { %>
+ <tr>
+ <td><a href="https://test.app.rcl.int.***.ru/testpath/app/test/default/#/process-instance/<%= data4[i].proc_inst_id_ %>" role="button" target="_blank"><%= data4[i].appnumber %></a></td>
+ <td><font color="#FA8072"><%= data4[i].act_name_ %></font></td>
+ <td><font color="#AFEEEE"><%= data4[i].proc_def_key_ %></font></td>
+ <td><%= data4[i].ver%></td>
+ <td><%= data4[i].start_time_ %></td>
+ </tr>
+  <% }); %>
+</table>
+<% }; %>
+
+<% if (data.length !== 0) { %>
+<% data.forEach(function(el, i, arr) { %>
+<script>
+
+    function hide_<%=i%>() {
+
+      var elem = document.getElementById("<%=i%>_long");
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+      } else {
+
+        elem.style.display = "none";
+      }
+
+    }
+
+</script>
+<% }); %>
+<% }; %>
+
+<% if (data2.length !== 0) { %>
+<% data2.forEach(function(el, i, arr) { %>
+<script>
+
+    function errhide_<%=i%>() {
+
+      var elem = document.getElementById("<%=i%>_err");
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+      } else {
+
+        elem.style.display = "none";
+      }
+
+    }
+
+</script>
+<% }); %>
+<% }; %>
+
+<% if (data3.length !== 0) { %>
+<% data3.forEach(function(el, i, arr) { %>
+<script>
+
+    function errhide2_<%=i%>() {
+
+      var elem = document.getElementById("<%=i%>_err2");
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+      } else {
+
+        elem.style.display = "none";
+      }
+
+    }
+
+</script>
+<% }); %>
+<% }; %>
+
+<% if (data4.length !== 0) { %>
+<% data4.forEach(function(el, i, arr) { %>
+<script>
+
+    function errhide3_<%=i%>() {
+
+      var elem = document.getElementById("<%=i%>_err3");
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+      } else {
+
+        elem.style.display = "none";
+      }
+
+    }
+
+</script>
+<% }); %>
+<% }; %>
+  
+
+  <script>
+
+
+
+    function hide() {
+
+      var elem = document.getElementById("#tohide");
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+      } else {
+
+        elem.style.display = "none";
+      }
+
+    }
+
+      function hide2() {
+
+      var elem = document.getElementById("#t1");
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+      } else {
+
+        elem.style.display = "none";
+      }
+
+    }
+
+
+             function hide3() {
+
+      var elem = document.getElementById("#tapp");
+
+      var btn_hide = document.getElementById("#bhidet2");
+
+      var btn_show = document.getElementById("#bshowt2");
+      
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+       // btn_show.style.display = "none";
+       // btn_hide.style.display = "block";
+
+
+      } else {
+
+        elem.style.display = "none";
+      //  btn_show.style.display = "block";
+      //  btn_hide.style.display = "none";
+
+
+      }
+
+    }
+
+         function hide4() {
+
+      var elem = document.getElementById("#tkk");
+
+      var btn_hide = document.getElementById("#bhideсс");
+
+      var btn_show = document.getElementById("#bshowсс");
+      
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+      //  btn_show.style.display = "none";
+      //  btn_hide.style.display = "block";
+
+
+      } else {
+
+        elem.style.display = "none";
+      //  btn_show.style.display = "block";
+      //  btn_hide.style.display = "none";
+
+
+      }
+
+    }
+
+
+     function hide5() {
+
+      var elem = document.getElementById("#terr");
+
+      var btn_hide = document.getElementById("#bhiderr");
+
+      var btn_show = document.getElementById("#bshowerr");
+      
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+      //  btn_show.style.display = "none";
+      //  btn_hide.style.display = "block";
+
+
+      } else {
+
+        elem.style.display = "none";
+      //  btn_show.style.display = "block";
+      //  btn_hide.style.display = "none";
+
+
+      }
+
+    }
+
+       function hide6() {
+
+      var elem = document.getElementById("#terr2");
+
+      var btn_hide = document.getElementById("#bhiderr2");
+
+      var btn_show = document.getElementById("#bshowerr2");
+      
+      if (elem.style.display === "none") {
+
+
+        elem.style.display = "block";
+     //   btn_show.style.display = "none";
+      //  btn_hide.style.display = "block";
+
+
+      } else {
+
+        elem.style.display = "none";
+      //  btn_show.style.display = "block";
+      //  btn_hide.style.display = "none";
+
+
+      }
+
+    }
+
+
+        function showlongtext() {
+
+      var elem = document.getElementsByClassName('longtext');
+
+      for (let i=0; i < elem.length; i++)
+
+      {
+
+      if (elem[i].style.display === "none") {
+
+
+        elem[i].style.display = "block";
+      } else {
+
+        elem[i].style.display = "none";
+      }
+
+    }
+  }
+
+       function showlongerr() {
+
+      var elem = document.getElementsByClassName('longerr');
+
+      for (let i=0; i < elem.length; i++)
+
+      {
+
+      if (elem[i].style.display === "none") {
+
+
+        elem[i].style.display = "block";
+      } else {
+
+        elem[i].style.display = "none";
+      }
+
+    }
+  }
+
+
+     function showlongerr2() {
+
+      var elem = document.getElementsByClassName('longerr2');
+
+      for (let i=0; i < elem.length; i++)
+
+      {
+
+      if (elem[i].style.display === "none") {
+
+
+        elem[i].style.display = "block";
+      } else {
+
+        elem[i].style.display = "none";
+      }
+
+    }
+  }
+
+
+  function showlongerr3() {
+
+      var elem = document.getElementsByClassName('longerr3');
+
+      for (let i=0; i < elem.length; i++)
+
+      {
+
+      if (elem[i].style.display === "none") {
+
+
+        elem[i].style.display = "block";
+      } else {
+
+        elem[i].style.display = "none";
+      }
+
+    }
+  }
+
+  
+
+
+
+
+
+
+  </script>
+
+
+ </body>
+</html>
+
+

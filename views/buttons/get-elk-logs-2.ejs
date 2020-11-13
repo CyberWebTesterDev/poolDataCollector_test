@@ -1,0 +1,97 @@
+
+
+            <div class="table-block-div-panel" style="cursor: auto;"><a onclick="hideElement('control-panel')" style="display: block"><font size="5">&rarr; Панель поиска логов</font></a>
+                <div id="control-panel" style="display: none; margin-top: 50px; margin-bottom: 30px;">
+                        <%- include('../partitions/info-component-elk.ejs') %>
+                    <div class="style-panel" style="display: block;">
+
+                            
+                        
+                        <div id="elk-datetime-form" >
+                            <button onclick="cleanTimeOpt(); return false">Очистить время</button>
+                            <div onclick="synchronizeTimeOpt()" class="control-time" id="synchronizeTime">&#8644;</div>
+                            <div class="time-control-block">
+                                <div onclick="shiftTimeOpt('start', 'increment')" class="control-time" id="incrementStartTime">&#8593;</div>
+                                <div onclick="shiftTimeOpt('end', 'increment')" class="control-time" id="incrementEndTime">&#8593;</div>
+                                <div onclick="shiftTimeOpt('start', 'decrement')" class="control-time" id="decrementStartTime">&#8595;</div>
+                                <div onclick="shiftTimeOpt('end', 'decrement')" class="control-time" id="decrementEndTime">&#8595;</div>
+                            </div>
+                                <div class="elk-datetime-search" 
+                                style="display: inline-grid; background-color: #557071; color: #d5e6f5;">                         
+                                    <label for='start'>Начало</label>       
+                                    <input onchange="synchronizeInputDOMwithStateForm(this.id)" onkeyup="synchronizeInputDOMwithStateForm(this.id)" id="start" type="datetime-local" name="start">
+                                    
+                                    <label for='end'>Конец</label>
+                                    <input onchange="synchronizeInputDOMwithStateForm(this.id)" onkeyup="synchronizeInputDOMwithStateForm(this.id)" id="end" type="datetime-local" name="end">
+                                    <input oninput="synchronizeInputDOMwithStateForm(this.id)" id="mainOrCondition" type="text" placeholder="Условие поиска" style="margin-top: 25px;">
+                                    <input oninput="synchronizeInputDOMwithStateForm(this.id)" id="mainOrCondition2" type="text" placeholder="Условие поиска" style="margin-top: 25px;">
+                                    <input oninput="synchronizeInputDOMwithStateForm(this.id)" id="mainOrCondition3" type="text" placeholder="Условие поиска" style="margin-top: 25px;">
+                                    
+                                    <div class="selectors-block w500">
+
+                                        <span><input onclick="synchronizeCheckboxesDOMwithStateForm(this.id)" type="checkbox" id="isFieldNamePicked" class="checkbox-kibana"></span>
+
+                                        <label for="fieldNameSelector" style="margin-left: 15px; margin-right: 10px;">Поле</label>
+                                        <select onchange="synchronizeSelectorsDOMwithStateForm(this.id)" class="form-control w100" id="fieldNameSelector">
+                                            <option>app_name</option>
+                                            <option>thread_name</option>
+                                            <option>stack_trace</option>
+                                            <option>level</option>
+                                            <option>message</option>
+                                            <option>logger_name</option>
+                                            <option>app_instance</option>
+                                        </select>
+
+                                        <input onkeyup="synchronizeInputDOMwithStateForm(this.id)" id="additionalCondition" type="text" placeholder="Условие поиска" class="field-values-kibana-input w300">
+                                    </div>
+                                    <select onchange="synchronizeLogicalOperatorsSelectorsDOMwithStateForm(this.id)" class="form-control w100 operators" id="fieldOperatorSelector">
+                                            <option>OR</option>    
+                                            <option>AND</option>
+                                    </select>
+                                    <div class="selectors-block w500">
+
+                                        <span><input onclick="synchronizeCheckboxesDOMwithStateForm(this.id)" type="checkbox" id="isFieldNamePicked2" class="checkbox-kibana"></span>
+
+                                        <label for="fieldNameSelector2" style="margin-left: 15px; margin-right: 10px;">Поле</label>
+                                        <select onchange="synchronizeSelectorsDOMwithStateForm(this.id)" class="form-control w100" id="fieldNameSelector2">
+                                            <option>app_name</option>
+                                            <option>thread_name</option>
+                                            <option>stack_trace</option>
+                                            <option>level</option>
+                                            <option>message</option>
+                                            <option>logger_name</option>
+                                            <option>app_instance</option>
+                                        </select>
+
+                                        <input onkeyup="synchronizeInputDOMwithStateForm(this.id)" id="additionalCondition2" type="text" placeholder="Условие поиска" class="field-values-kibana-input">
+                                    </div>
+                                    <div class="selectors-block w650">
+
+                                            <span><input onclick="synchronizeCheckboxesDOMwithStateForm(this.id)" type="checkbox" id="isFieldNamePicked3" class="checkbox-kibana"></span>
+    
+                                            <label for="fieldNameSelector3" style="margin-left: 15px; margin-right: 10px;">Искл.</label>
+                                            <select onchange="synchronizeSelectorsDOMwithStateForm(this.id)" class="form-control w100" id="fieldNameSelector3">
+                                                <option>app_name</option>
+                                                <option>thread_name</option>
+                                                <option>stack_trace</option>
+                                                <option>level</option>
+                                                <option>message</option>
+                                                <option>logger_name</option>
+                                                <option>app_instance</option>
+                                            </select>
+    
+                                            <input onkeyup="synchronizeInputDOMwithStateForm(this.id)" id="excludeParameters" type="text" placeholder="Исключить" class="field-values-kibana-input">
+                                        </div>
+                                    <label style="color: red; display: none; font-size: 18px; word-wrap:break-word;" id="text2">Хотя бы одно поле из подкрашенных должно быть заполнено</label>
+                                    <button onclick="validateKibanaSearchForm();" id="getELKlogsWithRange" class="btn btn-primary" type="button" role="button" style="margin-top: 20px;">Получить логи из Kibana по заявке за период</button>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        

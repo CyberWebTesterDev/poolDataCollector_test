@@ -1,0 +1,51 @@
+<div id="elk-part-container">
+
+    <div class="table-block-div"><a onclick="hideElement('elkContainer2_1')" style="display: block"><font size="6">&rarr; Логи из Kibana по созданию заявки(ELK)</font></a></div>
+
+
+    <div class="div-tables-container" id="elkContainer2_1" style="display: none">
+    <button type="submit" onclick="showLongtext('longtext2_1')">Показать/скрыть ВСЕ запросы/ответы</button>
+    <table class="table table-striped table-dark" id = "elkData" style="display: block">
+
+
+    <% elkHits2.forEach( (source, i) => { %>
+        <% if (i < 1) { %>
+            <tr>
+                <% for (let key in source) { %>
+
+                    <th scope="col" class="colp"><font color="#FFDAB9"><%= key %></font></th>
+            
+                <% }; %>
+            </tr>
+        <% }; %>
+    
+    <tr>      
+        <% for (let key in source) { %>
+            <% if (key == 'message') { %>
+                <td >
+                    <button type="submit" id="<%=i%>_btn_2_1" onclick="hideReqResp2_1(event)">Показать/скрыть запрос/ответ</button>
+                    <p class="longtext2_1" id="<%=i%>_long_2_1" style="display: none">
+                    <font color="#FF8C00"><%= source[key] %></font>
+                    </p>
+                </td>
+            <% } else if (key == 'stack_trace') { %>
+                <td >
+                        <button type="submit" id="<%=i%>_btn_3_1" onclick="hideReqResp3_1(event)">Показать/скрыть стектрейс</button>
+                        <p class="longtext2_1" id="<%=i%>_long_3_1" style="display: none">
+                        <font color="#FF8C00"><%= source[key] %></font>
+                        </p>
+                    </td>
+                <% } %>
+            <% if (key != 'stack_trace' && key != 'message') { %>
+                    <td><%= source[key] %></td>
+            <% }; %>
+        <% }; %>
+    </tr>
+
+
+    <% }); %>
+
+    </table>
+    </div>
+
+</div>

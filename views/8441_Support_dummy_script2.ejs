@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>RKK Adminkey</title>
+  <link rel="shortcut icon" type="image/x-icon" href="/public/images/favicon2.ico">
+  <link rel="stylesheet" href="/public/css/bootstrap.css">
+  <link rel="stylesheet" href="/public/css/8441_main-styles.css">
+  
+  
+ </head>
+ <body>
+
+</p>
+  </ul>
+</div>
+
+<div id="root">
+
+  <div class="dimmer">
+  
+  <div class='container'>
+
+    <div class='loader'>
+      <font size="5px">Ожидание выполнения: получение данных по заявке...</font>
+      <font size="3px">Просьба не перезагружать страницу это увеличит время сбора данных</font>
+      <div class='spinner-simple'>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+<div id='supportPage'></div>
+
+<%- include('scripts/scripts-src.ejs') %>
+
+<script type="text/javascript">
+
+  (async () => {
+
+    console.log('Async function has been called');
+
+    const appnum = window.location.href.split('/')[4];
+    try {
+      let result = await fetch(`http://localhost:3000/frontrequest/aggregatedatafromdblight/${appnum}`, {
+        method: 'GET',
+        credentials: 'include'
+      });
+      let html = await result.text();
+      const root = document.getElementById('root');
+      root.innerHTML = html;
+      //document.addEventListener("mousemove", BPMRequest);
+      if ( (document.getElementById('getBPMBtn')) ) {
+        (document.getElementById('getBPMBtn')).addEventListener("click", () => {
+          SupportPageController.BPMRequest();
+        });
+
+        if ( (document.getElementById('getELKlogs')) ) {
+          SupportPageController.loadKibanaValidatorScript();
+          (document.getElementById('getELKlogs')).addEventListener('click', SupportPageController.getELKlogs);
+        }
+      }
+
+      
+
+    } catch (e) {
+      console.error(e);
+      document.body.innerHTML = e;
+    }
+    
+
+
+
+  })();
+  
+
+</script>
+
+
+
+
+
+
+ </body>
+
+</html>
+
+

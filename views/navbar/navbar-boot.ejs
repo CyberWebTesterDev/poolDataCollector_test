@@ -1,0 +1,123 @@
+<style type="text/css">
+
+.form-inline{
+    margin: 0 auto;
+}
+.form-control-search {
+    margin-top: 10px;
+    height: 50px;
+    font-size: 30px;
+    font-style: normal;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+    .red-border {
+        border-style: solid;
+        border-width: 5px;
+        border-color: red;
+    }
+
+    .green-border {
+        border-style: solid;
+        border-width: 5px;
+        border-color: rgb(74, 153, 107);
+    }
+
+    .w300px {
+        width: 300px;
+    }
+
+    .form-inline {
+        display: grid;
+    }
+
+
+
+</style>
+
+<nav class="navbar navbar-darg bg-dark">
+    <a class="navbar-brand" style="color: #28ca93; font-family: 'Times New Roman', Times, serif; font-size: 40px;">RKK Adminkey</a>
+    <div class="navbar-adminkey" id="navbarNavDropdown">
+        <ul class="nav-adminkey">
+                <li>
+                    <a href="/index">Ошибки</a>
+                </li>
+                <li>
+                    <a href="/index">Зависания</a>
+                </li>
+                <li>
+                    <a href="/kibana" target="_blank">Поиск логов Kibana</a>
+                </li>
+                <li>
+                    <button onclick="SupportPageController.callPopUp('Информация', 'Данный раздел находится в разработке', 5000);">Данные по ошибкам микросервисов РКК 2.0</button>
+                </li>
+        </ul>
+    </div>
+    <div class="form-inline" oninput="checkInput(2)" onkeydown="checkInput(2)" onkeyup="checkInput(2)">
+            <input id="appSearch2" class="form-control-search w300px" type="search" placeholder="Номер заявки" aria-label="Поиск"><br>
+            <label for="appSearch2" style="color: red; display: none;" id="labelInputSearch2"> Некорректно введен номер заявки </label>
+            <button onclick="onClickHandler(2)" id="btnSearch2" style="margin-top: 15px;"  class="btn btn-primary" type="button">Анализ "сломанной" заявки</button>
+        </div>
+    <div class="form-inline" oninput="checkInput()" onkeydown="checkInput()" onkeyup="checkInput()">
+        <input id="appSearch" class="form-control-search w300px" type="search" placeholder="Получить данные по заявке" aria-label="Поиск"><br>
+        <label for="appSearch" style="color: red; display: none;" id="labelInputSearch"> Некорректно введен номер заявки </label>
+        <button onclick="onClickHandler()" id="btnSearch" style="margin-top: 15px;"  class="btn btn-primary" type="button">Поиск</button>
+    </div>
+</nav>
+
+<script>
+
+    const checkInput = (num = null) => {
+
+        let targetId = ``;
+        if (num) {
+            targetId = num == 2 ? targetId = 2 : targetId = ``;
+        }
+
+        const applicationNum = document.getElementById(`appSearch${targetId}`).value;
+
+       if ( applicationNum.length !== 10 || !applicationNum || isNaN(applicationNum) ) {
+
+        if (document.getElementById(`appSearch${targetId}`).classList.contains('red-border')) {
+            console.log(`Already marked red`);
+            return false;
+        } else {
+            document.getElementById(`btnSearch${targetId}`).disabled = true;
+            document.getElementById(`btnSearch${targetId}`).style.cursor = 'not-allowed';
+            document.getElementById(`appSearch${targetId}`).className += ' red-border';
+            document.getElementById(`labelInputSearch${targetId}`).style.display = 'flex';
+            return false;
+        } 
+
+
+       } else {
+
+            const classList = document.getElementById(`appSearch${targetId}`).classList;
+
+            classList.contains('red-border') ? classList.toggle('red-border') : console.log(classList);
+            document.getElementById(`labelInputSearch${targetId}`).style.display = 'none';
+            document.getElementById(`btnSearch${targetId}`).disabled = false;
+            document.getElementById(`btnSearch${targetId}`).style.cursor = 'pointer';
+            return true;
+
+            
+       }
+
+
+    }
+
+    const onClickHandler = (num = 1) => {
+
+        if (checkInput(num)) {
+            if (num == 2) {
+                window.open(`/analyze/${document.getElementById('appSearch2').value}`, '_blank');
+            } else {
+                window.open(`/support/${document.getElementById('appSearch').value}`, '_blank');
+            }
+            
+        }
+
+    }
+
+
+</script>

@@ -1,0 +1,2999 @@
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 10:48:35.640
+Request Processor: Data has been collected for statusview
+
+2020-04-21 10:48:35.647
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 10:48:35.724
+DataCollector: All data for consumer credit application has been collected
+
+2020-04-21 10:48:35.757
+Server: Received data from dataCollector for application 2003549852
+
+2020-04-21 10:48:35.766
+Server: Application has error text attached: org.springframework.ws.soap.client.SoapFaultClientException: @EnddateNew Apr  1 2024 12:00AM
+@BeginDateNew = Apr 21 2020 12:00AM, @BeginDate = , @PAYDAY = 18, @EnddateNew = Apr 18 2024 12:00AM, @Enddate =
+@EndDate Apr 18 2024 12:00AM
+@RecommendationID
+@MONTHLYREWARDRate 15.50
+@MONTHLYREWARDRate 15.50
+@CreditID: 131200476, @RequestID: 131200475, @Code: 026КР-10930                   , @Date: 21/04/2020                    , @CreditLineID:
+FINE: CreditRequestID: 131200475, @@CREDITFILEID = 131200476, @intResult = 0
+CREDITCOMMISSIONRELATION_D: 9047, 131200476
+CREDITCOMMISSIONRELATION_D: 9042, 131200476
+CREDITCOMMISSIONRELATION_D: 9046, 131200476
+CREDITCOMMISSIONRELATION_D: 9039, 131200476
+CREDITCOMMISSIONRELATION_D: 9041, 131200476
+CREDITCOMMISSIONRELATION_D: 9040, 131200476
+FINE: @HostageTypeID:
+@ID 92442881 @ADDRESSID     @BEGINACTUALDATE  Apr 21 2020 12:00AM @@@@@####@@@@@ @WorkPhone
+NEWADDRESSID: 88042108
+### @NEWBIRTHPLACEID #### = 88042109
+@CUSTOMERID  23664713 @ATTRIBUTEID 1622  Ошибка при обращении к ИКАР
+
+2020-04-21 10:48:35.836
+Server: Data for application 2003549852 has been successfully processed for fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 10:48:35.845
+Server: Listening...
+
+2020-04-21 10:50:13.618
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 10:50:13.625
+DataCollector: Received request to collect data for 2003549852
+
+2020-04-21 10:50:13.626
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 10:50:13.636
+DataCollector: Search data has been processed
+
+2020-04-21 10:50:13.639
+DataCollector: Route detected as potreb
+
+2020-04-21 10:50:13.641
+Request Processor: External request has been received for 2003549852 with argument processid
+
+2020-04-21 10:50:13.716
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+Request Processor: Route detected as potreb, starting to process...
+
+2020-04-21 10:50:13.735
+Request Processor: Data has been collected for potreb
+
+2020-04-21 10:50:13.738
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 10:50:13.739
+Request Processor: Starting to collect data for route 2003549852 potrebakk
+
+2020-04-21 10:50:13.750
+Request Processor: Data has been collected for potrebakk
+
+2020-04-21 10:50:13.763
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 10:50:13.773
+Request Processor: Starting to collect data for route 2003549852 potrebrefin
+
+2020-04-21 10:50:13.787
+Request Processor: Data has been collected for potrebrefin
+
+2020-04-21 10:50:13.790
+Request Processor: request from server for integration data has been received for 2003549852
+
+2020-04-21 10:50:13.961
+Request Processor: Integration data has been collected
+
+2020-04-21 10:50:13.984
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 10:50:13.995
+Request Processor: Data has been collected for statusview
+
+2020-04-21 10:50:14.002
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 10:50:14.033
+DataCollector: All data for consumer credit application has been collected
+
+2020-04-21 10:50:14.076
+Server: Received data from dataCollector for application 2003549852
+
+2020-04-21 10:50:14.089
+Server: Application has error text attached: org.springframework.ws.soap.client.SoapFaultClientException: @EnddateNew Apr  1 2024 12:00AM
+@BeginDateNew = Apr 21 2020 12:00AM, @BeginDate = , @PAYDAY = 18, @EnddateNew = Apr 18 2024 12:00AM, @Enddate =
+@EndDate Apr 18 2024 12:00AM
+@RecommendationID
+@MONTHLYREWARDRate 15.50
+@MONTHLYREWARDRate 15.50
+@CreditID: 131200476, @RequestID: 131200475, @Code: 026КР-10930                   , @Date: 21/04/2020                    , @CreditLineID:
+FINE: CreditRequestID: 131200475, @@CREDITFILEID = 131200476, @intResult = 0
+CREDITCOMMISSIONRELATION_D: 9047, 131200476
+CREDITCOMMISSIONRELATION_D: 9042, 131200476
+CREDITCOMMISSIONRELATION_D: 9046, 131200476
+CREDITCOMMISSIONRELATION_D: 9039, 131200476
+CREDITCOMMISSIONRELATION_D: 9041, 131200476
+CREDITCOMMISSIONRELATION_D: 9040, 131200476
+FINE: @HostageTypeID:
+@ID 92442881 @ADDRESSID     @BEGINACTUALDATE  Apr 21 2020 12:00AM @@@@@####@@@@@ @WorkPhone
+NEWADDRESSID: 88042108
+### @NEWBIRTHPLACEID #### = 88042109
+@CUSTOMERID  23664713 @ATTRIBUTEID 1622  Ошибка при обращении к ИКАР
+
+2020-04-21 10:50:14.164
+Server: Data for application 2003549852 has been successfully processed for fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 10:50:14.179
+Server: Listening...
+
+2020-04-21 10:55:42.877
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 10:55:42.904
+DataCollector: Received request to collect data for 2003549852
+
+2020-04-21 10:55:42.927
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 10:55:42.948
+DataCollector: Search data has been processed
+
+2020-04-21 10:55:42.949
+DataCollector: Route detected as potreb
+
+2020-04-21 10:55:42.955
+Request Processor: External request has been received for 2003549852 with argument processid
+
+2020-04-21 10:55:43.046
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+Request Processor: Route detected as potreb, starting to process...
+
+2020-04-21 10:55:43.074
+Request Processor: Data has been collected for potreb
+
+2020-04-21 10:55:43.078
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 10:55:43.084
+Request Processor: Starting to collect data for route 2003549852 potrebakk
+
+2020-04-21 10:55:43.106
+Request Processor: Data has been collected for potrebakk
+
+2020-04-21 10:55:43.111
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 10:55:43.116
+Request Processor: Starting to collect data for route 2003549852 potrebrefin
+
+2020-04-21 10:55:43.128
+Request Processor: Data has been collected for potrebrefin
+
+2020-04-21 10:55:43.131
+Request Processor: request from server for integration data has been received for 2003549852
+
+2020-04-21 10:55:43.318
+Request Processor: Integration data has been collected
+
+2020-04-21 10:55:43.335
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 10:55:43.371
+Request Processor: Data has been collected for statusview
+
+2020-04-21 10:55:43.375
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 10:55:43.406
+DataCollector: All data for consumer credit application has been collected
+
+2020-04-21 10:55:43.444
+Server: Received data from dataCollector for application 2003549852
+
+2020-04-21 10:55:43.511
+Server: Data for application 2003549852 has been successfully processed for fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 10:55:43.518
+Server: Listening...
+
+2020-04-21 11:09:50.926
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 11:09:50.931
+DataCollector: Received request to collect data for 2003351241
+
+2020-04-21 11:09:50.931
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 11:09:50.956
+DataCollector: Search data has been processed
+
+2020-04-21 11:09:50.962
+DataCollector: Route detected as credit card
+
+2020-04-21 11:09:50.962
+Request Processor: External request has been received for 2003351241 with argument processid
+
+2020-04-21 11:09:51.105
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 11:09:51.112
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 11:09:51.128
+Request Processor: Data collected for credit card
+
+2020-04-21 11:09:51.129
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 11:09:51.130
+Request Processor: Starting to collect data for route 2003351241 kard_akk
+
+2020-04-21 11:09:51.147
+Request Processor: Data collected for Credit Card
+
+2020-04-21 11:09:51.158
+Request Processor: request from server for integration data has been received for 2003351241
+
+2020-04-21 11:09:52.419
+Request Processor: Integration data has been collected
+
+2020-04-21 11:09:52.510
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 11:09:52.555
+Request Processor: Data has been collected for statusview
+
+2020-04-21 11:09:52.560
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 11:09:52.705
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 11:09:52.808
+Server: Received data from dataCollector for application 2003351241
+
+2020-04-21 11:09:52.811
+Server: Application has error text attached: ru.gpb.rkk2.connector5nt.Diasoft5NTCallException: java.util.concurrent.TimeoutException: Timeout after PT1M30S
+        at ru.gpb.rkk2.connector5nt.impl.Diasoft5NTConnectorContextWithTimeoutAndRetry.run(Diasoft5NTConnectorContextWithTimeoutAndRetry.java:31)
+        at ru.gpb.rkk2.connector5nt.impl.DefaultDiasoft5NTConnector.invokeCall(DefaultDiasoft5NTConnector.java:67)
+        at ru.gpb.rkk2.connector5nt.impl.DefaultDiasoft5NTConnector.lambda$call$1(DefaultDiasoft5NTConnector.java:39)
+        at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
+        at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1382)
+        at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:482)
+        at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
+        at java.util.stream.ReduceOps$ReduceTask.doLeaf(ReduceOps.java:747)
+        at java.util.stream.ReduceOps$ReduceTask.doLeaf(ReduceOps.java:721)
+        at java.util.stream.AbstractTask.compute(AbstractTask.java:316)
+        at java.uti java.util.concurrent.TimeoutException: Timeout after PT1M30S
+
+2020-04-21 11:09:52.998
+Server: Data for application 2003351241 has been successfully processed for fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 11:09:53.003
+Server: Listening...
+
+2020-04-21 11:11:21.474
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 11:11:21.478
+DataCollector: Received request to collect data for 2003351241
+
+2020-04-21 11:11:21.478
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 11:11:21.487
+DataCollector: Search data has been processed
+
+2020-04-21 11:11:21.490
+DataCollector: Route detected as credit card
+
+2020-04-21 11:11:21.490
+Request Processor: External request has been received for 2003351241 with argument processid
+
+2020-04-21 11:11:21.515
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 11:11:21.521
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 11:11:21.526
+Request Processor: Data collected for credit card
+
+2020-04-21 11:11:21.527
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 11:11:21.528
+Request Processor: Starting to collect data for route 2003351241 kard_akk
+
+2020-04-21 11:11:21.544
+Request Processor: Data collected for Credit Card
+
+2020-04-21 11:11:21.558
+Request Processor: request from server for integration data has been received for 2003351241
+
+2020-04-21 11:11:22.370
+Request Processor: Integration data has been collected
+
+2020-04-21 11:11:22.438
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 11:11:22.458
+Request Processor: Data has been collected for statusview
+
+2020-04-21 11:11:22.460
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 11:11:22.474
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 11:11:22.572
+Server: Received data from dataCollector for application 2003351241
+
+2020-04-21 11:11:22.575
+Server: Application has error text attached: ru.gpb.rkk2.connector5nt.Diasoft5NTCallException: java.util.concurrent.TimeoutException: Timeout after PT1M30S
+        at ru.gpb.rkk2.connector5nt.impl.Diasoft5NTConnectorContextWithTimeoutAndRetry.run(Diasoft5NTConnectorContextWithTimeoutAndRetry.java:31)
+        at ru.gpb.rkk2.connector5nt.impl.DefaultDiasoft5NTConnector.invokeCall(DefaultDiasoft5NTConnector.java:67)
+        at ru.gpb.rkk2.connector5nt.impl.DefaultDiasoft5NTConnector.lambda$call$1(DefaultDiasoft5NTConnector.java:39)
+        at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
+        at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1382)
+        at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:482)
+        at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
+        at java.util.stream.ReduceOps$ReduceTask.doLeaf(ReduceOps.java:747)
+        at java.util.stream.ReduceOps$ReduceTask.doLeaf(ReduceOps.java:721)
+        at java.util.stream.AbstractTask.compute(AbstractTask.java:316)
+        at java.uti java.util.concurrent.TimeoutException: Timeout after PT1M30S
+
+2020-04-21 11:11:22.755
+Server: Data for application 2003351241 has been successfully processed for fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 11:11:22.761
+Server: Listening...
+
+2020-04-21 11:17:04.532
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 11:17:04.533
+DataCollector: Received request to collect data for 2003097951
+
+2020-04-21 11:17:04.534
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 11:17:04.563
+DataCollector: Search data has been processed
+
+2020-04-21 11:17:04.564
+DataCollector: Route detected as potreb
+
+2020-04-21 11:17:04.564
+Request Processor: External request has been received for 2003097951 with argument processid
+
+2020-04-21 11:17:04.838
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+Request Processor: Route detected as potreb, starting to process...
+
+2020-04-21 11:17:04.860
+Request Processor: Data has been collected for potreb
+
+2020-04-21 11:17:04.863
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 11:17:04.863
+Request Processor: Starting to collect data for route 2003097951 potrebakk
+
+2020-04-21 11:17:04.874
+Request Processor: Data has been collected for potrebakk
+
+2020-04-21 11:17:04.876
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 11:17:04.877
+Request Processor: Starting to collect data for route 2003097951 potrebrefin
+
+2020-04-21 11:17:04.887
+Request Processor: Data has been collected for potrebrefin
+
+2020-04-21 11:17:04.888
+Request Processor: request from server for integration data has been received for 2003097951
+
+2020-04-21 11:17:05.444
+Request Processor: Integration data has been collected
+
+2020-04-21 11:17:05.469
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 11:17:05.522
+Request Processor: Data has been collected for statusview
+
+2020-04-21 11:17:05.525
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 11:17:05.589
+DataCollector: All data for consumer credit application has been collected
+
+2020-04-21 11:17:05.628
+Server: Received data from dataCollector for application 2003097951
+
+2020-04-21 11:17:05.629
+Server: Application has error text attached:  Error while processing offer
+
+2020-04-21 11:17:05.720
+Server: Data for application 2003097951 has been successfully processed for fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 11:17:05.721
+Server: Listening...
+
+2020-04-21 11:17:50.334
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 11:17:50.335
+DataCollector: Received request to collect data for 2003408794
+
+2020-04-21 11:17:50.335
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 11:17:50.340
+DataCollector: Search data has been processed
+
+2020-04-21 11:17:50.340
+DataCollector: Route detected as potreb
+
+2020-04-21 11:17:50.341
+Request Processor: External request has been received for 2003408794 with argument processid
+
+2020-04-21 11:17:50.557
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+Request Processor: Route detected as potreb, starting to process...
+
+2020-04-21 11:17:50.572
+Request Processor: Data has been collected for potreb
+
+2020-04-21 11:17:50.574
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 11:17:50.574
+Request Processor: Starting to collect data for route 2003408794 potrebakk
+
+2020-04-21 11:17:50.589
+Request Processor: Data has been collected for potrebakk
+
+2020-04-21 11:17:50.589
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 11:17:50.590
+Request Processor: Starting to collect data for route 2003408794 potrebrefin
+
+2020-04-21 11:17:50.605
+Request Processor: Data has been collected for potrebrefin
+
+2020-04-21 11:17:50.605
+Request Processor: request from server for integration data has been received for 2003408794
+
+2020-04-21 11:17:50.777
+Request Processor: Integration data has been collected
+
+2020-04-21 11:17:50.790
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 11:17:50.801
+Request Processor: Data has been collected for statusview
+
+2020-04-21 11:17:50.801
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 11:17:50.822
+DataCollector: All data for consumer credit application has been collected
+
+2020-04-21 11:17:50.839
+Server: Received data from dataCollector for application 2003408794
+
+2020-04-21 11:17:50.893
+Server: Data for application 2003408794 has been successfully processed for fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 11:17:50.893
+Server: Listening...
+
+2020-04-21 11:25:54.038
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 11:25:54.039
+DataCollector: Received request to collect data for 2003355577
+
+2020-04-21 11:25:54.039
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 11:25:54.089
+DataCollector: Search data has been processed
+
+2020-04-21 11:25:54.090
+DataCollector: Route detected as credit card
+
+2020-04-21 11:25:54.090
+Request Processor: External request has been received for 2003355577 with argument processid
+
+2020-04-21 11:25:54.329
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 11:25:54.330
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 11:25:54.349
+Request Processor: Data collected for credit card
+
+2020-04-21 11:25:54.350
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 11:25:54.350
+Request Processor: Starting to collect data for route 2003355577 kard_akk
+
+2020-04-21 11:25:54.373
+Request Processor: Data collected for Credit Card
+
+2020-04-21 11:25:54.385
+Request Processor: request from server for integration data has been received for 2003355577
+
+2020-04-21 11:25:56.464
+Request Processor: Integration data has been collected
+
+2020-04-21 11:25:56.518
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 11:25:56.543
+Request Processor: Data has been collected for statusview
+
+2020-04-21 11:25:56.544
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 11:25:56.624
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 11:25:56.673
+Server: Received data from dataCollector for application 2003355577
+
+2020-04-21 11:25:56.674
+Server: Application has error text attached: ru.gpb.rkk2.integration.sp.exception.GenericCallException: Не найден ДУЛ по переданным параметрам
+        at ru.gpb.rkk2.integration.sp.Abstract5NTCall.handleResult(Abstract5NTCall.java:107)
+        at ru.gpb.rkk2.integration.sp.Abstract5NTCall.call(Abstract5NTCall.java:60)
+        at ru.gpb.rkk2.integration.sp.Abstract5NTCall.call(Abstract5NTCall.java:27)
+        at ru.gpb.rkk2.connector5nt.Diasoft5NTJdbcTemplateCall.runWithoutTransaction(Diasoft5NTJdbcTemplateCall.java:30)
+        at ru.gpb.rkk2.connector5nt.Diasoft5NTJdbcTemplateCall.call(Diasoft5NTJdbcTemplateCall.java:26)
+        at ru.gpb.rkk2.connector5nt.impl.Diasoft5NTHikariInstance.apply(Diasoft5NTHikariInstance.java:34)
+        at ru.gpb.rkk2.connector5nt.impl.DefaultDiasoft5NTConnector.lambda$invokeCall$5(DefaultDiasoft5NTConnector.java:67)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        at ja Не найден ДУЛ по переданным параметрам
+
+2020-04-21 11:25:56.795
+Server: Data for application 2003355577 has been successfully processed for fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 11:25:56.796
+Server: Listening...
+
+2020-04-21 11:28:38.611
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 11:28:38.612
+DataCollector: Received request to collect data for 2003355577
+
+2020-04-21 11:28:38.612
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 11:28:38.619
+DataCollector: Search data has been processed
+
+2020-04-21 11:28:38.619
+DataCollector: Route detected as credit card
+
+2020-04-21 11:28:38.620
+Request Processor: External request has been received for 2003355577 with argument processid
+
+2020-04-21 11:28:38.706
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 11:28:38.707
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 11:28:38.713
+Request Processor: Data collected for credit card
+
+2020-04-21 11:28:38.713
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 11:28:38.714
+Request Processor: Starting to collect data for route 2003355577 kard_akk
+
+2020-04-21 11:28:38.720
+Request Processor: Data collected for Credit Card
+
+2020-04-21 11:28:38.726
+Request Processor: request from server for integration data has been received for 2003355577
+
+2020-04-21 11:28:39.568
+Request Processor: Integration data has been collected
+
+2020-04-21 11:28:39.618
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 11:28:39.631
+Request Processor: Data has been collected for statusview
+
+2020-04-21 11:28:39.632
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 11:28:39.657
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 11:28:39.685
+Server: Received data from dataCollector for application 2003355577
+
+2020-04-21 11:28:39.686
+Server: Application has error text attached: ru.gpb.rkk2.integration.sp.exception.GenericCallException: Не найден ДУЛ по переданным параметрам
+        at ru.gpb.rkk2.integration.sp.Abstract5NTCall.handleResult(Abstract5NTCall.java:107)
+        at ru.gpb.rkk2.integration.sp.Abstract5NTCall.call(Abstract5NTCall.java:60)
+        at ru.gpb.rkk2.integration.sp.Abstract5NTCall.call(Abstract5NTCall.java:27)
+        at ru.gpb.rkk2.connector5nt.Diasoft5NTJdbcTemplateCall.runWithoutTransaction(Diasoft5NTJdbcTemplateCall.java:30)
+        at ru.gpb.rkk2.connector5nt.Diasoft5NTJdbcTemplateCall.call(Diasoft5NTJdbcTemplateCall.java:26)
+        at ru.gpb.rkk2.connector5nt.impl.Diasoft5NTHikariInstance.apply(Diasoft5NTHikariInstance.java:34)
+        at ru.gpb.rkk2.connector5nt.impl.DefaultDiasoft5NTConnector.lambda$invokeCall$5(DefaultDiasoft5NTConnector.java:67)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        at ja Не найден ДУЛ по переданным параметрам
+
+2020-04-21 11:28:39.809
+Server: Data for application 2003355577 has been successfully processed for fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 11:28:39.810
+Server: Listening...
+
+2020-04-21 11:28:55.398
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 11:28:55.399
+DataCollector: Received request to collect data for 2003355577
+
+2020-04-21 11:28:55.399
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 11:28:55.404
+DataCollector: Search data has been processed
+
+2020-04-21 11:28:55.404
+DataCollector: Route detected as credit card
+
+2020-04-21 11:28:55.405
+Request Processor: External request has been received for 2003355577 with argument processid
+
+2020-04-21 11:28:55.444
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 11:28:55.444
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 11:28:55.450
+Request Processor: Data collected for credit card
+
+2020-04-21 11:28:55.451
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 11:28:55.451
+Request Processor: Starting to collect data for route 2003355577 kard_akk
+
+2020-04-21 11:28:55.456
+Request Processor: Data collected for Credit Card
+
+2020-04-21 11:28:55.460
+Request Processor: request from server for integration data has been received for 2003355577
+
+2020-04-21 11:28:55.800
+Request Processor: Integration data has been collected
+
+2020-04-21 11:28:55.833
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 11:28:55.840
+Request Processor: Data has been collected for statusview
+
+2020-04-21 11:28:55.841
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 11:28:55.849
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 11:28:55.884
+Server: Received data from dataCollector for application 2003355577
+
+2020-04-21 11:28:55.885
+Server: Application has error text attached: ru.gpb.rkk2.integration.sp.exception.GenericCallException: Не найден ДУЛ по переданным параметрам
+        at ru.gpb.rkk2.integration.sp.Abstract5NTCall.handleResult(Abstract5NTCall.java:107)
+        at ru.gpb.rkk2.integration.sp.Abstract5NTCall.call(Abstract5NTCall.java:60)
+        at ru.gpb.rkk2.integration.sp.Abstract5NTCall.call(Abstract5NTCall.java:27)
+        at ru.gpb.rkk2.connector5nt.Diasoft5NTJdbcTemplateCall.runWithoutTransaction(Diasoft5NTJdbcTemplateCall.java:30)
+        at ru.gpb.rkk2.connector5nt.Diasoft5NTJdbcTemplateCall.call(Diasoft5NTJdbcTemplateCall.java:26)
+        at ru.gpb.rkk2.connector5nt.impl.Diasoft5NTHikariInstance.apply(Diasoft5NTHikariInstance.java:34)
+        at ru.gpb.rkk2.connector5nt.impl.DefaultDiasoft5NTConnector.lambda$invokeCall$5(DefaultDiasoft5NTConnector.java:67)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        at ja Не найден ДУЛ по переданным параметрам
+
+2020-04-21 11:28:56.011
+Server: Data for application 2003355577 has been successfully processed for fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 11:28:56.012
+Server: Listening...
+
+2020-04-21 11:58:40.315
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 11:58:40.315
+DataCollector: Received request to collect data for 2003561728
+
+2020-04-21 11:58:40.316
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 11:58:40.339
+DataCollector: Search data has been processed
+
+2020-04-21 11:58:40.340
+DataCollector: Route detected as credit card
+
+2020-04-21 11:58:40.341
+Request Processor: External request has been received for 2003561728 with argument processid
+
+2020-04-21 11:58:40.419
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 11:58:40.420
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 11:58:40.435
+Request Processor: Data collected for credit card
+
+2020-04-21 11:58:40.436
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 11:58:40.436
+Request Processor: Starting to collect data for route 2003561728 kard_akk
+
+2020-04-21 11:58:40.455
+Request Processor: Data collected for Credit Card
+
+2020-04-21 11:58:40.466
+Request Processor: request from server for integration data has been received for 2003561728
+
+2020-04-21 11:58:40.498
+Request Processor: Integration data has been collected
+
+2020-04-21 11:58:40.498
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 11:58:40.518
+Request Processor: Data has been collected for statusview
+
+2020-04-21 11:58:40.519
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 11:58:40.527
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 11:58:40.528
+Server: Received data from dataCollector for application 2003561728
+
+2020-04-21 11:58:40.534
+Server: Data for application 2003561728 has been successfully processed for fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 11:58:40.534
+Server: Listening...
+
+2020-04-21 12:01:00.958
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 12:01:00.959
+DataCollector: Received request to collect data for 2003561716
+
+2020-04-21 12:01:00.959
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 12:01:00.964
+DataCollector: Search data has been processed
+
+2020-04-21 12:01:00.965
+DataCollector: Route detected as credit card
+
+2020-04-21 12:01:00.965
+Request Processor: External request has been received for 2003561716 with argument processid
+
+2020-04-21 12:01:00.989
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:01:00.989
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 12:01:01.003
+Request Processor: Data collected for credit card
+
+2020-04-21 12:01:01.005
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:01:01.005
+Request Processor: Starting to collect data for route 2003561716 kard_akk
+
+2020-04-21 12:01:01.021
+Request Processor: Data collected for Credit Card
+
+2020-04-21 12:01:01.034
+Request Processor: request from server for integration data has been received for 2003561716
+
+2020-04-21 12:01:01.078
+Request Processor: Integration data has been collected
+
+2020-04-21 12:01:01.078
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 12:01:01.083
+Request Processor: Data has been collected for statusview
+
+2020-04-21 12:01:01.084
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 12:01:01.092
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 12:01:01.093
+Server: Received data from dataCollector for application 2003561716
+
+2020-04-21 12:01:01.102
+Server: Data for application 2003561716 has been successfully processed for fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 12:01:01.102
+Server: Listening...
+
+2020-04-21 12:01:38.259
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 12:01:38.260
+DataCollector: Received request to collect data for 2003561728
+
+2020-04-21 12:01:38.260
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 12:01:38.265
+DataCollector: Search data has been processed
+
+2020-04-21 12:01:38.266
+DataCollector: Route detected as credit card
+
+2020-04-21 12:01:38.266
+Request Processor: External request has been received for 2003561728 with argument processid
+
+2020-04-21 12:01:38.280
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:01:38.281
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 12:01:38.285
+Request Processor: Data collected for credit card
+
+2020-04-21 12:01:38.286
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:01:38.286
+Request Processor: Starting to collect data for route 2003561728 kard_akk
+
+2020-04-21 12:01:38.291
+Request Processor: Data collected for Credit Card
+
+2020-04-21 12:01:38.294
+Request Processor: request from server for integration data has been received for 2003561728
+
+2020-04-21 12:01:38.299
+Request Processor: Integration data has been collected
+
+2020-04-21 12:01:38.300
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 12:01:38.305
+Request Processor: Data has been collected for statusview
+
+2020-04-21 12:01:38.306
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 12:01:38.312
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 12:01:38.313
+Server: Received data from dataCollector for application 2003561728
+
+2020-04-21 12:01:38.320
+Server: Data for application 2003561728 has been successfully processed for fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 12:01:38.320
+Server: Listening...
+
+2020-04-21 12:01:54.003
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 12:01:54.004
+DataCollector: Received request to collect data for 2003559192
+
+2020-04-21 12:01:54.005
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 12:01:54.009
+DataCollector: Search data has been processed
+
+Error: DataCollector.collectData: Не удалось определить маршрут заявки!
+    at DataCollector.collectData (C:\node\pgdbapp2\node_modules\pgdbapp2\helper\dataCollector.js:689:23)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async main (C:\node\pgdbapp2\node_modules\pgdbapp2\server.js:1002:39)
+(node:22404) UnhandledPromiseRejectionWarning: SyntaxError: Unexpected token u in JSON at position 0
+    at JSON.parse (<anonymous>)
+    at C:\node\pgdbapp2\node_modules\pgdbapp2\server.js:1015:29
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+(node:22404) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not h
+andled with .catch(). (rejection id: 1)
+(node:22404) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+2020-04-21 12:02:02.109
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 12:02:02.110
+DataCollector: Received request to collect data for 2003559108
+
+2020-04-21 12:02:02.110
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 12:02:02.113
+DataCollector: Search data has been processed
+
+Error: DataCollector.collectData: Не удалось определить маршрут заявки!
+    at DataCollector.collectData (C:\node\pgdbapp2\node_modules\pgdbapp2\helper\dataCollector.js:689:23)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async main (C:\node\pgdbapp2\node_modules\pgdbapp2\server.js:1002:39)
+(node:22404) UnhandledPromiseRejectionWarning: SyntaxError: Unexpected token u in JSON at position 0
+    at JSON.parse (<anonymous>)
+    at C:\node\pgdbapp2\node_modules\pgdbapp2\server.js:1015:29
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+(node:22404) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not h
+andled with .catch(). (rejection id: 2)
+2020-04-21 12:02:06.390
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 12:02:06.391
+DataCollector: Received request to collect data for 2003558968
+
+2020-04-21 12:02:06.391
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 12:02:06.395
+DataCollector: Search data has been processed
+
+2020-04-21 12:02:06.396
+DataCollector: Route detected as credit card
+
+2020-04-21 12:02:06.396
+Request Processor: External request has been received for 2003558968 with argument processid
+
+2020-04-21 12:02:06.419
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:02:06.420
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 12:02:06.425
+Request Processor: Data collected for credit card
+
+2020-04-21 12:02:06.427
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:02:06.427
+Request Processor: Starting to collect data for route 2003558968 kard_akk
+
+2020-04-21 12:02:06.431
+Request Processor: Data collected for Credit Card
+
+2020-04-21 12:02:06.436
+Request Processor: request from server for integration data has been received for 2003558968
+
+2020-04-21 12:02:06.441
+Request Processor: Integration data has been collected
+
+2020-04-21 12:02:06.442
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 12:02:06.448
+Request Processor: Data has been collected for statusview
+
+2020-04-21 12:02:06.449
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 12:02:06.455
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 12:02:06.456
+Server: Received data from dataCollector for application 2003558968
+
+2020-04-21 12:02:06.460
+Server: Data for application 2003558968 has been successfully processed for fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 12:02:06.460
+Server: Listening...
+
+2020-04-21 12:07:15.530
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 12:07:15.531
+DataCollector: Received request to collect data for 2003558968
+
+2020-04-21 12:07:15.531
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 12:07:15.569
+DataCollector: Search data has been processed
+
+2020-04-21 12:07:15.570
+DataCollector: Route detected as credit card
+
+2020-04-21 12:07:15.570
+Request Processor: External request has been received for 2003558968 with argument processid
+
+2020-04-21 12:07:15.708
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:07:15.709
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 12:07:15.718
+Request Processor: Data collected for credit card
+
+2020-04-21 12:07:15.719
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:07:15.720
+Request Processor: Starting to collect data for route 2003558968 kard_akk
+
+2020-04-21 12:07:15.732
+Request Processor: Data collected for Credit Card
+
+2020-04-21 12:07:15.740
+Request Processor: request from server for integration data has been received for 2003558968
+
+2020-04-21 12:07:15.770
+Request Processor: Integration data has been collected
+
+2020-04-21 12:07:15.771
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 12:07:15.805
+Request Processor: Data has been collected for statusview
+
+2020-04-21 12:07:15.806
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 12:07:15.819
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 12:07:15.820
+Server: Received data from dataCollector for application 2003558968
+
+2020-04-21 12:07:15.824
+Server: Data for application 2003558968 has been successfully processed for fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 12:07:15.825
+Server: Listening...
+
+2020-04-21 12:07:36.190
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 12:07:36.191
+DataCollector: Received request to collect data for 2003558968
+
+2020-04-21 12:07:36.191
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 12:07:36.195
+DataCollector: Search data has been processed
+
+2020-04-21 12:07:36.196
+DataCollector: Route detected as credit card
+
+2020-04-21 12:07:36.196
+Request Processor: External request has been received for 2003558968 with argument processid
+
+2020-04-21 12:07:36.210
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:07:36.210
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 12:07:36.215
+Request Processor: Data collected for credit card
+
+2020-04-21 12:07:36.216
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:07:36.217
+Request Processor: Starting to collect data for route 2003558968 kard_akk
+
+2020-04-21 12:07:36.221
+Request Processor: Data collected for Credit Card
+
+2020-04-21 12:07:36.225
+Request Processor: request from server for integration data has been received for 2003558968
+
+2020-04-21 12:07:36.236
+Request Processor: Integration data has been collected
+
+2020-04-21 12:07:36.237
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 12:07:36.241
+Request Processor: Data has been collected for statusview
+
+2020-04-21 12:07:36.242
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 12:07:36.248
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 12:07:36.250
+Server: Received data from dataCollector for application 2003558968
+
+2020-04-21 12:07:36.256
+Server: Data for application 2003558968 has been successfully processed for fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 12:07:36.257
+Server: Listening...
+
+2020-04-21 12:08:07.176
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 12:08:07.177
+DataCollector: Received request to collect data for 2003554024
+
+2020-04-21 12:08:07.177
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 12:08:07.184
+DataCollector: Search data has been processed
+
+Error: DataCollector.collectData: Не удалось определить маршрут заявки!
+    at DataCollector.collectData (C:\node\pgdbapp2\node_modules\pgdbapp2\helper\dataCollector.js:689:23)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async main (C:\node\pgdbapp2\node_modules\pgdbapp2\server.js:1002:39)
+(node:22404) UnhandledPromiseRejectionWarning: SyntaxError: Unexpected token u in JSON at position 0
+    at JSON.parse (<anonymous>)
+    at C:\node\pgdbapp2\node_modules\pgdbapp2\server.js:1015:29
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+(node:22404) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not h
+andled with .catch(). (rejection id: 3)
+2020-04-21 12:11:52.390
+Server: Received request for support from ::ffff:10.2.161.135, ::ffff:10.2.161.135
+
+2020-04-21 12:11:52.392
+DataCollector: Received request to collect data for 2003366197
+
+2020-04-21 12:11:52.392
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 12:11:52.399
+DataCollector: Search data has been processed
+
+2020-04-21 12:11:52.399
+DataCollector: Route detected as ipoteka
+
+2020-04-21 12:11:52.400
+Request Processor: External request has been received for 2003366197 with argument processid
+
+2020-04-21 12:11:52.633
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:11:52.633
+Request Processor: Ipoteka exception
+
+Request Processor: Route detected as ipoteka, starting to process...
+
+2020-04-21 12:11:52.760
+Request Processor: Data collected for ipoteka
+
+2020-04-21 12:11:52.762
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:11:52.763
+Request Processor: Starting to collect data for route 2003366197 ipoteka_participant
+
+2020-04-21 12:11:52.855
+Request Processor: Data collected for ipoteka
+
+2020-04-21 12:11:52.857
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:11:52.857
+Request Processor: Starting to collect data for route 2003366197 ipoteka_akk
+
+2020-04-21 12:11:52.943
+Request Processor: Data collected for ipoteka
+
+2020-04-21 12:11:53.006
+Request Processor: Processing the route letter_of_credit for 2003366197...
+
+2020-04-21 12:11:53.093
+Request Processor: Processing the route transfer_order for 2003366197...
+
+2020-04-21 12:11:53.172
+Request Processor: request from server for integration data has been received for 2003366197
+
+2020-04-21 12:11:53.181
+Request Processor: Integration data has been collected
+
+2020-04-21 12:11:53.182
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 12:11:53.235
+Request Processor: Data has been collected for statusview
+
+2020-04-21 12:11:53.238
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 12:11:53.377
+DataCollector: All data for mortgage application has been collected
+
+2020-04-21 12:11:53.379
+Server: Received data from dataCollector for application 2003366197
+
+2020-04-21 12:11:53.389
+Server: Data for application 2003366197 has been successfully processed for ::ffff:10.2.161.135
+
+2020-04-21 12:11:53.389
+Server: Listening...
+
+2020-04-21 12:20:08.190
+Server: Received request for support from ::ffff:10.2.160.67, ::ffff:10.2.160.67
+
+2020-04-21 12:20:08.191
+DataCollector: Received request to collect data for 2003478318
+
+2020-04-21 12:20:08.191
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 12:20:08.213
+DataCollector: Search data has been processed
+
+2020-04-21 12:20:08.213
+DataCollector: Route detected as credit card
+
+2020-04-21 12:20:08.214
+Request Processor: External request has been received for 2003478318 with argument processid
+
+2020-04-21 12:20:08.298
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:20:08.299
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 12:20:08.308
+Request Processor: Data collected for credit card
+
+2020-04-21 12:20:08.310
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:20:08.311
+Request Processor: Starting to collect data for route 2003478318 kard_akk
+
+2020-04-21 12:20:08.320
+Request Processor: Data collected for Credit Card
+
+2020-04-21 12:20:08.328
+Request Processor: request from server for integration data has been received for 2003478318
+
+2020-04-21 12:20:10.454
+Request Processor: Integration data has been collected
+
+2020-04-21 12:20:10.499
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 12:20:10.554
+Request Processor: Data has been collected for statusview
+
+2020-04-21 12:20:10.555
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 12:20:10.572
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 12:20:10.603
+Server: Received data from dataCollector for application 2003478318
+
+2020-04-21 12:20:10.694
+Server: Data for application 2003478318 has been successfully processed for ::ffff:10.2.160.67
+
+2020-04-21 12:20:10.695
+Server: Listening...
+
+2020-04-21 12:25:58.275
+Server: Received request for support from ::ffff:10.2.160.67, ::ffff:10.2.160.67
+
+2020-04-21 12:25:58.275
+DataCollector: Received request to collect data for 2003556987
+
+2020-04-21 12:25:58.275
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 12:25:58.311
+DataCollector: Search data has been processed
+
+2020-04-21 12:25:58.311
+DataCollector: Route detected as potreb
+
+2020-04-21 12:25:58.311
+Request Processor: External request has been received for 2003556987 with argument processid
+
+2020-04-21 12:25:58.369
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+Request Processor: Route detected as potreb, starting to process...
+
+2020-04-21 12:25:58.376
+Request Processor: Data has been collected for potreb
+
+2020-04-21 12:25:58.378
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:25:58.378
+Request Processor: Starting to collect data for route 2003556987 potrebakk
+
+2020-04-21 12:25:58.388
+Request Processor: Data has been collected for potrebakk
+
+2020-04-21 12:25:58.388
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:25:58.389
+Request Processor: Starting to collect data for route 2003556987 potrebrefin
+
+2020-04-21 12:25:58.403
+Request Processor: Data has been collected for potrebrefin
+
+2020-04-21 12:25:58.404
+Request Processor: request from server for integration data has been received for 2003556987
+
+2020-04-21 12:25:58.872
+Request Processor: Integration data has been collected
+
+2020-04-21 12:25:58.897
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 12:25:58.931
+Request Processor: Data has been collected for statusview
+
+2020-04-21 12:25:58.933
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 12:25:58.947
+DataCollector: All data for consumer credit application has been collected
+
+2020-04-21 12:25:58.988
+Server: Received data from dataCollector for application 2003556987
+
+2020-04-21 12:25:59.057
+Server: Data for application 2003556987 has been successfully processed for ::ffff:10.2.160.67
+
+2020-04-21 12:25:59.057
+Server: Listening...
+
+2020-04-21 12:38:02.373
+Server: Received request for support from ::ffff:10.2.160.67, ::ffff:10.2.160.67
+
+2020-04-21 12:38:02.374
+DataCollector: Received request to collect data for 2003559256
+
+2020-04-21 12:38:02.375
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 12:38:02.408
+DataCollector: Search data has been processed
+
+2020-04-21 12:38:02.409
+DataCollector: Route detected as potreb
+
+2020-04-21 12:38:02.410
+Request Processor: External request has been received for 2003559256 with argument processid
+
+2020-04-21 12:38:02.494
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+Request Processor: Route detected as potreb, starting to process...
+
+2020-04-21 12:38:02.502
+Request Processor: Data has been collected for potreb
+
+2020-04-21 12:38:02.504
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:38:02.504
+Request Processor: Starting to collect data for route 2003559256 potrebakk
+
+2020-04-21 12:38:02.512
+Request Processor: Data has been collected for potrebakk
+
+2020-04-21 12:38:02.514
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:38:02.514
+Request Processor: Starting to collect data for route 2003559256 potrebrefin
+
+2020-04-21 12:38:02.523
+Request Processor: Data has been collected for potrebrefin
+
+2020-04-21 12:38:02.523
+Request Processor: request from server for integration data has been received for 2003559256
+
+2020-04-21 12:38:02.899
+Request Processor: Integration data has been collected
+
+2020-04-21 12:38:02.916
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 12:38:02.952
+Request Processor: Data has been collected for statusview
+
+2020-04-21 12:38:02.953
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 12:38:02.976
+DataCollector: All data for consumer credit application has been collected
+
+2020-04-21 12:38:03.001
+Server: Received data from dataCollector for application 2003559256
+
+2020-04-21 12:38:03.060
+Server: Data for application 2003559256 has been successfully processed for ::ffff:10.2.160.67
+
+2020-04-21 12:38:03.061
+Server: Listening...
+
+2020-04-21 12:40:45.597
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 12:40:45.598
+DataCollector: Received request to collect data for 2003455671
+
+2020-04-21 12:40:45.598
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 12:40:45.603
+DataCollector: Search data has been processed
+
+2020-04-21 12:40:45.604
+DataCollector: Route detected as potreb
+
+2020-04-21 12:40:45.605
+Request Processor: External request has been received for 2003455671 with argument processid
+
+2020-04-21 12:40:45.669
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+Request Processor: Route detected as potreb, starting to process...
+
+2020-04-21 12:40:45.686
+Request Processor: Data has been collected for potreb
+
+2020-04-21 12:40:45.688
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:40:45.689
+Request Processor: Starting to collect data for route 2003455671 potrebakk
+
+2020-04-21 12:40:45.703
+Request Processor: Data has been collected for potrebakk
+
+2020-04-21 12:40:45.704
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:40:45.705
+Request Processor: Starting to collect data for route 2003455671 potrebrefin
+
+2020-04-21 12:40:45.717
+Request Processor: Data has been collected for potrebrefin
+
+2020-04-21 12:40:45.717
+Request Processor: request from server for integration data has been received for 2003455671
+
+2020-04-21 12:40:45.841
+Request Processor: Integration data has been collected
+
+2020-04-21 12:40:45.848
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 12:40:45.871
+Request Processor: Data has been collected for statusview
+
+2020-04-21 12:40:45.873
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 12:40:45.921
+DataCollector: All data for consumer credit application has been collected
+
+2020-04-21 12:40:45.936
+Server: Received data from dataCollector for application 2003455671
+
+2020-04-21 12:40:45.936
+Server: Application has error text attached: [java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:273), java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java
+:280), java.util.concurrent.CompletableFuture.uniExceptionally(CompletableFuture.java:874), java.util.concurrent.CompletableFuture$UniExceptionally.tryFire(CompletableFuture.java:852), java.util.concurrent.Com
+pletableFuture.postComplete(CompletableFuture.java:474), java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:1977), ru.gpb.rkk2.integrations.commons.chain.ChainingKafkaTemplate.
+lambda$sendAndFlush$3(ChainingKafkaTemplate.java:268), ru.gpb.rkk2.integrations.commons.RKK2Listener.processChainError(RKK2Listener.java:146), ru.gpb.rkk2.integrations.commons.RKK2Listener$$FastClassBySpringCG
+LIB$$234c79fb.invoke(<generated>), org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218), org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.
+ Удаление счета. Не удалось удалить счет ru.gpb.rkk2.integrations.exception.RKK2Exception: Удаление счета. Не удалось удалить счет
+
+2020-04-21 12:40:45.979
+Server: Data for application 2003455671 has been successfully processed for fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 12:40:45.981
+Server: Listening...
+
+2020-04-21 12:46:25.523
+Server: Received request for support from ::ffff:10.2.160.67, ::ffff:10.2.160.67
+
+2020-04-21 12:46:25.543
+DataCollector: Received request to collect data for 2003521601
+
+2020-04-21 12:46:25.543
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 12:46:25.563
+DataCollector: Search data has been processed
+
+2020-04-21 12:46:25.568
+DataCollector: Route detected as potreb
+
+2020-04-21 12:46:25.569
+Request Processor: External request has been received for 2003521601 with argument processid
+
+2020-04-21 12:46:25.670
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+Request Processor: Route detected as potreb, starting to process...
+
+2020-04-21 12:46:25.680
+Request Processor: Data has been collected for potreb
+
+2020-04-21 12:46:25.681
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:46:25.682
+Request Processor: Starting to collect data for route 2003521601 potrebakk
+
+2020-04-21 12:46:25.695
+Request Processor: Data has been collected for potrebakk
+
+2020-04-21 12:46:25.696
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:46:25.696
+Request Processor: Starting to collect data for route 2003521601 potrebrefin
+
+2020-04-21 12:46:25.704
+Request Processor: Data has been collected for potrebrefin
+
+2020-04-21 12:46:25.704
+Request Processor: request from server for integration data has been received for 2003521601
+
+2020-04-21 12:46:26.125
+Request Processor: Integration data has been collected
+
+2020-04-21 12:46:26.154
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 12:46:26.183
+Request Processor: Data has been collected for statusview
+
+2020-04-21 12:46:26.191
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 12:46:26.233
+DataCollector: All data for consumer credit application has been collected
+
+2020-04-21 12:46:26.287
+Server: Received data from dataCollector for application 2003521601
+
+2020-04-21 12:46:26.291
+Server: Application has error text attached:  ru.gpb.rkk2.integrations.exception.RKK2Exception Ошибка взаимодействия с внешним сервисом: org.springframework.kafka.listener.ListenerExecutionFailedException: Lis
+tener method 'public void ru.gpb.rkk2.listeners.GroupListener.saveApplication(ru.gpb.rkk2.integrations.dto.applicationservice.request.SaveApp
+
+2020-04-21 12:46:26.384
+Server: Data for application 2003521601 has been successfully processed for ::ffff:10.2.160.67
+
+2020-04-21 12:46:26.387
+Server: Listening...
+
+2020-04-21 12:49:38.891
+Server: Received request for support from ::ffff:10.2.160.67, ::ffff:10.2.160.67
+
+2020-04-21 12:49:38.892
+DataCollector: Received request to collect data for 2003554092
+
+2020-04-21 12:49:38.893
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 12:49:38.899
+DataCollector: Search data has been processed
+
+2020-04-21 12:49:38.900
+DataCollector: Route detected as potreb
+
+2020-04-21 12:49:38.901
+Request Processor: External request has been received for 2003554092 with argument processid
+
+2020-04-21 12:49:39.028
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+Request Processor: Route detected as potreb, starting to process...
+
+2020-04-21 12:49:39.039
+Request Processor: Data has been collected for potreb
+
+2020-04-21 12:49:39.042
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:49:39.043
+Request Processor: Starting to collect data for route 2003554092 potrebakk
+
+2020-04-21 12:49:39.095
+Request Processor: Data has been collected for potrebakk
+
+2020-04-21 12:49:39.097
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:49:39.098
+Request Processor: Starting to collect data for route 2003554092 potrebrefin
+
+2020-04-21 12:49:39.113
+Request Processor: Data has been collected for potrebrefin
+
+2020-04-21 12:49:39.113
+Request Processor: request from server for integration data has been received for 2003554092
+
+2020-04-21 12:49:39.180
+Request Processor: Integration data has been collected
+
+2020-04-21 12:49:39.183
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 12:49:39.209
+Request Processor: Data has been collected for statusview
+
+2020-04-21 12:49:39.210
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 12:49:39.261
+DataCollector: All data for consumer credit application has been collected
+
+2020-04-21 12:49:39.271
+Server: Received data from dataCollector for application 2003554092
+
+2020-04-21 12:49:39.272
+Server: Application has error text attached: RtdmException()
+        at ru.gpb.rkk2.service.call2.Call2ResponseProcessingService.process(Call2ResponseProcessingService.java:85)
+        at ru.gpb.rkk2.service.call2.Call2Service.processResponse(Call2Service.java:39)
+        at ru.gpb.rkk2.listener.GroupListener.lambda$null$3(GroupListener.java:205)
+        at java.util.concurrent.ConcurrentHashMap$ValuesView.forEach(ConcurrentHashMap.java:4707)
+        at ru.gpb.rkk2.listener.GroupListener.lambda$processBpmCall2Task$4(GroupListener.java:197)
+        at ru.gpb.rkk2.integrations.commons.chain.Waiter.updateResponseHolder(Waiter.java:96)
+        at ru.gpb.rkk2.listener.SpecificListener.updateResponseHolder(SpecificListener.java:314)
+        at ru.gpb.rkk2.listener.SpecificListener.processChainedResponse(SpecificListener.java:300)
+        at ru.gpb.rkk2.listener.SpecificListener.processCall2Response(SpecificListener.java:108)
+        at ru.gpb.rkk2.listener.SpecificListener$$FastClassBySpringCGLIB$$df2eda52.invoke(<generated>)
+        at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+        a  Ошибка вызова RTDM: InternalCreditHistory returned error (код: -212)
+
+2020-04-21 12:49:39.288
+Server: Data for application 2003554092 has been successfully processed for ::ffff:10.2.160.67
+
+2020-04-21 12:49:39.289
+Server: Listening...
+
+2020-04-21 12:50:17.496
+Server: Received request for support from ::ffff:10.2.161.135, ::ffff:10.2.161.135
+
+2020-04-21 12:50:17.498
+DataCollector: Received request to collect data for 2003510044
+
+2020-04-21 12:50:17.499
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 12:50:17.505
+DataCollector: Search data has been processed
+
+2020-04-21 12:50:17.506
+DataCollector: Route detected as credit card
+
+2020-04-21 12:50:17.508
+Request Processor: External request has been received for 2003510044 with argument processid
+
+2020-04-21 12:50:17.732
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:50:17.734
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 12:50:17.765
+Request Processor: Data collected for credit card
+
+2020-04-21 12:50:17.768
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 12:50:17.769
+Request Processor: Starting to collect data for route 2003510044 kard_akk
+
+2020-04-21 12:50:17.796
+Request Processor: Data collected for Credit Card
+
+2020-04-21 12:50:17.840
+Request Processor: request from server for integration data has been received for 2003510044
+
+2020-04-21 12:50:18.345
+Request Processor: Integration data has been collected
+
+2020-04-21 12:50:18.357
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 12:50:18.403
+Request Processor: Data has been collected for statusview
+
+2020-04-21 12:50:18.406
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 12:50:18.814
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 12:50:18.850
+Server: Received data from dataCollector for application 2003510044
+
+2020-04-21 12:50:18.884
+Server: Data for application 2003510044 has been successfully processed for ::ffff:10.2.161.135
+
+2020-04-21 12:50:18.884
+Server: Listening...
+
+2020-04-21 13:01:52.727
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 13:01:52.728
+DataCollector: Received request to collect data for 2003301236
+
+2020-04-21 13:01:52.728
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 13:01:52.747
+DataCollector: Search data has been processed
+
+2020-04-21 13:01:52.748
+DataCollector: Route detected as potreb
+
+2020-04-21 13:01:52.748
+Request Processor: External request has been received for 2003301236 with argument processid
+
+2020-04-21 13:01:52.812
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+Request Processor: Route detected as potreb, starting to process...
+
+2020-04-21 13:01:52.828
+Request Processor: Data has been collected for potreb
+
+2020-04-21 13:01:52.830
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:01:52.830
+Request Processor: Starting to collect data for route 2003301236 potrebakk
+
+2020-04-21 13:01:52.838
+Request Processor: Data has been collected for potrebakk
+
+2020-04-21 13:01:52.839
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:01:52.839
+Request Processor: Starting to collect data for route 2003301236 potrebrefin
+
+2020-04-21 13:01:52.846
+Request Processor: Data has been collected for potrebrefin
+
+2020-04-21 13:01:52.846
+Request Processor: request from server for integration data has been received for 2003301236
+
+2020-04-21 13:01:53.491
+Request Processor: Integration data has been collected
+
+2020-04-21 13:01:53.519
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 13:01:53.586
+Request Processor: Data has been collected for statusview
+
+2020-04-21 13:01:53.589
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 13:01:53.715
+DataCollector: All data for consumer credit application has been collected
+
+2020-04-21 13:01:53.761
+Server: Received data from dataCollector for application 2003301236
+
+2020-04-21 13:01:53.884
+Server: Data for application 2003301236 has been successfully processed for fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 13:01:53.885
+Server: Listening...
+
+2020-04-21 13:04:55.418
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 13:04:55.419
+DataCollector: Received request to collect data for 2003478318
+
+2020-04-21 13:04:55.420
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 13:04:55.424
+DataCollector: Search data has been processed
+
+2020-04-21 13:04:55.425
+DataCollector: Route detected as credit card
+
+2020-04-21 13:04:55.425
+Request Processor: External request has been received for 2003478318 with argument processid
+
+2020-04-21 13:04:55.490
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:04:55.491
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 13:04:55.499
+Request Processor: Data collected for credit card
+
+2020-04-21 13:04:55.501
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:04:55.501
+Request Processor: Starting to collect data for route 2003478318 kard_akk
+
+2020-04-21 13:04:55.510
+Request Processor: Data collected for Credit Card
+
+2020-04-21 13:04:55.517
+Request Processor: request from server for integration data has been received for 2003478318
+
+2020-04-21 13:04:56.961
+Request Processor: Integration data has been collected
+
+2020-04-21 13:04:57.010
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 13:04:57.027
+Request Processor: Data has been collected for statusview
+
+2020-04-21 13:04:57.028
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 13:04:57.043
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 13:04:57.072
+Server: Received data from dataCollector for application 2003478318
+
+2020-04-21 13:04:57.176
+Server: Data for application 2003478318 has been successfully processed for fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 13:04:57.177
+Server: Listening...
+
+2020-04-21 13:08:30.567
+Server: Request for Camunda link has been received:
+
+{
+  host: 'localhost:3000',
+  'user-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0',
+  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language': 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3',
+  'accept-encoding': 'gzip, deflate',
+  connection: 'keep-alive',
+  'upgrade-insecure-requests': '1',
+  'if-none-match': 'W/"c4-1iOokWFz9CdzIo+QxHL0IPVd+xQ"'
+}
+2020-04-21 13:08:30.571
+Server: Remote host's IP address is: ::ffff:10.2.164.46, undefined
+
+2020-04-21 13:08:30.572
+Request Processor: External request has been received for 2003497271 with argument processid
+
+2020-04-21 13:08:30.591
+Server: Requset for Camunda link has been processed. Result: SUCCESS
+
+2020-04-21 13:10:48.093
+Server: Received request for support from ::ffff:10.2.163.131, ::ffff:10.2.163.131
+
+2020-04-21 13:10:48.094
+DataCollector: Received request to collect data for 2002064257
+
+2020-04-21 13:10:48.094
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 13:10:48.133
+DataCollector: Search data has been processed
+
+2020-04-21 13:10:48.133
+DataCollector: Route detected as ipoteka
+
+2020-04-21 13:10:48.134
+Request Processor: External request has been received for 2002064257 with argument processid
+
+2020-04-21 13:10:48.208
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:10:48.208
+Request Processor: Ipoteka exception
+
+Request Processor: Route detected as ipoteka, starting to process...
+
+2020-04-21 13:10:48.337
+Request Processor: Data collected for ipoteka
+
+2020-04-21 13:10:48.339
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:10:48.339
+Request Processor: Starting to collect data for route 2002064257 ipoteka_participant
+
+2020-04-21 13:10:48.429
+Request Processor: Data collected for ipoteka
+
+2020-04-21 13:10:48.430
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:10:48.430
+Request Processor: Starting to collect data for route 2002064257 ipoteka_akk
+
+2020-04-21 13:10:48.516
+Request Processor: Data collected for ipoteka
+
+2020-04-21 13:10:48.576
+Request Processor: Processing the route letter_of_credit for 2002064257...
+
+2020-04-21 13:10:48.657
+Request Processor: Processing the route transfer_order for 2002064257...
+
+2020-04-21 13:10:48.746
+Request Processor: request from server for integration data has been received for 2002064257
+
+2020-04-21 13:10:48.779
+Request Processor: Integration data has been collected
+
+2020-04-21 13:10:48.780
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 13:10:48.820
+Request Processor: Data has been collected for statusview
+
+2020-04-21 13:10:48.822
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 13:10:48.897
+DataCollector: All data for mortgage application has been collected
+
+2020-04-21 13:10:48.898
+Server: Received data from dataCollector for application 2002064257
+
+2020-04-21 13:10:48.904
+Server: Data for application 2002064257 has been successfully processed for ::ffff:10.2.163.131
+
+2020-04-21 13:10:48.905
+Server: Listening...
+
+2020-04-21 13:10:57.238
+Server: Received request for support from ::ffff:10.2.163.131, ::ffff:10.2.163.131
+
+2020-04-21 13:10:57.239
+DataCollector: Received request to collect data for 2003461000
+
+2020-04-21 13:10:57.240
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 13:10:57.245
+DataCollector: Search data has been processed
+
+2020-04-21 13:10:57.246
+DataCollector: Route detected as credit card
+
+2020-04-21 13:10:57.247
+Request Processor: External request has been received for 2003461000 with argument processid
+
+2020-04-21 13:10:57.311
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:10:57.311
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 13:10:57.325
+Request Processor: Data collected for credit card
+
+2020-04-21 13:10:57.326
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:10:57.326
+Request Processor: Starting to collect data for route 2003461000 kard_akk
+
+2020-04-21 13:10:57.342
+Request Processor: Data collected for Credit Card
+
+2020-04-21 13:10:57.351
+Request Processor: request from server for integration data has been received for 2003461000
+
+2020-04-21 13:11:00.170
+Request Processor: Integration data has been collected
+
+2020-04-21 13:11:00.228
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 13:11:00.242
+Request Processor: Data has been collected for statusview
+
+2020-04-21 13:11:00.243
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 13:11:00.285
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 13:11:00.336
+Server: Received data from dataCollector for application 2003461000
+
+2020-04-21 13:11:00.479
+Server: Data for application 2003461000 has been successfully processed for ::ffff:10.2.163.131
+
+2020-04-21 13:11:00.480
+Server: Listening...
+
+2020-04-21 13:15:48.736
+Server: Received request for support from ::ffff:10.2.161.135, ::ffff:10.2.161.135
+
+2020-04-21 13:15:48.737
+DataCollector: Received request to collect data for 2003529338
+
+2020-04-21 13:15:48.737
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 13:15:48.753
+DataCollector: Search data has been processed
+
+2020-04-21 13:15:48.753
+DataCollector: Route detected as credit card
+
+2020-04-21 13:15:48.754
+Request Processor: External request has been received for 2003529338 with argument processid
+
+2020-04-21 13:15:48.806
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:15:48.807
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 13:15:48.813
+Request Processor: Data collected for credit card
+
+2020-04-21 13:15:48.814
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:15:48.815
+Request Processor: Starting to collect data for route 2003529338 kard_akk
+
+2020-04-21 13:15:48.823
+Request Processor: Data collected for Credit Card
+
+2020-04-21 13:15:48.830
+Request Processor: request from server for integration data has been received for 2003529338
+
+2020-04-21 13:15:49.351
+Request Processor: Integration data has been collected
+
+2020-04-21 13:15:49.379
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 13:15:49.396
+Request Processor: Data has been collected for statusview
+
+2020-04-21 13:15:49.397
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 13:15:49.453
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 13:15:49.480
+Server: Received data from dataCollector for application 2003529338
+
+2020-04-21 13:15:49.545
+Server: Data for application 2003529338 has been successfully processed for ::ffff:10.2.161.135
+
+2020-04-21 13:15:49.545
+Server: Listening...
+
+2020-04-21 13:25:50.279
+Server: Received request for support from ::ffff:10.2.164.52, ::ffff:10.2.164.52
+
+2020-04-21 13:25:50.280
+DataCollector: Received request to collect data for 2003563070
+
+2020-04-21 13:25:50.280
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 13:25:50.302
+DataCollector: Search data has been processed
+
+2020-04-21 13:25:50.302
+DataCollector: Route detected as potreb
+
+2020-04-21 13:25:50.303
+Request Processor: External request has been received for 2003563070 with argument processid
+
+2020-04-21 13:25:50.407
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+Request Processor: Route detected as potreb, starting to process...
+
+2020-04-21 13:25:50.415
+Request Processor: Data has been collected for potreb
+
+2020-04-21 13:25:50.417
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:25:50.418
+Request Processor: Starting to collect data for route 2003563070 potrebakk
+
+2020-04-21 13:25:50.425
+Request Processor: Data has been collected for potrebakk
+
+2020-04-21 13:25:50.426
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:25:50.427
+Request Processor: Starting to collect data for route 2003563070 potrebrefin
+
+2020-04-21 13:25:50.436
+Request Processor: Data has been collected for potrebrefin
+
+2020-04-21 13:25:50.437
+Request Processor: request from server for integration data has been received for 2003563070
+
+2020-04-21 13:25:50.542
+Request Processor: Integration data has been collected
+
+2020-04-21 13:25:50.545
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 13:25:50.586
+Request Processor: Data has been collected for statusview
+
+2020-04-21 13:25:50.587
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 13:25:50.612
+DataCollector: All data for consumer credit application has been collected
+
+2020-04-21 13:25:50.620
+Server: Received data from dataCollector for application 2003563070
+
+2020-04-21 13:25:50.638
+Server: Data for application 2003563070 has been successfully processed for ::ffff:10.2.164.52
+
+2020-04-21 13:25:50.638
+Server: Listening...
+
+2020-04-21 13:36:01.295
+Server: Received request for support from ::ffff:10.2.164.52, ::ffff:10.2.164.52
+
+2020-04-21 13:36:01.296
+DataCollector: Received request to collect data for 2003508483
+
+2020-04-21 13:36:01.297
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 13:36:01.414
+DataCollector: Search data has been processed
+
+2020-04-21 13:36:01.415
+DataCollector: Route detected as credit card
+
+2020-04-21 13:36:01.416
+Request Processor: External request has been received for 2003508483 with argument processid
+
+2020-04-21 13:36:01.509
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:36:01.510
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 13:36:01.522
+Request Processor: Data collected for credit card
+
+2020-04-21 13:36:01.524
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:36:01.525
+Request Processor: Starting to collect data for route 2003508483 kard_akk
+
+2020-04-21 13:36:01.536
+Request Processor: Data collected for Credit Card
+
+2020-04-21 13:36:01.543
+Request Processor: request from server for integration data has been received for 2003508483
+
+2020-04-21 13:36:03.169
+Request Processor: Integration data has been collected
+
+2020-04-21 13:36:03.218
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 13:36:03.262
+Request Processor: Data has been collected for statusview
+
+2020-04-21 13:36:03.264
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 13:36:03.336
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 13:36:03.378
+Server: Received data from dataCollector for application 2003508483
+
+2020-04-21 13:36:03.500
+Server: Data for application 2003508483 has been successfully processed for ::ffff:10.2.164.52
+
+2020-04-21 13:36:03.500
+Server: Listening...
+
+2020-04-21 13:42:54.355
+Server: Received request for support from ::ffff:10.2.161.135, ::ffff:10.2.161.135
+
+2020-04-21 13:42:54.355
+DataCollector: Received request to collect data for 2003551257
+
+2020-04-21 13:42:54.356
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 13:42:54.377
+DataCollector: Search data has been processed
+
+2020-04-21 13:42:54.378
+DataCollector: Route detected as potreb
+
+2020-04-21 13:42:54.379
+Request Processor: External request has been received for 2003551257 with argument processid
+
+2020-04-21 13:42:54.440
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+Request Processor: Route detected as potreb, starting to process...
+
+2020-04-21 13:42:54.449
+Request Processor: Data has been collected for potreb
+
+2020-04-21 13:42:54.452
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:42:54.453
+Request Processor: Starting to collect data for route 2003551257 potrebakk
+
+2020-04-21 13:42:54.463
+Request Processor: Data has been collected for potrebakk
+
+2020-04-21 13:42:54.466
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:42:54.466
+Request Processor: Starting to collect data for route 2003551257 potrebrefin
+
+2020-04-21 13:42:54.486
+Request Processor: Data has been collected for potrebrefin
+
+2020-04-21 13:42:54.486
+Request Processor: request from server for integration data has been received for 2003551257
+
+2020-04-21 13:42:54.717
+Request Processor: Integration data has been collected
+
+2020-04-21 13:42:54.728
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 13:42:54.766
+Request Processor: Data has been collected for statusview
+
+2020-04-21 13:42:54.768
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 13:42:54.797
+DataCollector: All data for consumer credit application has been collected
+
+2020-04-21 13:42:54.817
+Server: Received data from dataCollector for application 2003551257
+
+2020-04-21 13:42:54.818
+Server: Application has error text attached:  ru.gpb.rkk2.integrations.exception.RKK2Exception Ошибка взаимодействия с внешним сервисом: org.springframework.kafka.listener.ListenerExecutionFailedException: Lis
+tener method 'public void ru.gpb.rkk2.listeners.GroupListener.saveApplication(ru.gpb.rkk2.integrations.dto.applicationservice.request.SaveApp
+
+2020-04-21 13:42:54.859
+Server: Data for application 2003551257 has been successfully processed for ::ffff:10.2.161.135
+
+2020-04-21 13:42:54.859
+Server: Listening...
+
+2020-04-21 13:44:26.934
+Server: Received request for support from ::ffff:10.2.160.67, ::ffff:10.2.160.67
+
+2020-04-21 13:44:26.935
+DataCollector: Received request to collect data for 2002189122
+
+2020-04-21 13:44:26.935
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 13:44:26.940
+DataCollector: Search data has been processed
+
+2020-04-21 13:44:26.940
+DataCollector: Route detected as credit card
+
+2020-04-21 13:44:26.941
+Request Processor: External request has been received for 2002189122 with argument processid
+
+2020-04-21 13:44:26.974
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:44:26.975
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 13:44:26.987
+Request Processor: Data collected for credit card
+
+2020-04-21 13:44:26.988
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:44:26.989
+Request Processor: Starting to collect data for route 2002189122 kard_akk
+
+2020-04-21 13:44:27.005
+Request Processor: Data collected for Credit Card
+
+2020-04-21 13:44:27.012
+Request Processor: request from server for integration data has been received for 2002189122
+
+2020-04-21 13:44:27.124
+Request Processor: Integration data has been collected
+
+2020-04-21 13:44:27.130
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 13:44:27.139
+Request Processor: Data has been collected for statusview
+
+2020-04-21 13:44:27.141
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 13:44:27.168
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 13:44:27.178
+Server: Received data from dataCollector for application 2002189122
+
+2020-04-21 13:44:27.207
+Server: Data for application 2002189122 has been successfully processed for ::ffff:10.2.160.67
+
+2020-04-21 13:44:27.208
+Server: Listening...
+
+2020-04-21 13:45:23.070
+Server: Received request for support from ::ffff:10.2.160.67, ::ffff:10.2.160.67
+
+2020-04-21 13:45:23.070
+DataCollector: Received request to collect data for 2002062408
+
+2020-04-21 13:45:23.070
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 13:45:23.081
+DataCollector: Search data has been processed
+
+2020-04-21 13:45:23.081
+DataCollector: Route detected as potreb
+
+2020-04-21 13:45:23.081
+Request Processor: External request has been received for 2002062408 with argument processid
+
+2020-04-21 13:45:23.099
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+Request Processor: Route detected as potreb, starting to process...
+
+2020-04-21 13:45:23.105
+Request Processor: Data has been collected for potreb
+
+2020-04-21 13:45:23.106
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:45:23.107
+Request Processor: Starting to collect data for route 2002062408 potrebakk
+
+2020-04-21 13:45:23.112
+Request Processor: Data has been collected for potrebakk
+
+2020-04-21 13:45:23.113
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:45:23.113
+Request Processor: Starting to collect data for route 2002062408 potrebrefin
+
+2020-04-21 13:45:23.123
+Request Processor: Data has been collected for potrebrefin
+
+2020-04-21 13:45:23.123
+Request Processor: request from server for integration data has been received for 2002062408
+
+2020-04-21 13:45:23.738
+Request Processor: Integration data has been collected
+
+2020-04-21 13:45:23.771
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 13:45:23.805
+Request Processor: Data has been collected for statusview
+
+2020-04-21 13:45:23.808
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 13:45:23.914
+DataCollector: All data for consumer credit application has been collected
+
+2020-04-21 13:45:23.975
+Server: Received data from dataCollector for application 2002062408
+
+2020-04-21 13:45:24.090
+Server: Data for application 2002062408 has been successfully processed for ::ffff:10.2.160.67
+
+2020-04-21 13:45:24.091
+Server: Listening...
+
+2020-04-21 13:49:05.585
+Server: Received request for support from ::ffff:10.2.160.67, ::ffff:10.2.160.67
+
+2020-04-21 13:49:05.586
+DataCollector: Received request to collect data for 2003560574
+
+2020-04-21 13:49:05.587
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 13:49:05.597
+DataCollector: Search data has been processed
+
+2020-04-21 13:49:05.597
+DataCollector: Route detected as potreb
+
+2020-04-21 13:49:05.597
+Request Processor: External request has been received for 2003560574 with argument processid
+
+2020-04-21 13:49:05.657
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+Request Processor: Route detected as potreb, starting to process...
+
+2020-04-21 13:49:05.663
+Request Processor: Data has been collected for potreb
+
+2020-04-21 13:49:05.665
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:49:05.665
+Request Processor: Starting to collect data for route 2003560574 potrebakk
+
+2020-04-21 13:49:05.672
+Request Processor: Data has been collected for potrebakk
+
+2020-04-21 13:49:05.674
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:49:05.674
+Request Processor: Starting to collect data for route 2003560574 potrebrefin
+
+2020-04-21 13:49:05.694
+Request Processor: Data has been collected for potrebrefin
+
+2020-04-21 13:49:05.696
+Request Processor: request from server for integration data has been received for 2003560574
+
+2020-04-21 13:49:06.375
+Request Processor: Integration data has been collected
+
+2020-04-21 13:49:06.403
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 13:49:06.414
+Request Processor: Data has been collected for statusview
+
+2020-04-21 13:49:06.415
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 13:49:06.480
+DataCollector: All data for consumer credit application has been collected
+
+2020-04-21 13:49:06.530
+Server: Received data from dataCollector for application 2003560574
+
+2020-04-21 13:49:06.531
+Server: Application has error text attached: org.springframework.ws.soap.client.SoapFaultClientException: @EnddateNew Apr  1 2025 12:00AM
+@BeginDateNew = Apr 21 2020 12:00AM, @BeginDate = , @PAYDAY = 12, @EnddateNew = Apr 12 2025 12:00AM, @Enddate =
+@EndDate Apr 12 2025 12:00AM
+@RecommendationID
+@MONTHLYREWARDRate 14.50
+@MONTHLYREWARDRate 14.50
+@CreditID: 131208526, @RequestID: 131208524, @Code: 11273-ПБ-037/2015/20          , @Date: 21/04/2020                    , @CreditLineID:
+FINE: CreditRequestID: 131208524, @@CREDITFILEID = 131208526, @intResult = 0
+CREDITCOMMISSIONRELATION_D: 9047, 131208526
+CREDITCOMMISSIONRELATION_D: 9042, 131208526
+CREDITCOMMISSIONRELATION_D: 9046, 131208526
+CREDITCOMMISSIONRELATION_D: 9039, 131208526
+CREDITCOMMISSIONRELATION_D: 9041, 131208526
+CREDITCOMMISSIONRELATION_D: 9040, 131208526
+FINE: @HostageTypeID:
+@ID 92448924 @ADDRESSID     @BEGINACTUALDATE  Apr 21 2020 12:00AM @@@@@####@@@@@ @WorkPhone
+NEWADDRESSID: 88051022
+### @NEWBIRTHPLACEID #### = 88051023
+@CUSTOMERID  28944326 @ATTRIBUTEID 1622  Ошибка при обращении к ИКАР
+
+2020-04-21 13:49:06.643
+Server: Data for application 2003560574 has been successfully processed for ::ffff:10.2.160.67
+
+2020-04-21 13:49:06.644
+Server: Listening...
+
+2020-04-21 13:58:53.544
+Server: Received request for support from ::ffff:10.2.160.67, ::ffff:10.2.160.67
+
+2020-04-21 13:58:53.546
+DataCollector: Received request to collect data for 2003560803
+
+2020-04-21 13:58:53.547
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 13:58:53.580
+DataCollector: Search data has been processed
+
+2020-04-21 13:58:53.582
+DataCollector: Route detected as credit card
+
+2020-04-21 13:58:53.584
+Request Processor: External request has been received for 2003560803 with argument processid
+
+2020-04-21 13:58:53.716
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:58:53.717
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 13:58:53.728
+Request Processor: Data collected for credit card
+
+2020-04-21 13:58:53.729
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 13:58:53.730
+Request Processor: Starting to collect data for route 2003560803 kard_akk
+
+2020-04-21 13:58:53.738
+Request Processor: Data collected for Credit Card
+
+2020-04-21 13:58:53.743
+Request Processor: request from server for integration data has been received for 2003560803
+
+2020-04-21 13:58:53.988
+Request Processor: Integration data has been collected
+
+2020-04-21 13:58:54.000
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 13:58:54.041
+Request Processor: Data has been collected for statusview
+
+2020-04-21 13:58:54.042
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 13:58:54.058
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 13:58:54.080
+Server: Received data from dataCollector for application 2003560803
+
+2020-04-21 13:58:54.082
+Server: Application has error text attached: ru.gpb.rkk2.integration.sp.exception.GenericCallException: У клиента уже имеются договоры на кредитную карту:ККЛ-728815/11
+        at ru.gpb.rkk2.services.fivent.Service5NT.createApplication(Service5NT.java:77)
+        at ru.gpb.rkk2.services.fivent.Service5NT$$FastClassBySpringCGLIB$$b1b8a63a.invoke(<generated>)
+        at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+        at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:769)
+        at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+        at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:747)
+        at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:88)
+        at ru.gpb.rkk2.aop.MethodLogger.around(MethodLogger.java:29)
+        at sun.reflect.GeneratedMethodAccessor412.invoke(Unknown Source)
+        at sun.reflect.DelegatingMethodAccesso У клиента уже имеются договоры на кредитную карту:ККЛ-728815/11 У клиента уже имеются договоры на кредитную карту:ККЛ-728815/11
+
+2020-04-21 13:58:54.133
+Server: Data for application 2003560803 has been successfully processed for ::ffff:10.2.160.67
+
+2020-04-21 13:58:54.133
+Server: Listening...
+
+2020-04-21 14:10:43.632
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 14:10:43.633
+DataCollector: Received request to collect data for 2003558999
+
+2020-04-21 14:10:43.633
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 14:10:43.650
+DataCollector: Search data has been processed
+
+2020-04-21 14:10:43.650
+DataCollector: Route detected as credit card
+
+2020-04-21 14:10:43.651
+Request Processor: External request has been received for 2003558999 with argument processid
+
+2020-04-21 14:10:43.729
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 14:10:43.731
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 14:10:43.746
+Request Processor: Data collected for credit card
+
+2020-04-21 14:10:43.747
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 14:10:43.748
+Request Processor: Starting to collect data for route 2003558999 kard_akk
+
+2020-04-21 14:10:43.763
+Request Processor: Data collected for Credit Card
+
+2020-04-21 14:10:43.778
+Request Processor: request from server for integration data has been received for 2003558999
+
+2020-04-21 14:10:43.893
+Request Processor: Integration data has been collected
+
+2020-04-21 14:10:43.895
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 14:10:43.915
+Request Processor: Data has been collected for statusview
+
+2020-04-21 14:10:43.916
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 14:10:43.932
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 14:10:43.937
+Server: Received data from dataCollector for application 2003558999
+
+2020-04-21 14:10:43.938
+Server: Application has error text attached: ru.gpb.rkk2.connector5nt.Diasoft5NTCallException: java.util.concurrent.TimeoutException: Timeout after PT20S
+        at ru.gpb.rkk2.connector5nt.impl.Diasoft5NTConnectorContextWithTimeoutAndRetry.run(Diasoft5NTConnectorContextWithTimeoutAndRetry.java:31)
+        at ru.gpb.rkk2.connector5nt.impl.DefaultDiasoft5NTConnector.invokeCall(DefaultDiasoft5NTConnector.java:67)
+        at ru.gpb.rkk2.connector5nt.impl.DefaultDiasoft5NTConnector.lambda$call$1(DefaultDiasoft5NTConnector.java:39)
+        at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
+        at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1382)
+        at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:482)
+        at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
+        at java.util.stream.ReduceOps$ReduceTask.doLeaf(ReduceOps.java:747)
+        at java.util.stream.ReduceOps$ReduceTask.doLeaf(ReduceOps.java:721)
+        at java.util.stream.AbstractTask.compute(AbstractTask.java:316)
+        at java.util. java.util.concurrent.TimeoutException: Timeout after PT20S java.util.concurrent.TimeoutException: Timeout after PT20S
+
+2020-04-21 14:10:43.953
+Server: Data for application 2003558999 has been successfully processed for fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 14:10:43.953
+Server: Listening...
+
+2020-04-21 14:11:58.967
+Server: Received request for support from fe80::2488:34b9:60cc:c7ee, fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 14:11:58.968
+DataCollector: Received request to collect data for 2003558999
+
+2020-04-21 14:11:58.968
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 14:11:58.973
+DataCollector: Search data has been processed
+
+2020-04-21 14:11:58.973
+DataCollector: Route detected as credit card
+
+2020-04-21 14:11:58.974
+Request Processor: External request has been received for 2003558999 with argument processid
+
+2020-04-21 14:11:58.990
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 14:11:58.990
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 14:11:58.994
+Request Processor: Data collected for credit card
+
+2020-04-21 14:11:58.995
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 14:11:58.996
+Request Processor: Starting to collect data for route 2003558999 kard_akk
+
+2020-04-21 14:11:59.000
+Request Processor: Data collected for Credit Card
+
+2020-04-21 14:11:59.004
+Request Processor: request from server for integration data has been received for 2003558999
+
+2020-04-21 14:11:59.042
+Request Processor: Integration data has been collected
+
+2020-04-21 14:11:59.044
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 14:11:59.050
+Request Processor: Data has been collected for statusview
+
+2020-04-21 14:11:59.051
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 14:11:59.061
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 14:11:59.065
+Server: Received data from dataCollector for application 2003558999
+
+2020-04-21 14:11:59.065
+Server: Application has error text attached: ru.gpb.rkk2.integration.sp.exception.GenericCallException: Ошибка из ПЦ: error
+        at ru.gpb.rkk2.integration.sp.Abstract5NTCall.handleResult(Abstract5NTCall.java:107)
+        at ru.gpb.rkk2.integration.sp.Abstract5NTCall.call(Abstract5NTCall.java:60)
+        at ru.gpb.rkk2.integration.sp.Abstract5NTCall.call(Abstract5NTCall.java:27)
+        at ru.gpb.rkk2.connector5nt.Diasoft5NTJdbcTemplateCall.runWithoutTransaction(Diasoft5NTJdbcTemplateCall.java:30)
+        at ru.gpb.rkk2.connector5nt.Diasoft5NTJdbcTemplateCall.call(Diasoft5NTJdbcTemplateCall.java:26)
+        at ru.gpb.rkk2.connector5nt.impl.Diasoft5NTHikariInstance.apply(Diasoft5NTHikariInstance.java:34)
+        at ru.gpb.rkk2.connector5nt.impl.DefaultDiasoft5NTConnector.lambda$invokeCall$5(DefaultDiasoft5NTConnector.java:67)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        at java.lang.Thread.run( Ошибка из ПЦ: error Ошибка из ПЦ: error
+
+2020-04-21 14:11:59.081
+Server: Data for application 2003558999 has been successfully processed for fe80::2488:34b9:60cc:c7ee
+
+2020-04-21 14:11:59.082
+Server: Listening...
+
+2020-04-21 14:16:27.926
+Server: Received request for support from ::ffff:10.2.164.52, ::ffff:10.2.164.52
+
+2020-04-21 14:16:27.926
+DataCollector: Received request to collect data for 2003564056
+
+2020-04-21 14:16:27.926
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 14:16:27.941
+DataCollector: Search data has been processed
+
+2020-04-21 14:16:27.941
+DataCollector: Route detected as credit card
+
+2020-04-21 14:16:27.941
+Request Processor: External request has been received for 2003564056 with argument processid
+
+2020-04-21 14:16:27.991
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 14:16:27.992
+Request Processor: Checking if need to connect to application while processing getParemetersData...
+
+Request Processor: Route detected as cc, starting to process...
+
+2020-04-21 14:16:27.998
+Request Processor: Data collected for credit card
+
+2020-04-21 14:16:28.000
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 14:16:28.005
+Request Processor: Starting to collect data for route 2003564056 kard_akk
+
+2020-04-21 14:16:28.018
+Request Processor: Data collected for Credit Card
+
+2020-04-21 14:16:28.024
+Request Processor: request from server for integration data has been received for 2003564056
+
+2020-04-21 14:16:28.039
+Request Processor: Integration data has been collected
+
+2020-04-21 14:16:28.040
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 14:16:28.046
+Request Processor: Data has been collected for statusview
+
+2020-04-21 14:16:28.047
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 14:16:28.060
+DataCollector: All data for credit card application has been collected
+
+2020-04-21 14:16:28.061
+Server: Received data from dataCollector for application 2003564056
+
+2020-04-21 14:16:28.061
+Server: Application has error text attached: RtdmException()
+        at ru.gpb.rkk2.service.call2.Call2ResponseService.process(Call2ResponseService.java:66)
+        at ru.gpb.rkk2.service.call2.Call2ServiceImpl.processResponse(Call2ServiceImpl.java:37)
+        at ru.gpb.rkk2.service.call2.Call2ServiceImpl.processResponse(Call2ServiceImpl.java:11)
+        at ru.gpb.rkk2.listener.GroupListener.lambda$null$6(GroupListener.java:241)
+        at java.util.concurrent.ConcurrentHashMap$ValuesView.forEach(ConcurrentHashMap.java:4707)
+        at ru.gpb.rkk2.listener.GroupListener.lambda$processBpmCallRequest$7(GroupListener.java:233)
+        at ru.gpb.rkk2.integrations.commons.chain.Waiter.updateResponseHolder(Waiter.java:96)
+        at ru.gpb.rkk2.listener.SpecificListener.updateResponseHolder(SpecificListener.java:235)
+        at ru.gpb.rkk2.listener.SpecificListener.processChainedResponse(SpecificListener.java:223)
+        at ru.gpb.rkk2.listener.SpecificListener.processCall2Response(SpecificListener.java:90)
+        at ru.gpb.rkk2.listener.SpecificListener$$FastClassBySpringCGLIB$$df2eda52.invoke(<generated>)
+          Ошибка вызова RTDM: Ошибка вызова RTDM. UnderwritingService returned error (код: -211)
+
+2020-04-21 14:16:28.075
+Server: Data for application 2003564056 has been successfully processed for ::ffff:10.2.164.52
+
+2020-04-21 14:16:28.076
+Server: Listening...
+
+2020-04-21 14:18:24.545
+Server: Received request for support from ::ffff:10.2.163.131, ::ffff:10.2.163.131
+
+2020-04-21 14:18:24.545
+DataCollector: Received request to collect data for 2002548293
+
+2020-04-21 14:18:24.546
+Request Processor: Received request for getDataApp for search
+
+2020-04-21 14:18:24.551
+DataCollector: Search data has been processed
+
+2020-04-21 14:18:24.552
+DataCollector: Route detected as ipoteka
+
+2020-04-21 14:18:24.552
+Request Processor: External request has been received for 2002548293 with argument processid
+
+2020-04-21 14:18:24.744
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 14:18:24.744
+Request Processor: Ipoteka exception
+
+Request Processor: Route detected as ipoteka, starting to process...
+
+2020-04-21 14:18:24.918
+Request Processor: Data collected for ipoteka
+
+2020-04-21 14:18:24.930
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 14:18:24.931
+Request Processor: Starting to collect data for route 2002548293 ipoteka_participant
+
+2020-04-21 14:18:25.018
+Request Processor: Data collected for ipoteka
+
+2020-04-21 14:18:25.020
+Request Processor: processing request for getParemetersData, starting to detect the route
+
+2020-04-21 14:18:25.020
+Request Processor: Starting to collect data for route 2002548293 ipoteka_akk
+
+2020-04-21 14:18:25.114
+Request Processor: Data collected for ipoteka
+
+2020-04-21 14:18:25.239
+Request Processor: Processing the route letter_of_credit for 2002548293...
+
+2020-04-21 14:18:25.327
+Request Processor: Processing the route transfer_order for 2002548293...
+
+2020-04-21 14:18:25.419
+Request Processor: request from server for integration data has been received for 2002548293
+
+2020-04-21 14:18:25.430
+Request Processor: Integration data has been collected
+
+2020-04-21 14:18:25.432
+Request Processor: Received request for getDataApp for statusview
+
+2020-04-21 14:18:25.447
+Request Processor: Data has been collected for statusview
+
+2020-04-21 14:18:25.450
+Request Processor: Received request for getDataApp for event
+
+2020-04-21 14:18:25.472
+DataCollector: All data for mortgage application has been collected
+
+2020-04-21 14:18:25.474
+Server: Received data from dataCollector for application 2002548293
+
+2020-04-21 14:18:25.475
+Server: Application has error text attached: java.lang.NullPointerException  Ошибка при обращении к ИКАР
+
+2020-04-21 14:18:25.497
+Server: Data for application 2002548293 has been successfully processed for ::ffff:10.2.163.131
+
+2020-04-21 14:18:25.497
+Server: Listening...
+

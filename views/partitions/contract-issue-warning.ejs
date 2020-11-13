@@ -1,0 +1,14 @@
+
+<% if (additionalSupportData.isContractOutDated) { %>
+
+    <div class="alert alert-danger" role="alert" id=processoff>
+        <font size="5">Внимание! Ошибка на этапе выдачи. Обратите внимание на дату подписания договора, риск просрочки!</font>
+    </div>
+
+<% } else if (additionalSupportData.issueBugFlag) { %>
+
+    <div class="alert alert-danger" role="alert" id=processoff>
+        <font size="5">Внимание! Проблема на этапе выдачи. Перед репроцессингом необходим внимательный анализ</font>
+    </div>
+
+<% }; %>

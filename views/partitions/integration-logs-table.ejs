@@ -1,0 +1,83 @@
+
+
+<div class="table-block-div">
+      <a onclick="hideElement('divTableContainer#2')" style="display: block">
+        <font size="6">&rarr; Интеграционные логи по заявке</font>
+    </a>
+</div>
+
+  <div class="div-tables-container" id="divTableContainer#2" style="display: none">
+
+      <button type="submit" onclick="showLongtext('longtext')">Показать/скрыть ВСЕ запросы/ответы</button>
+
+    <table class="table table-striped table-dark" id = "integrationLogData" style="display: block">
+    
+    <tr>
+        <th scope="col" class="colp thmain"></th>
+        <th scope="col" class="colp thmain">Дата, время интеграции</th>
+        <th scope="col" class="colp thmain">interaction ID</th>
+        <th scope="col" class="colp thmain">correlation ID</th>
+        <th scope="col" class="colp thmain">Целевая система (Endpoint)</th>
+        <th scope="col" class="colp thmain">Результат</th>
+        <th scope="col" class="colp thmain">Текст ошибки</th>     
+        <th scope="col" class="colp thmain">Запрос/ответ</th>
+    </tr>
+
+    <% integrationLogData.forEach(function(el, i) { %>
+    
+    <tr>
+    <td style="width: 50px;">
+        <span 
+            style="cursor: pointer; font-size: 30px;" 
+            id="<%=i%>_fullIntTextRead" 
+            onclick="SupportPageController.callModalTableFullInfo(this.id)"
+            onmouseover="SupportPageController.handlePopUpPermanent('show', this, event, 'Посмотреть весь лог в увеличенном виде')"
+            onmouseleave="SupportPageController.handlePopUpPermanent('close')"
+        >
+            &#128065;
+        </span>
+    </td>
+    <td><%= el.interaction_ts %></td> 
+    <td><%= el.interaction_id %></td>
+    <td><%= el.interaction_correlation_id %></td>
+    <td style="color: #AFEEEE";"><%= el.System %></td>
+    <td><%= el.result %></td>
+    <td style="color: #FF6347;"><%= el.error_description %></td>
+    
+    <td >
+        <button type="submit" id="<%=i%>_btn" onclick="hideReqResp(event)">Показать/скрыть запрос/ответ</button>
+        <span style="cursor: pointer; font-size: 30px;" id="<%=i%>_btn_copy" onclick="SupportPageActions.copyTextToClipBoardFromElementById(this)"
+              onmouseover="SupportPageController.handlePopUpPermanent('show', this, event, 'Скопировать текст лога в буфер обмена')"
+              onmouseleave="SupportPageController.handlePopUpPermanent('close')"
+        >&#128190;
+        </span>
+        <span style="cursor: pointer; font-size: 30px;" 
+        id="<%=i%>_IntTextRead" 
+        onclick="SupportPageController.callModalTable(this.id)"
+          onmouseover="SupportPageController.handlePopUpPermanent('show', this, event, 'Посмотреть увеличенный текст лога в отдельном окне')"
+              onmouseleave="SupportPageController.handlePopUpPermanent('close')"
+        >
+            &#128269;
+        </span>
+        <span
+                data-tooltip="<br>Привести текст к удобочитаемому виду"
+                style="cursor: pointer; font-size: 30px;"
+                id="<%=i%>_btn_pretty"
+                onclick="cleanLogRegEx(
+                    this.parentNode.childNodes[9].id,
+                    this.parentNode.childNodes[9].innerText,
+                    this.parentNode.parentNode.childNodes[9].innerText)"
+                onmouseover="SupportPageController.handlePopUpPermanent('show', this, event, 'Привести текст лога к удобочитаемому виду')"
+                onmouseleave="SupportPageController.handlePopUpPermanent('close')"
+        >
+            &#128736;
+        </span>
+        <p style="display: none; color: #f1c694;" class="longtext" id="<%=i%>_long">
+            <%= el.body %>
+        </p>
+    </td>
+    </tr>
+    <% }); %>
+    </table>
+
+</div>

@@ -1,0 +1,208 @@
+
+  RKK Adminkey
+
+
+    Страница предназначена для поиска логов в Kbana (ELK) по
+    произвоильным параметрам и диапазону
+
+
+→ Панель поиска логов
+ℹ
+Очистить время
+⇄
+↑
+↑
+↓
+↓
+Начало
+
+Конец
+
+Поле
+
+Поле
+
+Хотя бы одно поле из подкрашенных должно быть заполнено
+Получить логи из Kibana по заявке за период
+
+→ Логи из Kibana (ELK)
+Показать/скрыть ВСЕ запросы/ответы
+@timestamp 	app_instance 	app_name 	level 	logger_name 	message
+message_size 	thread_name 	stack_trace
+👁
+
+2020-08-13 19:21:56.593
+
+	
+
+cc_contractservice:r2k-p20apl-1
+
+	
+
+cc_contractservice
+
+	
+
+INFO
+
+	
+
+ru.gpb.audit.events
+
+	Показать/скрыть запрос/ответ 🔍
+
+CEF:0|РКК2.0|mainJournal||B004|Обращение к внешним
+системам|6|externalId= suser= sntdom= src=172.17.0.5
+smac=2-42-ffffffac-11-0-5 shost= duser= dntdom= dst= dmac=
+dhost=jdbc:jtds:sybase://retbranch02:4400/retail05 spt= dpt=-1 app=TCP
+start=1597346514594 end= rt= msg=Запрос к внешней системе 5NT
+deviceProcessName= outcome=failure
+
+	
+
+379
+
+	
+
+pool-317210-thread-1
+
+👁
+
+2020-08-13 19:21:56.593
+
+	
+
+cc_contractservice:r2k-p20apl-1
+
+	
+
+cc_contractservice
+
+	
+
+DEBUG
+
+	
+
+ru.gpb.rkk2.integration.sp.Abstract5NTCall
+
+	Показать/скрыть запрос/ответ 🔍
+
+Calling stored procedure returned: {#update-count-1=0,
+#update-count-2=0, #update-count-3=1, #update-count-4=0,
+#update-count-5=0, #update-count-6=0, #update-count-7=0,
+#update-count-8=1, #update-count-9=1, #update-count-10=1,
+#update-count-11=1, #update-count-12=1, #update-count-13=1,
+#update-count-14=1, RETURN_VALUE=107, Message=Ошибка из ПЦ: error,
+InstitutionID=10017079162.0000000000,
+ContractReqID=10021305301.0000000000, CardReqID=10006689024.0000000000,
+CardNumberOut=4249753393919797, DateExpirationOut=2023-07-31 00:00:00.0,
+crPSK=0E-10, crPSKMoney=null, WorkDay=null, CardEmbossingOut=,
+contractEndDate=2026-12-22 00:00:00.0, ContractReqStatus=,
+CardReqStatus=, CardBlankReqStatus=, ContractId=0E-10, ContractStatus=}
+
+	
+
+740
+
+	
+
+pool-317210-thread-1
+
+👁
+
+2020-08-13 19:21:56.593
+
+	
+
+cc_contractservice:r2k-p20apl-1
+
+	
+
+cc_contractservice
+
+	
+
+DEBUG
+
+	
+
+ru.gpb.rkk2.integration.sp.Abstract5NTCall
+
+	Показать/скрыть запрос/ответ 🔍
+
+5NT database returned an soft error 'Ошибка из ПЦ: error' for branchCode
+'029' and errorCode '107' 	
+
+108
+
+	
+
+pool-317210-thread-1
+
+👁
+
+2020-08-13 19:21:54.594
+
+	
+
+cc_contractservice:r2k-p20apl-1
+
+	
+
+cc_contractservice
+
+	
+
+DEBUG
+
+	
+
+ru.gpb.rkk2.integration.sp.Abstract5NTCall
+
+	Показать/скрыть запрос/ответ 🔍
+
+Calling stored procedure GPB_Ext_CreditReq_Gen with parameters:
+{ChannelReq=ДО, ChannelRep=null, BirthPlace=пос. Горагорск гор.Малгобек
+респ. Ингушетия, curSeniorityYears=11, TypeCard=Gold,
+DateRequest=2020-08-13, rgCity=null, tmFrame=null, ftTown=Троицкое,
+rgFlat=11, tmPostIndex=null, rgAddress=null, rgRegion=Омская область,
+TelMob=+79136582776, BirthCountryISOCODE=643, dateIDB=2020-08-13,
+NewInstitutionID=null, ftHouse=1, ClientDocSMode=1, DeliveryCard=null,
+typeCreation=0, PLoyalty=2, ftConstruction=null,
+ClientDocSubCode=550-003, rgArea=Омский, DateExpiration=2023-07-31,
+ClientDocIssuer=ОУФМС России по Омской обл. в Октябрьском
+административном округе города Омска, ftStreet=Яснополянский, InUsr=0,
+rgTown=Троицкое, ReasonNoTIN2=null, RealUser=Сайт, ReasonNoTIN3=null,
+ReasonNoTIN=null, InitiatorReqID=62adf424-f005-4310-8388-24bf1f97ed07,
+Benf=1, Sex=1, ClientDocIssueDate=2009-01-29, ClientDocSer=5208,
+ftAddrMode=null, tmAddrMode=null, ftAddress=null, tmHouse=null,
+rgPostIndex=644520, rgFrame=null, IsResident=1, ClientDocTypeCode=21,
+IsUnembossed=1, InitiatorReqNum=2005050339, tmRegion=null,
+TypePartner=null, ftCountry=РОССИЯ, ClientDocNum=722490,
+CardProduct=Visa Gold, crLimit=560000.00, cProgram=РКК_НБгп_4,
+consLoanDebt=44692.00, CardNumber=4249753393919797, tmFlat=null,
+PaymentSystem=Visa, ftFrame=null, TelHome=+79136582776, Email=null,
+crFund=810, IDB=93.00, IgnoreCollision=null, PromoCod=null,
+tmAddress=null, RTDMAverageMonthIncome=77648.00000, mode=1,
+Requester=RKK2, ClientName=ЧЕКУЛАЕВА, CRS_TIN=null, tmStreet=null,
+tmCity=null, ClientDocDateEnd=null, rgHouse=1, seniorityMonths=2,
+CRSCountryCode3=null, TelWork=null, ControlInfo=null,
+CRSCountryCode2=null, tmTown=null, ITIN=null, dateBKI=2020-08-13,
+tmArea=null, rgStreet=Яснополянский, BranchCode=029,
+BirthDate=1963-12-22, rgCountry=РОССИЯ, CRSCountryCode=643,
+CRS_TIN3=null, CRS=1, CRS_TIN2=null, ftCity=null, INN=null,
+ClientName2=АНАТОЛЬЕВНА, ClientName1=ГАЛИНА, paymentAmount=28000.00,
+ftRegion=Омская область, CardEmbossing=null, PDL=1, CountryISOCODE=643,
+NumberDO=029/2026, rgAddrMode=null, SNILS=null, ftPostIndex=644520,
+rgConstruction=null, ftArea=Омский, FATCA=1, tmCountry=null, SSN=null,
+ftFlat=11, tmConstruction=null, GPNBonusNum=null, seniorityYears=25,
+CardEmbossingSecond=null, curSeniorityMonths=2} 	
+
+2539
+
+	
+
+pool-317210-thread-1
+
+,,

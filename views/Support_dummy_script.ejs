@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>RKK Adminkey администрирование заявки РКК 2.0</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <script src="/public/js/jquery.js"></script>
+  <script src="/public/js/bootstrap.min.js"></script>
+   <style type="text/css">
+
+        body {
+    
+    background-color: #2F4F4F;
+    color: #BC8F8F;
+    /*filter: blur(3px);*/
+
+    }
+
+     .headlabel {
+      text-align: center;
+      font-family: "Times New Roman", Georgia, Serif;
+      font-stretch: extra-expanded;
+      font-size: 20px;
+      color: #008080;
+    }
+
+    .dimmer {
+      display: flex;
+      background-color: #2F4F4F;
+      opacity: 0.5;
+      transform-origin: center center;
+      position: fixed;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      padding: 1em;
+      transition: background-color .5s linear;
+      user-select: none;
+      will-change: opacity;
+      z-index: 1000;
+      visibility: visible !important;
+
+    }
+    .container {
+
+      position: relative;
+      top: 30%;
+      height: 150px;
+      user-select: text;
+      background-color: #808080;
+      width: 560px;
+      box-sizing: border-box;
+      display: flex;
+      box-shadow: 0 10px 56px -12px rgba(0, 0, 0, 0.67);
+    }
+
+    .loader {
+      width: 100%;
+      font-size: 1.2em;
+      text-align: center;
+      padding-top: 16px;
+      -ms-flex: 2 1;
+      flex: 2 1;
+      z-index: 1000;
+
+    }
+
+    .spinner {
+      position: absolute;
+      background-color: #cce2ff;
+      width: 3.42857143rem;
+      height: 3.42857143rem;
+      margin: 0 0 0 -1.71428571rem;
+      border-color: #fff transparent transparent;
+      display: block; 
+    }
+
+    .spinner-simple {
+      position: relative;
+      border: 5px solid #f3f3f3; /* Light grey */
+      border-top: 5px solid #2F4F4F; /* Blue */
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      animation: spin 0.7s linear infinite;
+      top: 20px;
+      left: 220px;
+      right: 150px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    } 
+
+
+
+
+
+
+
+
+
+  </style>
+
+ </head>
+ <body>
+<div class="headlabel">
+<h1>RKK Adminkey</h1>
+</div>
+
+<div class="dimmer">
+  
+  <div class='container'>
+
+    <div class='loader'>
+      Пожалуйста, подождите. Идет агрегация данных из БД...
+      <div class='spinner-simple'>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script type="text/javascript">
+
+  (async () => {
+
+    const appnum = window.location.href.split('/')[4];
+    try{
+      const result = await fetch(`http://localhost:3000/supportold2/${appnum}`);
+      const html = await result.text();
+      document.body.innerHTML = html;
+    } catch (e) {
+      console.error(e);
+      document.body.innerHTML = e;
+    }
+    
+
+
+
+  })();
+  
+
+</script>
+
+
+
+
+
+ </body>
+</html>
+
+
